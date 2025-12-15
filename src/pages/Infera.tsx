@@ -2,28 +2,51 @@ import { Layout } from '@/components/layout/Layout';
 import { DAPFlowSection } from '@/components/platform/DAPFlowSection';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
-import { Brain, Zap, Shield, TrendingUp } from 'lucide-react';
+import { Brain, Zap, Shield, TrendingUp, Building2, Heart, Activity, Users } from 'lucide-react';
 
 const features = [
   {
     icon: Brain,
     title: 'Healthcare-Native AI',
-    description: 'Purpose-built machine learning models trained on healthcare data for accurate predictions and insights.',
+    description: 'Purpose-built models trained on healthcare claims, clinical, and outcomes data.',
   },
   {
     icon: Zap,
     title: 'Real-Time Processing',
-    description: 'Process millions of data points in real-time to deliver instant actionable intelligence.',
+    description: 'Process member data in real-time to surface actionable care gaps and risks.',
   },
   {
     icon: Shield,
     title: 'HIPAA Compliant',
-    description: 'Enterprise-grade security with full HIPAA compliance and SOC 2 Type II certification.',
+    description: 'Enterprise-grade security with full HIPAA compliance and SOC 2 Type II.',
   },
   {
     icon: TrendingUp,
     title: 'Continuous Learning',
-    description: 'Models continuously improve based on outcomes, ensuring ever-increasing accuracy.',
+    description: 'Models improve based on outcomes, driving better predictions over time.',
+  },
+];
+
+const personas = [
+  {
+    icon: Building2,
+    title: 'Self-Funded Employers',
+    description: 'Cost transparency, utilization insights, and population health analytics.',
+  },
+  {
+    icon: Heart,
+    title: 'Direct Primary Care',
+    description: 'Patient engagement, AI call triage, and outcomes reporting.',
+  },
+  {
+    icon: Activity,
+    title: 'Value-Based / ACOs',
+    description: 'HCC suspecting, HEDIS/MIPS performance, and risk adjustment.',
+  },
+  {
+    icon: Users,
+    title: 'Level-Funded Plans',
+    description: 'Claims analytics, stop-loss optimization, and member health scoring.',
   },
 ];
 
@@ -34,15 +57,15 @@ const Infera = () => {
       <section className="pt-32 pb-16 md:pt-40 md:pb-20 bg-gradient-to-b from-background to-background-secondary">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full text-primary text-sm font-medium mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 rounded-full text-accent text-sm font-medium mb-6">
               <Brain className="w-4 h-4" />
-              AI Engine
+              Healthcare AI Engine
             </div>
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
               Meet <span className="text-gradient">Infera</span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">
-              Healthcare-native AI that powers intelligent automation, predictive analytics, and personalized patient experiences across your organization.
+              The AI engine purpose-built for healthcare — powering intelligent automation, predictive analytics, and personalized experiences for self-funded employers, direct care practices, and value-based organizations.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button variant="hero" size="lg" asChild>
@@ -58,6 +81,37 @@ const Infera = () => {
 
       {/* DAP Flow Section */}
       <DAPFlowSection />
+
+      {/* Personas Section */}
+      <section className="py-20 md:py-28 bg-background-secondary">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-14">
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Built for Your Organization
+            </h2>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              Infera adapts to your specific needs — whether you're managing employer plans, running a direct care practice, or optimizing value-based contracts.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {personas.map((persona, index) => (
+              <div
+                key={index}
+                className="p-6 bg-card border border-border rounded-xl hover:shadow-lg hover:border-accent/30 transition-all"
+              >
+                <div className="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mb-4">
+                  <persona.icon className="w-6 h-6 text-accent" />
+                </div>
+                <h3 className="font-semibold text-foreground mb-2">{persona.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {persona.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Features Section */}
       <section className="py-20 md:py-28 bg-background">
@@ -91,13 +145,13 @@ const Infera = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-primary/5">
+      <section className="py-20 bg-accent/5">
         <div className="container mx-auto px-6 text-center">
           <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Ready to unlock your data?
+            Ready to activate your healthcare data?
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-8">
-            See how Infera can transform your healthcare data into actionable intelligence.
+            See how Infera can transform your organization — whether you're a self-funded employer, direct care practice, or value-based organization.
           </p>
           <Button variant="hero" size="lg" asChild>
             <Link to="/contact">Get Started Today</Link>
