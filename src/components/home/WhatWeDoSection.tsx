@@ -57,115 +57,113 @@ const capabilities = [
 
 export const WhatWeDoSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
-  const triggerRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [isInView, setIsInView] = useState(false);
 
+  // Intersection observer for section visibility
   useEffect(() => {
-    const observers: IntersectionObserver[] = [];
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { threshold: 0.3 }
+    );
 
-    triggerRefs.current.forEach((ref, index) => {
-      if (!ref) return;
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
 
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setActiveIndex(index);
-          }
-        },
-        { 
-          threshold: 0.5,
-          rootMargin: '-40% 0px -40% 0px'
-        }
-      );
-
-      observer.observe(ref);
-      observers.push(observer);
-    });
-
-    return () => observers.forEach(obs => obs.disconnect());
+    return () => observer.disconnect();
   }, []);
+
+  // Auto-rotation
+  useEffect(() => {
+    if (!isInView || isPaused) return;
+
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % capabilities.length);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [isInView, isPaused]);
+
+  // Wheel scroll handler
+  const handleWheel = (e: React.WheelEvent) => {
+    if (Math.abs(e.deltaY) > 30) {
+      setIsPaused(true);
+      if (e.deltaY > 0) {
+        setActiveIndex((prev) => Math.min(prev + 1, capabilities.length - 1));
+      } else {
+        setActiveIndex((prev) => Math.max(prev - 1, 0));
+      }
+      // Resume auto-rotation after 5 seconds
+      setTimeout(() => setIsPaused(false), 5000);
+    }
+  };
 
   const active = capabilities[activeIndex];
 
   return (
-    <section ref={sectionRef} className="bg-background">
+    <section 
+      ref={sectionRef} 
+      className="py-24 lg:py-32 bg-background overflow-hidden"
+      onWheel={handleWheel}
+    >
       <div className="container mx-auto px-6">
         {/* Section Label */}
-        <div className="pt-24 pb-12">
+        <div className="mb-12">
           <span className="text-xs font-semibold uppercase tracking-widest text-accent">
             Our Capabilities
           </span>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
-          {/* Left Content - Sticky */}
-          <div className="lg:sticky lg:top-32 lg:h-fit space-y-8">
-            {/* Navigation Pills */}
-            <div className="flex flex-wrap gap-2 mb-8">
-              {capabilities.map((cap, index) => (
-                <button
-                  key={index}
-                  onClick={() => {
-                    setActiveIndex(index);
-                    triggerRefs.current[index]?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                  }}
-                  className={cn(
-                    "px-4 py-2 rounded-full text-sm font-medium transition-all duration-300",
-                    activeIndex === index
-                      ? "bg-accent text-foreground"
-                      : "bg-secondary/50 text-muted-foreground hover:bg-secondary"
-                  )}
-                >
-                  {cap.number}
-                </button>
-              ))}
-            </div>
-
-            {/* Active Content */}
-            <div className="space-y-4">
-              <div className="flex items-baseline gap-4">
-                <span className="text-4xl lg:text-5xl font-bold text-primary/40">{active.number}</span>
-                <h2 className="text-3xl lg:text-4xl font-bold text-foreground">
-                  {active.title}
-                </h2>
-              </div>
-              <p className="text-lg text-muted-foreground leading-relaxed max-w-md">
-                {active.description}
-              </p>
-            </div>
-
-            {/* Right Visual - Mobile Only */}
-            <div className="lg:hidden relative h-[350px] rounded-3xl overflow-hidden bg-gradient-to-br from-secondary via-secondary/80 to-primary/20">
-              <CapabilityVisual active={active} activeIndex={activeIndex} />
-            </div>
+        <div className="grid lg:grid-cols-[auto_1fr_1fr] gap-8 lg:gap-12 items-center">
+          {/* Vertical Navigation */}
+          <div className="flex lg:flex-col gap-2 lg:gap-3 order-2 lg:order-1">
+            {capabilities.map((cap, index) => (
+              <button
+                key={index}
+                onClick={() => {
+                  setActiveIndex(index);
+                  setIsPaused(true);
+                  setTimeout(() => setIsPaused(false), 5000);
+                }}
+                className={cn(
+                  "relative px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300",
+                  activeIndex === index
+                    ? "bg-accent text-foreground"
+                    : "bg-secondary/50 text-muted-foreground hover:bg-secondary"
+                )}
+              >
+                {cap.number}
+                {/* Progress indicator for active */}
+                {activeIndex === index && !isPaused && (
+                  <span className="absolute inset-0 rounded-full overflow-hidden">
+                    <span className="absolute bottom-0 left-0 h-0.5 bg-foreground/30 animate-[progress_4s_linear]" 
+                      style={{ width: '100%' }} 
+                    />
+                  </span>
+                )}
+              </button>
+            ))}
           </div>
 
-          {/* Right - Scroll Triggers + Visual */}
-          <div className="relative">
-            {/* Desktop Visual - Sticky */}
-            <div className="hidden lg:block sticky top-32 h-[500px] rounded-3xl overflow-hidden bg-gradient-to-br from-secondary via-secondary/80 to-primary/20 mb-8">
-              <CapabilityVisual active={active} activeIndex={activeIndex} />
-            </div>
+          {/* Center Content */}
+          <div className="space-y-4 order-1 lg:order-2">
+            <h2 className="text-3xl lg:text-4xl font-bold text-foreground">
+              {active.title}
+            </h2>
+            <p className="text-lg text-muted-foreground leading-relaxed max-w-md">
+              {active.description}
+            </p>
+          </div>
 
-            {/* Scroll Trigger Points */}
-            <div className="space-y-[50vh] lg:absolute lg:inset-0 lg:pointer-events-none">
-              {capabilities.map((cap, index) => (
-                <div
-                  key={cap.number}
-                  ref={(el) => (triggerRefs.current[index] = el)}
-                  className="h-[30vh] lg:h-[60vh] flex items-center lg:pointer-events-auto"
-                >
-                  {/* Mobile scroll indicator */}
-                  <div className="lg:hidden w-full text-center text-muted-foreground/50 text-sm">
-                    {index < capabilities.length - 1 && "Scroll for more ↓"}
-                  </div>
-                </div>
-              ))}
-            </div>
+          {/* Right - Floating Pills Container */}
+          <div className="relative h-[400px] lg:h-[500px] rounded-3xl overflow-hidden bg-gradient-to-br from-secondary via-secondary/80 to-primary/20 order-3">
+            <CapabilityVisual active={active} activeIndex={activeIndex} />
           </div>
         </div>
-
-        <div className="h-24" />
       </div>
     </section>
   );
