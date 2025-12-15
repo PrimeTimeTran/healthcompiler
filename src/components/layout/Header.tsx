@@ -76,6 +76,7 @@ const navItems: NavItem[] = [
       { label: 'FAQs', href: '/resources/faqs' },
     ]
   },
+  { label: 'Partners', href: '/partners' },
   { label: 'About Us', href: '/about' },
   { label: 'Contact Us', href: '/contact' },
 ];
