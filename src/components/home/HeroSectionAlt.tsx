@@ -33,6 +33,20 @@ const metricCards = [
     data: [40, 55, 50, 70, 80, 75],
     metric: '94% accuracy'
   },
+  { 
+    label: 'Forward Deployed Eng', 
+    color: '#E94E87',
+    chartType: 'line',
+    data: [25, 40, 55, 70, 85, 95],
+    metric: '4-week sprints'
+  },
+  { 
+    label: 'AI Agents', 
+    color: '#6366F1',
+    chartType: 'bar',
+    data: [50, 65, 80, 75, 90, 85],
+    metric: 'Call Triage • Receptionist'
+  },
 ];
 
 // Mini 3D chart component
@@ -366,43 +380,43 @@ export const HeroSectionAlt = () => {
               <FloatingParticle key={i} index={i} total={15} />
             ))}
 
-            {/* Main orb - centered */}
+            {/* Main orb - centered and prominent */}
             <div 
-              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+              className="absolute left-1/2 top-1/2 z-20"
               style={{
                 transform: `translate(calc(-50% + ${mousePos.x * -3}px), calc(-50% + ${mousePos.y * -3}px))`,
                 transition: 'transform 0.3s ease-out',
               }}
             >
               {/* Outer glow rings */}
-              <div className="absolute -inset-12">
+              <div className="absolute -inset-16">
                 <div 
-                  className="absolute inset-0 rounded-full border-2 border-primary/20"
+                  className="absolute inset-0 rounded-full border-2 border-primary/30"
                   style={{ animation: 'pulse-ring 3s ease-out infinite' }}
                 />
                 <div 
-                  className="absolute inset-0 rounded-full border-2 border-accent/20"
+                  className="absolute inset-0 rounded-full border-2 border-accent/30"
                   style={{ animation: 'pulse-ring 3s ease-out infinite 1s' }}
                 />
                 <div 
-                  className="absolute inset-0 rounded-full border-2 border-primary/20"
+                  className="absolute inset-0 rounded-full border-2 border-primary/30"
                   style={{ animation: 'pulse-ring 3s ease-out infinite 2s' }}
                 />
               </div>
 
-              {/* Central orb */}
+              {/* Central orb - larger */}
               <div 
-                className="relative w-40 h-40 rounded-full"
+                className="relative w-52 h-52 rounded-full"
                 style={{ animation: 'glow-light 4s ease-in-out infinite' }}
               >
                 {/* Glass sphere effect */}
-                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/20 via-white to-accent/20 border border-primary/20" />
-                <div className="absolute inset-2 rounded-full bg-gradient-to-br from-white via-white to-white/80" />
-                <div className="absolute inset-3 rounded-full bg-white border border-border shadow-inner flex items-center justify-center overflow-hidden">
+                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/25 via-white to-accent/25 border-2 border-primary/20 shadow-2xl" />
+                <div className="absolute inset-2 rounded-full bg-gradient-to-br from-white via-white to-white/90" />
+                <div className="absolute inset-4 rounded-full bg-white border border-border shadow-inner flex items-center justify-center overflow-hidden">
                   {/* Inner content */}
                   <div className="text-center">
-                    <div className="text-[9px] text-muted-foreground uppercase tracking-widest mb-1">Powered by</div>
-                    <div className="text-lg font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
+                    <div className="text-[10px] text-muted-foreground uppercase tracking-widest mb-1">Powered by</div>
+                    <div className="text-2xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
                       Infera AI
                     </div>
                   </div>
@@ -410,16 +424,18 @@ export const HeroSectionAlt = () => {
               </div>
             </div>
 
-            {/* Metric cards - positioned at corners */}
+            {/* Metric cards - positioned around the orb */}
             {metricCards.map((card, idx) => {
-              // Position cards at corners using explicit positioning
-              const positionStyles = [
-                { top: '10%', left: '5%' },      // Top left
-                { top: '10%', right: '5%' },     // Top right
-                { bottom: '15%', left: '5%' },   // Bottom left
-                { bottom: '15%', right: '5%' },  // Bottom right
+              // Position 6 cards around the orb
+              const positionStyles: Record<string, string>[] = [
+                { top: '5%', left: '0' },         // Top left
+                { top: '5%', right: '0' },        // Top right
+                { top: '42%', left: '0' },        // Middle left
+                { top: '42%', right: '0' },       // Middle right
+                { bottom: '10%', left: '0' },     // Bottom left
+                { bottom: '10%', right: '0' },    // Bottom right
               ];
-              const pos = positionStyles[idx];
+              const pos = positionStyles[idx] || positionStyles[0];
 
               return (
                 <div
@@ -427,7 +443,7 @@ export const HeroSectionAlt = () => {
                   className="metric-card absolute cursor-pointer"
                   style={{
                     ...pos,
-                    animationDelay: `${idx * 1}s`,
+                    animationDelay: `${idx * 0.8}s`,
                     zIndex: hoveredCard === idx ? 50 : 10,
                   }}
                   onMouseEnter={() => setHoveredCard(idx)}
@@ -467,7 +483,7 @@ export const HeroSectionAlt = () => {
                           className="w-2 h-2 rounded-full animate-pulse"
                           style={{ backgroundColor: card.color }}
                         />
-                        <span className="text-[10px] font-semibold text-slate-600">
+                        <span className="text-[10px] font-semibold text-slate-600 max-w-[100px] truncate">
                           {card.metric}
                         </span>
                       </div>
@@ -478,7 +494,7 @@ export const HeroSectionAlt = () => {
             })}
 
             {/* Animated connection lines */}
-            <svg className="absolute inset-0 w-full h-full pointer-events-none">
+            <svg className="absolute inset-0 w-full h-full pointer-events-none z-10">
               <defs>
                 {metricCards.map((card, idx) => (
                   <linearGradient key={`grad-${idx}`} id={`flowGrad-${idx}`} x1="0%" y1="0%" x2="100%" y2="100%">
@@ -490,10 +506,12 @@ export const HeroSectionAlt = () => {
               
               {/* Animated flowing lines from cards to center */}
               {[
-                { x1: '15%', y1: '18%', x2: '50%', y2: '50%', color: metricCards[0].color },
-                { x1: '85%', y1: '18%', x2: '50%', y2: '50%', color: metricCards[1].color },
-                { x1: '15%', y1: '78%', x2: '50%', y2: '50%', color: metricCards[2].color },
-                { x1: '85%', y1: '78%', x2: '50%', y2: '50%', color: metricCards[3].color },
+                { x1: '18%', y1: '12%', x2: '50%', y2: '50%', color: metricCards[0].color },
+                { x1: '82%', y1: '12%', x2: '50%', y2: '50%', color: metricCards[1].color },
+                { x1: '18%', y1: '50%', x2: '50%', y2: '50%', color: metricCards[2].color },
+                { x1: '82%', y1: '50%', x2: '50%', y2: '50%', color: metricCards[3].color },
+                { x1: '18%', y1: '85%', x2: '50%', y2: '50%', color: metricCards[4].color },
+                { x1: '82%', y1: '85%', x2: '50%', y2: '50%', color: metricCards[5].color },
               ].map((line, idx) => (
                 <g key={idx}>
                   {/* Base dashed line */}
@@ -504,7 +522,7 @@ export const HeroSectionAlt = () => {
                     y2={line.y2}
                     stroke={line.color}
                     strokeWidth="2"
-                    strokeOpacity="0.2"
+                    strokeOpacity="0.15"
                     strokeDasharray="8 6"
                   />
                   {/* Animated flowing overlay */}
@@ -519,7 +537,7 @@ export const HeroSectionAlt = () => {
                     strokeLinecap="round"
                     className="animate-flow-line"
                     style={{
-                      animationDelay: `${idx * 0.5}s`,
+                      animationDelay: `${idx * 0.4}s`,
                     }}
                   />
                 </g>
@@ -533,6 +551,7 @@ export const HeroSectionAlt = () => {
               }
               .animate-flow-line {
                 animation: flowLine 1.5s linear infinite;
+              }
               }
             `}</style>
           </div>
