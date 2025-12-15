@@ -26,8 +26,8 @@ const navItems: NavItem[] = [
     label: 'Platform', 
     href: '/capabilities?tab=platform',
     subItems: [
-      { label: 'Integration', href: '/capabilities?tab=platform&section=integration' },
-      { label: 'Forward Deployed Engineering (FDE)', href: '/capabilities?tab=platform&section=fde' },
+      { label: 'Integration', href: '/platform/integration' },
+      { label: 'Forward Deployed Engineering (FDE)', href: '/platform/fde' },
     ]
   },
   { 
