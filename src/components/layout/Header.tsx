@@ -5,6 +5,7 @@ import { Menu, X } from 'lucide-react';
 import logo from '@/assets/healthcompiler-logo.webp';
 
 const navItems = [
+  { label: 'Platform', href: '/capabilities?tab=platform' },
   { label: 'Capabilities', href: '/capabilities' },
   { label: 'Solutions', href: '/solutions' },
   { label: 'About', href: '/about' },
