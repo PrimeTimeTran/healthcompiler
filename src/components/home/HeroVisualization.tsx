@@ -1,226 +1,234 @@
 import { useState, useEffect } from 'react';
 
-const orbitingNodes = [
-  { id: 'analytics', label: 'Employer Analytics', color: 'from-blue-400 to-blue-600', angle: -60 },
-  { id: 'outcomes', label: 'Health Outcomes', color: 'from-emerald-400 to-emerald-600', angle: -20 },
-  { id: 'receptionist', label: 'AI Receptionist', color: 'from-violet-400 to-violet-600', angle: 20 },
-  { id: 'triaging', label: 'AI Call Triaging', color: 'from-amber-400 to-amber-600', angle: 60 },
-  { id: 'marketing', label: 'Marketing Automation', color: 'from-rose-400 to-rose-600', angle: 120 },
-  { id: 'engagement', label: 'Patient Engagement', color: 'from-cyan-400 to-cyan-600', angle: 160 },
-  { id: 'hcc', label: 'HCC Suspecting', color: 'from-orange-400 to-orange-600', angle: 200 },
-  { id: 'hedis', label: 'HEDIS & MIPS', color: 'from-pink-400 to-pink-600', angle: 240 },
+const nodes = [
+  { id: 'analytics', label: 'Employer Analytics', angle: 0 },
+  { id: 'outcomes', label: 'Health Outcomes', angle: 45 },
+  { id: 'receptionist', label: 'AI Receptionist', angle: 90 },
+  { id: 'triaging', label: 'AI Call Triaging', angle: 135 },
+  { id: 'marketing', label: 'Marketing Automation', angle: 180 },
+  { id: 'engagement', label: 'Patient Engagement', angle: 225 },
+  { id: 'hcc', label: 'HCC Suspecting', angle: 270 },
+  { id: 'hedis', label: 'HEDIS & MIPS', angle: 315 },
 ];
 
 export const HeroVisualization = () => {
-  const [activeNode, setActiveNode] = useState<string>('receptionist');
+  const [activeNode, setActiveNode] = useState(0);
 
   useEffect(() => {
-    const cycleInterval = setInterval(() => {
-      const nodeIds = orbitingNodes.map(n => n.id);
-      setActiveNode(prev => {
-        const currentIndex = nodeIds.indexOf(prev);
-        return nodeIds[(currentIndex + 1) % nodeIds.length];
-      });
-    }, 3000);
-    return () => clearInterval(cycleInterval);
+    const interval = setInterval(() => {
+      setActiveNode((prev) => (prev + 1) % nodes.length);
+    }, 2500);
+    return () => clearInterval(interval);
   }, []);
 
-  const radiusX = 280;
-  const radiusY = 140;
-  const centerX = 400;
-  const centerY = 180;
+  const centerX = 300;
+  const centerY = 200;
+  const radius = 150;
+  const nodeRadius = 8;
 
   const getNodePosition = (angle: number) => {
-    const rad = (angle * Math.PI) / 180;
+    const rad = ((angle - 90) * Math.PI) / 180;
     return {
-      x: centerX + Math.cos(rad) * radiusX,
-      y: centerY + Math.sin(rad) * radiusY,
+      x: centerX + Math.cos(rad) * radius,
+      y: centerY + Math.sin(rad) * radius,
     };
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto h-[360px] md:h-[400px] relative mb-8">
-      <svg 
-        viewBox="0 0 800 360" 
+    <div className="w-full max-w-2xl mx-auto h-[420px] relative mb-12">
+      <svg
+        viewBox="0 0 600 400"
         className="w-full h-full"
         preserveAspectRatio="xMidYMid meet"
       >
         <defs>
-          {/* Gradient for lines */}
-          <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="hsl(var(--border))" stopOpacity="0.3" />
-            <stop offset="50%" stopColor="hsl(var(--accent))" stopOpacity="0.6" />
-            <stop offset="100%" stopColor="hsl(var(--border))" stopOpacity="0.3" />
-          </linearGradient>
-          
           {/* Glow filter */}
           <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="3" result="blur" />
+            <feGaussianBlur stdDeviation="4" result="blur" />
             <feMerge>
               <feMergeNode in="blur" />
               <feMergeNode in="SourceGraphic" />
             </feMerge>
           </filter>
 
-          {/* Animated dash */}
-          <pattern id="dotPattern" patternUnits="userSpaceOnUse" width="12" height="1">
-            <circle cx="2" cy="0.5" r="1.5" fill="hsl(var(--accent))" opacity="0.6" />
-          </pattern>
+          {/* Subtle glow for active elements */}
+          <filter id="activeGlow" x="-100%" y="-100%" width="300%" height="300%">
+            <feGaussianBlur stdDeviation="6" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
         </defs>
 
-        {/* Orbital ellipse - dashed */}
-        <ellipse
-          cx={centerX}
-          cy={centerY}
-          rx={radiusX}
-          ry={radiusY}
-          fill="none"
-          stroke="hsl(var(--border))"
-          strokeWidth="1"
-          strokeDasharray="6 6"
-          opacity="0.4"
-        />
-
-        {/* Connecting lines from nodes to center */}
-        {orbitingNodes.map((node) => {
+        {/* Connecting lines from each node to center */}
+        {nodes.map((node, index) => {
           const pos = getNodePosition(node.angle);
-          const isActive = activeNode === node.id;
+          const isActive = index === activeNode;
           
           return (
-            <g key={`line-${node.id}`}>
-              {/* Dotted connection line */}
+            <g key={`connection-${node.id}`}>
+              {/* Dotted line */}
               <line
                 x1={centerX}
                 y1={centerY}
                 x2={pos.x}
                 y2={pos.y}
-                stroke="hsl(var(--border))"
+                stroke="hsl(var(--muted-foreground))"
                 strokeWidth="1"
-                strokeDasharray="4 8"
-                opacity={isActive ? 0.6 : 0.2}
+                strokeDasharray="3 6"
+                opacity={isActive ? 0.5 : 0.2}
                 className="transition-opacity duration-500"
               />
-              
-              {/* Animated dot traveling on line when active */}
+
+              {/* Animated particle traveling to center */}
               {isActive && (
-                <circle r="3" fill="hsl(var(--accent))" filter="url(#glow)">
-                  <animateMotion
-                    dur="1.5s"
-                    repeatCount="indefinite"
-                    path={`M${pos.x},${pos.y} L${centerX},${centerY}`}
-                  />
-                </circle>
+                <>
+                  <circle r="4" fill="hsl(var(--accent))" filter="url(#glow)">
+                    <animateMotion
+                      dur="1.8s"
+                      repeatCount="indefinite"
+                      path={`M${pos.x},${pos.y} L${centerX},${centerY}`}
+                    />
+                  </circle>
+                  <circle r="2" fill="hsl(var(--primary))">
+                    <animateMotion
+                      dur="1.8s"
+                      repeatCount="indefinite"
+                      begin="0.3s"
+                      path={`M${pos.x},${pos.y} L${centerX},${centerY}`}
+                    />
+                  </circle>
+                </>
               )}
             </g>
           );
         })}
 
-        {/* Center hub */}
+        {/* Central hub */}
         <g>
+          {/* Outer ring */}
           <circle
             cx={centerX}
             cy={centerY}
-            r="50"
-            fill="hsl(var(--card))"
+            r="55"
+            fill="none"
             stroke="hsl(var(--border))"
             strokeWidth="1"
+            strokeDasharray="4 4"
+            opacity="0.4"
+          />
+          
+          {/* Main circle */}
+          <circle
+            cx={centerX}
+            cy={centerY}
+            r="45"
+            fill="hsl(var(--card))"
+            stroke="hsl(var(--accent))"
+            strokeWidth="1.5"
             filter="url(#glow)"
           />
+          
+          {/* Inner highlight */}
           <circle
             cx={centerX}
             cy={centerY}
             r="35"
-            fill="url(#lineGrad)"
+            fill="none"
+            stroke="hsl(var(--accent))"
+            strokeWidth="0.5"
             opacity="0.3"
           />
+
+          {/* Center text */}
           <text
             x={centerX}
-            y={centerY - 8}
+            y={centerY - 6}
             textAnchor="middle"
-            className="fill-foreground text-xs font-semibold"
+            className="fill-foreground text-sm font-semibold"
+            style={{ fontSize: '13px' }}
           >
             Activation
           </text>
           <text
             x={centerX}
-            y={centerY + 8}
+            y={centerY + 12}
             textAnchor="middle"
-            className="fill-muted-foreground text-xs"
+            className="fill-muted-foreground"
+            style={{ fontSize: '11px' }}
           >
             Layer
           </text>
         </g>
 
-        {/* Orbiting nodes */}
-        {orbitingNodes.map((node) => {
+        {/* Outer nodes */}
+        {nodes.map((node, index) => {
           const pos = getNodePosition(node.angle);
-          const isActive = activeNode === node.id;
+          const isActive = index === activeNode;
           
+          // Calculate label position - outside the node
+          const labelRad = ((node.angle - 90) * Math.PI) / 180;
+          const labelDistance = radius + 45;
+          const labelX = centerX + Math.cos(labelRad) * labelDistance;
+          const labelY = centerY + Math.sin(labelRad) * labelDistance;
+          
+          // Determine text anchor based on position
+          let textAnchor = 'middle';
+          if (node.angle > 45 && node.angle < 135) textAnchor = 'start';
+          if (node.angle > 225 && node.angle < 315) textAnchor = 'end';
+
           return (
             <g
               key={node.id}
-              className="cursor-pointer transition-transform duration-300"
-              style={{ transform: isActive ? 'scale(1.1)' : 'scale(1)', transformOrigin: `${pos.x}px ${pos.y}px` }}
-              onMouseEnter={() => setActiveNode(node.id)}
+              className="cursor-pointer"
+              onMouseEnter={() => setActiveNode(index)}
             >
-              {/* Node background pill */}
-              <rect
-                x={pos.x - 70}
-                y={pos.y - 16}
-                width="140"
-                height="32"
-                rx="16"
-                fill={isActive ? "hsl(var(--card))" : "hsl(var(--card) / 0.8)"}
+              {/* Node outer ring when active */}
+              {isActive && (
+                <circle
+                  cx={pos.x}
+                  cy={pos.y}
+                  r={nodeRadius + 8}
+                  fill="none"
+                  stroke="hsl(var(--accent))"
+                  strokeWidth="1"
+                  opacity="0.4"
+                  className="animate-ping-slow"
+                />
+              )}
+              
+              {/* Node circle */}
+              <circle
+                cx={pos.x}
+                cy={pos.y}
+                r={nodeRadius}
+                fill={isActive ? "hsl(var(--accent))" : "hsl(var(--muted))"}
                 stroke={isActive ? "hsl(var(--accent))" : "hsl(var(--border))"}
-                strokeWidth={isActive ? "1.5" : "1"}
-                filter={isActive ? "url(#glow)" : "none"}
+                strokeWidth="2"
+                filter={isActive ? "url(#activeGlow)" : "none"}
                 className="transition-all duration-300"
               />
               
-              {/* Colored orb */}
+              {/* Inner dot */}
               <circle
-                cx={pos.x - 50}
+                cx={pos.x}
                 cy={pos.y}
-                r="10"
-                className={`fill-current`}
-                style={{
-                  filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.2))',
-                }}
-              >
-                <animate
-                  attributeName="opacity"
-                  values="1;0.7;1"
-                  dur="2s"
-                  repeatCount="indefinite"
-                />
-              </circle>
-              <defs>
-                <linearGradient id={`grad-${node.id}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" className={`${node.color.split(' ')[0].replace('from-', 'stop-')}`} />
-                  <stop offset="100%" className={`${node.color.split(' ')[1].replace('to-', 'stop-')}`} />
-                </linearGradient>
-              </defs>
-              <circle
-                cx={pos.x - 50}
-                cy={pos.y}
-                r="10"
-                fill={`url(#grad-${node.id})`}
-              />
-              <circle
-                cx={pos.x - 53}
-                cy={pos.y - 3}
                 r="3"
-                fill="white"
-                opacity="0.4"
+                fill={isActive ? "hsl(var(--primary-foreground))" : "hsl(var(--muted-foreground))"}
+                className="transition-all duration-300"
               />
-              
+
               {/* Label */}
               <text
-                x={pos.x + 5}
-                y={pos.y + 4}
-                className={`text-xs font-medium transition-all duration-300 ${
-                  isActive ? 'fill-foreground' : 'fill-muted-foreground'
+                x={labelX}
+                y={labelY}
+                textAnchor={textAnchor}
+                className={`transition-all duration-300 ${
+                  isActive ? 'fill-foreground font-medium' : 'fill-muted-foreground'
                 }`}
+                style={{ fontSize: '11px' }}
               >
                 {node.label}
               </text>
