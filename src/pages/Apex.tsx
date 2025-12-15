@@ -16,60 +16,60 @@ const apexData = {
     {
       categoryTitle: null,
       profiles: [
-        { name: 'Dr. Sabina Singh', linkUrl: '/apex-magazine/dr-sabina-singh' },
-        { name: 'Dr. Hertz', linkUrl: '/apex-magazine/dr-hertz-s' },
-        { name: 'Russell DuBose', linkUrl: '/apex-magazine/russell-dubose' },
-        { name: 'Allison De Paoli', linkUrl: '/apex-magazine/allison-de-paoli' },
-        { name: 'Dr. Garrison Bliss', linkUrl: '/apex-magazine/dr-garrison-bliss' },
-        { name: 'Dr. Brad Brown', linkUrl: '/apex-magazine/dr-brad' },
-        { name: 'Dr. Alex Bugg', linkUrl: '/apex-magazine/dr-alex-bugg' },
+        { name: 'Dr. Sabina Singh', linkUrl: '/apex-magazine/dr-sabina-singh', image: 'https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/Image-800w.jpeg' },
+        { name: 'Dr. Hertz', linkUrl: '/apex-magazine/dr-hertz-s', image: 'https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/Regenrated-da0cf67e-800w.png' },
+        { name: 'Russell DuBose', linkUrl: '/apex-magazine/russell-dubose', image: 'https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/RussellDubose-948x640-800w.jpg' },
+        { name: 'Allison De Paoli', linkUrl: '/apex-magazine/allison-de-paoli', image: 'https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/1656768758328-800w.jpeg' },
+        { name: 'Dr. Garrison Bliss', linkUrl: '/apex-magazine/dr-garrison-bliss', image: 'https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/Garrison_bliss-800w.jpeg' },
+        { name: 'Dr. Brad Brown', linkUrl: '/apex-magazine/dr-brad', image: 'https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/Dr.+Brad+Brown-800w.jpg' },
+        { name: 'Dr. Alex Bugg', linkUrl: '/apex-magazine/dr-alex-bugg', image: 'https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/Alex+bugg-800w.png' },
       ]
     },
     {
       categoryTitle: 'REIMAGINE HEALTHCARE',
       profiles: [
-        { name: 'Dr. Diana Girnita', linkUrl: '/apex-magazine/dr-diana-girnita' },
-        { name: 'Dr. Sara Pastoor', linkUrl: '/apex-magazine/dr-sara-pastoor' },
-        { name: 'Dr. Jeff Panzer', linkUrl: '/apex-magazine/dr.-jeff-panzer' },
-        { name: 'Dr. Tanner Moore', linkUrl: '/apex-magazine/dr-tanner-moore' },
-        { name: 'Dr. Vasanth Kainkaryam', linkUrl: '/apex-magazine/dr-vk' },
+        { name: 'Dr. Diana Girnita', linkUrl: '/apex-magazine/dr-diana-girnita', image: 'https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/channels4_profile-800w.jpg' },
+        { name: 'Dr. Sara Pastoor', linkUrl: '/apex-magazine/dr-sara-pastoor', image: 'https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/Sara-J.-Pastoor.jpg-800w.webp' },
+        { name: 'Dr. Jeff Panzer', linkUrl: '/apex-magazine/dr.-jeff-panzer', image: 'https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/Jeff+photo+Oct+2021+%283%29-800w.jpg' },
+        { name: 'Dr. Tanner Moore', linkUrl: '/apex-magazine/dr-tanner-moore', image: 'https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/Dr.+Tanner+Moore-800w.png' },
+        { name: 'Dr. Vasanth Kainkaryam', linkUrl: '/apex-magazine/dr-vk', image: 'https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/Screenshot+2025-01-19+at+4.47.29-PM-800w.png' },
       ]
     },
     {
       categoryTitle: 'COST SAVINGS ELEVATED',
       profiles: [
-        { name: 'Dr. Ben Aiken', linkUrl: '/apex-magazine/dr-ben-aiken' },
-        { name: 'David Contorno', linkUrl: '/apex-magazine/david-contorno' },
-        { name: 'Bryan Perry', linkUrl: '/apex-magazine/bryan-perry' },
+        { name: 'Dr. Ben Aiken', linkUrl: '/apex-magazine/dr-ben-aiken', image: 'https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/Dr.+Ben+Aiken-800w.png' },
+        { name: 'David Contorno', linkUrl: '/apex-magazine/david-contorno', image: 'https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/David+Contorno+-+Validation+institute-800w.png' },
+        { name: 'Bryan Perry', linkUrl: '/apex-magazine/bryan-perry', image: 'https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/Bryan-Perry-800w.jpg' },
       ]
     },
     {
       categoryTitle: 'BENEFITS REDEFINED',
       profiles: [
-        { name: 'Dr. William Burkhart', linkUrl: '/apex-magazine/dr-william-burkhart' },
-        { name: 'Monica McKitterick', linkUrl: '/apex-magazine/monica-mckitterick' },
-        { name: 'Dr. Grace Torres-Hodges', linkUrl: '/apex-magazine/dr-grace' },
+        { name: 'Dr. William Burkhart', linkUrl: '/apex-magazine/dr-william-burkhart', image: 'https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/Dr.+William+Burkhart-800w.png' },
+        { name: 'Monica McKitterick', linkUrl: '/apex-magazine/monica-mckitterick', image: 'https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/Monica-800w.png' },
+        { name: 'Dr. Grace Torres-Hodges', linkUrl: '/apex-magazine/dr-grace', image: 'https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/Headshot-SoMeDocs-GTH-20220903--e1662346848641-800w.jpg' },
       ]
     },
     {
       categoryTitle: 'STRENGTH IN CARE',
       profiles: [
-        { name: "Dr. Kristin Strange", linkUrl: '/apex-magazine/dr-kristin-strange-s' },
-        { name: 'Dylan Gray', linkUrl: '/apex-magazine/dylan-gray' },
-        { name: 'Andrew Roberts', linkUrl: '/apex-magazine/andrew-roberts' },
+        { name: "Dr. Kristin Strange", linkUrl: '/apex-magazine/dr-kristin-strange-s', image: 'https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/Dr.+Kristin+Strange-800w.jpg' },
+        { name: 'Dylan Gray', linkUrl: '/apex-magazine/dylan-gray', image: 'https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/Dylan+Gray-800w.jpeg' },
+        { name: 'Andrew Roberts', linkUrl: '/apex-magazine/andrew-roberts', image: 'https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/Andy+Photo+resized-800w.jpg' },
       ]
     },
     {
       categoryTitle: 'ENHANCED ACCESS',
       profiles: [
-        { name: 'Dr. Dunbar', linkUrl: '/apex-magazine/dr-dunbar' },
-        { name: 'Jessica McCartin', linkUrl: '/apex-magazine/jessica-mccartin' },
-        { name: 'Dakotah Asher', linkUrl: '/apex-magazine/dakotah-asher' },
-        { name: 'Matt Ohrt', linkUrl: '/apex-magazine/matt-ohrt' },
-        { name: 'Neer Patel', linkUrl: '/apex-magazine/neer-patel' },
-        { name: 'Dr. Jeffrey Hockings', linkUrl: '/apex-magazine/dr-jeffrey-hockings' },
-        { name: 'Dr. Maryal Concepcion', linkUrl: '/apex-magazine/dr-maryal-concepcion' },
-        { name: 'Dr. Raymond Kordonowy', linkUrl: '/apex-magazine/dr-raymond-kordonowy' },
+        { name: 'Dr. Dunbar', linkUrl: '/apex-magazine/dr-dunbar', image: 'https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/dunbar-800w.webp' },
+        { name: 'Jessica McCartin', linkUrl: '/apex-magazine/jessica-mccartin', image: 'https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/Jessica-800w.jpg' },
+        { name: 'Dakotah Asher', linkUrl: '/apex-magazine/dakotah-asher', image: 'https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/dakotah-800w.png' },
+        { name: 'Matt Ohrt', linkUrl: '/apex-magazine/matt-ohrt', image: 'https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/Matt+Ohrt+-800w.png' },
+        { name: 'Neer Patel', linkUrl: '/apex-magazine/neer-patel', image: 'https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/Neer+Patel-800w.png' },
+        { name: 'Dr. Jeffrey Hockings', linkUrl: '/apex-magazine/dr-jeffrey-hockings', image: 'https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/Dr.+Jeff+Headshot-800w.jpg' },
+        { name: 'Dr. Maryal Concepcion', linkUrl: '/apex-magazine/dr-maryal-concepcion', image: 'https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/Maryal+Concepcion-800w.jpg' },
+        { name: 'Dr. Raymond Kordonowy', linkUrl: '/apex-magazine/dr-raymond-kordonowy', image: 'https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/Dr.+Raymond+Kordonowy-800w.png' },
       ]
     },
   ],
@@ -87,7 +87,7 @@ const allCategories = apexData.sections
   .filter((c): c is string => c !== null);
 
 // Profile Card Component
-const ProfileCard = ({ name, linkUrl, index }: { name: string; linkUrl: string; index: number }) => {
+const ProfileCard = ({ name, linkUrl, image, index }: { name: string; linkUrl: string; image: string; index: number }) => {
   const initials = name.split(' ').map(n => n[0]).join('').slice(0, 2);
   
   return (
@@ -95,11 +95,22 @@ const ProfileCard = ({ name, linkUrl, index }: { name: string; linkUrl: string; 
       className="group relative overflow-hidden rounded-2xl bg-card border border-border/50 shadow-soft hover:shadow-card transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] animate-fade-in"
       style={{ animationDelay: `${index * 50}ms` }}
     >
-      {/* Image placeholder with gradient */}
-      <div className="aspect-[4/5] bg-gradient-to-br from-secondary via-muted to-primary/20 flex items-center justify-center relative overflow-hidden">
-        <div className="w-24 h-24 rounded-full bg-card/80 backdrop-blur-sm flex items-center justify-center shadow-lg">
-          <span className="text-2xl font-bold text-gradient">{initials}</span>
-        </div>
+      {/* Profile Image */}
+      <div className="aspect-[4/5] bg-muted relative overflow-hidden">
+        {image ? (
+          <img 
+            src={image} 
+            alt={name}
+            className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+            loading="lazy"
+          />
+        ) : (
+          <div className="w-full h-full bg-gradient-to-br from-secondary via-muted to-primary/20 flex items-center justify-center">
+            <div className="w-24 h-24 rounded-full bg-card/80 backdrop-blur-sm flex items-center justify-center shadow-lg">
+              <span className="text-2xl font-bold text-gradient">{initials}</span>
+            </div>
+          </div>
+        )}
         {/* Overlay on hover */}
         <div className="absolute inset-0 bg-foreground/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
           <div className="w-full">
