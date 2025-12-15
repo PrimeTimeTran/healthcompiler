@@ -118,12 +118,6 @@ const resourcesCategories: SubMenuCategory[] = [
       { label: 'Partners & Memberships', href: '/resources/partners-memberships' },
       { label: 'News & Events', href: '/resources/news-events' },
     ]
-  },
-  {
-    category: 'Products',
-    items: [
-      { label: 'Apex', href: '/resources/apex' },
-    ]
   }
 ];
 
@@ -341,16 +335,16 @@ export const Header = () => {
               )}
             </div>
 
-            {/* Contact Us (no dropdown) */}
+            {/* APEX (no dropdown) */}
             <Link
-              to="/contact"
+              to="/resources/apex"
               className={`text-[15px] font-medium transition-colors hover:text-foreground py-2 ${
-                location.pathname === '/contact'
+                location.pathname === '/resources/apex'
                   ? 'text-foreground'
                   : 'text-muted-foreground'
               }`}
             >
-              Contact Us
+              APEX
             </Link>
           </div>
 
@@ -504,13 +498,13 @@ export const Header = () => {
                 )}
               </div>
 
-              {/* Contact Us */}
+              {/* APEX */}
               <Link
-                to="/contact"
+                to="/resources/apex"
                 onClick={() => setIsMenuOpen(false)}
                 className="block py-2 text-base font-medium text-muted-foreground"
               >
-                Contact Us
+                APEX
               </Link>
 
               <Button variant="gradient" size="default" className="mt-4" asChild>
