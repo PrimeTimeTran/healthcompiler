@@ -202,12 +202,12 @@ export const HeroSectionAlt = () => {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-screen overflow-hidden bg-[#0a0a0f]"
+      className="relative min-h-screen overflow-hidden bg-gradient-to-br from-slate-50 via-white to-slate-100"
     >
       {/* Animated background gradient */}
       <div className="absolute inset-0">
         <div 
-          className="absolute inset-0 bg-gradient-to-br from-[#1a0a1f] via-[#0a0a0f] to-[#0f1a1a] opacity-80"
+          className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-80"
           style={{
             transform: `translate(${mousePos.x * 2}px, ${mousePos.y * 2}px)`,
             transition: 'transform 0.3s ease-out',
@@ -217,7 +217,7 @@ export const HeroSectionAlt = () => {
         <div 
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full"
           style={{
-            background: 'radial-gradient(circle, rgba(233,78,135,0.15) 0%, rgba(249,115,22,0.08) 40%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(233,78,135,0.08) 0%, rgba(249,115,22,0.05) 40%, transparent 70%)',
             transform: `translate(${mousePos.x * -3}px, ${mousePos.y * -3}px)`,
             transition: 'transform 0.5s ease-out',
           }}
@@ -228,8 +228,8 @@ export const HeroSectionAlt = () => {
       <div 
         className="absolute inset-0 opacity-[0.03]"
         style={{
-          backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
-                           linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
+          backgroundImage: `linear-gradient(#1a1a2e 1px, transparent 1px),
+                           linear-gradient(90deg, #1a1a2e 1px, transparent 1px)`,
           backgroundSize: '60px 60px',
         }}
       />
@@ -255,9 +255,9 @@ export const HeroSectionAlt = () => {
           100% { transform: scale(1.5); opacity: 0; }
         }
         
-        @keyframes glow {
-          0%, 100% { filter: brightness(1) drop-shadow(0 0 20px rgba(233,78,135,0.5)); }
-          50% { filter: brightness(1.2) drop-shadow(0 0 40px rgba(233,78,135,0.8)); }
+        @keyframes glow-light {
+          0%, 100% { box-shadow: 0 0 30px rgba(233,78,135,0.2), 0 0 60px rgba(249,115,22,0.1); }
+          50% { box-shadow: 0 0 50px rgba(233,78,135,0.3), 0 0 80px rgba(249,115,22,0.2); }
         }
         
         @keyframes dash {
@@ -266,20 +266,17 @@ export const HeroSectionAlt = () => {
           }
         }
         
-        @keyframes card-glow {
-          0%, 100% { box-shadow: 0 0 20px rgba(233,78,135,0.2), inset 0 0 20px rgba(255,255,255,0.05); }
-          50% { box-shadow: 0 0 30px rgba(233,78,135,0.4), inset 0 0 30px rgba(255,255,255,0.1); }
+        @keyframes card-float {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-10px); }
         }
         
-        .sector-card {
-          animation: float 6s ease-in-out infinite, card-glow 4s ease-in-out infinite;
-          transform-style: preserve-3d;
-          perspective: 1000px;
+        .metric-card {
+          animation: card-float 4s ease-in-out infinite;
         }
         
-        .sector-card:hover {
+        .metric-card:hover {
           animation-play-state: paused;
-          transform: scale(1.1) translateZ(20px) !important;
         }
       `}</style>
 
@@ -290,15 +287,15 @@ export const HeroSectionAlt = () => {
 
             {/* Main headline */}
             <div className="space-y-2">
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-white leading-[1.05]">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-foreground leading-[1.05]">
                 <span className="block opacity-90">
                   {words.map((word, idx) => (
                     <span
                       key={word}
                       className={`inline-block transition-all duration-700 ${
                         idx === activeWord
-                          ? 'text-transparent bg-clip-text bg-gradient-to-r from-[#E94E87] to-[#F97316] scale-105'
-                          : 'text-white/20 scale-100 hidden'
+                          ? 'text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent scale-105'
+                          : 'text-muted-foreground/20 scale-100 hidden'
                       }`}
                     >
                       {idx === activeWord && word}
@@ -306,23 +303,23 @@ export const HeroSectionAlt = () => {
                   ))}
                 </span>
                 <span className="block mt-2">Healthcare Data.</span>
-                <span className="block text-white/50 mt-1">Drive Outcomes.</span>
+                <span className="block text-muted-foreground mt-1">Drive Outcomes.</span>
               </h1>
             </div>
 
             {/* Description */}
-            <p className="text-lg md:text-xl text-white/60 leading-relaxed max-w-xl">
+            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-xl">
               Unifying healthcare data and AI-driven workflows to lower costs and improve care across 
-              <span className="text-white/80"> self-funded</span>,
-              <span className="text-white/80"> direct care</span>, and
-              <span className="text-white/80"> value-based</span> organizations.
+              <span className="text-foreground font-medium"> self-funded</span>,
+              <span className="text-foreground font-medium"> direct care</span>, and
+              <span className="text-foreground font-medium"> value-based</span> organizations.
             </p>
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Button
                 size="lg"
-                className="group bg-gradient-to-r from-[#E94E87] to-[#F97316] hover:from-[#d63d76] hover:to-[#e86505] text-white font-semibold px-8 py-6 text-base shadow-2xl shadow-[#E94E87]/30 hover:shadow-[#E94E87]/50 transition-all duration-300 hover:scale-105"
+                className="group bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white font-semibold px-8 py-6 text-base shadow-xl shadow-primary/20 hover:shadow-primary/30 transition-all duration-300 hover:scale-105"
                 asChild
               >
                 <Link to="/contact">
@@ -333,7 +330,7 @@ export const HeroSectionAlt = () => {
               <Button
                 variant="outline"
                 size="lg"
-                className="border-white/20 text-white hover:bg-white/10 px-8 py-6 text-base backdrop-blur-sm group"
+                className="border-border text-foreground hover:bg-muted px-8 py-6 text-base group"
                 asChild
               >
                 <Link to="/capabilities">
@@ -344,20 +341,20 @@ export const HeroSectionAlt = () => {
             </div>
 
             {/* Trust indicators */}
-            <div className="flex items-center gap-6 pt-6 border-t border-white/10">
+            <div className="flex items-center gap-6 pt-6 border-t border-border">
               <div className="text-center">
-                <div className="text-2xl font-bold text-white">10M+</div>
-                <div className="text-xs text-white/50 uppercase tracking-wider">Lives Managed</div>
+                <div className="text-2xl font-bold text-foreground">10M+</div>
+                <div className="text-xs text-muted-foreground uppercase tracking-wider">Lives Managed</div>
               </div>
-              <div className="w-px h-10 bg-white/10" />
+              <div className="w-px h-10 bg-border" />
               <div className="text-center">
-                <div className="text-2xl font-bold text-white">$2B+</div>
-                <div className="text-xs text-white/50 uppercase tracking-wider">Claims Processed</div>
+                <div className="text-2xl font-bold text-foreground">$2B+</div>
+                <div className="text-xs text-muted-foreground uppercase tracking-wider">Claims Processed</div>
               </div>
-              <div className="w-px h-10 bg-white/10" />
+              <div className="w-px h-10 bg-border" />
               <div className="text-center">
-                <div className="text-2xl font-bold text-white">99.9%</div>
-                <div className="text-xs text-white/50 uppercase tracking-wider">Uptime</div>
+                <div className="text-2xl font-bold text-foreground">99.9%</div>
+                <div className="text-xs text-muted-foreground uppercase tracking-wider">Uptime</div>
               </div>
             </div>
           </div>
@@ -365,8 +362,8 @@ export const HeroSectionAlt = () => {
           {/* Right - Visualization */}
           <div className="relative h-[700px] flex items-center justify-center">
             {/* Floating particles */}
-            {Array.from({ length: 20 }).map((_, i) => (
-              <FloatingParticle key={i} index={i} total={20} />
+            {Array.from({ length: 15 }).map((_, i) => (
+              <FloatingParticle key={i} index={i} total={15} />
             ))}
 
             {/* Main orb */}
@@ -380,15 +377,15 @@ export const HeroSectionAlt = () => {
               {/* Outer glow rings */}
               <div className="absolute inset-0 -m-24">
                 <div 
-                  className="absolute inset-0 rounded-full border border-[#E94E87]/20"
+                  className="absolute inset-0 rounded-full border-2 border-primary/20"
                   style={{ animation: 'pulse-ring 3s ease-out infinite' }}
                 />
                 <div 
-                  className="absolute inset-0 rounded-full border border-[#F97316]/20"
+                  className="absolute inset-0 rounded-full border-2 border-accent/20"
                   style={{ animation: 'pulse-ring 3s ease-out infinite 1s' }}
                 />
                 <div 
-                  className="absolute inset-0 rounded-full border border-[#E94E87]/20"
+                  className="absolute inset-0 rounded-full border-2 border-primary/20"
                   style={{ animation: 'pulse-ring 3s ease-out infinite 2s' }}
                 />
               </div>
@@ -396,16 +393,16 @@ export const HeroSectionAlt = () => {
               {/* Central orb */}
               <div 
                 className="relative w-48 h-48 rounded-full"
-                style={{ animation: 'glow 4s ease-in-out infinite' }}
+                style={{ animation: 'glow-light 4s ease-in-out infinite' }}
               >
                 {/* Glass sphere effect */}
-                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#E94E87]/30 via-transparent to-[#F97316]/30 backdrop-blur-sm" />
-                <div className="absolute inset-2 rounded-full bg-gradient-to-br from-white/10 via-transparent to-transparent" />
-                <div className="absolute inset-3 rounded-full bg-[#0a0a0f]/80 border border-white/10 flex items-center justify-center overflow-hidden">
+                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/20 via-white to-accent/20 border border-primary/20" />
+                <div className="absolute inset-2 rounded-full bg-gradient-to-br from-white via-white to-white/80" />
+                <div className="absolute inset-3 rounded-full bg-white border border-border shadow-inner flex items-center justify-center overflow-hidden">
                   {/* Inner content */}
                   <div className="text-center">
-                    <div className="text-[10px] text-white/50 uppercase tracking-widest mb-1">Powered by</div>
-                    <div className="text-xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#E94E87] to-[#F97316]">
+                    <div className="text-[10px] text-muted-foreground uppercase tracking-widest mb-1">Powered by</div>
+                    <div className="text-xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
                       Infera AI
                     </div>
                   </div>
@@ -422,40 +419,36 @@ export const HeroSectionAlt = () => {
                 return (
                   <div
                     key={card.label}
-                    className="sector-card absolute left-1/2 top-1/2 cursor-pointer"
+                    className="metric-card absolute left-1/2 top-1/2 cursor-pointer"
                     style={{
                       transform: `translate(-50%, -50%) translate(${x}px, ${y}px)`,
-                      animationDelay: `${idx * 0.5}s`,
+                      animationDelay: `${idx * 0.8}s`,
                       zIndex: hoveredCard === idx ? 50 : 10,
                     }}
                     onMouseEnter={() => setHoveredCard(idx)}
                     onMouseLeave={() => setHoveredCard(null)}
                   >
                     <div 
-                      className="relative px-4 py-3 rounded-xl backdrop-blur-md border transition-all duration-300"
+                      className="relative px-4 py-3 rounded-xl bg-white border-2 transition-all duration-300 shadow-lg"
                       style={{
-                        backgroundColor: `${card.color}15`,
-                        borderColor: hoveredCard === idx ? `${card.color}80` : `${card.color}30`,
+                        borderColor: hoveredCard === idx ? card.color : `${card.color}40`,
                         boxShadow: hoveredCard === idx 
-                          ? `0 0 40px ${card.color}40, 0 20px 40px rgba(0,0,0,0.4)` 
-                          : `0 0 20px ${card.color}20`,
-                        transform: hoveredCard === idx ? 'scale(1.15) translateZ(30px)' : 'scale(1)',
+                          ? `0 8px 30px ${card.color}30, 0 4px 15px rgba(0,0,0,0.1)` 
+                          : `0 4px 20px ${card.color}15, 0 2px 10px rgba(0,0,0,0.05)`,
+                        transform: hoveredCard === idx ? 'scale(1.1)' : 'scale(1)',
                       }}
                     >
-                      {/* Glassy top reflection */}
-                      <div className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/10 to-transparent rounded-t-xl" />
-                      
                       {/* Card content */}
                       <div className="relative z-10">
                         <div 
-                          className="text-[11px] font-semibold tracking-wide mb-2 whitespace-nowrap"
+                          className="text-[12px] font-bold tracking-wide mb-2 whitespace-nowrap"
                           style={{ color: card.color }}
                         >
                           {card.label}
                         </div>
                         
                         {/* Mini 3D Chart */}
-                        <div className="transform perspective-[200px] rotateX-[15deg]">
+                        <div className="transform perspective-[200px]">
                           <MiniChart 
                             data={card.data} 
                             color={card.color} 
@@ -464,12 +457,12 @@ export const HeroSectionAlt = () => {
                         </div>
                         
                         {/* Metric indicator */}
-                        <div className="flex items-center gap-1 mt-2">
+                        <div className="flex items-center gap-1.5 mt-2">
                           <div 
-                            className="w-1.5 h-1.5 rounded-full animate-pulse"
+                            className="w-2 h-2 rounded-full animate-pulse"
                             style={{ backgroundColor: card.color }}
                           />
-                          <span className="text-[9px] text-white/60">
+                          <span className="text-[10px] font-semibold text-slate-600">
                             {card.metric}
                           </span>
                         </div>
@@ -483,16 +476,16 @@ export const HeroSectionAlt = () => {
             {/* Connection lines from orb to cards */}
             <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ transform: `translate(${mousePos.x * -5}px, ${mousePos.y * -5}px)` }}>
               <defs>
-                <linearGradient id="lineGradNew" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#E94E87" stopOpacity="0.4" />
+                <linearGradient id="lineGradLight" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#E94E87" stopOpacity="0.3" />
                   <stop offset="50%" stopColor="#F97316" stopOpacity="0.2" />
-                  <stop offset="100%" stopColor="#E94E87" stopOpacity="0" />
+                  <stop offset="100%" stopColor="#E94E87" stopOpacity="0.1" />
                 </linearGradient>
               </defs>
               {metricCards.map((_, idx) => {
                 const angle = (idx / metricCards.length) * Math.PI * 2 - Math.PI / 2;
                 const innerRadius = 100;
-                const outerRadius = 180;
+                const outerRadius = 200;
                 const centerX = 350;
                 const centerY = 350;
                 const x1 = centerX + Math.cos(angle) * innerRadius;
@@ -506,9 +499,10 @@ export const HeroSectionAlt = () => {
                     y1={y1}
                     x2={x2}
                     y2={y2}
-                    stroke="url(#lineGradNew)"
-                    strokeWidth="1"
-                    opacity="0.5"
+                    stroke="url(#lineGradLight)"
+                    strokeWidth="2"
+                    strokeDasharray="4 4"
+                    opacity="0.6"
                   />
                 );
               })}
@@ -521,9 +515,9 @@ export const HeroSectionAlt = () => {
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
       
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/40">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted-foreground">
         <span className="text-xs uppercase tracking-widest">Scroll</span>
-        <div className="w-px h-8 bg-gradient-to-b from-white/40 to-transparent animate-pulse" />
+        <div className="w-px h-8 bg-gradient-to-b from-muted-foreground to-transparent animate-pulse" />
       </div>
     </section>
   );
