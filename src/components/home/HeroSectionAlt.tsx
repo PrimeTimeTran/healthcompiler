@@ -477,33 +477,84 @@ export const HeroSectionAlt = () => {
               );
             })}
 
-            {/* Subtle connection lines */}
-            <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-30">
+            {/* Animated connection lines */}
+            <svg className="absolute inset-0 w-full h-full pointer-events-none">
               <defs>
-                <linearGradient id="lineGradLight" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#E94E87" stopOpacity="0.5" />
-                  <stop offset="100%" stopColor="#F97316" stopOpacity="0.2" />
-                </linearGradient>
+                {metricCards.map((card, idx) => (
+                  <linearGradient key={`grad-${idx}`} id={`flowGrad-${idx}`} x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor={card.color} stopOpacity="0.6" />
+                    <stop offset="100%" stopColor={card.color} stopOpacity="0.1" />
+                  </linearGradient>
+                ))}
               </defs>
-              {/* Lines from center to card positions */}
+              
+              {/* Animated flowing lines from cards to center */}
               {[
-                { x1: '50%', y1: '50%', x2: '28%', y2: '28%' },
-                { x1: '50%', y1: '50%', x2: '72%', y2: '28%' },
-                { x1: '50%', y1: '50%', x2: '25%', y2: '70%' },
-                { x1: '50%', y1: '50%', x2: '75%', y2: '70%' },
+                { x1: '28%', y1: '28%', x2: '50%', y2: '50%', color: metricCards[0].color },
+                { x1: '72%', y1: '28%', x2: '50%', y2: '50%', color: metricCards[1].color },
+                { x1: '25%', y1: '70%', x2: '50%', y2: '50%', color: metricCards[2].color },
+                { x1: '75%', y1: '70%', x2: '50%', y2: '50%', color: metricCards[3].color },
               ].map((line, idx) => (
-                <line
-                  key={idx}
-                  x1={line.x1}
-                  y1={line.y1}
-                  x2={line.x2}
-                  y2={line.y2}
-                  stroke="url(#lineGradLight)"
-                  strokeWidth="1"
-                  strokeDasharray="6 4"
-                />
+                <g key={idx}>
+                  {/* Base line */}
+                  <line
+                    x1={line.x1}
+                    y1={line.y1}
+                    x2={line.x2}
+                    y2={line.y2}
+                    stroke={line.color}
+                    strokeWidth="2"
+                    strokeOpacity="0.15"
+                    strokeDasharray="8 6"
+                  />
+                  {/* Animated flowing line overlay */}
+                  <line
+                    x1={line.x1}
+                    y1={line.y1}
+                    x2={line.x2}
+                    y2={line.y2}
+                    stroke={line.color}
+                    strokeWidth="2"
+                    strokeDasharray="12 20"
+                    strokeLinecap="round"
+                    style={{
+                      animation: `flowLine 2s linear infinite`,
+                      animationDelay: `${idx * 0.5}s`,
+                    }}
+                  />
+                  {/* Flowing particle */}
+                  <circle r="4" fill={line.color} opacity="0.8">
+                    <animate
+                      attributeName="opacity"
+                      values="0.8;1;0.8"
+                      dur="2s"
+                      repeatCount="indefinite"
+                    />
+                    <animateMotion
+                      dur={`${2 + idx * 0.3}s`}
+                      repeatCount="indefinite"
+                      path={`M ${parseFloat(line.x1) * 6} ${parseFloat(line.y1) * 6} L ${parseFloat(line.x2) * 6} ${parseFloat(line.y2) * 6}`}
+                    />
+                  </circle>
+                  {/* Second particle with offset */}
+                  <circle r="3" fill={line.color} opacity="0.5">
+                    <animateMotion
+                      dur={`${2.5 + idx * 0.2}s`}
+                      repeatCount="indefinite"
+                      begin={`${1 + idx * 0.2}s`}
+                      path={`M ${parseFloat(line.x1) * 6} ${parseFloat(line.y1) * 6} L ${parseFloat(line.x2) * 6} ${parseFloat(line.y2) * 6}`}
+                    />
+                  </circle>
+                </g>
               ))}
             </svg>
+            
+            <style>{`
+              @keyframes flowLine {
+                0% { stroke-dashoffset: 32; }
+                100% { stroke-dashoffset: 0; }
+              }
+            `}</style>
           </div>
         </div>
       </div>
