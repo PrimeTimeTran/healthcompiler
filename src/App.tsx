@@ -9,6 +9,7 @@ import Solutions from "./pages/Solutions";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Integration from "./pages/Integration";
+import Partners from "./pages/Partners";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -23,6 +24,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/capabilities" element={<Capabilities />} />
           <Route path="/solutions" element={<Solutions />} />
+          <Route path="/partners" element={<Partners />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/platform/integration" element={<Integration />} />
