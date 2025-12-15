@@ -1,187 +1,300 @@
 import { Layout } from "@/components/layout/Layout";
-import { FlaskConical, Pill, FileText, Stethoscope, Heart, Smartphone, Database, TrendingUp, Users, Activity } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { toast } from "@/hooks/use-toast";
 
-const dataSources = [
-  { icon: FlaskConical, label: "Labs" },
-  { icon: Pill, label: "Pharmacy" },
-  { icon: FileText, label: "Claims" },
-  { icon: Stethoscope, label: "EMRs" },
-  { icon: Heart, label: "SdoH" },
-  { icon: Smartphone, label: "Consumer & Digital Health" },
-  { icon: Database, label: "Third-party Data" },
+const integrations = [
+  { name: 'Stripe', x: 48, y: 8, highlighted: false },
+  { name: 'Fitbit', x: 68, y: 10, highlighted: false },
+  { name: 'Hint', x: 58, y: 16, highlighted: true },
+  { name: 'Cerbo', x: 72, y: 18, highlighted: true },
+  { name: 'OURA', x: 85, y: 14, highlighted: false },
+  { name: 'Azalea Health', x: 12, y: 18, highlighted: false },
+  { name: 'AdvancedMD', x: 28, y: 16, highlighted: false },
+  { name: 'Elation', x: 38, y: 22, highlighted: true },
+  { name: 'Dexcom', x: 92, y: 22, highlighted: false },
+  { name: 'Allscripts', x: 8, y: 28, highlighted: false },
+  { name: 'Wahoo', x: 25, y: 26, highlighted: false },
+  { name: 'AkuteHealth', x: 82, y: 28, highlighted: true },
+  { name: 'NextGen', x: 94, y: 32, highlighted: false },
+  { name: 'Netsmart', x: 18, y: 36, highlighted: false },
+  { name: 'CharmHealth', x: 35, y: 34, highlighted: true },
+  { name: 'Lemlist', x: 78, y: 36, highlighted: false },
+  { name: 'Google Fit', x: 88, y: 38, highlighted: false },
+  { name: 'DrChrono', x: 10, y: 42, highlighted: false },
+  { name: 'Garmin', x: 22, y: 48, highlighted: false },
+  { name: 'Spruce', x: 38, y: 46, highlighted: false },
+  { name: 'TriNet', x: 94, y: 48, highlighted: false },
+  { name: 'Quest', x: 14, y: 56, highlighted: false },
+  { name: 'Epic', x: 30, y: 58, highlighted: false },
+  { name: 'Practice Fusion', x: 42, y: 64, highlighted: true },
+  { name: 'Google Console', x: 78, y: 52, highlighted: false },
+  { name: 'Yuzu Health', x: 88, y: 56, highlighted: false },
+  { name: 'OMRON', x: 14, y: 68, highlighted: false },
+  { name: 'Cerner', x: 32, y: 72, highlighted: false },
+  { name: 'eClinicalWorks', x: 52, y: 74, highlighted: false },
+  { name: 'Google Analytics', x: 74, y: 64, highlighted: false },
+  { name: 'Workday', x: 84, y: 66, highlighted: false },
+  { name: 'ModMed', x: 94, y: 72, highlighted: false },
+  { name: 'ManifestRx', x: 60, y: 78, highlighted: false },
+  { name: 'AthenaHealth', x: 75, y: 76, highlighted: false },
+  { name: 'QuickBooks', x: 86, y: 80, highlighted: false },
+  { name: 'Paycom', x: 95, y: 84, highlighted: false },
 ];
 
-const processSteps = [
-  {
-    title: "Integrate",
-    description: "Raw data is received from source systems & stored in a data lake.",
-    highlighted: false,
-  },
-  {
-    title: "Harmonize",
-    description: "Data is parsed & codified, then stored in a simple data structure.",
-    highlighted: false,
-  },
-  {
-    title: "Unify",
-    description: "Patient & provider information are aggregated into a single record.",
-    highlighted: true,
-  },
-  {
-    title: "Process",
-    description: "Intelligent algorithms enrich the data with quality measures, gaps in care, & more.",
-    highlighted: false,
-  },
-  {
-    title: "Analyze",
-    description: "Data is denormalized into a structure for analytics & AI.",
-    highlighted: false,
-  },
+const categories = [
+  'Electronic Health Records',
+  'Claims',
+  'Wearables',
+  'Communication',
+  'Labs',
+  'Continuous Glucose Monitoring',
+  'Dental',
+  'Billing',
+  'Human Capital',
 ];
 
-const outcomes = [
-  { icon: TrendingUp, label: "Drive VBC performance" },
-  { icon: Activity, label: "Deliver intelligent experiences" },
-  { icon: Users, label: "Reduce provider burden" },
-];
+// SVG animated connection paths
+const ConnectionLines = () => {
+  const [animationOffset, setAnimationOffset] = useState(0);
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setAnimationOffset(prev => (prev + 1) % 100);
+    }, 50);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 1 }}>
+      <defs>
+        <linearGradient id="connectionGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0" />
+          <stop offset="50%" stopColor="hsl(var(--primary))" stopOpacity="0.6" />
+          <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0" />
+        </linearGradient>
+        <filter id="glow">
+          <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+          <feMerge>
+            <feMergeNode in="coloredBlur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+      </defs>
+      
+      {/* Animated flowing lines from integrations to center */}
+      {[
+        "M 10% 30% Q 30% 40% 50% 50%",
+        "M 20% 55% Q 35% 50% 50% 50%",
+        "M 15% 70% Q 32% 60% 50% 50%",
+        "M 90% 25% Q 70% 38% 50% 50%",
+        "M 85% 45% Q 68% 48% 50% 50%",
+        "M 92% 65% Q 72% 58% 50% 50%",
+        "M 30% 15% Q 40% 32% 50% 50%",
+        "M 70% 12% Q 60% 32% 50% 50%",
+        "M 25% 80% Q 38% 65% 50% 50%",
+        "M 80% 82% Q 65% 66% 50% 50%",
+      ].map((path, i) => (
+        <g key={i}>
+          <path
+            d={path}
+            fill="none"
+            stroke="hsl(var(--border))"
+            strokeWidth="1"
+            opacity="0.4"
+          />
+          <circle r="3" fill="hsl(var(--primary))" opacity="0.8" filter="url(#glow)">
+            <animateMotion
+              dur={`${3 + i * 0.3}s`}
+              repeatCount="indefinite"
+              path={path}
+            />
+          </circle>
+        </g>
+      ))}
+    </svg>
+  );
+};
 
 const FDE = () => {
+  const [email, setEmail] = useState('');
+  const [activeCategory, setActiveCategory] = useState<string | null>(null);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email) {
+      toast({
+        title: "Request submitted!",
+        description: "We'll be in touch about building your integration.",
+      });
+      setEmail('');
+    }
+  };
+
   return (
     <Layout>
-      <section className="pt-32 pb-20 bg-gradient-to-b from-secondary/30 to-background">
-        <div className="container-wide mx-auto px-6">
+      <section className="py-16 md:py-24 bg-background overflow-hidden">
+        <div className="container mx-auto px-4">
           {/* Header */}
-          <div className="text-center mb-16">
+          <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4">
-              DAP turns healthcare data into
-              <br />
-              <span className="text-accent">actionable intelligence</span>
+              Connect with your <span className="text-gradient">existing apps</span>
             </h1>
-            <p className="text-lg text-muted-foreground">
-              powered by <span className="text-accent font-semibold">HealthCompiler AI</span>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Seamlessly integrate with 50+ healthcare and business applications
             </p>
           </div>
 
-          {/* Main Pipeline Visualization */}
-          <div className="relative max-w-7xl mx-auto">
-            <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-4">
-              {/* Data Sources */}
-              <div className="flex flex-col gap-3 w-full lg:w-auto">
-                {dataSources.map((source, index) => (
-                  <div
-                    key={index}
-                    className="flex items-center gap-3 group"
-                  >
-                    <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
-                      <source.icon className="w-5 h-5 text-accent" />
-                    </div>
-                    <span className="text-sm font-medium text-foreground">{source.label}</span>
-                  </div>
-                ))}
+          {/* Integrations Title */}
+          <div className="max-w-6xl mx-auto mb-8">
+            <h2 className="text-2xl font-bold text-foreground">Integrations</h2>
+          </div>
+
+          {/* Integrations Cloud with Central Hub */}
+          <div className="max-w-6xl mx-auto mb-16">
+            <div className="relative h-[550px] md:h-[650px] bg-gradient-to-br from-secondary/30 via-background to-secondary/20 rounded-2xl border border-border/50 overflow-hidden">
+              {/* Grid Pattern Background */}
+              <div className="absolute inset-0 opacity-40">
+                <div className="absolute inset-0" style={{
+                  backgroundImage: 'radial-gradient(circle at 1px 1px, hsl(var(--border)) 1px, transparent 0)',
+                  backgroundSize: '32px 32px'
+                }}></div>
               </div>
 
-              {/* Process Steps */}
-              <div className="flex flex-col md:flex-row gap-4 flex-1 justify-center">
-                {processSteps.map((step, index) => (
-                  <div
-                    key={index}
-                    className={`relative flex flex-col items-center p-6 rounded-2xl border-2 transition-all duration-300 hover:scale-105 min-w-[160px] ${
-                      step.highlighted
-                        ? "bg-accent border-accent text-white shadow-xl"
-                        : "bg-background border-border hover:border-accent/50"
-                    }`}
-                  >
-                    {/* Grid Icon */}
-                    <div className={`mb-4 ${step.highlighted ? "text-white" : "text-accent"}`}>
-                      <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-                        <circle cx="8" cy="8" r="3" fill="currentColor" />
-                        <circle cx="20" cy="8" r="3" fill="currentColor" />
-                        <circle cx="32" cy="8" r="3" fill="currentColor" />
-                        <circle cx="8" cy="20" r="3" fill="currentColor" />
-                        <circle cx="20" cy="20" r="3" fill="currentColor" />
-                        <circle cx="32" cy="20" r="3" fill="currentColor" />
-                        <circle cx="8" cy="32" r="3" fill="currentColor" />
-                        <circle cx="20" cy="32" r="3" fill="currentColor" />
-                        <circle cx="32" cy="32" r="3" fill="currentColor" />
-                      </svg>
+              {/* Animated Connection Lines */}
+              <ConnectionLines />
+
+              {/* Central Insights Hub */}
+              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
+                <div className="relative">
+                  {/* Pulsing glow */}
+                  <div className="absolute inset-0 -m-6 bg-primary/20 rounded-2xl blur-xl animate-pulse"></div>
+                  
+                  <div className="relative bg-card border border-border rounded-xl shadow-elevated p-5 w-48 md:w-56">
+                    {/* Window controls */}
+                    <div className="flex items-center gap-1.5 mb-4">
+                      <div className="w-2.5 h-2.5 rounded-full bg-red-400"></div>
+                      <div className="w-2.5 h-2.5 rounded-full bg-yellow-400"></div>
+                      <div className="w-2.5 h-2.5 rounded-full bg-green-400"></div>
                     </div>
-                    <h3 className={`text-lg font-semibold mb-2 ${step.highlighted ? "text-white" : "text-foreground"}`}>
-                      {step.title}
-                    </h3>
-                    <p className={`text-xs text-center leading-relaxed ${step.highlighted ? "text-white/90" : "text-muted-foreground"}`}>
-                      {step.description}
-                    </p>
+                    
+                    {/* Content */}
+                    <div className="flex items-center gap-2 mb-3">
+                      <div className="w-6 h-6 bg-primary/20 rounded flex items-center justify-center">
+                        <span className="text-xs">📊</span>
+                      </div>
+                      <div>
+                        <h3 className="text-lg font-bold text-foreground leading-tight">Insights</h3>
+                        <p className="text-[10px] text-primary font-medium">HealthCompiler</p>
+                      </div>
+                    </div>
+                    
+                    {/* Skeleton lines */}
+                    <div className="space-y-2 mb-4">
+                      <div className="h-2 bg-muted rounded-full w-full"></div>
+                      <div className="h-2 bg-muted rounded-full w-3/4"></div>
+                      <div className="h-2 bg-muted rounded-full w-1/2"></div>
+                    </div>
+                    
+                    {/* Mini chart */}
+                    <div className="flex items-end gap-1 h-12">
+                      {[30, 50, 40, 70, 55, 45, 65].map((h, i) => (
+                        <div 
+                          key={i}
+                          className="flex-1 bg-primary/40 rounded-t-sm transition-all duration-500"
+                          style={{ 
+                            height: `${h}%`,
+                            animation: `pulse ${1.5 + i * 0.2}s ease-in-out infinite`,
+                            animationDelay: `${i * 0.1}s`
+                          }}
+                        ></div>
+                      ))}
+                    </div>
                   </div>
-                ))}
+                </div>
               </div>
 
-              {/* Outcomes */}
-              <div className="flex flex-col gap-4 w-full lg:w-auto">
-                {outcomes.map((outcome, index) => (
-                  <div
-                    key={index}
-                    className="flex items-center gap-3 group"
-                  >
-                    <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <outcome.icon className="w-5 h-5 text-white" />
-                    </div>
-                    <span className="text-sm font-medium text-foreground">{outcome.label}</span>
-                  </div>
-                ))}
-              </div>
+              {/* Floating Integration Cards */}
+              {integrations.map((integration, index) => (
+                <div
+                  key={integration.name}
+                  className={`
+                    absolute px-3 py-2 md:px-4 md:py-2.5 rounded-lg border text-xs md:text-sm font-medium
+                    transition-all duration-300 cursor-pointer z-10 whitespace-nowrap
+                    hover:scale-105 hover:z-30 hover:shadow-lg
+                    ${integration.highlighted 
+                      ? 'border-primary bg-primary/10 text-primary shadow-md' 
+                      : 'border-border bg-card text-foreground hover:border-primary/50'
+                    }
+                  `}
+                  style={{
+                    left: `${integration.x}%`,
+                    top: `${integration.y}%`,
+                    transform: 'translate(-50%, -50%)',
+                    animation: `float ${3 + (index % 4)}s ease-in-out infinite`,
+                    animationDelay: `${index * 0.08}s`,
+                  }}
+                >
+                  {integration.name}
+                </div>
+              ))}
             </div>
+          </div>
 
-            {/* Connection Lines - Decorative */}
-            <svg
-              className="absolute inset-0 w-full h-full pointer-events-none hidden lg:block"
-              style={{ zIndex: -1 }}
-            >
-              <defs>
-                <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="hsl(var(--border))" />
-                  <stop offset="50%" stopColor="hsl(var(--accent))" />
-                  <stop offset="100%" stopColor="hsl(var(--border))" />
-                </linearGradient>
-              </defs>
-            </svg>
+          {/* Categories */}
+          <div className="mb-16">
+            <div className="flex flex-wrap justify-center gap-3">
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  onClick={() => setActiveCategory(activeCategory === category ? null : category)}
+                  className={`
+                    px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 border
+                    ${activeCategory === category 
+                      ? 'bg-foreground text-background border-foreground' 
+                      : 'bg-card border-border text-muted-foreground hover:border-foreground/30 hover:text-foreground'
+                    }
+                  `}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Request Form */}
+          <div className="max-w-xl mx-auto text-center">
+            <p className="text-lg text-foreground mb-8">
+              If your app is missing, we can help quickly build an integration
+            </p>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <Input
+                type="email"
+                placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="h-14 text-base bg-card border-border rounded-lg"
+                required
+              />
+              <Button 
+                type="submit" 
+                size="lg" 
+                className="w-full sm:w-auto h-14 px-16 text-base font-semibold rounded-lg"
+              >
+                Submit
+              </Button>
+            </form>
           </div>
         </div>
       </section>
 
-      {/* Additional Info Section */}
-      <section className="py-20 bg-background">
-        <div className="container-wide mx-auto px-6">
-          <div className="text-center max-w-3xl mx-auto">
-            <h2 className="text-3xl font-bold text-foreground mb-6">
-              Forward Deployed Engineering
-            </h2>
-            <p className="text-lg text-muted-foreground mb-8">
-              Our FDE team works directly with healthcare organizations to implement custom solutions, 
-              ensuring seamless integration with existing workflows and maximizing the value of your data infrastructure.
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="p-6 rounded-xl bg-secondary/50 border border-border">
-                <h3 className="font-semibold text-foreground mb-2">Custom Integration</h3>
-                <p className="text-sm text-muted-foreground">
-                  Tailored solutions for your unique healthcare ecosystem
-                </p>
-              </div>
-              <div className="p-6 rounded-xl bg-secondary/50 border border-border">
-                <h3 className="font-semibold text-foreground mb-2">On-site Support</h3>
-                <p className="text-sm text-muted-foreground">
-                  Embedded engineers working alongside your team
-                </p>
-              </div>
-              <div className="p-6 rounded-xl bg-secondary/50 border border-border">
-                <h3 className="font-semibold text-foreground mb-2">Rapid Deployment</h3>
-                <p className="text-sm text-muted-foreground">
-                  Fast time-to-value with proven implementation patterns
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <style>{`
+        @keyframes float {
+          0%, 100% { transform: translate(-50%, -50%) translateY(0px); }
+          50% { transform: translate(-50%, -50%) translateY(-6px); }
+        }
+      `}</style>
     </Layout>
   );
 };
