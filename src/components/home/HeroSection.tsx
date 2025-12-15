@@ -1,14 +1,4 @@
-import { Link } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
-import { Shield, Lock, Target, Layers } from 'lucide-react';
 import { HeroVisualization } from './HeroVisualization';
-
-const trustSignals = [
-  { icon: Shield, label: 'HIPAA-Aligned' },
-  { icon: Lock, label: 'Secure by Design' },
-  { icon: Target, label: 'US Healthcare Focus' },
-  { icon: Layers, label: 'Scalable Architecture' },
-];
 
 export const HeroSection = () => {
   return (
@@ -30,35 +20,9 @@ export const HeroSection = () => {
             </h1>
 
             {/* Sub-headline */}
-            <p className="text-base md:text-lg text-muted-foreground mb-8 leading-relaxed animate-fade-in" style={{ animationDelay: '0.1s' }}>
+            <p className="text-base md:text-lg text-muted-foreground leading-relaxed animate-fade-in" style={{ animationDelay: '0.1s' }}>
               Unifying healthcare data, AI automation, and operational workflows that drive lower costs, better care, and higher performance across self-funded employers, direct care, and value-based organizations.
             </p>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row items-start gap-4 mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-              <Button variant="hero" size="lg" asChild>
-                <Link to="/contact">Book a Consultation</Link>
-              </Button>
-              <Button variant="heroOutline" size="lg" asChild>
-                <Link to="/capabilities">View Capabilities</Link>
-              </Button>
-            </div>
-
-            {/* Trust Signals */}
-            <div className="animate-fade-in" style={{ animationDelay: '0.3s' }}>
-              <div className="grid grid-cols-2 gap-3">
-                {trustSignals.map((signal, index) => (
-                  <div
-                    key={signal.label}
-                    className="flex items-center gap-2 text-muted-foreground"
-                    style={{ animationDelay: `${0.4 + index * 0.1}s` }}
-                  >
-                    <signal.icon className="w-4 h-4 text-accent" />
-                    <span className="text-sm font-medium">{signal.label}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
 
           {/* Right side - Visualization */}
