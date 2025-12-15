@@ -17,6 +17,7 @@ import Apex from "./pages/Apex";
 import GetFeatured from "./pages/GetFeatured";
 import HCCSuspecting from "./pages/HCCSuspecting";
 import MIPSPerformance from "./pages/MIPSPerformance";
+import HEDISQuality from "./pages/HEDISQuality";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -41,6 +42,7 @@ const App = () => (
           <Route path="/resources/apex" element={<Apex />} />
           <Route path="/solutions/hcc-suspecting" element={<HCCSuspecting />} />
           <Route path="/solutions/mips" element={<MIPSPerformance />} />
+          <Route path="/solutions/hedis-quality" element={<HEDISQuality />} />
           <Route path="/get-featured-form" element={<GetFeatured />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
