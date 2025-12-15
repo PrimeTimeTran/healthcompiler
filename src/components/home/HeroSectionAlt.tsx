@@ -410,23 +410,23 @@ export const HeroSectionAlt = () => {
               </div>
             </div>
 
-            {/* Metric cards - positioned independently around the center */}
+            {/* Metric cards - positioned at corners */}
             {metricCards.map((card, idx) => {
-              // Position cards at corners and edges
-              const positions = [
-                { x: -180, y: -140 }, // Top left
-                { x: 180, y: -140 },  // Top right
-                { x: -200, y: 120 },  // Bottom left
-                { x: 200, y: 120 },   // Bottom right
+              // Position cards at corners using explicit positioning
+              const positionStyles = [
+                { top: '10%', left: '5%' },      // Top left
+                { top: '10%', right: '5%' },     // Top right
+                { bottom: '15%', left: '5%' },   // Bottom left
+                { bottom: '15%', right: '5%' },  // Bottom right
               ];
-              const pos = positions[idx];
+              const pos = positionStyles[idx];
 
               return (
                 <div
                   key={card.label}
-                  className="metric-card absolute left-1/2 top-1/2 cursor-pointer"
+                  className="metric-card absolute cursor-pointer"
                   style={{
-                    transform: `translate(calc(-50% + ${pos.x}px), calc(-50% + ${pos.y}px))`,
+                    ...pos,
                     animationDelay: `${idx * 1}s`,
                     zIndex: hoveredCard === idx ? 50 : 10,
                   }}
@@ -490,13 +490,13 @@ export const HeroSectionAlt = () => {
               
               {/* Animated flowing lines from cards to center */}
               {[
-                { x1: '28%', y1: '28%', x2: '50%', y2: '50%', color: metricCards[0].color },
-                { x1: '72%', y1: '28%', x2: '50%', y2: '50%', color: metricCards[1].color },
-                { x1: '25%', y1: '70%', x2: '50%', y2: '50%', color: metricCards[2].color },
-                { x1: '75%', y1: '70%', x2: '50%', y2: '50%', color: metricCards[3].color },
+                { x1: '15%', y1: '18%', x2: '50%', y2: '50%', color: metricCards[0].color },
+                { x1: '85%', y1: '18%', x2: '50%', y2: '50%', color: metricCards[1].color },
+                { x1: '15%', y1: '78%', x2: '50%', y2: '50%', color: metricCards[2].color },
+                { x1: '85%', y1: '78%', x2: '50%', y2: '50%', color: metricCards[3].color },
               ].map((line, idx) => (
                 <g key={idx}>
-                  {/* Base line */}
+                  {/* Base dashed line */}
                   <line
                     x1={line.x1}
                     y1={line.y1}
@@ -504,10 +504,10 @@ export const HeroSectionAlt = () => {
                     y2={line.y2}
                     stroke={line.color}
                     strokeWidth="2"
-                    strokeOpacity="0.15"
+                    strokeOpacity="0.2"
                     strokeDasharray="8 6"
                   />
-                  {/* Animated flowing line overlay */}
+                  {/* Animated flowing overlay */}
                   <line
                     x1={line.x1}
                     y1={line.y1}
@@ -515,44 +515,24 @@ export const HeroSectionAlt = () => {
                     y2={line.y2}
                     stroke={line.color}
                     strokeWidth="2"
-                    strokeDasharray="12 20"
+                    strokeDasharray="12 24"
                     strokeLinecap="round"
+                    className="animate-flow-line"
                     style={{
-                      animation: `flowLine 2s linear infinite`,
                       animationDelay: `${idx * 0.5}s`,
                     }}
                   />
-                  {/* Flowing particle */}
-                  <circle r="4" fill={line.color} opacity="0.8">
-                    <animate
-                      attributeName="opacity"
-                      values="0.8;1;0.8"
-                      dur="2s"
-                      repeatCount="indefinite"
-                    />
-                    <animateMotion
-                      dur={`${2 + idx * 0.3}s`}
-                      repeatCount="indefinite"
-                      path={`M ${parseFloat(line.x1) * 6} ${parseFloat(line.y1) * 6} L ${parseFloat(line.x2) * 6} ${parseFloat(line.y2) * 6}`}
-                    />
-                  </circle>
-                  {/* Second particle with offset */}
-                  <circle r="3" fill={line.color} opacity="0.5">
-                    <animateMotion
-                      dur={`${2.5 + idx * 0.2}s`}
-                      repeatCount="indefinite"
-                      begin={`${1 + idx * 0.2}s`}
-                      path={`M ${parseFloat(line.x1) * 6} ${parseFloat(line.y1) * 6} L ${parseFloat(line.x2) * 6} ${parseFloat(line.y2) * 6}`}
-                    />
-                  </circle>
                 </g>
               ))}
             </svg>
             
             <style>{`
               @keyframes flowLine {
-                0% { stroke-dashoffset: 32; }
+                0% { stroke-dashoffset: 36; }
                 100% { stroke-dashoffset: 0; }
+              }
+              .animate-flow-line {
+                animation: flowLine 1.5s linear infinite;
               }
             `}</style>
           </div>
