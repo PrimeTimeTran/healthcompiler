@@ -1,63 +1,39 @@
 import { useState, useRef, useEffect } from 'react';
-import { BarChart3, Database, Workflow, Zap, Shield } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { BarChart3, Database, Zap, Shield, LineChart, CheckCircle, Clock, FileCheck } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const capabilities = [
   {
-    id: 'analytics',
-    icon: BarChart3,
-    title: 'Healthcare Analytics',
-    subtitle: 'Insights & Reporting',
-    description: 'Real-time dashboards and analytics built for clinical, operational, and financial insights.',
-    features: ['Patient outcome tracking', 'Revenue cycle analytics', 'Operational dashboards'],
-    position: 'top-left',
+    number: "01",
+    title: "Healthcare Analytics",
+    description: "Real-time dashboards and reporting built for clinical, operational, and financial insights. Transform raw data into actionable intelligence.",
+    pills: [
+      { icon: BarChart3, text: "Dashboard Generated" },
+      { icon: LineChart, text: "Metrics Updated" },
+      { icon: CheckCircle, text: "Report Delivered" },
+    ]
   },
   {
-    id: 'data',
-    icon: Database,
-    title: 'Data Engineering',
-    subtitle: 'ETL & Pipelines',
-    description: 'Scalable data pipelines that unify EHR, claims, lab, and operational data into a single source of truth.',
-    features: ['Automated ETL workflows', 'Data quality monitoring', 'Real-time ingestion'],
-    position: 'top-right',
+    number: "02",
+    title: "Data Pipelines & ETL",
+    description: "Automated data pipelines that unify EHR, claims, lab, and operational data into a single source of truth for your organization.",
+    pills: [
+      { icon: Database, text: "Data Synced" },
+      { icon: Zap, text: "Pipeline Complete" },
+      { icon: FileCheck, text: "Records Validated" },
+    ]
   },
   {
-    id: 'automation',
-    icon: Workflow,
-    title: 'Workflow Automation',
-    subtitle: 'Process Optimization',
-    description: 'Streamline operations with intelligent automation. Connect systems, eliminate manual processes.',
-    features: ['API integrations', 'Automated reporting', 'Alert management'],
-    position: 'bottom-left',
-  },
-  {
-    id: 'integration',
-    icon: Zap,
-    title: 'System Integration',
-    subtitle: 'EHR & Claims',
-    description: 'Seamless integrations across healthcare systems including EHR, practice management, and billing.',
-    features: ['EHR connectivity', 'Claims processing', 'Lab integrations'],
-    position: 'bottom-right',
-  },
-  {
-    id: 'security',
-    icon: Shield,
-    title: 'Secure Architecture',
-    subtitle: 'HIPAA-Aligned',
-    description: 'Enterprise-grade security built for healthcare. HIPAA-aligned infrastructure with end-to-end encryption.',
-    features: ['Data encryption', 'Access controls', 'Audit logging'],
-    position: 'center-bottom',
+    number: "03",
+    title: "Workflow Automation",
+    description: "Streamline operations with intelligent automation. Connect systems, eliminate manual processes, and accelerate decision-making.",
+    pills: [
+      { icon: Zap, text: "Task Automated" },
+      { icon: Clock, text: "Workflow Triggered" },
+      { icon: Shield, text: "Process Complete" },
+    ]
   },
 ];
-
-const positionClasses: Record<string, string> = {
-  'top-left': 'top-4 left-4 md:top-8 md:left-0',
-  'top-right': 'top-4 right-4 md:top-8 md:right-0',
-  'bottom-left': 'bottom-24 left-4 md:bottom-32 md:left-0',
-  'bottom-right': 'bottom-24 right-4 md:bottom-32 md:right-0',
-  'center-bottom': 'bottom-4 left-1/2 -translate-x-1/2 md:bottom-8',
-};
 
 export const WhatWeDoSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -84,131 +60,136 @@ export const WhatWeDoSection = () => {
 
     const interval = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % capabilities.length);
-    }, 3000);
+    }, 4000);
 
     return () => clearInterval(interval);
   }, [isInView]);
 
-  const activeCapability = capabilities[activeIndex];
+  const active = capabilities[activeIndex];
 
   return (
-    <section ref={sectionRef} className="section-padding bg-background overflow-hidden">
-      <div className="container-tight mx-auto">
-        <div className="text-center mb-8 md:mb-12">
-          <span className="text-accent text-sm font-semibold uppercase tracking-widest mb-4 block">
-            Capabilities
-          </span>
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+    <section ref={sectionRef} className="py-24 lg:py-32 bg-background overflow-hidden">
+      <div className="container mx-auto px-6">
+        {/* Section Label */}
+        <div className="mb-12">
+          <span className="text-xs font-semibold uppercase tracking-widest text-accent">
             Our Capabilities
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            End-to-end healthcare data solutions designed for scale, security, and operational excellence.
-          </p>
+          </span>
         </div>
 
-        {/* Interactive Scroll Section */}
-        <div className="relative h-[500px] md:h-[550px]">
-          {/* Floating Pills */}
-          {capabilities.map((capability, index) => (
-            <button
-              key={capability.id}
-              onClick={() => setActiveIndex(index)}
-              className={cn(
-                "absolute z-10 flex items-center gap-2 px-4 py-2.5 rounded-full border transition-all duration-500 cursor-pointer",
-                positionClasses[capability.position],
-                activeIndex === index
-                  ? "bg-accent text-accent-foreground border-accent shadow-elevated scale-105"
-                  : "bg-card text-foreground border-border/50 hover:border-primary/50 hover:shadow-card"
-              )}
-            >
-              <div className={cn(
-                "w-8 h-8 rounded-full flex items-center justify-center transition-colors",
-                activeIndex === index ? "bg-accent-foreground/10" : "bg-secondary"
-              )}>
-                <capability.icon className="w-4 h-4" />
-              </div>
-              <span className="font-medium text-sm whitespace-nowrap">{capability.title}</span>
-            </button>
-          ))}
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          {/* Left Content */}
+          <div className="space-y-8">
+            {/* Navigation Pills */}
+            <div className="flex gap-3 mb-8">
+              {capabilities.map((cap, index) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveIndex(index)}
+                  className={cn(
+                    "px-4 py-2 rounded-full text-sm font-medium transition-all duration-300",
+                    activeIndex === index
+                      ? "bg-accent text-foreground"
+                      : "bg-secondary/50 text-muted-foreground hover:bg-secondary"
+                  )}
+                >
+                  {cap.number}
+                </button>
+              ))}
+            </div>
 
-          {/* Center Card */}
-          <div className="absolute inset-0 flex items-center justify-center px-4">
-            <div className="w-full max-w-md bg-card rounded-2xl border border-border/50 shadow-elevated p-6 md:p-8 transition-all duration-500">
-              {/* Card Header */}
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center">
-                  <activeCapability.icon className="w-6 h-6 text-foreground" />
-                </div>
-                <div>
-                  <h3 className="font-display text-xl font-semibold text-foreground">
-                    {activeCapability.title}
-                  </h3>
-                  <span className="text-xs uppercase tracking-wider text-muted-foreground">
-                    {activeCapability.subtitle}
-                  </span>
-                </div>
+            {/* Active Content */}
+            <div className="space-y-4">
+              <div className="flex items-baseline gap-4">
+                <span className="text-4xl lg:text-5xl font-bold text-primary/40">{active.number}</span>
+                <h2 className="text-3xl lg:text-4xl font-bold text-foreground">
+                  {active.title}
+                </h2>
               </div>
-
-              {/* Description */}
-              <p className="text-muted-foreground mb-6 text-sm leading-relaxed">
-                {activeCapability.description}
+              <p className="text-lg text-muted-foreground leading-relaxed max-w-md">
+                {active.description}
               </p>
-
-              {/* Features */}
-              <ul className="space-y-2 mb-6">
-                {activeCapability.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-center gap-2 text-sm text-foreground">
-                    <div className="w-5 h-5 rounded-full bg-secondary flex items-center justify-center">
-                      <svg className="w-3 h-3 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                        <polyline points="20 6 9 17 4 12" />
-                      </svg>
-                    </div>
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-
-              {/* CTA */}
-              <Link
-                to="/capabilities"
-                className="inline-flex items-center gap-2 text-accent font-semibold text-sm hover:gap-3 transition-all"
-              >
-                Explore {activeCapability.title}
-                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="5" y1="12" x2="19" y2="12" />
-                  <polyline points="12 5 19 12 12 19" />
-                </svg>
-              </Link>
-
-              {/* Progress dots */}
-              <div className="flex items-center justify-center gap-2 mt-6 pt-4 border-t border-border/50">
-                {capabilities.map((_, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => setActiveIndex(idx)}
-                    className={cn(
-                      "w-2 h-2 rounded-full transition-all duration-300",
-                      activeIndex === idx 
-                        ? "w-6 bg-accent" 
-                        : "bg-muted hover:bg-primary/50"
-                    )}
-                  />
-                ))}
-              </div>
             </div>
           </div>
 
-          {/* Decorative connecting lines */}
-          <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-20" aria-hidden="true">
-            <defs>
-              <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="hsl(var(--primary))" />
-                <stop offset="100%" stopColor="hsl(var(--accent))" />
-              </linearGradient>
-            </defs>
-            <circle cx="50%" cy="50%" r="120" fill="none" stroke="url(#lineGradient)" strokeWidth="1" strokeDasharray="4 4" />
-            <circle cx="50%" cy="50%" r="180" fill="none" stroke="url(#lineGradient)" strokeWidth="1" strokeDasharray="4 4" />
-          </svg>
+          {/* Right - Floating Pills Container */}
+          <div className="relative h-[400px] lg:h-[500px] rounded-3xl overflow-hidden bg-gradient-to-br from-secondary via-secondary/80 to-primary/20">
+            {/* Skeleton placeholders - left side */}
+            <div className="absolute top-12 left-8 w-32 h-10 bg-white/40 rounded-xl" />
+            <div className="absolute top-28 left-12 w-40 h-12 bg-white/30 rounded-xl flex items-center gap-2 px-3">
+              <div className="w-6 h-6 bg-white/50 rounded-full" />
+              <div className="w-16 h-3 bg-white/50 rounded" />
+            </div>
+            <div className="absolute bottom-32 left-8 w-36 h-10 bg-white/40 rounded-xl" />
+            <div className="absolute bottom-16 left-16 w-28 h-10 bg-white/30 rounded-xl" />
+            
+            {/* Animated Floating Pills - right side */}
+            {active.pills.map((pill, index) => {
+              const Icon = pill.icon;
+              const positions = [
+                "top-[20%] right-6",
+                "top-[45%] right-10",
+                "top-[70%] right-4",
+              ];
+              const delays = ["0s", "0.15s", "0.3s"];
+              
+              return (
+                <div
+                  key={`${activeIndex}-${index}`}
+                  className={cn(
+                    "absolute animate-fade-in",
+                    positions[index]
+                  )}
+                  style={{ animationDelay: delays[index] }}
+                >
+                  <div className="flex items-center gap-3 bg-white rounded-full px-5 py-3 shadow-lg">
+                    <Icon className="w-5 h-5 text-accent" />
+                    <span className="text-sm font-medium text-foreground whitespace-nowrap">
+                      {pill.text}
+                    </span>
+                  </div>
+                </div>
+              );
+            })}
+
+            {/* Center Card */}
+            <div 
+              key={activeIndex}
+              className="absolute top-1/2 left-[35%] -translate-x-1/2 -translate-y-1/2 animate-fade-in"
+            >
+              <div className="bg-white rounded-2xl p-5 shadow-xl min-w-[180px]">
+                <div className="text-xs font-semibold text-accent uppercase tracking-wide mb-3">
+                  Processing...
+                </div>
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center">
+                    {(() => {
+                      const Icon = active.pills[0].icon;
+                      return <Icon className="w-5 h-5 text-foreground" />;
+                    })()}
+                  </div>
+                  <span className="font-semibold text-foreground text-sm">{active.title.split(' ')[0]}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-7 h-7 rounded-full bg-accent/20 flex items-center justify-center">
+                    <Zap className="w-3.5 h-3.5 text-accent" />
+                  </div>
+                  <div className="flex gap-0.5">
+                    {[...Array(8)].map((_, i) => (
+                      <div
+                        key={i}
+                        className="w-1 bg-accent/60 rounded-full animate-pulse"
+                        style={{
+                          height: `${8 + Math.random() * 12}px`,
+                          animationDelay: `${i * 0.1}s`
+                        }}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
