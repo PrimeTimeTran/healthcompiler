@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Database, FileText, Pill, FlaskConical, Watch, MessageSquare } from 'lucide-react';
+import { Database, FileText, Pill, FlaskConical, Watch, MessageSquare, Users, CreditCard } from 'lucide-react';
 
 // Data inputs (left side)
 const dataInputs = [
@@ -7,6 +7,8 @@ const dataInputs = [
   { id: 'clinical', label: 'Clinical (EHR)', Icon: Database },
   { id: 'pharmacy', label: 'Pharmacy', Icon: Pill },
   { id: 'labs', label: 'Labs', Icon: FlaskConical },
+  { id: 'membership', label: 'Membership', Icon: Users },
+  { id: 'billing', label: 'Billing', Icon: CreditCard },
   { id: 'wearables', label: 'Wearables', Icon: Watch },
   { id: 'comms', label: 'Communications', Icon: MessageSquare },
 ];
@@ -56,9 +58,9 @@ export const HeroVisualization = () => {
   }, []);
 
   return (
-    <div className="w-full h-[480px] relative" onMouseLeave={handleMouseLeave}>
+    <div className="w-full h-[520px] relative" onMouseLeave={handleMouseLeave}>
       <svg
-        viewBox="0 0 600 480"
+        viewBox="0 0 600 520"
         className="w-full h-full"
         preserveAspectRatio="xMidYMid meet"
       >
@@ -94,14 +96,14 @@ export const HeroVisualization = () => {
 
         {/* Data Input Nodes (Left Side) */}
         {dataInputs.map((input, index) => {
-          const yPos = 80 + index * 60;
+          const yPos = 60 + index * 50;
           const xPos = 60;
           
           return (
             <g key={input.id}>
               {/* Connection line to center */}
               <path
-                d={`M${xPos + 40},${yPos} Q${180},${yPos} ${260},${240}`}
+                d={`M${xPos + 40},${yPos} Q${180},${yPos} ${260},${260}`}
                 fill="none"
                 stroke="url(#lineGradient)"
                 strokeWidth="1.5"
@@ -115,7 +117,7 @@ export const HeroVisualization = () => {
                 <animateMotion
                   dur={`${2 + index * 0.3}s`}
                   repeatCount="indefinite"
-                  path={`M${xPos + 40},${yPos} Q${180},${yPos} ${260},${240}`}
+                  path={`M${xPos + 40},${yPos} Q${180},${yPos} ${260},${260}`}
                 />
               </circle>
 
@@ -156,7 +158,7 @@ export const HeroVisualization = () => {
           {/* Outer pulsing ring */}
           <circle
             cx="300"
-            cy="240"
+            cy="260"
             r="70"
             fill="none"
             stroke="hsl(var(--accent))"
@@ -180,7 +182,7 @@ export const HeroVisualization = () => {
           {/* Second ring */}
           <circle
             cx="300"
-            cy="240"
+            cy="260"
             r="62"
             fill="none"
             stroke="hsl(var(--border))"
@@ -192,7 +194,7 @@ export const HeroVisualization = () => {
           {/* Main activation orb */}
           <circle
             cx="300"
-            cy="240"
+            cy="260"
             r="52"
             fill="url(#activationGradient)"
             filter="url(#softGlow)"
@@ -208,7 +210,7 @@ export const HeroVisualization = () => {
           {/* Inner glow */}
           <circle
             cx="300"
-            cy="240"
+            cy="260"
             r="40"
             fill="hsl(var(--card))"
             opacity="0.3"
@@ -217,7 +219,7 @@ export const HeroVisualization = () => {
           {/* Center text */}
           <text
             x="300"
-            y="235"
+            y="255"
             textAnchor="middle"
             className="fill-primary-foreground font-semibold"
             style={{ fontSize: '14px' }}
@@ -226,7 +228,7 @@ export const HeroVisualization = () => {
           </text>
           <text
             x="300"
-            y="253"
+            y="273"
             textAnchor="middle"
             className="fill-primary-foreground"
             style={{ fontSize: '12px', opacity: 0.9 }}
@@ -238,7 +240,7 @@ export const HeroVisualization = () => {
         {/* ICP Clusters (Right Side) */}
         {icpClusters.map((cluster, clusterIndex) => {
           const isActive = clusterIndex === activeICP;
-          const baseY = 80 + clusterIndex * 140;
+          const baseY = 100 + clusterIndex * 140;
           const xStart = 380;
           
           return (
@@ -253,7 +255,7 @@ export const HeroVisualization = () => {
             >
               {/* Connection line from center */}
               <path
-                d={`M340,240 Q${360},${baseY + 40} ${xStart - 20},${baseY + 40}`}
+                d={`M340,260 Q${360},${baseY + 40} ${xStart - 20},${baseY + 40}`}
                 fill="none"
                 stroke={cluster.color}
                 strokeWidth={isActive ? "2" : "1"}
@@ -268,7 +270,7 @@ export const HeroVisualization = () => {
                   <animateMotion
                     dur="1.5s"
                     repeatCount="indefinite"
-                    path={`M340,240 Q${360},${baseY + 40} ${xStart - 20},${baseY + 40}`}
+                    path={`M340,260 Q${360},${baseY + 40} ${xStart - 20},${baseY + 40}`}
                   />
                 </circle>
               )}
