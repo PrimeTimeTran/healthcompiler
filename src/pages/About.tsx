@@ -116,8 +116,49 @@ const About = () => {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* Team */}
       <section className="section-padding bg-background">
+        <div className="container-tight mx-auto">
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-10">
+            Built by the Best
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-5">
+            {[
+              'Noopur Saligram',
+              'Nimish Chougule',
+              'Diksha Munot',
+              'Shagun Patwa',
+              'Vivek Singh',
+              'Arya Uplap',
+              'Santosh Pujari',
+              'Anuj Jain',
+              'Sanket Pande',
+              'Sukanya Ladi',
+              'Burhan',
+              'Rahul Kharche',
+              'Pradnya Mahabale',
+              'Mahesh Meena',
+            ].map((name) => (
+              <div key={name} className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary/30 to-accent/30 flex items-center justify-center text-foreground font-medium text-sm">
+                  {name.split(' ').map(n => n[0]).join('')}
+                </div>
+                <span className="text-foreground font-medium">{name}</span>
+              </div>
+            ))}
+          </div>
+          <Link 
+            to="/contact" 
+            className="inline-flex items-center gap-2 mt-8 text-foreground font-medium hover:text-accent transition-colors group"
+          >
+            Join the team
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="section-padding bg-background-secondary">
         <div className="container-tight mx-auto text-center">
           <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
             Let's Work Together
