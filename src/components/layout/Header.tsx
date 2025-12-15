@@ -24,7 +24,7 @@ interface NavItem {
 const navItems: NavItem[] = [
   { 
     label: 'Platform', 
-    href: '/capabilities?tab=platform',
+    href: '/capabilities',
     subItems: [
       { label: 'Forward Deployed Engineering (FDE)', href: '/platform/fde' },
       { label: 'Integration', href: '/platform/integration' },
