@@ -287,11 +287,6 @@ export const HeroSectionAlt = () => {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center w-full py-20">
           {/* Left - Content */}
           <div className="space-y-8">
-            {/* Eyebrow */}
-            <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm">
-              <span className="w-2 h-2 rounded-full bg-[#E94E87] animate-pulse" />
-              <span className="text-sm text-white/70 tracking-wide">Healthcare Data Platform</span>
-            </div>
 
             {/* Main headline */}
             <div className="space-y-2">
