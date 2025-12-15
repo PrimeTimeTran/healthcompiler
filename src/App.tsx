@@ -12,6 +12,7 @@ import Contact from "./pages/Contact";
 import Integration from "./pages/Integration";
 import FDE from "./pages/FDE";
 import Partners from "./pages/Partners";
+import Infera from "./pages/Infera";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -32,6 +33,7 @@ const App = () => (
           <Route path="/contact" element={<Contact />} />
           <Route path="/platform/integration" element={<Integration />} />
           <Route path="/platform/fde" element={<FDE />} />
+          <Route path="/platform/infera" element={<Infera />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
