@@ -414,12 +414,12 @@ export const HeroSectionAlt = () => {
                 <div className="absolute inset-2 rounded-full bg-gradient-to-br from-white via-white to-white/90" />
                 <div className="absolute inset-4 rounded-full bg-white border border-border shadow-inner flex items-center justify-center overflow-hidden">
                   {/* Inner content */}
-                  <div className="text-center">
+                  <Link to="/platform/infera" className="text-center group cursor-pointer">
                     <div className="text-[10px] text-muted-foreground uppercase tracking-widest mb-1">Powered by</div>
-                    <div className="text-2xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
-                      Infera AI
+                    <div className="text-2xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent group-hover:scale-105 transition-transform">
+                      Infera
                     </div>
-                  </div>
+                  </Link>
                 </div>
               </div>
             </div>
