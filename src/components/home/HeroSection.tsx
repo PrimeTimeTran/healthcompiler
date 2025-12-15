@@ -21,7 +21,7 @@ export const HeroSection = () => {
 
             {/* Sub-headline */}
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed animate-fade-in" style={{ animationDelay: '0.1s' }}>
-              Unifying healthcare data, AI automation, and operational workflows that drive lower costs, better care, and higher performance across self-funded employers, direct care, and value-based organizations.
+              Unifying healthcare data and AI-driven workflows to lower costs and improve care across self-funded, direct care, and value-based organizations.
             </p>
           </div>
 
