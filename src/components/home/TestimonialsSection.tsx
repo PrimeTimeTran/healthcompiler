@@ -1,11 +1,20 @@
 import { Quote } from 'lucide-react';
+import brianFretwellImg from '@/assets/testimonial-brian-fretwell.png';
 
-const testimonials = [
+interface Testimonial {
+  quote: string;
+  name: string;
+  title: string;
+  initials?: string;
+  image?: string;
+}
+
+const testimonials: Testimonial[] = [
   {
-    quote: "Health Compiler's modern technology makes data integration possible — something legacy systems, built on 20-30+ year-old infrastructure, simply can't deliver.",
-    name: "Dr. Sarah Mitchell",
-    title: "Medical Director, Premier DPC Network",
-    initials: "PDN",
+    quote: "HealthCompiler has become an indispensable analytics partner. Their platform empowers us to gain deep, real-time insights into patient populations, utilization patterns, and cost drivers. What sets them apart is the clarity and operational utility of their analytics — reports that are not just comprehensive but intuitive and immediately actionable.",
+    name: "Brian Fretwell",
+    title: "CEO, Direct Primary Care Associates",
+    image: brianFretwellImg,
   },
   {
     quote: "Health Compiler has exceeded expectations in every way for us. From implementation to ongoing support, they are making a statement as to why they belong as a leader in the market.",
@@ -54,10 +63,18 @@ export const TestimonialsSection = () => {
                   <p className="text-sm text-muted-foreground">{testimonial.title}</p>
                 </div>
                 
-                {/* Company Logo Placeholder */}
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                  <span className="text-xs font-bold text-primary">{testimonial.initials}</span>
-                </div>
+                {/* Photo or Initials */}
+                {testimonial.image ? (
+                  <img 
+                    src={testimonial.image} 
+                    alt={testimonial.name}
+                    className="w-14 h-14 rounded-full object-cover border-2 border-accent/20"
+                  />
+                ) : (
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                    <span className="text-xs font-bold text-primary">{testimonial.initials}</span>
+                  </div>
+                )}
               </div>
             </div>
           ))}
