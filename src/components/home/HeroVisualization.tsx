@@ -157,7 +157,7 @@ export const HeroVisualization = () => {
           <circle
             cx="300"
             cy="240"
-            r="55"
+            r="70"
             fill="none"
             stroke="hsl(var(--accent))"
             strokeWidth="1"
@@ -165,7 +165,7 @@ export const HeroVisualization = () => {
           >
             <animate
               attributeName="r"
-              values="55;62;55"
+              values="70;80;70"
               dur="3s"
               repeatCount="indefinite"
             />
@@ -181,7 +181,7 @@ export const HeroVisualization = () => {
           <circle
             cx="300"
             cy="240"
-            r="48"
+            r="62"
             fill="none"
             stroke="hsl(var(--border))"
             strokeWidth="1"
@@ -193,13 +193,13 @@ export const HeroVisualization = () => {
           <circle
             cx="300"
             cy="240"
-            r="40"
+            r="52"
             fill="url(#activationGradient)"
             filter="url(#softGlow)"
           >
             <animate
               attributeName="r"
-              values="40;42;40"
+              values="52;55;52"
               dur="2s"
               repeatCount="indefinite"
             />
@@ -209,7 +209,7 @@ export const HeroVisualization = () => {
           <circle
             cx="300"
             cy="240"
-            r="30"
+            r="40"
             fill="hsl(var(--card))"
             opacity="0.3"
           />
@@ -220,16 +220,16 @@ export const HeroVisualization = () => {
             y="235"
             textAnchor="middle"
             className="fill-primary-foreground font-semibold"
-            style={{ fontSize: '12px' }}
+            style={{ fontSize: '14px' }}
           >
             Activation
           </text>
           <text
             x="300"
-            y="250"
+            y="253"
             textAnchor="middle"
             className="fill-primary-foreground"
-            style={{ fontSize: '10px', opacity: 0.9 }}
+            style={{ fontSize: '12px', opacity: 0.9 }}
           >
             Layer
           </text>
