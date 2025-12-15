@@ -46,16 +46,31 @@ interface SubMenuCategory {
   items: SubMenuItem[];
 }
 
-const solutionsItems: SubMenuItem[] = [
-  { label: 'Employer Analytics', href: '/solutions/employer-analytics' },
-  { label: 'Health Outcomes', href: '/solutions/health-outcomes' },
-  { label: 'AI Receptionist', href: '/solutions/ai-receptionist' },
-  { label: 'AI Call Triaging', href: '/solutions/ai-call-triaging' },
-  { label: 'Marketing Automation', href: '/solutions/marketing-automation' },
-  { label: 'Patient Engagement', href: '/solutions/patient-engagement' },
-  { label: 'HCC Suspecting', href: '/solutions/hcc-suspecting' },
-  { label: 'HEDIS', href: '/solutions/hedis' },
-  { label: 'MIPS', href: '/solutions/mips' },
+const solutionsCategories: SubMenuCategory[] = [
+  {
+    category: 'Analytics',
+    items: [
+      { label: 'Employer Analytics', href: '/solutions/employer-analytics' },
+      { label: 'Health Outcomes', href: '/solutions/health-outcomes' },
+    ]
+  },
+  {
+    category: 'AI-Powered Tools',
+    items: [
+      { label: 'AI Receptionist', href: '/solutions/ai-receptionist' },
+      { label: 'AI Call Triaging', href: '/solutions/ai-call-triaging' },
+      { label: 'Marketing Automation', href: '/solutions/marketing-automation' },
+      { label: 'Patient Engagement', href: '/solutions/patient-engagement' },
+    ]
+  },
+  {
+    category: 'Value-Based Care',
+    items: [
+      { label: 'HCC Suspecting', href: '/solutions/hcc-suspecting' },
+      { label: 'HEDIS', href: '/solutions/hedis' },
+      { label: 'MIPS', href: '/solutions/mips' },
+    ]
+  }
 ];
 
 const whoWeServeCategories: SubMenuCategory[] = [
@@ -87,14 +102,29 @@ const whoWeServeCategories: SubMenuCategory[] = [
   }
 ];
 
-const resourcesItems: SubMenuItem[] = [
-  { label: 'Apex', href: '/resources/apex' },
-  { label: 'Blogs', href: '/resources/blogs' },
-  { label: 'Partners & Memberships', href: '/resources/partners-memberships' },
-  { label: 'Guide', href: '/resources/guide' },
-  { label: 'Whitepaper', href: '/resources/whitepaper' },
-  { label: 'News & Events', href: '/resources/news-events' },
-  { label: 'FAQs', href: '/resources/faqs' },
+const resourcesCategories: SubMenuCategory[] = [
+  {
+    category: 'Learn',
+    items: [
+      { label: 'Guide', href: '/resources/guide' },
+      { label: 'Whitepaper', href: '/resources/whitepaper' },
+      { label: 'Blogs', href: '/resources/blogs' },
+      { label: 'FAQs', href: '/resources/faqs' },
+    ]
+  },
+  {
+    category: 'Community',
+    items: [
+      { label: 'Partners & Memberships', href: '/resources/partners-memberships' },
+      { label: 'News & Events', href: '/resources/news-events' },
+    ]
+  },
+  {
+    category: 'Products',
+    items: [
+      { label: 'Apex', href: '/resources/apex' },
+    ]
+  }
 ];
 
 export const Header = () => {
@@ -193,16 +223,27 @@ export const Header = () => {
 
               {openDropdown === 'Solutions' && (
                 <div className="absolute top-full left-0 pt-2 z-50">
-                  <div className="bg-background border border-border rounded-lg shadow-xl animate-fade-in min-w-[220px] py-2">
-                    {solutionsItems.map((item) => (
-                      <Link
-                        key={item.href}
-                        to={item.href}
-                        className="block px-4 py-2 text-sm text-muted-foreground hover:text-accent hover:bg-secondary/50 transition-colors"
-                      >
-                        {item.label}
-                      </Link>
-                    ))}
+                  <div className="bg-background border border-border rounded-lg shadow-xl animate-fade-in w-[600px] p-6">
+                    <div className="grid grid-cols-3 gap-6">
+                      {solutionsCategories.map((category) => (
+                        <div key={category.category}>
+                          <h4 className="font-semibold text-foreground mb-3 text-sm">{category.category}</h4>
+                          <ul className="space-y-2">
+                            {category.items.map((item) => (
+                              <li key={item.href}>
+                                <Link
+                                  to={item.href}
+                                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors"
+                                >
+                                  <span className="text-accent">»</span>
+                                  {item.label}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               )}
@@ -273,17 +314,28 @@ export const Header = () => {
               </Link>
 
               {openDropdown === 'Resources' && (
-                <div className="absolute top-full left-0 pt-2 z-50">
-                  <div className="bg-background border border-border rounded-lg shadow-xl animate-fade-in min-w-[220px] py-2">
-                    {resourcesItems.map((item) => (
-                      <Link
-                        key={item.href}
-                        to={item.href}
-                        className="block px-4 py-2 text-sm text-muted-foreground hover:text-accent hover:bg-secondary/50 transition-colors"
-                      >
-                        {item.label}
-                      </Link>
-                    ))}
+                <div className="absolute top-full right-0 pt-2 z-50">
+                  <div className="bg-background border border-border rounded-lg shadow-xl animate-fade-in w-[500px] p-6">
+                    <div className="grid grid-cols-3 gap-6">
+                      {resourcesCategories.map((category) => (
+                        <div key={category.category}>
+                          <h4 className="font-semibold text-foreground mb-3 text-sm">{category.category}</h4>
+                          <ul className="space-y-2">
+                            {category.items.map((item) => (
+                              <li key={item.href}>
+                                <Link
+                                  to={item.href}
+                                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors"
+                                >
+                                  <span className="text-accent">»</span>
+                                  {item.label}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               )}
@@ -370,15 +422,21 @@ export const Header = () => {
                 </button>
                 {openMobileDropdown === 'Solutions' && (
                   <div className="pl-4 pb-2 animate-fade-in">
-                    {solutionsItems.map((item) => (
-                      <Link
-                        key={item.href}
-                        to={item.href}
-                        onClick={() => setIsMenuOpen(false)}
-                        className="block py-1.5 text-sm text-muted-foreground hover:text-accent transition-colors"
-                      >
-                        {item.label}
-                      </Link>
+                    {solutionsCategories.map((category) => (
+                      <div key={category.category} className="mb-4">
+                        <h4 className="font-semibold text-foreground mb-2 text-sm">{category.category}</h4>
+                        {category.items.map((item) => (
+                          <Link
+                            key={item.href}
+                            to={item.href}
+                            onClick={() => setIsMenuOpen(false)}
+                            className="flex items-center gap-2 py-1.5 text-sm text-muted-foreground hover:text-accent transition-colors"
+                          >
+                            <span className="text-accent">»</span>
+                            {item.label}
+                          </Link>
+                        ))}
+                      </div>
                     ))}
                   </div>
                 )}
@@ -426,15 +484,21 @@ export const Header = () => {
                 </button>
                 {openMobileDropdown === 'Resources' && (
                   <div className="pl-4 pb-2 animate-fade-in">
-                    {resourcesItems.map((item) => (
-                      <Link
-                        key={item.href}
-                        to={item.href}
-                        onClick={() => setIsMenuOpen(false)}
-                        className="block py-1.5 text-sm text-muted-foreground hover:text-accent transition-colors"
-                      >
-                        {item.label}
-                      </Link>
+                    {resourcesCategories.map((category) => (
+                      <div key={category.category} className="mb-4">
+                        <h4 className="font-semibold text-foreground mb-2 text-sm">{category.category}</h4>
+                        {category.items.map((item) => (
+                          <Link
+                            key={item.href}
+                            to={item.href}
+                            onClick={() => setIsMenuOpen(false)}
+                            className="flex items-center gap-2 py-1.5 text-sm text-muted-foreground hover:text-accent transition-colors"
+                          >
+                            <span className="text-accent">»</span>
+                            {item.label}
+                          </Link>
+                        ))}
+                      </div>
                     ))}
                   </div>
                 )}
