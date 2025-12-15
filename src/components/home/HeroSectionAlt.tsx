@@ -360,22 +360,22 @@ export const HeroSectionAlt = () => {
           </div>
 
           {/* Right - Visualization */}
-          <div className="relative h-[700px] flex items-center justify-center">
+          <div className="relative h-[600px] w-full flex items-center justify-center">
             {/* Floating particles */}
             {Array.from({ length: 15 }).map((_, i) => (
               <FloatingParticle key={i} index={i} total={15} />
             ))}
 
-            {/* Main orb */}
+            {/* Main orb - centered */}
             <div 
-              className="relative"
+              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
               style={{
-                transform: `translate(${mousePos.x * -5}px, ${mousePos.y * -5}px)`,
+                transform: `translate(calc(-50% + ${mousePos.x * -3}px), calc(-50% + ${mousePos.y * -3}px))`,
                 transition: 'transform 0.3s ease-out',
               }}
             >
               {/* Outer glow rings */}
-              <div className="absolute inset-0 -m-24">
+              <div className="absolute -inset-12">
                 <div 
                   className="absolute inset-0 rounded-full border-2 border-primary/20"
                   style={{ animation: 'pulse-ring 3s ease-out infinite' }}
@@ -392,7 +392,7 @@ export const HeroSectionAlt = () => {
 
               {/* Central orb */}
               <div 
-                className="relative w-48 h-48 rounded-full"
+                className="relative w-40 h-40 rounded-full"
                 style={{ animation: 'glow-light 4s ease-in-out infinite' }}
               >
                 {/* Glass sphere effect */}
@@ -401,111 +401,108 @@ export const HeroSectionAlt = () => {
                 <div className="absolute inset-3 rounded-full bg-white border border-border shadow-inner flex items-center justify-center overflow-hidden">
                   {/* Inner content */}
                   <div className="text-center">
-                    <div className="text-[10px] text-muted-foreground uppercase tracking-widest mb-1">Powered by</div>
-                    <div className="text-xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
+                    <div className="text-[9px] text-muted-foreground uppercase tracking-widest mb-1">Powered by</div>
+                    <div className="text-lg font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
                       Infera AI
                     </div>
                   </div>
                 </div>
               </div>
+            </div>
 
-              {/* Orbiting metric cards with 3D charts */}
-              {metricCards.map((card, idx) => {
-                const angle = (idx / metricCards.length) * Math.PI * 2 - Math.PI / 2;
-                const radius = 240;
-                const x = Math.cos(angle) * radius;
-                const y = Math.sin(angle) * radius;
+            {/* Metric cards - positioned independently around the center */}
+            {metricCards.map((card, idx) => {
+              // Position cards at corners and edges
+              const positions = [
+                { x: -180, y: -140 }, // Top left
+                { x: 180, y: -140 },  // Top right
+                { x: -200, y: 120 },  // Bottom left
+                { x: 200, y: 120 },   // Bottom right
+              ];
+              const pos = positions[idx];
 
-                return (
-                  <div
-                    key={card.label}
-                    className="metric-card absolute left-1/2 top-1/2 cursor-pointer"
+              return (
+                <div
+                  key={card.label}
+                  className="metric-card absolute left-1/2 top-1/2 cursor-pointer"
+                  style={{
+                    transform: `translate(calc(-50% + ${pos.x}px), calc(-50% + ${pos.y}px))`,
+                    animationDelay: `${idx * 1}s`,
+                    zIndex: hoveredCard === idx ? 50 : 10,
+                  }}
+                  onMouseEnter={() => setHoveredCard(idx)}
+                  onMouseLeave={() => setHoveredCard(null)}
+                >
+                  <div 
+                    className="relative px-4 py-3 rounded-xl bg-white border-2 transition-all duration-300 shadow-lg"
                     style={{
-                      transform: `translate(-50%, -50%) translate(${x}px, ${y}px)`,
-                      animationDelay: `${idx * 0.8}s`,
-                      zIndex: hoveredCard === idx ? 50 : 10,
+                      borderColor: hoveredCard === idx ? card.color : `${card.color}40`,
+                      boxShadow: hoveredCard === idx 
+                        ? `0 8px 30px ${card.color}30, 0 4px 15px rgba(0,0,0,0.1)` 
+                        : `0 4px 20px ${card.color}15, 0 2px 10px rgba(0,0,0,0.05)`,
+                      transform: hoveredCard === idx ? 'scale(1.1)' : 'scale(1)',
                     }}
-                    onMouseEnter={() => setHoveredCard(idx)}
-                    onMouseLeave={() => setHoveredCard(null)}
                   >
-                    <div 
-                      className="relative px-4 py-3 rounded-xl bg-white border-2 transition-all duration-300 shadow-lg"
-                      style={{
-                        borderColor: hoveredCard === idx ? card.color : `${card.color}40`,
-                        boxShadow: hoveredCard === idx 
-                          ? `0 8px 30px ${card.color}30, 0 4px 15px rgba(0,0,0,0.1)` 
-                          : `0 4px 20px ${card.color}15, 0 2px 10px rgba(0,0,0,0.05)`,
-                        transform: hoveredCard === idx ? 'scale(1.1)' : 'scale(1)',
-                      }}
-                    >
-                      {/* Card content */}
-                      <div className="relative z-10">
+                    {/* Card content */}
+                    <div className="relative z-10">
+                      <div 
+                        className="text-[12px] font-bold tracking-wide mb-2 whitespace-nowrap"
+                        style={{ color: card.color }}
+                      >
+                        {card.label}
+                      </div>
+                      
+                      {/* Mini 3D Chart */}
+                      <div className="transform perspective-[200px]">
+                        <MiniChart 
+                          data={card.data} 
+                          color={card.color} 
+                          type={card.chartType} 
+                        />
+                      </div>
+                      
+                      {/* Metric indicator */}
+                      <div className="flex items-center gap-1.5 mt-2">
                         <div 
-                          className="text-[12px] font-bold tracking-wide mb-2 whitespace-nowrap"
-                          style={{ color: card.color }}
-                        >
-                          {card.label}
-                        </div>
-                        
-                        {/* Mini 3D Chart */}
-                        <div className="transform perspective-[200px]">
-                          <MiniChart 
-                            data={card.data} 
-                            color={card.color} 
-                            type={card.chartType} 
-                          />
-                        </div>
-                        
-                        {/* Metric indicator */}
-                        <div className="flex items-center gap-1.5 mt-2">
-                          <div 
-                            className="w-2 h-2 rounded-full animate-pulse"
-                            style={{ backgroundColor: card.color }}
-                          />
-                          <span className="text-[10px] font-semibold text-slate-600">
-                            {card.metric}
-                          </span>
-                        </div>
+                          className="w-2 h-2 rounded-full animate-pulse"
+                          style={{ backgroundColor: card.color }}
+                        />
+                        <span className="text-[10px] font-semibold text-slate-600">
+                          {card.metric}
+                        </span>
                       </div>
                     </div>
                   </div>
-                );
-              })}
-            </div>
+                </div>
+              );
+            })}
 
-            {/* Connection lines from orb to cards */}
-            <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ transform: `translate(${mousePos.x * -5}px, ${mousePos.y * -5}px)` }}>
+            {/* Subtle connection lines */}
+            <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-30">
               <defs>
                 <linearGradient id="lineGradLight" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#E94E87" stopOpacity="0.3" />
-                  <stop offset="50%" stopColor="#F97316" stopOpacity="0.2" />
-                  <stop offset="100%" stopColor="#E94E87" stopOpacity="0.1" />
+                  <stop offset="0%" stopColor="#E94E87" stopOpacity="0.5" />
+                  <stop offset="100%" stopColor="#F97316" stopOpacity="0.2" />
                 </linearGradient>
               </defs>
-              {metricCards.map((_, idx) => {
-                const angle = (idx / metricCards.length) * Math.PI * 2 - Math.PI / 2;
-                const innerRadius = 100;
-                const outerRadius = 200;
-                const centerX = 350;
-                const centerY = 350;
-                const x1 = centerX + Math.cos(angle) * innerRadius;
-                const y1 = centerY + Math.sin(angle) * innerRadius;
-                const x2 = centerX + Math.cos(angle) * outerRadius;
-                const y2 = centerY + Math.sin(angle) * outerRadius;
-                return (
-                  <line
-                    key={idx}
-                    x1={x1}
-                    y1={y1}
-                    x2={x2}
-                    y2={y2}
-                    stroke="url(#lineGradLight)"
-                    strokeWidth="2"
-                    strokeDasharray="4 4"
-                    opacity="0.6"
-                  />
-                );
-              })}
+              {/* Lines from center to card positions */}
+              {[
+                { x1: '50%', y1: '50%', x2: '28%', y2: '28%' },
+                { x1: '50%', y1: '50%', x2: '72%', y2: '28%' },
+                { x1: '50%', y1: '50%', x2: '25%', y2: '70%' },
+                { x1: '50%', y1: '50%', x2: '75%', y2: '70%' },
+              ].map((line, idx) => (
+                <line
+                  key={idx}
+                  x1={line.x1}
+                  y1={line.y1}
+                  x2={line.x2}
+                  y2={line.y2}
+                  stroke="url(#lineGradLight)"
+                  strokeWidth="1"
+                  strokeDasharray="6 4"
+                />
+              ))}
             </svg>
           </div>
         </div>
