@@ -1,37 +1,125 @@
 import { Layout } from "@/components/layout/Layout";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "@/hooks/use-toast";
-import { ArrowRight, Zap, Shield, RefreshCw } from "lucide-react";
 
 const integrations = [
-  { name: 'Hint Health', color: 'from-blue-500 to-cyan-400' },
-  { name: 'Elation', color: 'from-emerald-500 to-teal-400' },
-  { name: 'Cerbo', color: 'from-violet-500 to-purple-400' },
-  { name: 'Epic', color: 'from-orange-500 to-amber-400' },
-  { name: 'Stripe', color: 'from-indigo-500 to-blue-400' },
-  { name: 'Fitbit', color: 'from-pink-500 to-rose-400' },
-  { name: 'OURA', color: 'from-slate-600 to-slate-400' },
-  { name: 'Dexcom', color: 'from-green-500 to-emerald-400' },
-  { name: 'Garmin', color: 'from-sky-500 to-blue-400' },
-  { name: 'Cerner', color: 'from-red-500 to-orange-400' },
-  { name: 'AthenaHealth', color: 'from-purple-500 to-pink-400' },
-  { name: 'DrChrono', color: 'from-teal-500 to-cyan-400' },
+  { name: 'Stripe', x: 48, y: 8, highlighted: false },
+  { name: 'Fitbit', x: 68, y: 10, highlighted: false },
+  { name: 'Hint', x: 58, y: 16, highlighted: true },
+  { name: 'Cerbo', x: 72, y: 18, highlighted: true },
+  { name: 'OURA', x: 85, y: 14, highlighted: false },
+  { name: 'Azalea Health', x: 12, y: 18, highlighted: false },
+  { name: 'AdvancedMD', x: 28, y: 16, highlighted: false },
+  { name: 'Elation', x: 38, y: 22, highlighted: true },
+  { name: 'Dexcom', x: 92, y: 22, highlighted: false },
+  { name: 'Allscripts', x: 8, y: 28, highlighted: false },
+  { name: 'Wahoo', x: 25, y: 26, highlighted: false },
+  { name: 'AkuteHealth', x: 82, y: 28, highlighted: true },
+  { name: 'NextGen', x: 94, y: 32, highlighted: false },
+  { name: 'Netsmart', x: 18, y: 36, highlighted: false },
+  { name: 'CharmHealth', x: 35, y: 34, highlighted: true },
+  { name: 'Lemlist', x: 78, y: 36, highlighted: false },
+  { name: 'Google Fit', x: 88, y: 38, highlighted: false },
+  { name: 'DrChrono', x: 10, y: 42, highlighted: false },
+  { name: 'Garmin', x: 22, y: 48, highlighted: false },
+  { name: 'Spruce', x: 38, y: 46, highlighted: false },
+  { name: 'TriNet', x: 94, y: 48, highlighted: false },
+  { name: 'Quest', x: 14, y: 56, highlighted: false },
+  { name: 'Epic', x: 30, y: 58, highlighted: false },
+  { name: 'Practice Fusion', x: 42, y: 64, highlighted: true },
+  { name: 'Google Console', x: 78, y: 52, highlighted: false },
+  { name: 'Yuzu Health', x: 88, y: 56, highlighted: false },
+  { name: 'OMRON', x: 14, y: 68, highlighted: false },
+  { name: 'Cerner', x: 32, y: 72, highlighted: false },
+  { name: 'eClinicalWorks', x: 52, y: 74, highlighted: false },
+  { name: 'Google Analytics', x: 74, y: 64, highlighted: false },
+  { name: 'Workday', x: 84, y: 66, highlighted: false },
+  { name: 'ModMed', x: 94, y: 72, highlighted: false },
+  { name: 'ManifestRx', x: 60, y: 78, highlighted: false },
+  { name: 'AthenaHealth', x: 75, y: 76, highlighted: false },
+  { name: 'QuickBooks', x: 86, y: 80, highlighted: false },
+  { name: 'Paycom', x: 95, y: 84, highlighted: false },
 ];
 
 const categories = [
-  'All',
-  'EHR Systems',
+  'Electronic Health Records',
+  'Claims',
   'Wearables',
-  'Billing',
-  'Labs',
   'Communication',
+  'Labs',
+  'Continuous Glucose Monitoring',
+  'Dental',
+  'Billing',
+  'Human Capital',
 ];
+
+// SVG animated connection paths
+const ConnectionLines = () => {
+  const [animationOffset, setAnimationOffset] = useState(0);
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setAnimationOffset(prev => (prev + 1) % 100);
+    }, 50);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 1 }}>
+      <defs>
+        <linearGradient id="connectionGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0" />
+          <stop offset="50%" stopColor="hsl(var(--primary))" stopOpacity="0.6" />
+          <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0" />
+        </linearGradient>
+        <filter id="glow">
+          <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+          <feMerge>
+            <feMergeNode in="coloredBlur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+      </defs>
+      
+      {/* Animated flowing lines from integrations to center */}
+      {[
+        "M 10% 30% Q 30% 40% 50% 50%",
+        "M 20% 55% Q 35% 50% 50% 50%",
+        "M 15% 70% Q 32% 60% 50% 50%",
+        "M 90% 25% Q 70% 38% 50% 50%",
+        "M 85% 45% Q 68% 48% 50% 50%",
+        "M 92% 65% Q 72% 58% 50% 50%",
+        "M 30% 15% Q 40% 32% 50% 50%",
+        "M 70% 12% Q 60% 32% 50% 50%",
+        "M 25% 80% Q 38% 65% 50% 50%",
+        "M 80% 82% Q 65% 66% 50% 50%",
+      ].map((path, i) => (
+        <g key={i}>
+          <path
+            d={path}
+            fill="none"
+            stroke="hsl(var(--border))"
+            strokeWidth="1"
+            opacity="0.4"
+          />
+          <circle r="3" fill="hsl(var(--primary))" opacity="0.8" filter="url(#glow)">
+            <animateMotion
+              dur={`${3 + i * 0.3}s`}
+              repeatCount="indefinite"
+              path={path}
+            />
+          </circle>
+        </g>
+      ))}
+    </svg>
+  );
+};
 
 const Integration = () => {
   const [email, setEmail] = useState('');
-  const [activeCategory, setActiveCategory] = useState('All');
+  const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -46,199 +134,155 @@ const Integration = () => {
 
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="relative min-h-screen bg-slate-950 overflow-hidden">
-        {/* Animated gradient orbs */}
-        <div className="absolute top-20 left-1/4 w-96 h-96 bg-primary/30 rounded-full blur-[120px] animate-pulse" />
-        <div className="absolute bottom-20 right-1/4 w-80 h-80 bg-violet-500/20 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '1s' }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-[150px]" />
-        
-        {/* Grid pattern */}
-        <div 
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage: `linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)`,
-            backgroundSize: '60px 60px'
-          }}
-        />
-
-        <div className="container relative z-10 pt-32 pb-24">
+      <section className="py-16 md:py-24 bg-background overflow-hidden">
+        <div className="container mx-auto px-4">
           {/* Header */}
-          <div className="text-center mb-20">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-sm text-white/70">50+ Active Integrations</span>
-            </div>
-            <h1 className="text-5xl md:text-7xl font-display font-bold text-white mb-6 tracking-tight">
-              Connect Everything
+          <div className="text-center mb-12">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4">
+              Connect with your <span className="text-gradient">existing apps</span>
             </h1>
-            <p className="text-lg md:text-xl text-white/60 max-w-xl mx-auto leading-relaxed">
-              Seamlessly integrate with the healthcare tools you already use
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Seamlessly integrate with 50+ healthcare and business applications
             </p>
           </div>
 
-          {/* Central Hub with Orbital Icons */}
-          <div className="relative max-w-4xl mx-auto h-[500px] flex items-center justify-center">
-            {/* Center hub */}
-            <div className="relative z-20">
-              <div className="w-32 h-32 md:w-40 md:h-40 rounded-3xl bg-gradient-to-br from-primary via-primary/80 to-violet-600 p-[2px] shadow-2xl shadow-primary/40">
-                <div className="w-full h-full rounded-3xl bg-slate-900 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-white">HC</div>
-                    <div className="text-xs text-white/50 mt-1">Hub</div>
-                  </div>
-                </div>
+          {/* Integrations Title */}
+          <div className="max-w-6xl mx-auto mb-8">
+            <h2 className="text-2xl font-bold text-foreground">Integrations</h2>
+          </div>
+
+          {/* Integrations Cloud with Central Hub */}
+          <div className="max-w-6xl mx-auto mb-16">
+            <div className="relative h-[550px] md:h-[650px] bg-gradient-to-br from-secondary/30 via-background to-secondary/20 rounded-2xl border border-border/50 overflow-hidden">
+              {/* Grid Pattern Background */}
+              <div className="absolute inset-0 opacity-40">
+                <div className="absolute inset-0" style={{
+                  backgroundImage: 'radial-gradient(circle at 1px 1px, hsl(var(--border)) 1px, transparent 0)',
+                  backgroundSize: '32px 32px'
+                }}></div>
               </div>
-            </div>
 
-            {/* Orbital rings */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-[300px] h-[300px] md:w-[400px] md:h-[400px] rounded-full border border-white/5" />
-              <div className="absolute w-[450px] h-[450px] md:w-[550px] md:h-[550px] rounded-full border border-white/5" />
-            </div>
+              {/* Animated Connection Lines */}
+              <ConnectionLines />
 
-            {/* Floating integration cards */}
-            {integrations.map((integration, index) => {
-              const angle = (index * 30) - 60;
-              const radius = index % 2 === 0 ? 180 : 240;
-              const x = Math.cos((angle * Math.PI) / 180) * radius;
-              const y = Math.sin((angle * Math.PI) / 180) * radius;
-              
-              return (
-                <div
-                  key={integration.name}
-                  className="absolute group cursor-pointer"
-                  style={{
-                    left: `calc(50% + ${x}px)`,
-                    top: `calc(50% + ${y}px)`,
-                    transform: 'translate(-50%, -50%)',
-                    animation: `orbit ${20 + index * 2}s linear infinite`,
-                  }}
-                >
-                  <div className="relative">
-                    {/* Glow effect */}
-                    <div className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${integration.color} opacity-0 group-hover:opacity-40 blur-xl transition-opacity duration-300`} />
+              {/* Central Insights Hub */}
+              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
+                <div className="relative">
+                  {/* Pulsing glow */}
+                  <div className="absolute inset-0 -m-6 bg-primary/20 rounded-2xl blur-xl animate-pulse"></div>
+                  
+                  <div className="relative bg-card border border-border rounded-xl shadow-elevated p-5 w-48 md:w-56">
+                    {/* Window controls */}
+                    <div className="flex items-center gap-1.5 mb-4">
+                      <div className="w-2.5 h-2.5 rounded-full bg-red-400"></div>
+                      <div className="w-2.5 h-2.5 rounded-full bg-yellow-400"></div>
+                      <div className="w-2.5 h-2.5 rounded-full bg-green-400"></div>
+                    </div>
                     
-                    {/* Card */}
-                    <div className="relative px-4 py-3 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 hover:border-white/30 hover:bg-white/10 transition-all duration-300 hover:scale-110">
-                      <div className="flex items-center gap-3">
-                        <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${integration.color} flex items-center justify-center text-white font-bold text-sm shadow-lg`}>
-                          {integration.name.charAt(0)}
-                        </div>
-                        <span className="text-sm font-medium text-white/90 whitespace-nowrap">
-                          {integration.name}
-                        </span>
+                    {/* Content */}
+                    <div className="flex items-center gap-2 mb-3">
+                      <div className="w-6 h-6 bg-primary/20 rounded flex items-center justify-center">
+                        <span className="text-xs">📊</span>
                       </div>
+                      <div>
+                        <h3 className="text-lg font-bold text-foreground leading-tight">Insights</h3>
+                        <p className="text-[10px] text-primary font-medium">HealthCompiler</p>
+                      </div>
+                    </div>
+                    
+                    {/* Skeleton lines */}
+                    <div className="space-y-2 mb-4">
+                      <div className="h-2 bg-muted rounded-full w-full"></div>
+                      <div className="h-2 bg-muted rounded-full w-3/4"></div>
+                      <div className="h-2 bg-muted rounded-full w-1/2"></div>
+                    </div>
+                    
+                    {/* Mini chart */}
+                    <div className="flex items-end gap-1 h-12">
+                      {[30, 50, 40, 70, 55, 45, 65].map((h, i) => (
+                        <div 
+                          key={i}
+                          className="flex-1 bg-primary/40 rounded-t-sm transition-all duration-500"
+                          style={{ 
+                            height: `${h}%`,
+                            animation: `pulse ${1.5 + i * 0.2}s ease-in-out infinite`,
+                            animationDelay: `${i * 0.1}s`
+                          }}
+                        ></div>
+                      ))}
                     </div>
                   </div>
                 </div>
-              );
-            })}
-          </div>
-
-          {/* Connection lines animation */}
-          <div className="absolute inset-0 pointer-events-none overflow-hidden">
-            {[...Array(6)].map((_, i) => (
-              <div
-                key={i}
-                className="absolute w-px bg-gradient-to-b from-transparent via-primary/30 to-transparent"
-                style={{
-                  left: `${20 + i * 12}%`,
-                  top: '20%',
-                  height: '60%',
-                  animation: `pulse ${2 + i * 0.5}s ease-in-out infinite`,
-                  animationDelay: `${i * 0.3}s`,
-                  opacity: 0.3
-                }}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Categories & Features Section */}
-      <section className="py-20 bg-background">
-        <div className="container">
-          {/* Category Pills */}
-          <div className="flex flex-wrap justify-center gap-3 mb-20">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setActiveCategory(category)}
-                className={`
-                  px-6 py-3 rounded-full text-sm font-medium transition-all duration-300
-                  ${activeCategory === category 
-                    ? 'bg-foreground text-background shadow-lg' 
-                    : 'bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground'
-                  }
-                `}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-
-          {/* Features Grid */}
-          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {[
-              {
-                icon: Zap,
-                title: "Instant Sync",
-                description: "Real-time data synchronization across all connected platforms"
-              },
-              {
-                icon: Shield,
-                title: "HIPAA Compliant",
-                description: "Enterprise-grade security for all your healthcare data"
-              },
-              {
-                icon: RefreshCw,
-                title: "Auto Updates",
-                description: "Integrations stay current with automatic version updates"
-              }
-            ].map((feature, index) => (
-              <div 
-                key={index}
-                className="group p-8 rounded-3xl bg-card border border-border hover:border-foreground/20 transition-all duration-500 hover:shadow-2xl"
-              >
-                <div className="w-14 h-14 rounded-2xl bg-muted flex items-center justify-center mb-6 group-hover:bg-foreground group-hover:text-background transition-colors duration-300">
-                  <feature.icon className="w-6 h-6" />
-                </div>
-                <h3 className="text-xl font-semibold text-foreground mb-3">{feature.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* CTA Section */}
-      <section className="py-24 bg-muted/50">
-        <div className="container">
-          <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">
-              Need a custom integration?
-            </h2>
-            <p className="text-lg text-muted-foreground mb-10">
-              Tell us what you need and our team will build it for you
+              {/* Floating Integration Cards */}
+              {integrations.map((integration, index) => (
+                <div
+                  key={integration.name}
+                  className={`
+                    absolute px-3 py-2 md:px-4 md:py-2.5 rounded-lg border text-xs md:text-sm font-medium
+                    transition-all duration-300 cursor-pointer z-10 whitespace-nowrap
+                    hover:scale-105 hover:z-30 hover:shadow-lg
+                    ${integration.highlighted 
+                      ? 'border-primary bg-primary/10 text-primary shadow-md' 
+                      : 'border-border bg-card text-foreground hover:border-primary/50'
+                    }
+                  `}
+                  style={{
+                    left: `${integration.x}%`,
+                    top: `${integration.y}%`,
+                    transform: 'translate(-50%, -50%)',
+                    animation: `float ${3 + (index % 4)}s ease-in-out infinite`,
+                    animationDelay: `${index * 0.08}s`,
+                  }}
+                >
+                  {integration.name}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Categories */}
+          <div className="mb-16">
+            <div className="flex flex-wrap justify-center gap-3">
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  onClick={() => setActiveCategory(activeCategory === category ? null : category)}
+                  className={`
+                    px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 border
+                    ${activeCategory === category 
+                      ? 'bg-foreground text-background border-foreground' 
+                      : 'bg-card border-border text-muted-foreground hover:border-foreground/30 hover:text-foreground'
+                    }
+                  `}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Request Form */}
+          <div className="max-w-xl mx-auto text-center">
+            <p className="text-lg text-foreground mb-8">
+              If your app is missing, we can help quickly build an integration
             </p>
-            
-            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+            <form onSubmit={handleSubmit} className="space-y-4">
               <Input
                 type="email"
                 placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="h-14 text-base bg-background border-border rounded-full px-6"
+                className="h-14 text-base bg-card border-border rounded-lg"
                 required
               />
               <Button 
                 type="submit" 
                 size="lg" 
-                className="h-14 px-8 rounded-full font-semibold gap-2"
+                className="w-full sm:w-auto h-14 px-16 text-base font-semibold rounded-lg"
               >
-                Get Started
-                <ArrowRight className="w-4 h-4" />
+                Submit
               </Button>
             </form>
           </div>
@@ -246,9 +290,9 @@ const Integration = () => {
       </section>
 
       <style>{`
-        @keyframes orbit {
-          0% { transform: translate(-50%, -50%) rotate(0deg) translateX(0px) rotate(0deg); }
-          100% { transform: translate(-50%, -50%) rotate(0deg) translateX(0px) rotate(0deg); }
+        @keyframes float {
+          0%, 100% { transform: translate(-50%, -50%) translateY(0px); }
+          50% { transform: translate(-50%, -50%) translateY(-6px); }
         }
       `}</style>
     </Layout>
