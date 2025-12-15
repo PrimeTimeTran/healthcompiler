@@ -8,6 +8,7 @@ import Capabilities from "./pages/Capabilities";
 import Solutions from "./pages/Solutions";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import Integration from "./pages/Integration";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,6 +25,7 @@ const App = () => (
           <Route path="/solutions" element={<Solutions />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/platform/integration" element={<Integration />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
