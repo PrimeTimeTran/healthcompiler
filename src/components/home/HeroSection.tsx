@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Shield, Lock, Target, Layers } from 'lucide-react';
+import { HeroVisualization } from './HeroVisualization';
 
 const trustSignals = [
   { icon: Shield, label: 'HIPAA-Aligned' },
@@ -18,8 +19,12 @@ export const HeroSection = () => {
         <div className="absolute bottom-0 left-0 w-80 h-80 bg-accent/10 rounded-full blur-3xl" />
       </div>
 
-      <div className="container-tight mx-auto px-6 py-20 md:py-32 relative z-10">
+      <div className="container-tight mx-auto px-6 py-20 md:py-28 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
+          {/* Animated Visualization */}
+          <div className="animate-fade-in">
+            <HeroVisualization />
+          </div>
           {/* Main headline */}
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 animate-fade-in">
             Intelligent Data & Workflow{' '}
