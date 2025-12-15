@@ -16,6 +16,8 @@ export default {
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
         display: ['Outfit', 'sans-serif'],
+        'apex-display': ['Cormorant Garamond', 'serif'],
+        'apex-body': ['DM Sans', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -54,6 +56,14 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // APEX Magazine colors
+        'apex-bg': "hsl(var(--apex-bg))",
+        'apex-bg-secondary': "hsl(var(--apex-bg-secondary))",
+        'apex-foreground': "hsl(var(--apex-foreground))",
+        'apex-muted': "hsl(var(--apex-muted))",
+        'apex-accent': "hsl(var(--apex-accent))",
+        'apex-accent-warm': "hsl(var(--apex-accent-warm))",
+        'apex-border': "hsl(var(--apex-border))",
       },
       borderRadius: {
         lg: "var(--radius)",
