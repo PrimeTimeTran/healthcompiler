@@ -31,7 +31,7 @@ const navItems: NavItem[] = [
     ]
   },
   { 
-    label: 'Solutions', 
+    label: 'Who We Serve', 
     href: '/solutions',
     isMultiColumn: true,
     subItems: [
@@ -76,7 +76,7 @@ const navItems: NavItem[] = [
       { label: 'FAQs', href: '/resources/faqs' },
     ]
   },
-  { label: 'Partners', href: '/partners' },
+  { label: 'Solutions', href: '/partners' },
   { label: 'About Us', href: '/about' },
   { label: 'Contact Us', href: '/contact' },
 ];
