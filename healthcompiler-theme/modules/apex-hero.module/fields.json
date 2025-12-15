@@ -1,0 +1,36 @@
+[
+  {
+    "id": "eyebrow",
+    "name": "eyebrow",
+    "label": "Eyebrow Text",
+    "type": "text",
+    "default": "A Community initiative by Health Compiler"
+  },
+  {
+    "id": "headline",
+    "name": "headline",
+    "label": "Headline",
+    "type": "text",
+    "default": "Celebrating CHANGE MAKERS in Direct Care, Human Capital, Benefit Advisory and beyond"
+  },
+  {
+    "id": "logo",
+    "name": "logo",
+    "label": "APEX Logo",
+    "type": "image",
+    "default": {
+      "src": "",
+      "alt": "APEX Magazine"
+    }
+  },
+  {
+    "id": "background_image",
+    "name": "background_image",
+    "label": "Background Image (optional)",
+    "type": "image",
+    "default": {
+      "src": "",
+      "alt": ""
+    }
+  }
+]

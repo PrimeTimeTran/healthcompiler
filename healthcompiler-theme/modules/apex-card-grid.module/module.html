@@ -1,0 +1,225 @@
+{% if module.profiles %}
+<div class="apex-grid apex-grid--cols-{{ module.columns_desktop }}">
+  {% for profile in module.profiles %}
+    <article class="apex-card" style="animation-delay: {{ loop.index0 * 50 }}ms;">
+      <div class="apex-card__image-wrapper">
+        {% if profile.image.src %}
+          <img 
+            src="{{ profile.image.src }}" 
+            alt="{{ profile.image.alt|default(profile.name) }}" 
+            class="apex-card__image"
+            loading="lazy"
+          >
+        {% else %}
+          <div class="apex-card__placeholder">
+            <span class="apex-card__initials">
+              {% set name_parts = profile.name|split(' ') %}
+              {% for part in name_parts %}{{ part[0] }}{% endfor %}
+            </span>
+          </div>
+        {% endif %}
+        
+        <div class="apex-card__overlay">
+          <div class="apex-card__overlay-content">
+            <h3 class="apex-card__name-overlay">{{ profile.name }}</h3>
+            {% if profile.title %}
+              <p class="apex-card__title-overlay">{{ profile.title }}</p>
+            {% endif %}
+            <a href="{{ profile.link_url }}" class="apex-card__button">
+              {{ profile.link_label }}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="apex-card__footer">
+        <h3 class="apex-card__name">{{ profile.name }}</h3>
+        {% if profile.title %}
+          <p class="apex-card__title">{{ profile.title }}</p>
+        {% endif %}
+      </div>
+    </article>
+  {% endfor %}
+</div>
+{% endif %}
+
+<style>
+.apex-grid {
+  display: grid;
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .apex-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .apex-grid--cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .apex-grid--cols-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .apex-grid--cols-5 {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+/* Card styles inherited from apex-profile-card */
+.apex-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  background: var(--card, #ffffff);
+  border: 1px solid var(--border, #e5e5e5);
+  box-shadow: 0 4px 24px -2px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+  animation: fadeInUp 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+.apex-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 32px -4px rgba(0, 0, 0, 0.12);
+}
+
+.apex-card__image-wrapper {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+}
+
+.apex-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.apex-card__placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 50%, #fce7f3 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.apex-card__initials {
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, hsl(340, 75%, 60%) 0%, hsl(28, 90%, 60%) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  padding: 1.5rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  width: 6rem;
+  height: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.apex-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  align-items: flex-end;
+  padding: 1.5rem;
+}
+
+.apex-card:hover .apex-card__overlay {
+  opacity: 1;
+}
+
+.apex-card__overlay-content {
+  width: 100%;
+}
+
+.apex-card__name-overlay {
+  color: white;
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+}
+
+.apex-card__title-overlay {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.875rem;
+  margin: 0 0 1rem;
+}
+
+.apex-card__button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, hsl(340, 75%, 60%) 0%, hsl(28, 90%, 60%) 100%);
+  color: white;
+  text-decoration: none;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
+  justify-content: center;
+}
+
+.apex-card__button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.apex-card__footer {
+  padding: 1rem;
+  text-align: center;
+}
+
+.apex-card__name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--foreground, #1a1a1a);
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.apex-card:hover .apex-card__name {
+  background: linear-gradient(135deg, hsl(340, 75%, 60%) 0%, hsl(28, 90%, 60%) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.apex-card__title {
+  font-size: 0.875rem;
+  color: var(--muted-foreground, #6b7280);
+  margin: 0.25rem 0 0;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>

@@ -1,0 +1,47 @@
+[
+  {
+    "id": "name",
+    "name": "name",
+    "label": "Name",
+    "type": "text",
+    "required": true,
+    "default": "Dr. Jane Smith"
+  },
+  {
+    "id": "title",
+    "name": "title",
+    "label": "Title/Role (optional)",
+    "type": "text",
+    "default": ""
+  },
+  {
+    "id": "image",
+    "name": "image",
+    "label": "Profile Image",
+    "type": "image",
+    "default": {
+      "src": "",
+      "alt": "Profile photo"
+    }
+  },
+  {
+    "id": "link_label",
+    "name": "link_label",
+    "label": "Button Label",
+    "type": "text",
+    "default": "Read Story"
+  },
+  {
+    "id": "link_url",
+    "name": "link_url",
+    "label": "Profile URL",
+    "type": "link",
+    "default": {
+      "url": {
+        "href": "#",
+        "type": "EXTERNAL"
+      },
+      "open_in_new_tab": false
+    }
+  }
+]

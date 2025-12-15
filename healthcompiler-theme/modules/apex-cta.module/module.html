@@ -1,0 +1,103 @@
+<section class="apex-cta">
+  <div class="apex-cta__container">
+    <div class="apex-cta__card">
+      {% if module.title %}
+        <h2 class="apex-cta__title">{{ module.title }}</h2>
+      {% endif %}
+      
+      {% if module.body %}
+        <p class="apex-cta__body">{{ module.body }}</p>
+      {% endif %}
+      
+      {% if module.button_label and module.button_url.url.href %}
+        <a 
+          href="{{ module.button_url.url.href }}" 
+          class="apex-cta__button"
+          {% if module.button_url.open_in_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
+        >
+          {{ module.button_label }}
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<style>
+.apex-cta {
+  padding: 5rem 0 7rem;
+  background: linear-gradient(to bottom, var(--background-secondary, #f9fafb) 0%, var(--background, #ffffff) 100%);
+}
+
+.apex-cta__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.apex-cta__card {
+  max-width: 48rem;
+  margin: 0 auto;
+  text-align: center;
+  background: var(--card, #ffffff);
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  box-shadow: 0 8px 32px -4px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--border, #e5e5e5);
+}
+
+@media (min-width: 768px) {
+  .apex-cta__card {
+    padding: 4rem;
+  }
+}
+
+.apex-cta__title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, hsl(340, 75%, 60%) 0%, hsl(28, 90%, 60%) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0 0 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .apex-cta__title {
+    font-size: 2.25rem;
+  }
+}
+
+.apex-cta__body {
+  font-size: 1.125rem;
+  color: var(--muted-foreground, #6b7280);
+  line-height: 1.7;
+  margin: 0 0 2rem;
+}
+
+.apex-cta__button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, hsl(340, 75%, 60%) 0%, hsl(28, 90%, 60%) 100%);
+  color: white;
+  text-decoration: none;
+  border-radius: 9999px;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.apex-cta__button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.apex-cta__button:active {
+  transform: translateY(0);
+}
+</style>
