@@ -1,6 +1,6 @@
 import { Layout } from '@/components/layout/Layout';
 import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { 
   BarChart3, 
@@ -148,11 +148,32 @@ const outcomes = [
 ];
 
 const Capabilities = () => {
-  const [activeTab, setActiveTab] = useState<TabType>('capabilities');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const tabFromUrl = searchParams.get('tab') as TabType | null;
+  const [activeTab, setActiveTab] = useState<TabType>(tabFromUrl === 'platform' ? 'platform' : 'capabilities');
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
+
+  // Sync tab state with URL
+  useEffect(() => {
+    const tab = searchParams.get('tab') as TabType | null;
+    if (tab === 'platform') {
+      setActiveTab('platform');
+    } else if (!tab) {
+      setActiveTab('capabilities');
+    }
+  }, [searchParams]);
+
+  const handleTabChange = (tab: TabType) => {
+    setActiveTab(tab);
+    if (tab === 'platform') {
+      setSearchParams({ tab: 'platform' });
+    } else {
+      setSearchParams({});
+    }
+  };
 
   const activeCapability = capabilities[activeIndex];
 
@@ -232,7 +253,7 @@ const Capabilities = () => {
           {/* Tab Switcher */}
           <div className="inline-flex bg-secondary rounded-full p-1">
             <button
-              onClick={() => setActiveTab('capabilities')}
+              onClick={() => handleTabChange('capabilities')}
               className={cn(
                 "px-6 py-2 rounded-full text-sm font-medium transition-all duration-300",
                 activeTab === 'capabilities' 
@@ -243,7 +264,7 @@ const Capabilities = () => {
               Capabilities
             </button>
             <button
-              onClick={() => setActiveTab('platform')}
+              onClick={() => handleTabChange('platform')}
               className={cn(
                 "px-6 py-2 rounded-full text-sm font-medium transition-all duration-300",
                 activeTab === 'platform' 
