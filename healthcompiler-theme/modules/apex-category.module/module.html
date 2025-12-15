@@ -1,0 +1,67 @@
+{% if module.title %}
+<div class="apex-category scroll-reveal">
+  <div class="apex-category__inner">
+    {% if module.show_divider %}
+      <div class="apex-category__divider"></div>
+    {% endif %}
+    
+    <h2 class="apex-category__title">{{ module.title }}</h2>
+    
+    {% if module.show_divider %}
+      <div class="apex-category__divider"></div>
+    {% endif %}
+  </div>
+</div>
+{% endif %}
+
+<style>
+.apex-category {
+  padding: 3rem 0;
+  width: 100%;
+}
+
+.apex-category__inner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.apex-category__divider {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--border), transparent);
+}
+
+.apex-category__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, hsl(340, 75%, 60%) 0%, hsl(28, 90%, 60%) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 0.05em;
+  margin: 0;
+  white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+  .apex-category__title {
+    font-size: 1.875rem;
+  }
+}
+
+/* Scroll reveal animation */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>

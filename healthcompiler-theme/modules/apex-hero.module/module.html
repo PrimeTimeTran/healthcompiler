@@ -1,0 +1,114 @@
+<section class="apex-hero" {% if module.background_image.src %}style="background-image: url('{{ module.background_image.src }}');"{% endif %}>
+  <div class="apex-hero__container">
+    <div class="apex-hero__content">
+      {% if module.logo.src %}
+        <img src="{{ module.logo.src }}" alt="{{ module.logo.alt }}" class="apex-hero__logo" loading="lazy">
+      {% else %}
+        <div class="apex-hero__logo-text">
+          <h1 class="apex-hero__title">APEX</h1>
+          <p class="apex-hero__subtitle">magazine</p>
+        </div>
+      {% endif %}
+      
+      {% if module.eyebrow %}
+        <p class="apex-hero__eyebrow">{{ module.eyebrow }}</p>
+      {% endif %}
+      
+      {% if module.headline %}
+        <h2 class="apex-hero__headline">{{ module.headline }}</h2>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<style>
+.apex-hero {
+  padding: 8rem 0 4rem;
+  background: linear-gradient(to bottom, var(--background) 0%, var(--background-secondary) 100%);
+  position: relative;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+}
+
+.apex-hero__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.apex-hero__content {
+  max-width: 56rem;
+  margin: 0 auto;
+  text-align: center;
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.apex-hero__logo {
+  max-height: 120px;
+  margin: 0 auto 2rem;
+}
+
+.apex-hero__logo-text {
+  margin-bottom: 2rem;
+}
+
+.apex-hero__title {
+  font-size: 4rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, hsl(340, 75%, 60%) 0%, hsl(28, 90%, 60%) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.apex-hero__subtitle {
+  font-size: 1.125rem;
+  color: var(--muted-foreground);
+  font-style: italic;
+  margin: 0.5rem 0 0;
+}
+
+.apex-hero__eyebrow {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+}
+
+.apex-hero__headline {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--foreground);
+  line-height: 1.3;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .apex-hero {
+    padding: 10rem 0 5rem;
+  }
+  
+  .apex-hero__title {
+    font-size: 6rem;
+  }
+  
+  .apex-hero__headline {
+    font-size: 2.25rem;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>

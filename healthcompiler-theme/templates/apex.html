@@ -1,0 +1,218 @@
+<!--
+  APEX Magazine Page Template
+  Template for Health Compiler's APEX community initiative
+-->
+{% extends "./layouts/base.html" %}
+
+{% block body %}
+<main class="apex-page">
+  {# Hero Section #}
+  {% module "apex_hero" path="./modules/apex-hero.module" %}
+  
+  {# 
+    Filter Section (optional client-side filtering)
+    This can be enabled via JavaScript for client-side filtering
+  #}
+  <section class="apex-filter" id="apex-filter">
+    <div class="apex-filter__container">
+      <div class="apex-filter__search">
+        <svg class="apex-filter__search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/>
+          <path d="M21 21l-4.35-4.35"/>
+        </svg>
+        <input 
+          type="text" 
+          placeholder="Search by name..." 
+          class="apex-filter__input"
+          id="apex-search"
+          aria-label="Search profiles"
+        >
+      </div>
+      <div class="apex-filter__categories" id="apex-categories">
+        <button class="apex-filter__btn apex-filter__btn--active" data-category="all">All</button>
+        <!-- Categories will be populated dynamically or can be added manually -->
+      </div>
+    </div>
+  </section>
+  
+  {# Profile Sections - Each section can have an optional category header #}
+  <section class="apex-profiles">
+    {# Featured profiles without category #}
+    {% module "apex_grid_featured" path="./modules/apex-card-grid.module" %}
+    
+    {# REIMAGINE HEALTHCARE #}
+    {% module "apex_category_reimagine" path="./modules/apex-category.module"
+      title="REIMAGINE HEALTHCARE"
+    %}
+    {% module "apex_grid_reimagine" path="./modules/apex-card-grid.module" %}
+    
+    {# COST SAVINGS ELEVATED #}
+    {% module "apex_category_cost" path="./modules/apex-category.module"
+      title="COST SAVINGS ELEVATED"
+    %}
+    {% module "apex_grid_cost" path="./modules/apex-card-grid.module" %}
+    
+    {# BENEFITS REDEFINED #}
+    {% module "apex_category_benefits" path="./modules/apex-category.module"
+      title="BENEFITS REDEFINED"
+    %}
+    {% module "apex_grid_benefits" path="./modules/apex-card-grid.module" %}
+    
+    {# STRENGTH IN CARE #}
+    {% module "apex_category_strength" path="./modules/apex-category.module"
+      title="STRENGTH IN CARE"
+    %}
+    {% module "apex_grid_strength" path="./modules/apex-card-grid.module" %}
+    
+    {# ENHANCED ACCESS #}
+    {% module "apex_category_access" path="./modules/apex-category.module"
+      title="ENHANCED ACCESS"
+    %}
+    {% module "apex_grid_access" path="./modules/apex-card-grid.module" %}
+  </section>
+  
+  {# Final CTA #}
+  {% module "apex_cta" path="./modules/apex-cta.module" %}
+</main>
+
+<style>
+/* Filter Section Styles */
+.apex-filter {
+  padding: 2rem 0;
+  background: var(--background-secondary, #f9fafb);
+  border-top: 1px solid var(--border, #e5e5e5);
+  border-bottom: 1px solid var(--border, #e5e5e5);
+  position: sticky;
+  top: 72px;
+  z-index: 40;
+  backdrop-filter: blur(12px);
+  background-color: rgba(249, 250, 251, 0.95);
+}
+
+.apex-filter__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (min-width: 768px) {
+  .apex-filter__container {
+    flex-direction: row;
+  }
+}
+
+.apex-filter__search {
+  position: relative;
+  width: 100%;
+  max-width: 20rem;
+}
+
+.apex-filter__search-icon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted-foreground, #6b7280);
+}
+
+.apex-filter__input {
+  width: 100%;
+  padding: 0.5rem 1rem 0.5rem 2.5rem;
+  border-radius: 9999px;
+  border: 1px solid var(--border, #e5e5e5);
+  background: var(--card, #ffffff);
+  color: var(--foreground, #1a1a1a);
+  font-size: 0.875rem;
+}
+
+.apex-filter__input:focus {
+  outline: none;
+  border-color: var(--accent, #f97316);
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.2);
+}
+
+.apex-filter__categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.apex-filter__btn {
+  padding: 0.375rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: var(--secondary, #f3f4f6);
+  color: var(--muted-foreground, #6b7280);
+}
+
+.apex-filter__btn:hover {
+  color: var(--foreground, #1a1a1a);
+}
+
+.apex-filter__btn--active {
+  background: var(--accent, #f97316);
+  color: white;
+}
+
+/* Profiles Section */
+.apex-profiles {
+  padding: 4rem 0;
+  background: var(--background, #ffffff);
+}
+
+/* Page wrapper */
+.apex-page {
+  min-height: 100vh;
+}
+</style>
+
+<script>
+// Simple client-side filtering (non-breaking, enhances UX if JS is enabled)
+document.addEventListener('DOMContentLoaded', function() {
+  const searchInput = document.getElementById('apex-search');
+  const cards = document.querySelectorAll('.apex-card');
+  
+  if (searchInput && cards.length) {
+    searchInput.addEventListener('input', function(e) {
+      const query = e.target.value.toLowerCase();
+      
+      cards.forEach(function(card) {
+        const name = card.querySelector('.apex-card__name');
+        if (name) {
+          const matches = name.textContent.toLowerCase().includes(query);
+          card.style.display = matches ? '' : 'none';
+        }
+      });
+    });
+  }
+  
+  // Scroll reveal for categories
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px'
+  };
+  
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, observerOptions);
+  
+  document.querySelectorAll('.scroll-reveal').forEach(function(el) {
+    observer.observe(el);
+  });
+});
+</script>
+{% endblock body %}

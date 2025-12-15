@@ -1,0 +1,16 @@
+[
+  {
+    "id": "title",
+    "name": "title",
+    "label": "Category Title",
+    "type": "text",
+    "default": "REIMAGINE HEALTHCARE"
+  },
+  {
+    "id": "show_divider",
+    "name": "show_divider",
+    "label": "Show Divider Lines",
+    "type": "boolean",
+    "default": true
+  }
+]

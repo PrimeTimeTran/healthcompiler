@@ -1,0 +1,36 @@
+[
+  {
+    "id": "title",
+    "name": "title",
+    "label": "Title",
+    "type": "text",
+    "default": "TELL YOUR STORY"
+  },
+  {
+    "id": "body",
+    "name": "body",
+    "label": "Body Text",
+    "type": "text",
+    "default": "If you are a DPC, DSC, a Self Funded Benefits Advisor, we'd love to feature you on APEX"
+  },
+  {
+    "id": "button_label",
+    "name": "button_label",
+    "label": "Button Label",
+    "type": "text",
+    "default": "GET FEATURED"
+  },
+  {
+    "id": "button_url",
+    "name": "button_url",
+    "label": "Button URL",
+    "type": "link",
+    "default": {
+      "url": {
+        "href": "/get-featured-form",
+        "type": "EXTERNAL"
+      },
+      "open_in_new_tab": false
+    }
+  }
+]
