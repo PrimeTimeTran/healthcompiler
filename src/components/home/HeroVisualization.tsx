@@ -332,17 +332,6 @@ export const HeroVisualization = () => {
           );
         })}
 
-        {/* Flow direction indicators */}
-        <text x="150" y="450" className="fill-muted-foreground" style={{ fontSize: '10px' }}>
-          Data Sources
-        </text>
-        <text x="440" y="450" className="fill-muted-foreground" style={{ fontSize: '10px' }}>
-          ICP Outcomes
-        </text>
-        
-        {/* Arrows */}
-        <path d="M200,447 L210,450 L200,453" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="1" opacity="0.5" />
-        <path d="M520,447 L530,450 L520,453" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="1" opacity="0.5" />
       </svg>
 
       {/* ICP indicator dots */}
