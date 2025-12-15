@@ -21,10 +21,10 @@ export const HeroVisualization = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const centerX = 300;
-  const centerY = 180;
-  const radius = 120;
-  const nodeRadius = 7;
+  const centerX = 250;
+  const centerY = 220;
+  const radius = 160;
+  const nodeRadius = 10;
 
   const getNodePosition = (angle: number) => {
     const rad = ((angle - 90) * Math.PI) / 180;
@@ -35,9 +35,9 @@ export const HeroVisualization = () => {
   };
 
   return (
-    <div className="w-full max-w-xl mx-auto h-[280px] relative mb-4">
+    <div className="w-full h-[440px] relative">
       <svg
-        viewBox="0 0 600 340"
+        viewBox="0 0 500 440"
         className="w-full h-full"
         preserveAspectRatio="xMidYMid meet"
       >
@@ -85,14 +85,14 @@ export const HeroVisualization = () => {
               {/* Animated particle traveling to center */}
               {isActive && (
                 <>
-                  <circle r="4" fill="hsl(var(--accent))" filter="url(#glow)">
+                  <circle r="5" fill="hsl(var(--accent))" filter="url(#glow)">
                     <animateMotion
                       dur="1.8s"
                       repeatCount="indefinite"
                       path={`M${pos.x},${pos.y} L${centerX},${centerY}`}
                     />
                   </circle>
-                  <circle r="2" fill="hsl(var(--primary))">
+                  <circle r="3" fill="hsl(var(--primary))">
                     <animateMotion
                       dur="1.8s"
                       repeatCount="indefinite"
@@ -112,7 +112,7 @@ export const HeroVisualization = () => {
           <circle
             cx={centerX}
             cy={centerY}
-            r="55"
+            r="65"
             fill="none"
             stroke="hsl(var(--border))"
             strokeWidth="1"
@@ -124,10 +124,10 @@ export const HeroVisualization = () => {
           <circle
             cx={centerX}
             cy={centerY}
-            r="45"
+            r="55"
             fill="hsl(var(--card))"
             stroke="hsl(var(--accent))"
-            strokeWidth="1.5"
+            strokeWidth="2"
             filter="url(#glow)"
           />
           
@@ -135,7 +135,7 @@ export const HeroVisualization = () => {
           <circle
             cx={centerX}
             cy={centerY}
-            r="35"
+            r="42"
             fill="none"
             stroke="hsl(var(--accent))"
             strokeWidth="0.5"
@@ -145,10 +145,10 @@ export const HeroVisualization = () => {
           {/* Center text */}
           <text
             x={centerX}
-            y={centerY - 6}
+            y={centerY - 8}
             textAnchor="middle"
-            className="fill-foreground text-sm font-semibold"
-            style={{ fontSize: '13px' }}
+            className="fill-foreground font-semibold"
+            style={{ fontSize: '15px' }}
           >
             Activation
           </text>
@@ -157,7 +157,7 @@ export const HeroVisualization = () => {
             y={centerY + 12}
             textAnchor="middle"
             className="fill-muted-foreground"
-            style={{ fontSize: '11px' }}
+            style={{ fontSize: '13px' }}
           >
             Layer
           </text>
@@ -170,7 +170,7 @@ export const HeroVisualization = () => {
           
           // Calculate label position - outside the node
           const labelRad = ((node.angle - 90) * Math.PI) / 180;
-          const labelDistance = radius + 38;
+          const labelDistance = radius + 45;
           const labelX = centerX + Math.cos(labelRad) * labelDistance;
           const labelY = centerY + Math.sin(labelRad) * labelDistance;
           
@@ -190,7 +190,7 @@ export const HeroVisualization = () => {
                 <circle
                   cx={pos.x}
                   cy={pos.y}
-                  r={nodeRadius + 8}
+                  r={nodeRadius + 10}
                   fill="none"
                   stroke="hsl(var(--accent))"
                   strokeWidth="1"
@@ -215,7 +215,7 @@ export const HeroVisualization = () => {
               <circle
                 cx={pos.x}
                 cy={pos.y}
-                r="3"
+                r="4"
                 fill={isActive ? "hsl(var(--primary-foreground))" : "hsl(var(--muted-foreground))"}
                 className="transition-all duration-300"
               />
@@ -228,7 +228,7 @@ export const HeroVisualization = () => {
                 className={`transition-all duration-300 ${
                   isActive ? 'fill-foreground font-medium' : 'fill-muted-foreground'
                 }`}
-                style={{ fontSize: '12px' }}
+                style={{ fontSize: '13px' }}
               >
                 {node.label}
               </text>
