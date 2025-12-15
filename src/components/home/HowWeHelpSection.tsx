@@ -31,7 +31,7 @@ export const HowWeHelpSection = () => {
           {/* Left Content */}
           <div>
             <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-6">
-              How We Help Healthcare Teams
+              How We Help <span className="text-gradient">Healthcare Teams</span>
             </h2>
             <p className="text-muted-foreground text-lg leading-relaxed mb-8">
               We build data infrastructure that empowers healthcare organizations to focus on what matters most—delivering quality care.
@@ -74,7 +74,7 @@ export const HowWeHelpSection = () => {
                 </div>
                 <div className="absolute bottom-4 right-4 bg-card/90 backdrop-blur-sm rounded-lg px-4 py-2 shadow-soft">
                   <p className="text-xs text-muted-foreground">Real-time Analytics</p>
-                  <p className="text-lg font-bold text-accent">+24% Efficiency</p>
+                  <p className="text-lg font-bold text-gradient">+24% Efficiency</p>
                 </div>
               </div>
             </div>
