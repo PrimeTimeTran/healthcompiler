@@ -9,6 +9,7 @@ import Solutions from "./pages/Solutions";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Integration from "./pages/Integration";
+import FDE from "./pages/FDE";
 import Partners from "./pages/Partners";
 import NotFound from "./pages/NotFound";
 
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/platform/integration" element={<Integration />} />
+          <Route path="/platform/fde" element={<FDE />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
