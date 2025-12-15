@@ -106,13 +106,13 @@ export const Header = () => {
             {navItems.map((item) => (
               <div
                 key={item.href}
-                className="relative"
+                className="relative group"
                 onMouseEnter={() => item.subItems && handleMouseEnter(item.label)}
                 onMouseLeave={handleMouseLeave}
               >
                 <Link
                   to={item.href}
-                  className={`flex items-center gap-1 text-sm font-medium transition-colors hover:text-accent ${
+                  className={`flex items-center gap-1 text-sm font-medium transition-colors hover:text-accent py-2 ${
                     location.pathname === item.href.split('?')[0]
                       ? 'text-accent'
                       : 'text-muted-foreground'
@@ -125,10 +125,11 @@ export const Header = () => {
                 {/* Dropdown Menu */}
                 {item.subItems && openDropdown === item.label && (
                   <div 
-                    className={`absolute top-full left-0 mt-2 bg-background border border-border rounded-lg shadow-xl z-50 animate-fade-in ${
-                      item.isMultiColumn ? 'w-[600px] p-6' : 'min-w-[220px] py-2'
-                    }`}
+                    className={`absolute top-full left-0 pt-2 z-50`}
                   >
+                    <div className={`bg-background border border-border rounded-lg shadow-xl animate-fade-in ${
+                      item.isMultiColumn ? 'w-[600px] p-6' : 'min-w-[220px] py-2'
+                    }`}>
                     {item.isMultiColumn ? (
                       <div className="grid grid-cols-3 gap-6">
                         {(item.subItems as SubMenuCategory[]).map((category) => (
@@ -161,6 +162,7 @@ export const Header = () => {
                         </Link>
                       ))
                     )}
+                    </div>
                   </div>
                 )}
               </div>
