@@ -19,7 +19,7 @@ export const HeroSection = () => {
         <div className="absolute bottom-0 left-0 w-80 h-80 bg-accent/10 rounded-full blur-3xl" />
       </div>
 
-      <div className="container-tight mx-auto px-6 py-20 md:py-28 relative z-10">
+      <div className="container-tight mx-auto px-6 pt-8 md:pt-12 pb-20 md:pb-28 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           {/* Animated Visualization */}
           <div className="animate-fade-in">
