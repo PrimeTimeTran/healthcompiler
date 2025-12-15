@@ -1,154 +1,233 @@
 import { useState, useEffect } from 'react';
 
 const orbitingNodes = [
-  { id: 'analytics', label: 'Employer Analytics', color: 'from-blue-400 to-blue-600', angle: 0 },
-  { id: 'outcomes', label: 'Health Outcomes', color: 'from-emerald-400 to-emerald-600', angle: 45 },
-  { id: 'receptionist', label: 'AI Receptionist', color: 'from-violet-400 to-violet-600', angle: 90 },
-  { id: 'triaging', label: 'AI Call Triaging', color: 'from-amber-400 to-amber-600', angle: 135 },
-  { id: 'marketing', label: 'Marketing Automation', color: 'from-rose-400 to-rose-600', angle: 180 },
-  { id: 'engagement', label: 'Patient Engagement', color: 'from-cyan-400 to-cyan-600', angle: 225 },
-  { id: 'hcc', label: 'HCC Suspecting', color: 'from-orange-400 to-orange-600', angle: 270 },
-  { id: 'hedis', label: 'HEDIS & MIPS', color: 'from-pink-400 to-pink-600', angle: 315 },
+  { id: 'analytics', label: 'Employer Analytics', color: 'from-blue-400 to-blue-600', angle: -60 },
+  { id: 'outcomes', label: 'Health Outcomes', color: 'from-emerald-400 to-emerald-600', angle: -20 },
+  { id: 'receptionist', label: 'AI Receptionist', color: 'from-violet-400 to-violet-600', angle: 20 },
+  { id: 'triaging', label: 'AI Call Triaging', color: 'from-amber-400 to-amber-600', angle: 60 },
+  { id: 'marketing', label: 'Marketing Automation', color: 'from-rose-400 to-rose-600', angle: 120 },
+  { id: 'engagement', label: 'Patient Engagement', color: 'from-cyan-400 to-cyan-600', angle: 160 },
+  { id: 'hcc', label: 'HCC Suspecting', color: 'from-orange-400 to-orange-600', angle: 200 },
+  { id: 'hedis', label: 'HEDIS & MIPS', color: 'from-pink-400 to-pink-600', angle: 240 },
 ];
 
 export const HeroVisualization = () => {
-  const [activeNode, setActiveNode] = useState<string | null>('receptionist');
-  const [rotation, setRotation] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setRotation(prev => (prev + 0.3) % 360);
-    }, 50);
-    return () => clearInterval(interval);
-  }, []);
+  const [activeNode, setActiveNode] = useState<string>('receptionist');
 
   useEffect(() => {
     const cycleInterval = setInterval(() => {
       const nodeIds = orbitingNodes.map(n => n.id);
       setActiveNode(prev => {
-        const currentIndex = nodeIds.indexOf(prev || '');
+        const currentIndex = nodeIds.indexOf(prev);
         return nodeIds[(currentIndex + 1) % nodeIds.length];
       });
     }, 3000);
     return () => clearInterval(cycleInterval);
   }, []);
 
-  const getNodeDetails = (id: string) => {
-    switch(id) {
-      case 'analytics':
-        return { title: 'Employer Analytics', subtitle: 'DATA & INSIGHTS', features: ['Cost analysis', 'Utilization trends', 'ROI tracking'] };
-      case 'outcomes':
-        return { title: 'Health Outcomes', subtitle: 'QUALITY METRICS', features: ['Care gaps', 'Risk scores', 'Population health'] };
-      case 'receptionist':
-        return { title: 'AI Receptionist', subtitle: 'FRONT DESK & SCHEDULING', features: ['Appointment scheduling', 'Patient check-in', 'Front desk support'] };
-      case 'triaging':
-        return { title: 'AI Call Triaging', subtitle: 'PATIENT ROUTING', features: ['Symptom assessment', 'Priority routing', 'Care navigation'] };
-      case 'marketing':
-        return { title: 'Marketing Automation', subtitle: 'PATIENT OUTREACH', features: ['Campaign management', 'Lead nurturing', 'Multi-channel'] };
-      case 'engagement':
-        return { title: 'Patient Engagement', subtitle: 'COMMUNICATION', features: ['Reminders', 'Follow-ups', 'Feedback loops'] };
-      case 'hcc':
-        return { title: 'HCC Suspecting', subtitle: 'RISK ADJUSTMENT', features: ['Code optimization', 'Documentation', 'RAF scoring'] };
-      case 'hedis':
-        return { title: 'HEDIS & MIPS', subtitle: 'COMPLIANCE', features: ['Quality measures', 'Reporting', 'Gap closure'] };
-      default:
-        return { title: '', subtitle: '', features: [] };
-    }
+  const radiusX = 280;
+  const radiusY = 140;
+  const centerX = 400;
+  const centerY = 180;
+
+  const getNodePosition = (angle: number) => {
+    const rad = (angle * Math.PI) / 180;
+    return {
+      x: centerX + Math.cos(rad) * radiusX,
+      y: centerY + Math.sin(rad) * radiusY,
+    };
   };
 
-  const activeDetails = activeNode ? getNodeDetails(activeNode) : null;
-
   return (
-    <div className="w-full max-w-5xl mx-auto h-[320px] md:h-[380px] relative mb-6">
-      {/* Central hub card */}
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
-        <div className="bg-card border border-border/50 rounded-2xl shadow-elevated p-5 w-[240px] md:w-[280px] transition-all duration-500">
-          {activeDetails && (
-            <>
-              <div className="flex items-center gap-3 mb-3">
-                <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${orbitingNodes.find(n => n.id === activeNode)?.color} flex items-center justify-center shadow-lg`}>
-                  <div className="w-5 h-5 bg-white/30 rounded-full" />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-foreground text-sm">{activeDetails.title}</h4>
-                  <p className="text-[10px] text-muted-foreground uppercase tracking-wide">{activeDetails.subtitle}</p>
-                </div>
-              </div>
-              <ul className="space-y-1.5 mb-4">
-                {activeDetails.features.map((feature, i) => (
-                  <li key={i} className="flex items-center gap-2 text-xs text-muted-foreground">
-                    <span className="w-1 h-1 bg-accent rounded-full" />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-              <button className="w-full bg-foreground text-background text-xs font-medium py-2.5 rounded-lg hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
-                Explore {activeDetails.title}
-                <span className="text-accent">✦</span>
-              </button>
-            </>
-          )}
-        </div>
-      </div>
+    <div className="w-full max-w-4xl mx-auto h-[360px] md:h-[400px] relative mb-8">
+      <svg 
+        viewBox="0 0 800 360" 
+        className="w-full h-full"
+        preserveAspectRatio="xMidYMid meet"
+      >
+        <defs>
+          {/* Gradient for lines */}
+          <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="hsl(var(--border))" stopOpacity="0.3" />
+            <stop offset="50%" stopColor="hsl(var(--accent))" stopOpacity="0.6" />
+            <stop offset="100%" stopColor="hsl(var(--border))" stopOpacity="0.3" />
+          </linearGradient>
+          
+          {/* Glow filter */}
+          <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="3" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
 
-      {/* Orbital ring */}
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] md:w-[600px] md:h-[600px]">
-        <div className="absolute inset-0 rounded-full border border-border/30" />
-        <div className="absolute inset-8 rounded-full border border-border/20" />
-      </div>
+          {/* Animated dash */}
+          <pattern id="dotPattern" patternUnits="userSpaceOnUse" width="12" height="1">
+            <circle cx="2" cy="0.5" r="1.5" fill="hsl(var(--accent))" opacity="0.6" />
+          </pattern>
+        </defs>
 
-      {/* Orbiting nodes */}
-      {orbitingNodes.map((node) => {
-        const adjustedAngle = node.angle + rotation;
-        const radius = 220;
-        const x = Math.cos((adjustedAngle * Math.PI) / 180) * radius;
-        const y = Math.sin((adjustedAngle * Math.PI) / 180) * radius * 0.5;
-        const isActive = activeNode === node.id;
-        const zIndex = y > 0 ? 10 : 30;
+        {/* Orbital ellipse - dashed */}
+        <ellipse
+          cx={centerX}
+          cy={centerY}
+          rx={radiusX}
+          ry={radiusY}
+          fill="none"
+          stroke="hsl(var(--border))"
+          strokeWidth="1"
+          strokeDasharray="6 6"
+          opacity="0.4"
+        />
 
-        return (
-          <div
-            key={node.id}
-            className="absolute left-1/2 top-1/2 transition-all duration-300 cursor-pointer"
-            style={{
-              transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`,
-              zIndex,
-            }}
-            onMouseEnter={() => setActiveNode(node.id)}
-          >
-            <div className={`flex items-center gap-2 px-3 py-2 rounded-full transition-all duration-300 ${
-              isActive 
-                ? 'bg-card shadow-elevated border border-border scale-110' 
-                : 'bg-card/80 shadow-soft border border-border/50 hover:bg-card hover:shadow-card'
-            }`}>
-              <div className={`w-8 h-8 rounded-full bg-gradient-to-br ${node.color} flex items-center justify-center shadow-md`}>
-                <div className="w-3 h-3 bg-white/40 rounded-full animate-pulse-slow" />
-              </div>
-              <span className={`text-xs font-medium whitespace-nowrap transition-colors ${
-                isActive ? 'text-foreground' : 'text-muted-foreground'
-              }`}>
-                {node.label}
-              </span>
-            </div>
-          </div>
-        );
-      })}
+        {/* Connecting lines from nodes to center */}
+        {orbitingNodes.map((node) => {
+          const pos = getNodePosition(node.angle);
+          const isActive = activeNode === node.id;
+          
+          return (
+            <g key={`line-${node.id}`}>
+              {/* Dotted connection line */}
+              <line
+                x1={centerX}
+                y1={centerY}
+                x2={pos.x}
+                y2={pos.y}
+                stroke="hsl(var(--border))"
+                strokeWidth="1"
+                strokeDasharray="4 8"
+                opacity={isActive ? 0.6 : 0.2}
+                className="transition-opacity duration-500"
+              />
+              
+              {/* Animated dot traveling on line when active */}
+              {isActive && (
+                <circle r="3" fill="hsl(var(--accent))" filter="url(#glow)">
+                  <animateMotion
+                    dur="1.5s"
+                    repeatCount="indefinite"
+                    path={`M${pos.x},${pos.y} L${centerX},${centerY}`}
+                  />
+                </circle>
+              )}
+            </g>
+          );
+        })}
 
-      {/* Floating particles */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {[...Array(8)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1.5 h-1.5 rounded-full bg-accent/20 animate-float"
-            style={{
-              left: `${15 + i * 10}%`,
-              top: `${20 + (i % 4) * 18}%`,
-              animationDelay: `${i * 0.4}s`,
-              animationDuration: `${4 + i * 0.3}s`,
-            }}
+        {/* Center hub */}
+        <g>
+          <circle
+            cx={centerX}
+            cy={centerY}
+            r="50"
+            fill="hsl(var(--card))"
+            stroke="hsl(var(--border))"
+            strokeWidth="1"
+            filter="url(#glow)"
           />
-        ))}
-      </div>
+          <circle
+            cx={centerX}
+            cy={centerY}
+            r="35"
+            fill="url(#lineGrad)"
+            opacity="0.3"
+          />
+          <text
+            x={centerX}
+            y={centerY - 8}
+            textAnchor="middle"
+            className="fill-foreground text-xs font-semibold"
+          >
+            Activation
+          </text>
+          <text
+            x={centerX}
+            y={centerY + 8}
+            textAnchor="middle"
+            className="fill-muted-foreground text-xs"
+          >
+            Layer
+          </text>
+        </g>
+
+        {/* Orbiting nodes */}
+        {orbitingNodes.map((node) => {
+          const pos = getNodePosition(node.angle);
+          const isActive = activeNode === node.id;
+          
+          return (
+            <g
+              key={node.id}
+              className="cursor-pointer transition-transform duration-300"
+              style={{ transform: isActive ? 'scale(1.1)' : 'scale(1)', transformOrigin: `${pos.x}px ${pos.y}px` }}
+              onMouseEnter={() => setActiveNode(node.id)}
+            >
+              {/* Node background pill */}
+              <rect
+                x={pos.x - 70}
+                y={pos.y - 16}
+                width="140"
+                height="32"
+                rx="16"
+                fill={isActive ? "hsl(var(--card))" : "hsl(var(--card) / 0.8)"}
+                stroke={isActive ? "hsl(var(--accent))" : "hsl(var(--border))"}
+                strokeWidth={isActive ? "1.5" : "1"}
+                filter={isActive ? "url(#glow)" : "none"}
+                className="transition-all duration-300"
+              />
+              
+              {/* Colored orb */}
+              <circle
+                cx={pos.x - 50}
+                cy={pos.y}
+                r="10"
+                className={`fill-current`}
+                style={{
+                  filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.2))',
+                }}
+              >
+                <animate
+                  attributeName="opacity"
+                  values="1;0.7;1"
+                  dur="2s"
+                  repeatCount="indefinite"
+                />
+              </circle>
+              <defs>
+                <linearGradient id={`grad-${node.id}`} x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" className={`${node.color.split(' ')[0].replace('from-', 'stop-')}`} />
+                  <stop offset="100%" className={`${node.color.split(' ')[1].replace('to-', 'stop-')}`} />
+                </linearGradient>
+              </defs>
+              <circle
+                cx={pos.x - 50}
+                cy={pos.y}
+                r="10"
+                fill={`url(#grad-${node.id})`}
+              />
+              <circle
+                cx={pos.x - 53}
+                cy={pos.y - 3}
+                r="3"
+                fill="white"
+                opacity="0.4"
+              />
+              
+              {/* Label */}
+              <text
+                x={pos.x + 5}
+                y={pos.y + 4}
+                className={`text-xs font-medium transition-all duration-300 ${
+                  isActive ? 'fill-foreground' : 'fill-muted-foreground'
+                }`}
+              >
+                {node.label}
+              </text>
+            </g>
+          );
+        })}
+      </svg>
     </div>
   );
 };
