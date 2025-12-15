@@ -161,32 +161,33 @@ const Apex = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-20 bg-gradient-to-b from-background to-background-secondary relative overflow-hidden">
-        {/* Background decoration */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 left-0 w-80 h-80 bg-accent/10 rounded-full blur-3xl" />
+      <section className="pt-32 pb-16 md:pt-40 md:pb-20 bg-muted/30 relative overflow-hidden">
+        {/* Faded APEX watermark in background */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.03]">
+          <span className="text-[20rem] md:text-[30rem] font-serif font-bold text-foreground select-none">APEX</span>
         </div>
 
         <div ref={heroRef} className="container mx-auto px-6 relative z-10">
-          <div className="max-w-4xl mx-auto text-center scroll-reveal">
-            {/* APEX Logo/Title */}
-            <div className="mb-8">
-              <h1 className="text-6xl md:text-8xl font-bold tracking-tight">
-                <span className="text-gradient">APEX</span>
+          <div className="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-16 scroll-reveal">
+            {/* Left side: APEX Logo */}
+            <div className="text-center md:text-left flex-shrink-0">
+              <h1 className="text-6xl md:text-7xl font-serif font-bold italic tracking-tight text-foreground">
+                APEX
               </h1>
-              <p className="text-lg text-muted-foreground italic mt-2">magazine</p>
+              <p className="text-lg md:text-xl text-muted-foreground italic mt-1 tracking-widest">
+                magazine
+              </p>
+              <p className="text-sm text-muted-foreground mt-4 max-w-[200px]">
+                {apexData.hero.eyebrow}
+              </p>
             </div>
             
-            {/* Eyebrow */}
-            <p className="text-sm uppercase tracking-widest text-accent mb-6">
-              {apexData.hero.eyebrow}
-            </p>
-            
-            {/* Main headline */}
-            <h2 className="font-display text-2xl md:text-4xl font-bold text-foreground mb-8 leading-tight">
-              {apexData.hero.h1}
-            </h2>
+            {/* Right side: Headline */}
+            <div className="flex-1 flex items-center">
+              <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground leading-tight text-center md:text-left">
+                {apexData.hero.h1}
+              </h2>
+            </div>
           </div>
         </div>
       </section>
