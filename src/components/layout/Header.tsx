@@ -1,20 +1,96 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import logo from '@/assets/healthcompiler-logo.webp';
 
-const navItems = [
-  { label: 'Platform', href: '/capabilities?tab=platform' },
-  { label: 'Capabilities', href: '/capabilities' },
-  { label: 'Solutions', href: '/solutions' },
-  { label: 'About', href: '/about' },
-  { label: 'Contact', href: '/contact' },
+interface SubMenuItem {
+  label: string;
+  href: string;
+}
+
+interface SubMenuCategory {
+  category: string;
+  items: SubMenuItem[];
+}
+
+interface NavItem {
+  label: string;
+  href: string;
+  subItems?: SubMenuItem[] | SubMenuCategory[];
+  isMultiColumn?: boolean;
+}
+
+const navItems: NavItem[] = [
+  { 
+    label: 'Platform', 
+    href: '/capabilities?tab=platform',
+    subItems: [
+      { label: 'Integration', href: '/capabilities?tab=platform&section=integration' },
+      { label: 'Forward Deployed Engineering (FDE)', href: '/capabilities?tab=platform&section=fde' },
+    ]
+  },
+  { 
+    label: 'Solutions', 
+    href: '/solutions',
+    isMultiColumn: true,
+    subItems: [
+      {
+        category: 'Primary Care',
+        items: [
+          { label: 'Direct Primary Care', href: '/solutions/direct-primary-care' },
+          { label: 'DPC Networks', href: '/solutions/dpc-networks' },
+          { label: 'Concierge', href: '/solutions/concierge' },
+          { label: 'Managed Service Orgs', href: '/solutions/managed-service-orgs' },
+        ]
+      },
+      {
+        category: 'Specialty Care',
+        items: [
+          { label: 'Functional Medicine', href: '/solutions/functional-medicine' },
+          { label: 'Urgent Care', href: '/solutions/urgent-care' },
+          { label: 'Pediatrics', href: '/solutions/pediatrics' },
+          { label: 'Medical Weight Loss', href: '/solutions/medical-weight-loss' },
+        ]
+      },
+      {
+        category: 'Healthcare Purchasers',
+        items: [
+          { label: "TPA's & Health Plans", href: '/solutions/tpa-health-plans' },
+          { label: 'Brokers & Advisors', href: '/solutions/brokers-advisors' },
+          { label: 'Employers', href: '/solutions/employers' },
+        ]
+      }
+    ] as SubMenuCategory[]
+  },
+  { 
+    label: 'Resources', 
+    href: '/resources',
+    subItems: [
+      { label: 'Apex', href: '/resources/apex' },
+    ]
+  },
+  { label: 'About Us', href: '/about' },
+  { label: 'Contact Us', href: '/contact' },
 ];
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [openMobileDropdown, setOpenMobileDropdown] = useState<string | null>(null);
   const location = useLocation();
+
+  const handleMouseEnter = (label: string) => {
+    setOpenDropdown(label);
+  };
+
+  const handleMouseLeave = () => {
+    setOpenDropdown(null);
+  };
+
+  const isSubMenuCategory = (item: SubMenuItem | SubMenuCategory): item is SubMenuCategory => {
+    return 'category' in item;
+  };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border/50">
@@ -26,24 +102,73 @@ export const Header = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-6">
             {navItems.map((item) => (
-              <Link
+              <div
                 key={item.href}
-                to={item.href}
-                className={`text-sm font-medium transition-colors hover:text-accent ${
-                  location.pathname === item.href
-                    ? 'text-accent'
-                    : 'text-muted-foreground'
-                }`}
+                className="relative"
+                onMouseEnter={() => item.subItems && handleMouseEnter(item.label)}
+                onMouseLeave={handleMouseLeave}
               >
-                {item.label}
-              </Link>
+                <Link
+                  to={item.href}
+                  className={`flex items-center gap-1 text-sm font-medium transition-colors hover:text-accent ${
+                    location.pathname === item.href.split('?')[0]
+                      ? 'text-accent'
+                      : 'text-muted-foreground'
+                  }`}
+                >
+                  {item.label}
+                  {item.subItems && <ChevronDown size={14} className={`transition-transform ${openDropdown === item.label ? 'rotate-180' : ''}`} />}
+                </Link>
+
+                {/* Dropdown Menu */}
+                {item.subItems && openDropdown === item.label && (
+                  <div 
+                    className={`absolute top-full left-0 mt-2 bg-background border border-border rounded-lg shadow-xl z-50 animate-fade-in ${
+                      item.isMultiColumn ? 'w-[600px] p-6' : 'min-w-[220px] py-2'
+                    }`}
+                  >
+                    {item.isMultiColumn ? (
+                      <div className="grid grid-cols-3 gap-6">
+                        {(item.subItems as SubMenuCategory[]).map((category) => (
+                          <div key={category.category}>
+                            <h4 className="font-semibold text-foreground mb-3 text-sm">{category.category}</h4>
+                            <ul className="space-y-2">
+                              {category.items.map((subItem) => (
+                                <li key={subItem.href}>
+                                  <Link
+                                    to={subItem.href}
+                                    className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors"
+                                  >
+                                    <span className="text-accent">»</span>
+                                    {subItem.label}
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      (item.subItems as SubMenuItem[]).map((subItem) => (
+                        <Link
+                          key={subItem.href}
+                          to={subItem.href}
+                          className="block px-4 py-2 text-sm text-muted-foreground hover:text-accent hover:bg-secondary/50 transition-colors"
+                        >
+                          {subItem.label}
+                        </Link>
+                      ))
+                    )}
+                  </div>
+                )}
+              </div>
             ))}
           </div>
 
           {/* Desktop CTA */}
-          <div className="hidden md:block">
+          <div className="hidden lg:block">
             <Button variant="hero" size="default" asChild>
               <Link to="/contact">Book a Consultation</Link>
             </Button>
@@ -51,7 +176,7 @@ export const Header = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 text-foreground"
+            className="lg:hidden p-2 text-foreground"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -61,23 +186,73 @@ export const Header = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 border-t border-border/50 pt-4 animate-fade-in">
-            <div className="flex flex-col gap-4">
+          <div className="lg:hidden mt-4 pb-4 border-t border-border/50 pt-4 animate-fade-in">
+            <div className="flex flex-col gap-2">
               {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  to={item.href}
-                  onClick={() => setIsMenuOpen(false)}
-                  className={`text-base font-medium transition-colors ${
-                    location.pathname === item.href
-                      ? 'text-accent'
-                      : 'text-muted-foreground'
-                  }`}
-                >
-                  {item.label}
-                </Link>
+                <div key={item.href}>
+                  {item.subItems ? (
+                    <>
+                      <button
+                        onClick={() => setOpenMobileDropdown(openMobileDropdown === item.label ? null : item.label)}
+                        className={`flex items-center justify-between w-full py-2 text-base font-medium transition-colors ${
+                          location.pathname === item.href.split('?')[0]
+                            ? 'text-accent'
+                            : 'text-muted-foreground'
+                        }`}
+                      >
+                        {item.label}
+                        <ChevronDown size={16} className={`transition-transform ${openMobileDropdown === item.label ? 'rotate-180' : ''}`} />
+                      </button>
+                      {openMobileDropdown === item.label && (
+                        <div className="pl-4 pb-2 animate-fade-in">
+                          {item.isMultiColumn ? (
+                            (item.subItems as SubMenuCategory[]).map((category) => (
+                              <div key={category.category} className="mb-4">
+                                <h4 className="font-semibold text-foreground mb-2 text-sm">{category.category}</h4>
+                                {category.items.map((subItem) => (
+                                  <Link
+                                    key={subItem.href}
+                                    to={subItem.href}
+                                    onClick={() => setIsMenuOpen(false)}
+                                    className="flex items-center gap-2 py-1.5 text-sm text-muted-foreground hover:text-accent transition-colors"
+                                  >
+                                    <span className="text-accent">»</span>
+                                    {subItem.label}
+                                  </Link>
+                                ))}
+                              </div>
+                            ))
+                          ) : (
+                            (item.subItems as SubMenuItem[]).map((subItem) => (
+                              <Link
+                                key={subItem.href}
+                                to={subItem.href}
+                                onClick={() => setIsMenuOpen(false)}
+                                className="block py-1.5 text-sm text-muted-foreground hover:text-accent transition-colors"
+                              >
+                                {subItem.label}
+                              </Link>
+                            ))
+                          )}
+                        </div>
+                      )}
+                    </>
+                  ) : (
+                    <Link
+                      to={item.href}
+                      onClick={() => setIsMenuOpen(false)}
+                      className={`block py-2 text-base font-medium transition-colors ${
+                        location.pathname === item.href
+                          ? 'text-accent'
+                          : 'text-muted-foreground'
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                  )}
+                </div>
               ))}
-              <Button variant="hero" size="default" className="mt-2" asChild>
+              <Button variant="hero" size="default" className="mt-4" asChild>
                 <Link to="/contact" onClick={() => setIsMenuOpen(false)}>
                   Book a Consultation
                 </Link>
