@@ -5,42 +5,42 @@ import { Input } from "@/components/ui/input";
 import { toast } from "@/hooks/use-toast";
 
 const integrations = [
-  { name: 'stripe', label: 'Stripe' },
-  { name: 'fitbit', label: 'Fitbit' },
-  { name: 'hint', label: 'Hint', highlighted: true },
-  { name: 'cerbo', label: 'Cerbo', highlighted: true },
-  { name: 'oura', label: 'OURA' },
-  { name: 'azalea', label: 'Azalea Health' },
-  { name: 'advancedmd', label: 'AdvancedMD' },
-  { name: 'elation', label: 'Elation', highlighted: true },
-  { name: 'dexcom', label: 'Dexcom' },
-  { name: 'allscripts', label: 'Allscripts' },
-  { name: 'wahoo', label: 'Wahoo' },
-  { name: 'akutehealth', label: 'AkuteHealth', highlighted: true },
-  { name: 'nextgen', label: 'NextGen' },
-  { name: 'netsmart', label: 'Netsmart' },
-  { name: 'charmhealth', label: 'CharmHealth', highlighted: true },
-  { name: 'lemlist', label: 'Lemlist' },
-  { name: 'googlefit', label: 'Google Fit' },
-  { name: 'drchrono', label: 'DrChrono' },
-  { name: 'garmin', label: 'Garmin' },
-  { name: 'spruce', label: 'Spruce' },
-  { name: 'trinet', label: 'TriNet' },
-  { name: 'quest', label: 'Quest Diagnostics' },
-  { name: 'epic', label: 'Epic' },
-  { name: 'practicefusion', label: 'Practice Fusion', highlighted: true },
-  { name: 'googlesearchconsole', label: 'Google Search Console' },
-  { name: 'yuzuhealth', label: 'Yuzu Health' },
-  { name: 'omron', label: 'OMRON' },
-  { name: 'cerner', label: 'Cerner' },
-  { name: 'eclinicalworks', label: 'eClinicalWorks' },
-  { name: 'googleanalytics', label: 'Google Analytics' },
-  { name: 'workday', label: 'Workday' },
-  { name: 'modmed', label: 'ModMed' },
-  { name: 'manifestrx', label: 'ManifestRx' },
-  { name: 'athenahealth', label: 'AthenaHealth' },
-  { name: 'quickbooks', label: 'QuickBooks' },
-  { name: 'paycom', label: 'Paycom' },
+  { name: 'Stripe', x: 45, y: 5, highlighted: false },
+  { name: 'Fitbit', x: 65, y: 8, highlighted: false },
+  { name: 'Hint', x: 55, y: 15, highlighted: true },
+  { name: 'Cerbo', x: 70, y: 18, highlighted: true },
+  { name: 'OURA', x: 85, y: 12, highlighted: false },
+  { name: 'Azalea Health', x: 8, y: 18, highlighted: false },
+  { name: 'AdvancedMD', x: 25, y: 15, highlighted: false },
+  { name: 'Elation', x: 35, y: 22, highlighted: true },
+  { name: 'Dexcom', x: 88, y: 25, highlighted: false },
+  { name: 'Allscripts', x: 5, y: 28, highlighted: false },
+  { name: 'Wahoo', x: 22, y: 28, highlighted: false },
+  { name: 'AkuteHealth', x: 78, y: 28, highlighted: true },
+  { name: 'NextGen', x: 92, y: 32, highlighted: false },
+  { name: 'Netsmart', x: 18, y: 38, highlighted: false },
+  { name: 'CharmHealth', x: 32, y: 35, highlighted: true },
+  { name: 'Lemlist', x: 75, y: 38, highlighted: false },
+  { name: 'Google Fit', x: 85, y: 42, highlighted: false },
+  { name: 'DrChrono', x: 8, y: 42, highlighted: false },
+  { name: 'Garmin', x: 20, y: 50, highlighted: false },
+  { name: 'Spruce', x: 35, y: 48, highlighted: false },
+  { name: 'TriNet', x: 92, y: 50, highlighted: false },
+  { name: 'Quest', x: 12, y: 58, highlighted: false },
+  { name: 'Epic', x: 28, y: 62, highlighted: false },
+  { name: 'Practice Fusion', x: 38, y: 68, highlighted: true },
+  { name: 'Google Console', x: 75, y: 55, highlighted: false },
+  { name: 'Yuzu Health', x: 85, y: 60, highlighted: false },
+  { name: 'OMRON', x: 10, y: 72, highlighted: false },
+  { name: 'Cerner', x: 28, y: 75, highlighted: false },
+  { name: 'eClinicalWorks', x: 48, y: 78, highlighted: false },
+  { name: 'Analytics', x: 70, y: 70, highlighted: false },
+  { name: 'Workday', x: 80, y: 68, highlighted: false },
+  { name: 'ModMed', x: 90, y: 75, highlighted: false },
+  { name: 'ManifestRx', x: 55, y: 82, highlighted: false },
+  { name: 'AthenaHealth', x: 72, y: 80, highlighted: false },
+  { name: 'QuickBooks', x: 82, y: 85, highlighted: false },
+  { name: 'Paycom', x: 92, y: 82, highlighted: false },
 ];
 
 const categories = [
@@ -57,6 +57,7 @@ const categories = [
 
 const Integration = () => {
   const [email, setEmail] = useState('');
+  const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -71,102 +72,156 @@ const Integration = () => {
 
   return (
     <Layout>
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-20 md:py-28 bg-gradient-to-b from-background via-background to-secondary/20 overflow-hidden">
         <div className="container mx-auto px-4">
           {/* Header */}
           <div className="text-center mb-16">
-            <h1 className="text-3xl md:text-5xl font-bold text-foreground">
-              Connect with your <span className="text-primary">existing apps</span>
+            <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-4">
+              Connect with your <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">existing apps</span>
             </h1>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Seamlessly integrate with 50+ healthcare and business applications
+            </p>
           </div>
 
           {/* Integrations Cloud */}
-          <div className="max-w-6xl mx-auto mb-16">
-            <h2 className="text-2xl font-bold text-foreground mb-12">Integrations</h2>
+          <div className="max-w-6xl mx-auto mb-20">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="h-px flex-1 bg-gradient-to-r from-transparent via-border to-transparent"></div>
+              <h2 className="text-xl font-semibold text-foreground">Integrations</h2>
+              <div className="h-px flex-1 bg-gradient-to-r from-transparent via-border to-transparent"></div>
+            </div>
             
-            <div className="relative min-h-[500px] md:min-h-[600px]">
+            <div className="relative h-[600px] md:h-[700px] bg-gradient-to-br from-secondary/30 via-transparent to-primary/5 rounded-3xl border border-border/50 overflow-hidden">
+              {/* Grid Pattern Background */}
+              <div className="absolute inset-0 opacity-30">
+                <div className="absolute inset-0" style={{
+                  backgroundImage: 'radial-gradient(circle at 1px 1px, hsl(var(--border)) 1px, transparent 0)',
+                  backgroundSize: '40px 40px'
+                }}></div>
+              </div>
+
+              {/* Glow Effects */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
+              <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-accent/10 rounded-full blur-3xl"></div>
+
               {/* Central Hub */}
-              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
-                <div className="bg-card border border-border rounded-lg shadow-lg p-6 w-48 md:w-56">
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className="w-3 h-3 rounded-full bg-red-400"></div>
-                    <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
-                    <div className="w-3 h-3 rounded-full bg-green-400"></div>
-                  </div>
-                  <h3 className="text-xl font-bold text-foreground mb-1">Insights</h3>
-                  <p className="text-xs text-muted-foreground mb-3">HealthCompiler</p>
-                  <div className="space-y-2">
-                    <div className="h-2 bg-muted rounded w-full"></div>
-                    <div className="h-2 bg-muted rounded w-3/4"></div>
-                    <div className="h-2 bg-muted rounded w-1/2"></div>
-                  </div>
-                  <div className="mt-4 flex items-end gap-1">
-                    <div className="w-4 h-6 bg-primary/30 rounded-sm"></div>
-                    <div className="w-4 h-10 bg-primary/50 rounded-sm"></div>
-                    <div className="w-4 h-8 bg-primary/40 rounded-sm"></div>
-                    <div className="w-4 h-12 bg-primary rounded-sm"></div>
+              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
+                <div className="relative">
+                  {/* Pulsing rings */}
+                  <div className="absolute inset-0 -m-4 border-2 border-primary/20 rounded-2xl animate-pulse"></div>
+                  <div className="absolute inset-0 -m-8 border border-primary/10 rounded-3xl animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+                  
+                  <div className="bg-card/95 backdrop-blur-xl border border-border/80 rounded-2xl shadow-2xl p-6 w-52 md:w-64 relative">
+                    <div className="absolute -top-3 -right-3 w-6 h-6 bg-green-500 rounded-full border-4 border-background animate-pulse"></div>
+                    <div className="flex items-center gap-2 mb-4">
+                      <div className="w-2.5 h-2.5 rounded-full bg-red-400"></div>
+                      <div className="w-2.5 h-2.5 rounded-full bg-yellow-400"></div>
+                      <div className="w-2.5 h-2.5 rounded-full bg-green-400"></div>
+                    </div>
+                    <h3 className="text-2xl font-bold text-foreground mb-1">Insights</h3>
+                    <p className="text-xs text-primary font-medium mb-4">HealthCompiler</p>
+                    <div className="space-y-2 mb-4">
+                      <div className="h-2 bg-gradient-to-r from-muted to-muted/50 rounded-full w-full"></div>
+                      <div className="h-2 bg-gradient-to-r from-muted to-muted/50 rounded-full w-3/4"></div>
+                      <div className="h-2 bg-gradient-to-r from-muted to-muted/50 rounded-full w-1/2"></div>
+                    </div>
+                    <div className="flex items-end gap-1 h-16">
+                      <div className="w-6 h-6 bg-primary/30 rounded-t-sm animate-pulse"></div>
+                      <div className="w-6 h-10 bg-primary/50 rounded-t-sm animate-pulse" style={{ animationDelay: '0.2s' }}></div>
+                      <div className="w-6 h-8 bg-primary/40 rounded-t-sm animate-pulse" style={{ animationDelay: '0.4s' }}></div>
+                      <div className="w-6 h-14 bg-gradient-to-t from-primary to-primary/70 rounded-t-sm animate-pulse" style={{ animationDelay: '0.6s' }}></div>
+                      <div className="w-6 h-12 bg-accent/60 rounded-t-sm animate-pulse" style={{ animationDelay: '0.8s' }}></div>
+                    </div>
                   </div>
                 </div>
               </div>
 
               {/* Floating Integration Cards */}
-              <div className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-3 md:gap-4">
-                {integrations.map((integration, index) => (
-                  <div
-                    key={integration.name}
-                    className={`
-                      flex items-center justify-center p-3 md:p-4 rounded-lg border text-xs md:text-sm font-medium
-                      transition-all duration-300 hover:scale-105 hover:shadow-md cursor-pointer
-                      ${integration.highlighted 
-                        ? 'border-primary/50 bg-primary/5 text-primary' 
-                        : 'border-border bg-card text-foreground hover:border-primary/30'
-                      }
-                      ${index >= 16 && index < 24 ? 'opacity-0 md:opacity-100' : ''}
-                    `}
-                    style={{
-                      animationDelay: `${index * 50}ms`,
-                    }}
-                  >
-                    {integration.label}
-                  </div>
-                ))}
-              </div>
+              {integrations.map((integration, index) => (
+                <div
+                  key={integration.name}
+                  className={`
+                    absolute px-3 py-2 md:px-4 md:py-2.5 rounded-xl border text-xs md:text-sm font-medium
+                    transition-all duration-500 cursor-pointer z-10
+                    hover:scale-110 hover:z-30 hover:shadow-xl
+                    ${integration.highlighted 
+                      ? 'border-primary bg-primary/10 text-primary shadow-lg shadow-primary/20 hover:bg-primary/20' 
+                      : 'border-border/60 bg-card/80 backdrop-blur-sm text-foreground hover:border-primary/50 hover:bg-card'
+                    }
+                  `}
+                  style={{
+                    left: `${integration.x}%`,
+                    top: `${integration.y}%`,
+                    transform: 'translate(-50%, -50%)',
+                    animation: `float ${3 + (index % 3)}s ease-in-out infinite`,
+                    animationDelay: `${index * 0.1}s`,
+                  }}
+                >
+                  {integration.name}
+                </div>
+              ))}
             </div>
           </div>
 
           {/* Categories */}
-          <div className="flex flex-wrap justify-center gap-3 mb-16">
-            {categories.map((category) => (
-              <span
-                key={category}
-                className="px-4 py-2 bg-card border border-border rounded-full text-sm font-medium text-foreground hover:border-primary/50 hover:bg-primary/5 transition-colors cursor-pointer"
-              >
-                {category}
-              </span>
-            ))}
+          <div className="mb-20">
+            <div className="flex flex-wrap justify-center gap-3">
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  onClick={() => setActiveCategory(activeCategory === category ? null : category)}
+                  className={`
+                    px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300
+                    ${activeCategory === category 
+                      ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/30' 
+                      : 'bg-card border border-border text-muted-foreground hover:border-primary/50 hover:text-foreground hover:shadow-md'
+                    }
+                  `}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
           </div>
 
           {/* Request Form */}
-          <div className="max-w-2xl mx-auto text-center">
-            <p className="text-lg text-muted-foreground mb-8">
-              If your app is missing, we can help quickly build an integration
-            </p>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <Input
-                type="email"
-                placeholder="Enter your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="text-center h-14 text-base"
-                required
-              />
-              <Button type="submit" size="lg" className="w-full md:w-auto px-16">
-                Submit
-              </Button>
-            </form>
+          <div className="max-w-xl mx-auto">
+            <div className="bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl p-8 md:p-10">
+              <p className="text-xl text-center text-foreground font-medium mb-2">
+                Missing your app?
+              </p>
+              <p className="text-center text-muted-foreground mb-8">
+                We can help quickly build an integration for you
+              </p>
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <Input
+                  type="email"
+                  placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="h-14 text-base bg-background/50 border-border/50 focus:border-primary/50 rounded-xl"
+                  required
+                />
+                <Button 
+                  type="submit" 
+                  size="lg" 
+                  className="w-full h-14 text-base font-semibold rounded-xl bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity"
+                >
+                  Submit Request
+                </Button>
+              </form>
+            </div>
           </div>
         </div>
       </section>
+
+      <style>{`
+        @keyframes float {
+          0%, 100% { transform: translate(-50%, -50%) translateY(0px); }
+          50% { transform: translate(-50%, -50%) translateY(-8px); }
+        }
+      `}</style>
     </Layout>
   );
 };
