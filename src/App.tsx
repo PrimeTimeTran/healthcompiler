@@ -15,6 +15,7 @@ import Partners from "./pages/Partners";
 import Infera from "./pages/Infera";
 import Apex from "./pages/Apex";
 import GetFeatured from "./pages/GetFeatured";
+import HCCSuspecting from "./pages/HCCSuspecting";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -37,6 +38,7 @@ const App = () => (
           <Route path="/platform/fde" element={<FDE />} />
           <Route path="/platform/infera" element={<Infera />} />
           <Route path="/resources/apex" element={<Apex />} />
+          <Route path="/solutions/hcc-suspecting" element={<HCCSuspecting />} />
           <Route path="/get-featured-form" element={<GetFeatured />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
