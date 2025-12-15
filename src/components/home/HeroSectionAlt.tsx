@@ -3,43 +3,35 @@ import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Play } from 'lucide-react';
 
-// Healthcare sector cards with mini graphs
-const sectorCards = [
+// Healthcare metric cards with mini graphs
+const metricCards = [
   { 
-    label: 'Health Plans', 
-    color: '#E94E87',
-    chartType: 'bar',
-    data: [40, 65, 45, 80, 55, 70]
-  },
-  { 
-    label: 'Health Systems', 
-    color: '#F97316',
-    chartType: 'line',
-    data: [30, 50, 45, 70, 65, 85]
-  },
-  { 
-    label: 'Value-Based Care', 
-    color: '#8B5CF6',
+    label: 'Cost Savings', 
+    color: '#10B981',
     chartType: 'area',
-    data: [20, 35, 55, 45, 75, 90]
+    data: [60, 55, 70, 65, 85, 90],
+    metric: '-18% PMPM'
   },
   { 
-    label: 'Direct Primary Care', 
+    label: 'Utilization', 
     color: '#06B6D4',
     chartType: 'bar',
-    data: [50, 70, 60, 85, 75, 95]
+    data: [45, 60, 50, 75, 65, 80],
+    metric: '+24% efficiency'
   },
   { 
-    label: 'Self-Funded Employers', 
-    color: '#10B981',
+    label: 'Health Outcomes', 
+    color: '#8B5CF6',
     chartType: 'line',
-    data: [35, 45, 65, 55, 80, 70]
+    data: [30, 45, 55, 60, 75, 88],
+    metric: '+32% improvement'
   },
   { 
-    label: 'ACO / MSSP', 
-    color: '#F59E0B',
+    label: 'Risk Attribution', 
+    color: '#F97316',
     chartType: 'area',
-    data: [25, 50, 40, 65, 80, 75]
+    data: [40, 55, 50, 70, 80, 75],
+    metric: '94% accuracy'
   },
 ];
 
@@ -425,10 +417,10 @@ export const HeroSectionAlt = () => {
                 </div>
               </div>
 
-              {/* Orbiting sector cards with 3D charts */}
-              {sectorCards.map((card, idx) => {
-                const angle = (idx / sectorCards.length) * Math.PI * 2 - Math.PI / 2;
-                const radius = 200;
+              {/* Orbiting metric cards with 3D charts */}
+              {metricCards.map((card, idx) => {
+                const angle = (idx / metricCards.length) * Math.PI * 2 - Math.PI / 2;
+                const radius = 240;
                 const x = Math.cos(angle) * radius;
                 const y = Math.sin(angle) * radius;
 
@@ -483,7 +475,7 @@ export const HeroSectionAlt = () => {
                             style={{ backgroundColor: card.color }}
                           />
                           <span className="text-[9px] text-white/60">
-                            +{Math.floor(Math.random() * 30 + 10)}% efficiency
+                            {card.metric}
                           </span>
                         </div>
                       </div>
@@ -502,8 +494,8 @@ export const HeroSectionAlt = () => {
                   <stop offset="100%" stopColor="#E94E87" stopOpacity="0" />
                 </linearGradient>
               </defs>
-              {sectorCards.map((_, idx) => {
-                const angle = (idx / sectorCards.length) * Math.PI * 2 - Math.PI / 2;
+              {metricCards.map((_, idx) => {
+                const angle = (idx / metricCards.length) * Math.PI * 2 - Math.PI / 2;
                 const innerRadius = 100;
                 const outerRadius = 180;
                 const centerX = 350;
