@@ -3,26 +3,167 @@ import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Play } from 'lucide-react';
 
-// Floating data particles
-const dataTypes = [
-  { label: 'Claims', color: '#E94E87' },
-  { label: 'EHR', color: '#F97316' },
-  { label: 'Labs', color: '#8B5CF6' },
-  { label: 'Rx', color: '#06B6D4' },
-  { label: 'SDoH', color: '#10B981' },
-  { label: 'Vitals', color: '#F59E0B' },
+// Healthcare sector cards with mini graphs
+const sectorCards = [
+  { 
+    label: 'Health Plans', 
+    color: '#E94E87',
+    chartType: 'bar',
+    data: [40, 65, 45, 80, 55, 70]
+  },
+  { 
+    label: 'Health Systems', 
+    color: '#F97316',
+    chartType: 'line',
+    data: [30, 50, 45, 70, 65, 85]
+  },
+  { 
+    label: 'Value-Based Care', 
+    color: '#8B5CF6',
+    chartType: 'area',
+    data: [20, 35, 55, 45, 75, 90]
+  },
+  { 
+    label: 'Direct Primary Care', 
+    color: '#06B6D4',
+    chartType: 'bar',
+    data: [50, 70, 60, 85, 75, 95]
+  },
+  { 
+    label: 'Self-Funded Employers', 
+    color: '#10B981',
+    chartType: 'line',
+    data: [35, 45, 65, 55, 80, 70]
+  },
+  { 
+    label: 'ACO / MSSP', 
+    color: '#F59E0B',
+    chartType: 'area',
+    data: [25, 50, 40, 65, 80, 75]
+  },
 ];
 
+// Mini 3D chart component
+const MiniChart = ({ data, color, type }: { data: number[]; color: string; type: string }) => {
+  const maxVal = Math.max(...data);
+  const width = 80;
+  const height = 40;
+  const padding = 4;
+  
+  if (type === 'bar') {
+    const barWidth = (width - padding * 2) / data.length - 2;
+    return (
+      <svg width={width} height={height} className="transform perspective-[100px] rotateX-[10deg]">
+        <defs>
+          <linearGradient id={`barGrad-${color}`} x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor={color} stopOpacity="1" />
+            <stop offset="100%" stopColor={color} stopOpacity="0.3" />
+          </linearGradient>
+        </defs>
+        {data.map((val, i) => {
+          const barHeight = ((val / maxVal) * (height - padding * 2));
+          const x = padding + i * (barWidth + 2);
+          const y = height - padding - barHeight;
+          return (
+            <g key={i}>
+              {/* 3D side effect */}
+              <rect
+                x={x + 2}
+                y={y + 2}
+                width={barWidth}
+                height={barHeight}
+                fill={color}
+                opacity="0.2"
+                rx="1"
+              />
+              {/* Main bar */}
+              <rect
+                x={x}
+                y={y}
+                width={barWidth}
+                height={barHeight}
+                fill={`url(#barGrad-${color})`}
+                rx="1"
+                className="animate-pulse"
+                style={{ animationDelay: `${i * 0.1}s`, animationDuration: '2s' }}
+              />
+            </g>
+          );
+        })}
+      </svg>
+    );
+  }
+  
+  if (type === 'line' || type === 'area') {
+    const points = data.map((val, i) => {
+      const x = padding + (i / (data.length - 1)) * (width - padding * 2);
+      const y = height - padding - ((val / maxVal) * (height - padding * 2));
+      return `${x},${y}`;
+    }).join(' ');
+    
+    const areaPoints = `${padding},${height - padding} ${points} ${width - padding},${height - padding}`;
+    
+    return (
+      <svg width={width} height={height} className="transform perspective-[100px] rotateX-[10deg]">
+        <defs>
+          <linearGradient id={`areaGrad-${color}`} x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor={color} stopOpacity="0.6" />
+            <stop offset="100%" stopColor={color} stopOpacity="0" />
+          </linearGradient>
+        </defs>
+        {type === 'area' && (
+          <polygon
+            points={areaPoints}
+            fill={`url(#areaGrad-${color})`}
+          />
+        )}
+        <polyline
+          points={points}
+          fill="none"
+          stroke={color}
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="animate-[dash_3s_ease-in-out_infinite]"
+          style={{ 
+            strokeDasharray: '200',
+            strokeDashoffset: '200',
+            animation: 'dash 3s ease-in-out forwards'
+          }}
+        />
+        {data.map((val, i) => {
+          const x = padding + (i / (data.length - 1)) * (width - padding * 2);
+          const y = height - padding - ((val / maxVal) * (height - padding * 2));
+          return (
+            <circle
+              key={i}
+              cx={x}
+              cy={y}
+              r="2"
+              fill={color}
+              className="animate-pulse"
+              style={{ animationDelay: `${i * 0.15}s` }}
+            />
+          );
+        })}
+      </svg>
+    );
+  }
+  
+  return null;
+};
+
+// Floating data particles
 const FloatingParticle = ({ index, total }: { index: number; total: number }) => {
   const angle = (index / total) * Math.PI * 2;
-  const radius = 180 + Math.random() * 60;
-  const duration = 20 + Math.random() * 10;
+  const radius = 220 + Math.random() * 80;
+  const duration = 25 + Math.random() * 15;
   const delay = index * 0.5;
-  const size = 4 + Math.random() * 4;
+  const size = 3 + Math.random() * 3;
 
   return (
     <div
-      className="absolute rounded-full bg-gradient-to-r from-accent to-primary opacity-40"
+      className="absolute rounded-full bg-gradient-to-r from-accent to-primary opacity-30"
       style={{
         width: size,
         height: size,
@@ -41,6 +182,7 @@ const FloatingParticle = ({ index, total }: { index: number; total: number }) =>
 export const HeroSectionAlt = () => {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [activeWord, setActiveWord] = useState(0);
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   const heroRef = useRef<HTMLElement>(null);
   const words = ['Activate', 'Unify', 'Transform'];
 
@@ -113,7 +255,7 @@ export const HeroSectionAlt = () => {
         
         @keyframes float {
           0%, 100% { transform: translateY(0) rotate(0deg); }
-          50% { transform: translateY(-20px) rotate(5deg); }
+          50% { transform: translateY(-15px) rotate(2deg); }
         }
         
         @keyframes pulse-ring {
@@ -126,20 +268,26 @@ export const HeroSectionAlt = () => {
           50% { filter: brightness(1.2) drop-shadow(0 0 40px rgba(233,78,135,0.8)); }
         }
         
-        @keyframes text-reveal {
-          0% { clip-path: inset(0 100% 0 0); }
-          100% { clip-path: inset(0 0 0 0); }
+        @keyframes dash {
+          to {
+            stroke-dashoffset: 0;
+          }
         }
         
-        @keyframes data-flow {
-          0% { transform: translateY(100%) scale(0); opacity: 0; }
-          20% { transform: translateY(50%) scale(1); opacity: 1; }
-          80% { transform: translateY(-50%) scale(1); opacity: 1; }
-          100% { transform: translateY(-100%) scale(0); opacity: 0; }
+        @keyframes card-glow {
+          0%, 100% { box-shadow: 0 0 20px rgba(233,78,135,0.2), inset 0 0 20px rgba(255,255,255,0.05); }
+          50% { box-shadow: 0 0 30px rgba(233,78,135,0.4), inset 0 0 30px rgba(255,255,255,0.1); }
         }
         
-        .word-animate {
-          animation: text-reveal 0.8s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+        .sector-card {
+          animation: float 6s ease-in-out infinite, card-glow 4s ease-in-out infinite;
+          transform-style: preserve-3d;
+          perspective: 1000px;
+        }
+        
+        .sector-card:hover {
+          animation-play-state: paused;
+          transform: scale(1.1) translateZ(20px) !important;
         }
       `}</style>
 
@@ -228,10 +376,10 @@ export const HeroSectionAlt = () => {
           </div>
 
           {/* Right - Visualization */}
-          <div className="relative h-[600px] flex items-center justify-center">
+          <div className="relative h-[700px] flex items-center justify-center">
             {/* Floating particles */}
-            {Array.from({ length: 30 }).map((_, i) => (
-              <FloatingParticle key={i} index={i} total={30} />
+            {Array.from({ length: 20 }).map((_, i) => (
+              <FloatingParticle key={i} index={i} total={20} />
             ))}
 
             {/* Main orb */}
@@ -243,7 +391,7 @@ export const HeroSectionAlt = () => {
               }}
             >
               {/* Outer glow rings */}
-              <div className="absolute inset-0 -m-20">
+              <div className="absolute inset-0 -m-24">
                 <div 
                   className="absolute inset-0 rounded-full border border-[#E94E87]/20"
                   style={{ animation: 'pulse-ring 3s ease-out infinite' }}
@@ -260,94 +408,120 @@ export const HeroSectionAlt = () => {
 
               {/* Central orb */}
               <div 
-                className="relative w-64 h-64 rounded-full"
+                className="relative w-48 h-48 rounded-full"
                 style={{ animation: 'glow 4s ease-in-out infinite' }}
               >
                 {/* Glass sphere effect */}
                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#E94E87]/30 via-transparent to-[#F97316]/30 backdrop-blur-sm" />
                 <div className="absolute inset-2 rounded-full bg-gradient-to-br from-white/10 via-transparent to-transparent" />
-                <div className="absolute inset-4 rounded-full bg-[#0a0a0f]/80 border border-white/10 flex items-center justify-center overflow-hidden">
+                <div className="absolute inset-3 rounded-full bg-[#0a0a0f]/80 border border-white/10 flex items-center justify-center overflow-hidden">
                   {/* Inner content */}
                   <div className="text-center">
-                    <div className="text-sm text-white/50 uppercase tracking-widest mb-2">Powered by</div>
-                    <div className="text-2xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#E94E87] to-[#F97316]">
+                    <div className="text-[10px] text-white/50 uppercase tracking-widest mb-1">Powered by</div>
+                    <div className="text-xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#E94E87] to-[#F97316]">
                       Infera AI
                     </div>
                   </div>
-                  
-                  {/* Animated data streams inside orb */}
-                  <div className="absolute inset-0 overflow-hidden opacity-30">
-                    {[0, 1, 2, 3].map((i) => (
-                      <div
-                        key={i}
-                        className="absolute w-px h-full bg-gradient-to-b from-transparent via-[#E94E87] to-transparent"
-                        style={{
-                          left: `${20 + i * 20}%`,
-                          animation: `data-flow ${2 + i * 0.5}s linear infinite`,
-                          animationDelay: `${i * 0.3}s`,
-                        }}
-                      />
-                    ))}
-                  </div>
                 </div>
+              </div>
 
-                {/* Orbiting data labels */}
-                {dataTypes.map((data, idx) => {
-                  const angle = (idx / dataTypes.length) * Math.PI * 2 - Math.PI / 2;
-                  const radius = 160;
-                  const x = Math.cos(angle) * radius;
-                  const y = Math.sin(angle) * radius;
+              {/* Orbiting sector cards with 3D charts */}
+              {sectorCards.map((card, idx) => {
+                const angle = (idx / sectorCards.length) * Math.PI * 2 - Math.PI / 2;
+                const radius = 200;
+                const x = Math.cos(angle) * radius;
+                const y = Math.sin(angle) * radius;
 
-                  return (
-                    <div
-                      key={data.label}
-                      className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+                return (
+                  <div
+                    key={card.label}
+                    className="sector-card absolute left-1/2 top-1/2 cursor-pointer"
+                    style={{
+                      transform: `translate(-50%, -50%) translate(${x}px, ${y}px)`,
+                      animationDelay: `${idx * 0.5}s`,
+                      zIndex: hoveredCard === idx ? 50 : 10,
+                    }}
+                    onMouseEnter={() => setHoveredCard(idx)}
+                    onMouseLeave={() => setHoveredCard(null)}
+                  >
+                    <div 
+                      className="relative px-4 py-3 rounded-xl backdrop-blur-md border transition-all duration-300"
                       style={{
-                        transform: `translate(${x}px, ${y}px)`,
-                        animation: `float ${4 + idx * 0.5}s ease-in-out infinite`,
-                        animationDelay: `${idx * 0.3}s`,
+                        backgroundColor: `${card.color}15`,
+                        borderColor: hoveredCard === idx ? `${card.color}80` : `${card.color}30`,
+                        boxShadow: hoveredCard === idx 
+                          ? `0 0 40px ${card.color}40, 0 20px 40px rgba(0,0,0,0.4)` 
+                          : `0 0 20px ${card.color}20`,
+                        transform: hoveredCard === idx ? 'scale(1.15) translateZ(30px)' : 'scale(1)',
                       }}
                     >
-                      <div 
-                        className="px-3 py-1.5 rounded-full text-xs font-medium text-white border backdrop-blur-md"
-                        style={{
-                          backgroundColor: `${data.color}20`,
-                          borderColor: `${data.color}40`,
-                          boxShadow: `0 0 20px ${data.color}30`,
-                        }}
-                      >
-                        {data.label}
+                      {/* Glassy top reflection */}
+                      <div className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/10 to-transparent rounded-t-xl" />
+                      
+                      {/* Card content */}
+                      <div className="relative z-10">
+                        <div 
+                          className="text-[11px] font-semibold tracking-wide mb-2 whitespace-nowrap"
+                          style={{ color: card.color }}
+                        >
+                          {card.label}
+                        </div>
+                        
+                        {/* Mini 3D Chart */}
+                        <div className="transform perspective-[200px] rotateX-[15deg]">
+                          <MiniChart 
+                            data={card.data} 
+                            color={card.color} 
+                            type={card.chartType} 
+                          />
+                        </div>
+                        
+                        {/* Metric indicator */}
+                        <div className="flex items-center gap-1 mt-2">
+                          <div 
+                            className="w-1.5 h-1.5 rounded-full animate-pulse"
+                            style={{ backgroundColor: card.color }}
+                          />
+                          <span className="text-[9px] text-white/60">
+                            +{Math.floor(Math.random() * 30 + 10)}% efficiency
+                          </span>
+                        </div>
                       </div>
                     </div>
-                  );
-                })}
-              </div>
+                  </div>
+                );
+              })}
             </div>
 
-            {/* Connection lines to edges */}
-            <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-20">
+            {/* Connection lines from orb to cards */}
+            <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ transform: `translate(${mousePos.x * -5}px, ${mousePos.y * -5}px)` }}>
               <defs>
-                <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#E94E87" stopOpacity="0" />
-                  <stop offset="50%" stopColor="#E94E87" stopOpacity="0.5" />
-                  <stop offset="100%" stopColor="#F97316" stopOpacity="0" />
+                <linearGradient id="lineGradNew" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#E94E87" stopOpacity="0.4" />
+                  <stop offset="50%" stopColor="#F97316" stopOpacity="0.2" />
+                  <stop offset="100%" stopColor="#E94E87" stopOpacity="0" />
                 </linearGradient>
               </defs>
-              {[45, 135, 225, 315].map((angle, i) => {
-                const rad = (angle * Math.PI) / 180;
-                const x1 = 50 + Math.cos(rad) * 15;
-                const y1 = 50 + Math.sin(rad) * 15;
-                const x2 = 50 + Math.cos(rad) * 50;
-                const y2 = 50 + Math.sin(rad) * 50;
+              {sectorCards.map((_, idx) => {
+                const angle = (idx / sectorCards.length) * Math.PI * 2 - Math.PI / 2;
+                const innerRadius = 100;
+                const outerRadius = 180;
+                const centerX = 350;
+                const centerY = 350;
+                const x1 = centerX + Math.cos(angle) * innerRadius;
+                const y1 = centerY + Math.sin(angle) * innerRadius;
+                const x2 = centerX + Math.cos(angle) * outerRadius;
+                const y2 = centerY + Math.sin(angle) * outerRadius;
                 return (
                   <line
-                    key={i}
-                    x1={`${x1}%`}
-                    y1={`${y1}%`}
-                    x2={`${x2}%`}
-                    y2={`${y2}%`}
-                    stroke="url(#lineGrad)"
+                    key={idx}
+                    x1={x1}
+                    y1={y1}
+                    x2={x2}
+                    y2={y2}
+                    stroke="url(#lineGradNew)"
                     strokeWidth="1"
+                    opacity="0.5"
                   />
                 );
               })}
