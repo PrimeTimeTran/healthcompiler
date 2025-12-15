@@ -16,6 +16,7 @@ import Infera from "./pages/Infera";
 import Apex from "./pages/Apex";
 import GetFeatured from "./pages/GetFeatured";
 import HCCSuspecting from "./pages/HCCSuspecting";
+import MIPSPerformance from "./pages/MIPSPerformance";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -39,6 +40,7 @@ const App = () => (
           <Route path="/platform/infera" element={<Infera />} />
           <Route path="/resources/apex" element={<Apex />} />
           <Route path="/solutions/hcc-suspecting" element={<HCCSuspecting />} />
+          <Route path="/solutions/mips" element={<MIPSPerformance />} />
           <Route path="/get-featured-form" element={<GetFeatured />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
