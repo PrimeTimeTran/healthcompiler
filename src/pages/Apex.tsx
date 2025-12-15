@@ -4,13 +4,13 @@ import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { Search, ArrowRight } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/use-scroll-reveal';
+import apexLogo from '@/assets/apex-magazine-logo.png';
 
 // Data model
 const apexData = {
   hero: {
     eyebrow: 'A Community initiative by Health Compiler',
     h1: 'Celebrating CHANGE MAKERS in Direct Care, Human Capital, Benefit Advisory and beyond',
-    logo: '/apex-logo.png',
   },
   sections: [
     {
@@ -171,12 +171,11 @@ const Apex = () => {
           <div className="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-16 scroll-reveal">
             {/* Left side: APEX Logo */}
             <div className="text-center md:text-left flex-shrink-0">
-              <h1 className="text-6xl md:text-7xl font-serif font-bold italic tracking-tight text-foreground">
-                APEX
-              </h1>
-              <p className="text-lg md:text-xl text-muted-foreground italic mt-1 tracking-widest">
-                magazine
-              </p>
+              <img 
+                src={apexLogo} 
+                alt="APEX Magazine" 
+                className="h-24 md:h-32 w-auto"
+              />
               <p className="text-sm text-muted-foreground mt-4 max-w-[200px]">
                 {apexData.hero.eyebrow}
               </p>
