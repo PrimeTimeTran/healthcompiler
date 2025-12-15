@@ -17,10 +17,10 @@ const testimonials: Testimonial[] = [
     image: brianFretwellImg,
   },
   {
-    quote: "Health Compiler has exceeded expectations in every way for us. From implementation to ongoing support, they are making a statement as to why they belong as a leader in the market.",
-    name: "Michael Chen",
-    title: "VP Operations, Midwest Health Partners",
-    initials: "MHP",
+    quote: "Before Health Compiler, compiling these metrics was a manual and time-consuming process. Now, everything is captured automatically, and employers can access a dashboard with these metrics anytime.",
+    name: "Dr. Ken Rictor",
+    title: "Genovo Health & Scotland Family Medicine",
+    initials: "GH",
   },
   {
     quote: "Self-funded employers should not underestimate the criticality of choosing the right data partner. Integrity and competency matters, which is why we chose Health Compiler.",

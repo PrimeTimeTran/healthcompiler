@@ -68,8 +68,8 @@ const Infera = () => {
               The AI engine purpose-built for healthcare — powering intelligent automation, predictive analytics, and personalized experiences for self-funded employers, direct care practices, and value-based organizations.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button variant="hero" size="lg" asChild>
-                <Link to="/contact">Schedule a Demo</Link>
+              <Button variant="gradient" size="lg" asChild>
+                <Link to="/contact">Schedule a Demo →</Link>
               </Button>
               <Button variant="outline" size="lg" asChild>
                 <Link to="/capabilities">Learn More</Link>
@@ -153,8 +153,8 @@ const Infera = () => {
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-8">
             See how Infera can transform your organization — whether you're a self-funded employer, direct care practice, or value-based organization.
           </p>
-          <Button variant="hero" size="lg" asChild>
-            <Link to="/contact">Get Started Today</Link>
+          <Button variant="gradient" size="lg" asChild>
+            <Link to="/contact">Get Started Today →</Link>
           </Button>
         </div>
       </section>
