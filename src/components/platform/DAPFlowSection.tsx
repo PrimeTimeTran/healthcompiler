@@ -57,7 +57,7 @@ interface DAPFlowSectionProps {
 export const DAPFlowSection = ({
   eyebrow = 'Data Activation Platform',
   title = 'Turn fragmented healthcare data into actionable intelligence',
-  subtitle = 'For Self-Funded Employers, Direct Care, and Value-Based Organizations',
+  subtitle = 'For Self-Funded Plans, Direct Care, and Value-Based Organizations',
   poweredBy = 'powered by Infera AI',
   highlightStepIndex = 2,
 }: DAPFlowSectionProps) => {

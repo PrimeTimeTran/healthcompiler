@@ -15,7 +15,7 @@ const dataInputs = [
 const icpClusters = [
   {
     id: 'employers',
-    title: 'Self-Funded Employers',
+    title: 'Self-Funded Plans',
     color: 'hsl(var(--accent))',
     outcomes: ['Cost Drivers & Savings', 'Population Health', 'Utilization Insights', 'ROI Dashboards'],
   },
