@@ -35,7 +35,7 @@ export const HeroVisualization = () => {
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto h-[420px] relative mb-12">
+    <div className="w-full max-w-2xl mx-auto h-[340px] relative mb-6">
       <svg
         viewBox="0 0 600 400"
         className="w-full h-full"
@@ -228,7 +228,7 @@ export const HeroVisualization = () => {
                 className={`transition-all duration-300 ${
                   isActive ? 'fill-foreground font-medium' : 'fill-muted-foreground'
                 }`}
-                style={{ fontSize: '11px' }}
+                style={{ fontSize: '12px' }}
               >
                 {node.label}
               </text>
