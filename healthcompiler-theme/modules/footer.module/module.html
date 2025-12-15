@@ -1,0 +1,63 @@
+<!-- Footer Module -->
+<footer class="hc-footer">
+  <div class="hc-container">
+    <div class="hc-footer__grid">
+      <!-- Brand Column -->
+      <div class="hc-footer__brand">
+        <a href="/" class="hc-footer__logo">
+          {% if module.logo.src %}
+            <img src="{{ module.logo.src }}" alt="{{ module.company_name|default('HealthCompiler') }}" />
+          {% else %}
+            <span class="hc-footer__logo-text">{{ module.company_name|default('HealthCompiler') }}</span>
+          {% endif %}
+        </a>
+        <p class="hc-footer__description">
+          {{ module.description|default('Healthcare data platforms built for modern healthcare teams. Analytics, automation, and secure data architecture.') }}
+        </p>
+        
+        <!-- Trust Badge -->
+        <div class="hc-trust-badges hc-mt-lg" style="justify-content: flex-start;">
+          <span class="hc-trust-badge">
+            <span class="hc-trust-badge__icon"></span>
+            {{ module.badge_text|default('HIPAA-Aligned • Secure by Design') }}
+          </span>
+        </div>
+      </div>
+
+      <!-- Menu Columns -->
+      {% for column in module.menu_columns %}
+        <div class="hc-footer__column">
+          <h4 class="hc-footer__heading">{{ column.heading }}</h4>
+          <ul class="hc-footer__links">
+            {% for link in column.links %}
+              <li>
+                <a href="{{ link.url.href }}" class="hc-footer__link">
+                  {{ link.label }}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="hc-footer__bottom">
+      <p class="hc-footer__copyright">
+        © {{ year }} {{ module.copyright_text|default('HealthCompiler. All rights reserved.') }}
+      </p>
+      <div class="hc-footer__legal">
+        {% if module.privacy_link.url.href %}
+          <a href="{{ module.privacy_link.url.href }}" class="hc-footer__link">Privacy Policy</a>
+        {% else %}
+          <a href="/privacy" class="hc-footer__link">Privacy Policy</a>
+        {% endif %}
+        {% if module.terms_link.url.href %}
+          <a href="{{ module.terms_link.url.href }}" class="hc-footer__link">Terms of Service</a>
+        {% else %}
+          <a href="/terms" class="hc-footer__link">Terms of Service</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</footer>

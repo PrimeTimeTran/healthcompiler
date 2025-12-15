@@ -1,0 +1,98 @@
+[
+  {
+    "type": "text",
+    "name": "label",
+    "label": "Section Label",
+    "default": ""
+  },
+  {
+    "type": "text",
+    "name": "headline",
+    "label": "Headline",
+    "default": "Healthcare Data. Unified. Intelligent. Actionable."
+  },
+  {
+    "type": "textarea",
+    "name": "subheadline",
+    "label": "Sub-headline",
+    "default": "HealthCompiler transforms fragmented healthcare data into actionable insights and automated workflows for modern healthcare organizations."
+  },
+  {
+    "type": "group",
+    "name": "primary_cta_group",
+    "label": "Primary CTA",
+    "children": [
+      {
+        "type": "text",
+        "name": "primary_cta_text",
+        "label": "Button Text",
+        "default": "Request a Demo"
+      },
+      {
+        "type": "link",
+        "name": "primary_cta",
+        "label": "Button Link",
+        "default": {
+          "url": {
+            "href": "/contact",
+            "type": "CONTENT"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "name": "secondary_cta_group",
+    "label": "Secondary CTA",
+    "children": [
+      {
+        "type": "text",
+        "name": "secondary_cta_text",
+        "label": "Button Text",
+        "default": "Explore the Platform"
+      },
+      {
+        "type": "link",
+        "name": "secondary_cta",
+        "label": "Button Link",
+        "default": {
+          "url": {
+            "href": "/platform",
+            "type": "CONTENT"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "type": "boolean",
+    "name": "show_trust_badges",
+    "label": "Show Trust Badges",
+    "default": true
+  },
+  {
+    "type": "group",
+    "name": "trust_badges",
+    "label": "Trust Badges",
+    "occurrence": {
+      "min": 0,
+      "max": 6,
+      "default": 4
+    },
+    "children": [
+      {
+        "type": "text",
+        "name": "text",
+        "label": "Badge Text",
+        "default": "HIPAA-Aligned"
+      }
+    ],
+    "default": [
+      { "text": "HIPAA-Aligned" },
+      { "text": "Secure by Design" },
+      { "text": "US Healthcare Focus" },
+      { "text": "Scalable Architecture" }
+    ]
+  }
+]

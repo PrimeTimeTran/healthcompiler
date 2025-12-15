@@ -1,0 +1,9 @@
+{
+  "label": "CTA Banner",
+  "css_assets": [],
+  "js_assets": [],
+  "icon": "cta",
+  "categories": ["cta", "banner"],
+  "host_template_types": ["PAGE", "BLOG_LISTING", "BLOG_POST"],
+  "is_available_for_new_content": true
+}

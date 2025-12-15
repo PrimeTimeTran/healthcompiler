@@ -1,0 +1,72 @@
+[
+  {
+    "type": "text",
+    "name": "label",
+    "label": "Section Label",
+    "default": "Industries"
+  },
+  {
+    "type": "text",
+    "name": "title",
+    "label": "Section Title",
+    "default": "Who We Serve"
+  },
+  {
+    "type": "textarea",
+    "name": "description",
+    "label": "Section Description",
+    "default": "Purpose-built solutions for healthcare organizations across the care continuum."
+  },
+  {
+    "type": "group",
+    "name": "outcomes",
+    "label": "Outcome Cards",
+    "occurrence": {
+      "min": 1,
+      "max": 8,
+      "default": 4
+    },
+    "children": [
+      {
+        "type": "text",
+        "name": "icon",
+        "label": "Emoji Icon",
+        "default": "🏥"
+      },
+      {
+        "type": "text",
+        "name": "title",
+        "label": "Card Title",
+        "default": "Healthcare Providers"
+      },
+      {
+        "type": "textarea",
+        "name": "description",
+        "label": "Card Description",
+        "default": "Unified analytics and reporting for clinics, practices, and health systems."
+      }
+    ],
+    "default": [
+      {
+        "icon": "🩺",
+        "title": "Direct Primary Care",
+        "description": "Patient engagement analytics and operational dashboards for DPC practices."
+      },
+      {
+        "icon": "💻",
+        "title": "Healthcare SaaS",
+        "description": "Data infrastructure and analytics for health technology companies."
+      },
+      {
+        "icon": "🏥",
+        "title": "Clinics & Practices",
+        "description": "Unified reporting and workflow automation for multi-location practices."
+      },
+      {
+        "icon": "📈",
+        "title": "Health Analytics Teams",
+        "description": "Scalable data pipelines and visualization platforms for analytics teams."
+      }
+    ]
+  }
+]

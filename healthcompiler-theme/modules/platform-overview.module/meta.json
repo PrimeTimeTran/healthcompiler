@@ -1,0 +1,9 @@
+{
+  "label": "Platform Overview",
+  "css_assets": [],
+  "js_assets": [],
+  "icon": "layout",
+  "categories": ["content", "features"],
+  "host_template_types": ["PAGE", "BLOG_LISTING", "BLOG_POST"],
+  "is_available_for_new_content": true
+}

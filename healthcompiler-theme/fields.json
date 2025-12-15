@@ -1,0 +1,113 @@
+[
+  {
+    "type": "group",
+    "name": "brand",
+    "label": "Brand Settings",
+    "children": [
+      {
+        "type": "image",
+        "name": "logo",
+        "label": "Logo",
+        "default": {
+          "src": ""
+        }
+      },
+      {
+        "type": "image",
+        "name": "logo_alt",
+        "label": "Alternate Logo (for dark backgrounds)",
+        "default": {
+          "src": ""
+        }
+      },
+      {
+        "type": "text",
+        "name": "company_name",
+        "label": "Company Name",
+        "default": "HealthCompiler"
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "name": "navigation",
+    "label": "Navigation",
+    "children": [
+      {
+        "type": "menu",
+        "name": "main_menu",
+        "label": "Main Navigation Menu",
+        "default": "default"
+      },
+      {
+        "type": "link",
+        "name": "cta_button",
+        "label": "Header CTA Button",
+        "default": {
+          "url": {
+            "href": "/contact",
+            "type": "CONTENT"
+          },
+          "open_in_new_tab": false,
+          "no_follow": false
+        }
+      },
+      {
+        "type": "text",
+        "name": "cta_text",
+        "label": "CTA Button Text",
+        "default": "Request Demo"
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "name": "footer",
+    "label": "Footer Settings",
+    "children": [
+      {
+        "type": "richtext",
+        "name": "footer_text",
+        "label": "Footer Description",
+        "default": "<p>Healthcare data platforms built for modern healthcare teams.</p>"
+      },
+      {
+        "type": "text",
+        "name": "copyright_text",
+        "label": "Copyright Text",
+        "default": "HealthCompiler. All rights reserved."
+      },
+      {
+        "type": "menu",
+        "name": "footer_menu_1",
+        "label": "Footer Menu - Company",
+        "default": "default"
+      },
+      {
+        "type": "menu",
+        "name": "footer_menu_2",
+        "label": "Footer Menu - Solutions",
+        "default": "default"
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "name": "social",
+    "label": "Social Links",
+    "children": [
+      {
+        "type": "url",
+        "name": "linkedin",
+        "label": "LinkedIn URL",
+        "default": ""
+      },
+      {
+        "type": "url",
+        "name": "twitter",
+        "label": "Twitter URL",
+        "default": ""
+      }
+    ]
+  }
+]

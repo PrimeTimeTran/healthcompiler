@@ -1,0 +1,130 @@
+[
+  {
+    "type": "image",
+    "name": "logo",
+    "label": "Footer Logo",
+    "default": {
+      "src": ""
+    }
+  },
+  {
+    "type": "text",
+    "name": "company_name",
+    "label": "Company Name",
+    "default": "HealthCompiler"
+  },
+  {
+    "type": "textarea",
+    "name": "description",
+    "label": "Footer Description",
+    "default": "Healthcare data platforms built for modern healthcare teams. Analytics, automation, and secure data architecture."
+  },
+  {
+    "type": "text",
+    "name": "badge_text",
+    "label": "Trust Badge Text",
+    "default": "HIPAA-Aligned • Secure by Design"
+  },
+  {
+    "type": "group",
+    "name": "menu_columns",
+    "label": "Menu Columns",
+    "occurrence": {
+      "min": 1,
+      "max": 4,
+      "default": 3
+    },
+    "children": [
+      {
+        "type": "text",
+        "name": "heading",
+        "label": "Column Heading",
+        "default": "Platform"
+      },
+      {
+        "type": "group",
+        "name": "links",
+        "label": "Links",
+        "occurrence": {
+          "min": 1,
+          "max": 8,
+          "default": 4
+        },
+        "children": [
+          {
+            "type": "text",
+            "name": "label",
+            "label": "Link Label",
+            "default": "Overview"
+          },
+          {
+            "type": "link",
+            "name": "url",
+            "label": "Link URL",
+            "default": {
+              "url": {
+                "href": "/",
+                "type": "CONTENT"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "default": [
+      {
+        "heading": "Platform",
+        "links": [
+          { "label": "Overview", "url": { "url": { "href": "/platform" } } },
+          { "label": "Analytics", "url": { "url": { "href": "/platform/analytics" } } },
+          { "label": "Integrations", "url": { "url": { "href": "/platform/integrations" } } },
+          { "label": "Security", "url": { "url": { "href": "/platform/security" } } }
+        ]
+      },
+      {
+        "heading": "Solutions",
+        "links": [
+          { "label": "Healthcare Providers", "url": { "url": { "href": "/solutions/providers" } } },
+          { "label": "Payers", "url": { "url": { "href": "/solutions/payers" } } },
+          { "label": "Health Tech", "url": { "url": { "href": "/solutions/startups" } } }
+        ]
+      },
+      {
+        "heading": "Company",
+        "links": [
+          { "label": "About", "url": { "url": { "href": "/about" } } },
+          { "label": "Resources", "url": { "url": { "href": "/resources" } } },
+          { "label": "Contact", "url": { "url": { "href": "/contact" } } }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "copyright_text",
+    "label": "Copyright Text",
+    "default": "HealthCompiler. All rights reserved."
+  },
+  {
+    "type": "link",
+    "name": "privacy_link",
+    "label": "Privacy Policy Link",
+    "default": {
+      "url": {
+        "href": "/privacy",
+        "type": "CONTENT"
+      }
+    }
+  },
+  {
+    "type": "link",
+    "name": "terms_link",
+    "label": "Terms of Service Link",
+    "default": {
+      "url": {
+        "href": "/terms",
+        "type": "CONTENT"
+      }
+    }
+  }
+]

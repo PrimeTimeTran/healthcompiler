@@ -1,0 +1,70 @@
+<!-- Outcomes Module -->
+<section class="hc-outcomes">
+  <div class="hc-container">
+    {# Section Header #}
+    <div class="hc-section-header" data-animate>
+      {% if module.label %}
+        <span class="hc-section-header__label">{{ module.label }}</span>
+      {% endif %}
+      <h2 class="hc-section-header__title">
+        {{ module.title|default('Who We Serve') }}
+      </h2>
+      {% if module.description %}
+        <p class="hc-section-header__description">
+          {{ module.description }}
+        </p>
+      {% endif %}
+    </div>
+    
+    {# Outcome Cards Grid #}
+    <div class="hc-grid hc-grid--4">
+      {% for outcome in module.outcomes %}
+        <div class="hc-outcome-card" data-animate style="animation-delay: {{ loop.index * 0.1 }}s;">
+          <div class="hc-outcome-card__icon">
+            {{ outcome.icon }}
+          </div>
+          <h3 class="hc-outcome-card__title">{{ outcome.title }}</h3>
+          <p class="hc-outcome-card__description">{{ outcome.description }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .hc-outcomes {
+    padding: var(--hc-space-4xl) 0;
+    background-color: var(--hc-bg-primary);
+  }
+  
+  .hc-outcome-card {
+    background-color: var(--hc-surface);
+    border-radius: var(--hc-radius-xl);
+    padding: var(--hc-space-xl);
+    text-align: center;
+    transition: all var(--hc-transition-base);
+  }
+  
+  .hc-outcome-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--hc-shadow-lg);
+  }
+  
+  .hc-outcome-card__icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--hc-space-md);
+  }
+  
+  .hc-outcome-card__title {
+    font-size: var(--hc-text-lg);
+    font-weight: 600;
+    margin-bottom: var(--hc-space-sm);
+    color: var(--hc-text-primary);
+  }
+  
+  .hc-outcome-card__description {
+    font-size: var(--hc-text-sm);
+    color: var(--hc-text-muted);
+    line-height: var(--hc-leading-relaxed);
+  }
+</style>

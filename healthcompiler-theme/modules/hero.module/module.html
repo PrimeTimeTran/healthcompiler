@@ -1,0 +1,150 @@
+<!-- Hero Module -->
+<section class="hc-hero">
+  <div class="hc-container">
+    <div class="hc-hero__content" data-animate>
+      {# Label #}
+      {% if module.label %}
+        <span class="hc-hero__label">{{ module.label }}</span>
+      {% endif %}
+      
+      {# Headline #}
+      <h1 class="hc-hero__title">
+        {{ module.headline|default('Healthcare Data. Unified. Intelligent. Actionable.') }}
+      </h1>
+      
+      {# Sub-headline #}
+      <p class="hc-hero__description">
+        {{ module.subheadline|default('HealthCompiler transforms fragmented healthcare data into actionable insights and automated workflows for modern healthcare organizations.') }}
+      </p>
+      
+      {# CTA Buttons #}
+      <div class="hc-hero__actions">
+        {% if module.primary_cta.url.href %}
+          <a 
+            href="{{ module.primary_cta.url.href }}" 
+            class="hc-btn hc-btn--primary hc-btn--lg"
+            {% if module.primary_cta.open_in_new_tab %}target="_blank" rel="noopener"{% endif %}
+          >
+            {{ module.primary_cta_text|default('Request a Demo') }}
+          </a>
+        {% else %}
+          <a href="/contact" class="hc-btn hc-btn--primary hc-btn--lg">
+            Request a Demo
+          </a>
+        {% endif %}
+        
+        {% if module.secondary_cta.url.href %}
+          <a 
+            href="{{ module.secondary_cta.url.href }}" 
+            class="hc-btn hc-btn--secondary hc-btn--lg"
+            {% if module.secondary_cta.open_in_new_tab %}target="_blank" rel="noopener"{% endif %}
+          >
+            {{ module.secondary_cta_text|default('Explore the Platform') }}
+          </a>
+        {% else %}
+          <a href="/platform" class="hc-btn hc-btn--secondary hc-btn--lg">
+            Explore the Platform
+          </a>
+        {% endif %}
+      </div>
+      
+      {# Trust Badges #}
+      {% if module.show_trust_badges %}
+        <div class="hc-trust-badges">
+          {% for badge in module.trust_badges %}
+            <span class="hc-trust-badge">
+              <span class="hc-trust-badge__icon"></span>
+              {{ badge.text }}
+            </span>
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="hc-trust-badges">
+          <span class="hc-trust-badge">
+            <span class="hc-trust-badge__icon"></span>
+            HIPAA-Aligned
+          </span>
+          <span class="hc-trust-badge">
+            <span class="hc-trust-badge__icon"></span>
+            Secure by Design
+          </span>
+          <span class="hc-trust-badge">
+            <span class="hc-trust-badge__icon"></span>
+            US Healthcare Focus
+          </span>
+          <span class="hc-trust-badge">
+            <span class="hc-trust-badge__icon"></span>
+            Scalable Architecture
+          </span>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .hc-hero {
+    padding: var(--hc-space-4xl) 0;
+    background-color: var(--hc-bg-secondary);
+    text-align: center;
+  }
+  
+  .hc-hero__content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .hc-hero__label {
+    display: inline-block;
+    font-size: var(--hc-text-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--hc-cta);
+    margin-bottom: var(--hc-space-lg);
+  }
+  
+  .hc-hero__title {
+    font-size: var(--hc-text-6xl);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: var(--hc-space-lg);
+    color: var(--hc-text-primary);
+  }
+  
+  .hc-hero__description {
+    font-size: var(--hc-text-xl);
+    color: var(--hc-text-muted);
+    line-height: var(--hc-leading-relaxed);
+    max-width: 640px;
+    margin: 0 auto var(--hc-space-2xl);
+  }
+  
+  .hc-hero__actions {
+    display: flex;
+    gap: var(--hc-space-md);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: var(--hc-space-3xl);
+  }
+  
+  @media (max-width: 768px) {
+    .hc-hero {
+      padding: var(--hc-space-3xl) 0;
+    }
+    
+    .hc-hero__title {
+      font-size: var(--hc-text-4xl);
+    }
+    
+    .hc-hero__description {
+      font-size: var(--hc-text-lg);
+    }
+    
+    .hc-hero__actions {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+</style>

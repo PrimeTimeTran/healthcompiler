@@ -1,0 +1,148 @@
+<!-- Platform Overview Module -->
+<section class="hc-platform">
+  <div class="hc-container">
+    <div class="hc-platform__grid">
+      {# Content Column #}
+      <div class="hc-platform__content" data-animate>
+        {% if module.label %}
+          <span class="hc-section-header__label">{{ module.label }}</span>
+        {% endif %}
+        
+        <h2 class="hc-platform__title">
+          {{ module.title|default('How We Help') }}
+        </h2>
+        
+        <p class="hc-platform__description">
+          {{ module.description|default('HealthCompiler provides the infrastructure healthcare organizations need to consolidate data, generate insights, and automate critical workflows.') }}
+        </p>
+        
+        {# Benefits List #}
+        <ul class="hc-platform__benefits">
+          {% for benefit in module.benefits %}
+            <li class="hc-platform__benefit">
+              <span class="hc-platform__benefit-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </span>
+              <span>{{ benefit.text }}</span>
+            </li>
+          {% endfor %}
+        </ul>
+        
+        {% if module.cta.url.href %}
+          <a 
+            href="{{ module.cta.url.href }}" 
+            class="hc-btn hc-btn--accent hc-mt-xl"
+          >
+            {{ module.cta_text|default('Learn More') }}
+          </a>
+        {% endif %}
+      </div>
+      
+      {# Visual Column #}
+      <div class="hc-platform__visual" data-animate>
+        <div class="hc-platform__visual-card">
+          {% for item in module.highlights %}
+            <div class="hc-platform__highlight">
+              <span class="hc-platform__highlight-icon">{{ item.icon }}</span>
+              <span class="hc-platform__highlight-text">{{ item.text }}</span>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hc-platform {
+    padding: var(--hc-space-4xl) 0;
+    background-color: var(--hc-bg-secondary);
+  }
+  
+  .hc-platform__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--hc-space-4xl);
+    align-items: center;
+  }
+  
+  .hc-platform__title {
+    font-size: var(--hc-text-4xl);
+    font-weight: 700;
+    margin-bottom: var(--hc-space-lg);
+  }
+  
+  .hc-platform__description {
+    font-size: var(--hc-text-lg);
+    color: var(--hc-text-muted);
+    margin-bottom: var(--hc-space-xl);
+  }
+  
+  .hc-platform__benefits {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--hc-space-md);
+  }
+  
+  .hc-platform__benefit {
+    display: flex;
+    align-items: center;
+    gap: var(--hc-space-sm);
+    font-size: var(--hc-text-base);
+    color: var(--hc-text-primary);
+  }
+  
+  .hc-platform__benefit-icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--hc-accent);
+    border-radius: var(--hc-radius-full);
+    color: var(--hc-text-primary);
+  }
+  
+  .hc-platform__visual-card {
+    background-color: var(--hc-surface);
+    border-radius: var(--hc-radius-2xl);
+    padding: var(--hc-space-2xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--hc-space-lg);
+  }
+  
+  .hc-platform__highlight {
+    display: flex;
+    align-items: center;
+    gap: var(--hc-space-md);
+    padding: var(--hc-space-md);
+    background-color: var(--hc-bg-primary);
+    border-radius: var(--hc-radius-lg);
+  }
+  
+  .hc-platform__highlight-icon {
+    font-size: var(--hc-text-xl);
+  }
+  
+  .hc-platform__highlight-text {
+    font-size: var(--hc-text-sm);
+    font-weight: 500;
+    color: var(--hc-text-primary);
+  }
+  
+  @media (max-width: 768px) {
+    .hc-platform__grid {
+      grid-template-columns: 1fr;
+      gap: var(--hc-space-2xl);
+    }
+    
+    .hc-platform__title {
+      font-size: var(--hc-text-3xl);
+    }
+  }
+</style>
