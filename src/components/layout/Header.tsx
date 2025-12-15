@@ -363,10 +363,10 @@ export const Header = () => {
               Sign in
               <span className="text-accent">→</span>
             </Link>
-            <Button variant="default" size="default" className="rounded-full px-5" asChild>
+            <Button variant="gradient" size="default" className="rounded-full px-5" asChild>
               <Link to="/contact">
-                Book a demo
-                <span className="ml-1.5">✦</span>
+                Request a Demo
+                <span className="ml-1.5">→</span>
               </Link>
             </Button>
           </div>
@@ -513,9 +513,9 @@ export const Header = () => {
                 Contact Us
               </Link>
 
-              <Button variant="hero" size="default" className="mt-4" asChild>
+              <Button variant="gradient" size="default" className="mt-4" asChild>
                 <Link to="/contact" onClick={() => setIsMenuOpen(false)}>
-                  Book a Consultation
+                  Request a Demo →
                 </Link>
               </Button>
             </div>

@@ -18,7 +18,7 @@ export const CTASection = () => {
           <p className="text-muted-foreground text-lg max-w-xl mx-auto mb-8">
             Start a conversation about your data challenges and discover how we can help you achieve operational excellence.
           </p>
-          <Button variant="hero" size="xl" asChild>
+          <Button variant="gradient" size="xl" asChild>
             <Link to="/contact" className="gap-2">
               Schedule a Call
               <ArrowRight className="w-5 h-5" />
