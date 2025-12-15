@@ -68,6 +68,12 @@ const navItems: NavItem[] = [
     href: '/resources',
     subItems: [
       { label: 'Apex', href: '/resources/apex' },
+      { label: 'Blogs', href: '/resources/blogs' },
+      { label: 'Partners & Memberships', href: '/resources/partners-memberships' },
+      { label: 'Guide', href: '/resources/guide' },
+      { label: 'Whitepaper', href: '/resources/whitepaper' },
+      { label: 'News & Events', href: '/resources/news-events' },
+      { label: 'FAQs', href: '/resources/faqs' },
     ]
   },
   { label: 'About Us', href: '/about' },
