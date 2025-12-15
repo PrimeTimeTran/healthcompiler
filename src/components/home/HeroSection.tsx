@@ -22,13 +22,13 @@ export const HeroSection = () => {
         <div className="max-w-4xl mx-auto text-center">
           {/* Main headline */}
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 animate-fade-in">
-            Intelligent Data & Workflow Activation Layer for{' '}
-            <span className="text-gradient">Modern Healthcare</span>
+            Intelligent Data & Workflow{' '}
+            <span className="text-gradient">Activation Layer</span>
           </h1>
 
           {/* Sub-headline */}
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-10 leading-relaxed animate-fade-in" style={{ animationDelay: '0.1s' }}>
-            Unifying healthcare data, AI automation, and operational workflows that drives lower costs, better care, and higher-performance across Self Funded employers, Direct Care, and value-based organizations.
+            Unifying healthcare data, AI automation, and operational workflows that drive lower costs, better care, and higher performance across self-funded employers, direct care, and value-based organizations.
           </p>
 
           {/* CTA Buttons */}
