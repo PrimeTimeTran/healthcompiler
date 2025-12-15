@@ -1,96 +1,52 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, Brain, Plug, Users, ChevronRight } from 'lucide-react';
 import logo from '@/assets/healthcompiler-logo.webp';
 
-interface SubMenuItem {
-  label: string;
+interface PlatformCard {
+  title: string;
+  description: string;
   href: string;
+  icon: React.ElementType;
+  bgColor: string;
 }
 
-interface SubMenuCategory {
-  category: string;
-  items: SubMenuItem[];
-}
+const platformCards: PlatformCard[] = [
+  {
+    title: 'Infera',
+    description: 'Healthcare-native AI powering intelligent automation and insights',
+    href: '/platform/infera',
+    icon: Brain,
+    bgColor: 'bg-purple-50',
+  },
+  {
+    title: 'Integrations',
+    description: 'Connect and unify data from any healthcare system seamlessly',
+    href: '/platform/integration',
+    icon: Plug,
+    bgColor: 'bg-blue-50',
+  },
+  {
+    title: 'Forward Deployed Engineering',
+    description: 'Dedicated engineering teams embedded with your organization',
+    href: '/platform/fde',
+    icon: Users,
+    bgColor: 'bg-green-50',
+  },
+];
 
 interface NavItem {
   label: string;
   href: string;
-  subItems?: SubMenuItem[] | SubMenuCategory[];
-  isMultiColumn?: boolean;
+  hasMegaMenu?: boolean;
 }
 
 const navItems: NavItem[] = [
-  { 
-    label: 'Platform', 
-    href: '/capabilities',
-    subItems: [
-      { label: 'Forward Deployed Engineering (FDE)', href: '/platform/fde' },
-      { label: 'Integration', href: '/platform/integration' },
-    ]
-  },
-  { 
-    label: 'Solutions', 
-    href: '/partners',
-    subItems: [
-      { label: 'Employer Analytics', href: '/solutions/employer-analytics' },
-      { label: 'Health Outcomes', href: '/solutions/health-outcomes' },
-      { label: 'AI Receptionist', href: '/solutions/ai-receptionist' },
-      { label: 'AI Call Triaging', href: '/solutions/ai-call-triaging' },
-      { label: 'Marketing Automation', href: '/solutions/marketing-automation' },
-      { label: 'Patient Engagement', href: '/solutions/patient-engagement' },
-      { label: 'HCC Suspecting', href: '/solutions/hcc-suspecting' },
-      { label: 'HEDIS', href: '/solutions/hedis' },
-      { label: 'MIPS', href: '/solutions/mips' },
-    ]
-  },
-  { 
-    label: 'Who We Serve', 
-    href: '/solutions',
-    isMultiColumn: true,
-    subItems: [
-      {
-        category: 'Primary Care',
-        items: [
-          { label: 'Direct Primary Care', href: '/solutions/direct-primary-care' },
-          { label: 'DPC Networks', href: '/solutions/dpc-networks' },
-          { label: 'Concierge', href: '/solutions/concierge' },
-          { label: 'Managed Service Orgs', href: '/solutions/managed-service-orgs' },
-        ]
-      },
-      {
-        category: 'Specialty Care',
-        items: [
-          { label: 'Functional Medicine', href: '/solutions/functional-medicine' },
-          { label: 'Urgent Care', href: '/solutions/urgent-care' },
-          { label: 'Pediatrics', href: '/solutions/pediatrics' },
-          { label: 'Medical Weight Loss', href: '/solutions/medical-weight-loss' },
-        ]
-      },
-      {
-        category: 'Healthcare Purchasers',
-        items: [
-          { label: "TPA's & Health Plans", href: '/solutions/tpa-health-plans' },
-          { label: 'Brokers & Advisors', href: '/solutions/brokers-advisors' },
-          { label: 'Employers', href: '/solutions/employers' },
-        ]
-      }
-    ] as SubMenuCategory[]
-  },
-  { 
-    label: 'Resources', 
-    href: '/resources',
-    subItems: [
-      { label: 'Apex', href: '/resources/apex' },
-      { label: 'Blogs', href: '/resources/blogs' },
-      { label: 'Partners & Memberships', href: '/resources/partners-memberships' },
-      { label: 'Guide', href: '/resources/guide' },
-      { label: 'Whitepaper', href: '/resources/whitepaper' },
-      { label: 'News & Events', href: '/resources/news-events' },
-      { label: 'FAQs', href: '/resources/faqs' },
-    ]
-  },
+  { label: 'Platform', href: '/capabilities', hasMegaMenu: true },
+  { label: 'Solutions', href: '/solutions' },
+  { label: 'Who We Serve', href: '/partners' },
+  { label: 'Resources', href: '/resources' },
   { label: 'Contact Us', href: '/contact' },
 ];
 
@@ -108,10 +64,6 @@ export const Header = () => {
     setOpenDropdown(null);
   };
 
-  const isSubMenuCategory = (item: SubMenuItem | SubMenuCategory): item is SubMenuCategory => {
-    return 'category' in item;
-  };
-
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-lg border-b border-border/30">
       <div className="container mx-auto px-6 py-4">
@@ -127,7 +79,7 @@ export const Header = () => {
               <div
                 key={item.href}
                 className="relative group"
-                onMouseEnter={() => item.subItems && handleMouseEnter(item.label)}
+                onMouseEnter={() => item.hasMegaMenu && handleMouseEnter(item.label)}
                 onMouseLeave={handleMouseLeave}
               >
                 <Link
@@ -139,49 +91,38 @@ export const Header = () => {
                   }`}
                 >
                   {item.label}
-                  {item.subItems && <ChevronDown size={14} className={`transition-transform ${openDropdown === item.label ? 'rotate-180' : ''}`} />}
+                  {item.hasMegaMenu && <ChevronDown size={14} className={`transition-transform ${openDropdown === item.label ? 'rotate-180' : ''}`} />}
                 </Link>
 
-                {/* Dropdown Menu */}
-                {item.subItems && openDropdown === item.label && (
-                  <div 
-                    className={`absolute top-full left-0 pt-2 z-50`}
-                  >
-                    <div className={`bg-background border border-border rounded-lg shadow-xl animate-fade-in ${
-                      item.isMultiColumn ? 'w-[600px] p-6' : 'min-w-[220px] py-2'
-                    }`}>
-                    {item.isMultiColumn ? (
-                      <div className="grid grid-cols-3 gap-6">
-                        {(item.subItems as SubMenuCategory[]).map((category) => (
-                          <div key={category.category}>
-                            <h4 className="font-semibold text-foreground mb-3 text-sm">{category.category}</h4>
-                            <ul className="space-y-2">
-                              {category.items.map((subItem) => (
-                                <li key={subItem.href}>
-                                  <Link
-                                    to={subItem.href}
-                                    className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors"
-                                  >
-                                    <span className="text-accent">»</span>
-                                    {subItem.label}
-                                  </Link>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
+                {/* Platform Mega Menu */}
+                {item.hasMegaMenu && openDropdown === item.label && (
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 z-50">
+                    <div className="bg-background border border-border rounded-xl shadow-2xl animate-fade-in p-6 w-[800px]">
+                      <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-4">
+                        Explore Platform
+                      </p>
+                      <div className="grid grid-cols-3 gap-4">
+                        {platformCards.map((card) => (
+                          <Link
+                            key={card.href}
+                            to={card.href}
+                            className="group/card block p-5 rounded-lg border border-border/50 hover:border-accent/50 hover:shadow-md transition-all"
+                          >
+                            <div className="flex items-start justify-between mb-3">
+                              <h3 className="font-semibold text-foreground group-hover/card:text-accent transition-colors">
+                                {card.title}
+                              </h3>
+                              <ChevronRight size={16} className="text-muted-foreground group-hover/card:text-accent transition-colors" />
+                            </div>
+                            <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+                              {card.description}
+                            </p>
+                            <div className={`${card.bgColor} rounded-lg h-24 flex items-center justify-center`}>
+                              <card.icon className="w-10 h-10 text-muted-foreground/60" />
+                            </div>
+                          </Link>
                         ))}
                       </div>
-                    ) : (
-                      (item.subItems as SubMenuItem[]).map((subItem) => (
-                        <Link
-                          key={subItem.href}
-                          to={subItem.href}
-                          className="block px-4 py-2 text-sm text-muted-foreground hover:text-accent hover:bg-secondary/50 transition-colors"
-                        >
-                          {subItem.label}
-                        </Link>
-                      ))
-                    )}
                     </div>
                   </div>
                 )}
@@ -222,7 +163,7 @@ export const Header = () => {
             <div className="flex flex-col gap-2">
               {navItems.map((item) => (
                 <div key={item.href}>
-                  {item.subItems ? (
+                  {item.hasMegaMenu ? (
                     <>
                       <button
                         onClick={() => setOpenMobileDropdown(openMobileDropdown === item.label ? null : item.label)}
@@ -236,36 +177,18 @@ export const Header = () => {
                         <ChevronDown size={16} className={`transition-transform ${openMobileDropdown === item.label ? 'rotate-180' : ''}`} />
                       </button>
                       {openMobileDropdown === item.label && (
-                        <div className="pl-4 pb-2 animate-fade-in">
-                          {item.isMultiColumn ? (
-                            (item.subItems as SubMenuCategory[]).map((category) => (
-                              <div key={category.category} className="mb-4">
-                                <h4 className="font-semibold text-foreground mb-2 text-sm">{category.category}</h4>
-                                {category.items.map((subItem) => (
-                                  <Link
-                                    key={subItem.href}
-                                    to={subItem.href}
-                                    onClick={() => setIsMenuOpen(false)}
-                                    className="flex items-center gap-2 py-1.5 text-sm text-muted-foreground hover:text-accent transition-colors"
-                                  >
-                                    <span className="text-accent">»</span>
-                                    {subItem.label}
-                                  </Link>
-                                ))}
-                              </div>
-                            ))
-                          ) : (
-                            (item.subItems as SubMenuItem[]).map((subItem) => (
-                              <Link
-                                key={subItem.href}
-                                to={subItem.href}
-                                onClick={() => setIsMenuOpen(false)}
-                                className="block py-1.5 text-sm text-muted-foreground hover:text-accent transition-colors"
-                              >
-                                {subItem.label}
-                              </Link>
-                            ))
-                          )}
+                        <div className="pl-4 pb-2 animate-fade-in space-y-2">
+                          {platformCards.map((card) => (
+                            <Link
+                              key={card.href}
+                              to={card.href}
+                              onClick={() => setIsMenuOpen(false)}
+                              className="block py-2 text-sm text-muted-foreground hover:text-accent transition-colors"
+                            >
+                              <span className="font-medium text-foreground">{card.title}</span>
+                              <p className="text-xs mt-0.5">{card.description}</p>
+                            </Link>
+                          ))}
                         </div>
                       )}
                     </>
