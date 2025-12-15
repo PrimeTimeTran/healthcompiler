@@ -114,16 +114,16 @@ export const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border/50">
-      <div className="container-tight mx-auto px-6 py-4">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-lg border-b border-border/30">
+      <div className="container mx-auto px-6 py-4">
         <nav className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+          <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity flex-shrink-0">
             <img src={logo} alt="HealthCompiler" className="h-8 md:h-10" />
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-6">
+          {/* Desktop Navigation - Centered */}
+          <div className="hidden lg:flex items-center gap-10">
             {navItems.map((item) => (
               <div
                 key={item.href}
@@ -133,9 +133,9 @@ export const Header = () => {
               >
                 <Link
                   to={item.href}
-                  className={`flex items-center gap-1 text-sm font-medium transition-colors hover:text-accent py-2 ${
+                  className={`flex items-center gap-1.5 text-[15px] font-medium transition-colors hover:text-foreground py-2 ${
                     location.pathname === item.href.split('?')[0]
-                      ? 'text-accent'
+                      ? 'text-foreground'
                       : 'text-muted-foreground'
                   }`}
                 >
@@ -190,10 +190,20 @@ export const Header = () => {
             ))}
           </div>
 
-          {/* Desktop CTA */}
-          <div className="hidden lg:block">
-            <Button variant="hero" size="default" asChild>
-              <Link to="/contact">Book a Consultation</Link>
+          {/* Desktop CTA - Right side */}
+          <div className="hidden lg:flex items-center gap-6">
+            <Link 
+              to="/login" 
+              className="text-[15px] font-medium text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1.5"
+            >
+              Sign in
+              <span className="text-accent">→</span>
+            </Link>
+            <Button variant="default" size="default" className="rounded-full px-5" asChild>
+              <Link to="/contact">
+                Book a demo
+                <span className="ml-1.5">✦</span>
+              </Link>
             </Button>
           </div>
 
