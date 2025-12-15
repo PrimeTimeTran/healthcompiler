@@ -130,6 +130,11 @@
 
   .text-gradient {
     @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-cta);
+  }
+
+  .text-gradient-accent {
+    @apply bg-clip-text text-transparent;
     background-image: var(--gradient-accent);
   }
 

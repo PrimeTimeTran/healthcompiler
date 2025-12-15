@@ -87,7 +87,7 @@ const Infera = () => {
         <div className="container mx-auto px-6">
           <div className="text-center mb-14">
             <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Built for Your Organization
+              Built for <span className="text-gradient">Your Organization</span>
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
               Infera adapts to your specific needs — whether you're managing employer plans, running a direct care practice, or optimizing value-based contracts.
@@ -118,7 +118,7 @@ const Infera = () => {
         <div className="container mx-auto px-6">
           <div className="text-center mb-14">
             <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Why Infera?
+              Why <span className="text-gradient">Infera</span>?
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
               Built specifically for healthcare, Infera delivers intelligence that generic AI platforms simply cannot match.
@@ -148,7 +148,7 @@ const Infera = () => {
       <section className="py-20 bg-accent/5">
         <div className="container mx-auto px-6 text-center">
           <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Ready to activate your healthcare data?
+            Ready to <span className="text-gradient">activate your healthcare data</span>?
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-8">
             See how Infera can transform your organization — whether you're a self-funded employer, direct care practice, or value-based organization.

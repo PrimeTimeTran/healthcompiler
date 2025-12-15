@@ -36,7 +36,7 @@ export const TestimonialsSection = () => {
       <div className="container mx-auto px-6">
         {/* Header */}
         <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-12">
-          Our testimonials
+          Our <span className="text-gradient">testimonials</span>
         </h2>
 
         {/* Testimonials Grid */}

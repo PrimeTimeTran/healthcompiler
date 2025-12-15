@@ -38,7 +38,7 @@ const Contact = () => {
       <section className="section-padding bg-gradient-to-b from-background to-background-secondary">
         <div className="container-tight mx-auto text-center">
           <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Get in Touch
+            Get in <span className="text-gradient">Touch</span>
           </h1>
           <p className="text-lg text-muted-foreground max-w-xl mx-auto">
             Ready to discuss your healthcare data needs? 
@@ -118,7 +118,7 @@ const Contact = () => {
                 </div>
                 <Button 
                   type="submit" 
-                  variant="hero" 
+                  variant="gradient" 
                   size="lg" 
                   className="w-full"
                   disabled={isSubmitting}

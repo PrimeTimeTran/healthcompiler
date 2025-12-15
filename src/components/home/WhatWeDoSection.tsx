@@ -113,7 +113,7 @@ export const WhatWeDoSection = () => {
       <div className="container mx-auto px-6">
         {/* Section Label */}
         <div className="mb-12">
-          <span className="text-xs font-semibold uppercase tracking-widest text-accent">
+          <span className="text-xs font-semibold uppercase tracking-widest text-gradient">
             Our Capabilities
           </span>
         </div>

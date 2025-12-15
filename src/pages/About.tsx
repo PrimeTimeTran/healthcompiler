@@ -34,7 +34,7 @@ const About = () => {
         <div className="container-tight mx-auto">
           <div className="max-w-3xl">
             <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6">
-              About HealthCompiler
+              About <span className="text-gradient">HealthCompiler</span>
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed">
               We're a healthcare data platform company focused on building analytics, 
@@ -50,7 +50,7 @@ const About = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
               <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-6">
-                Simplifying Healthcare Data
+                Simplifying <span className="text-gradient">Healthcare Data</span>
               </h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
@@ -89,7 +89,7 @@ const About = () => {
         <div className="container-tight mx-auto">
           <div className="text-center mb-12">
             <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-              What Drives Us
+              What <span className="text-gradient">Drives Us</span>
             </h2>
             <p className="text-muted-foreground max-w-xl mx-auto">
               Our values shape every project we take on and every solution we deliver.
@@ -161,12 +161,12 @@ const About = () => {
       <section className="section-padding bg-background-secondary">
         <div className="container-tight mx-auto text-center">
           <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Let's Work Together
+            Let's Work <span className="text-gradient">Together</span>
           </h2>
           <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
             Ready to transform your healthcare data operations? We'd love to hear from you.
           </p>
-          <Button variant="hero" size="xl" asChild>
+          <Button variant="gradient" size="xl" asChild>
             <Link to="/contact" className="gap-2">
               Get in Touch
               <ArrowRight className="w-5 h-5" />

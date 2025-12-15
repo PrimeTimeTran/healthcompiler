@@ -29,7 +29,7 @@ export const IndustriesSection = () => {
       <div className="container-tight mx-auto">
         <div className="text-center mb-12 md:mb-16">
           <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Industries We Serve
+            Industries <span className="text-gradient">We Serve</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Tailored solutions for diverse healthcare organizations across the US.

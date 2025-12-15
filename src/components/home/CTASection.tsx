@@ -13,7 +13,7 @@ export const CTASection = () => {
       <div className="container-tight mx-auto relative z-10">
         <div className="bg-card rounded-3xl p-10 md:p-16 shadow-card border border-border/50 text-center">
           <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Let's Build Your Healthcare Data Platform
+            Let's Build Your <span className="text-gradient">Healthcare Data Platform</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-xl mx-auto mb-8">
             Start a conversation about your data challenges and discover how we can help you achieve operational excellence.
