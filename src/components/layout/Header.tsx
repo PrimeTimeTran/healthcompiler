@@ -31,6 +31,21 @@ const navItems: NavItem[] = [
     ]
   },
   { 
+    label: 'Solutions', 
+    href: '/partners',
+    subItems: [
+      { label: 'Employer Analytics', href: '/solutions/employer-analytics' },
+      { label: 'Health Outcomes', href: '/solutions/health-outcomes' },
+      { label: 'AI Receptionist', href: '/solutions/ai-receptionist' },
+      { label: 'AI Call Triaging', href: '/solutions/ai-call-triaging' },
+      { label: 'Marketing Automation', href: '/solutions/marketing-automation' },
+      { label: 'Patient Engagement', href: '/solutions/patient-engagement' },
+      { label: 'HCC Suspecting', href: '/solutions/hcc-suspecting' },
+      { label: 'HEDIS', href: '/solutions/hedis' },
+      { label: 'MIPS', href: '/solutions/mips' },
+    ]
+  },
+  { 
     label: 'Who We Serve', 
     href: '/solutions',
     isMultiColumn: true,
@@ -76,7 +91,6 @@ const navItems: NavItem[] = [
       { label: 'FAQs', href: '/resources/faqs' },
     ]
   },
-  { label: 'Solutions', href: '/partners' },
   { label: 'About Us', href: '/about' },
   { label: 'Contact Us', href: '/contact' },
 ];
