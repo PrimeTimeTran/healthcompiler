@@ -22,9 +22,9 @@ export const HeroVisualization = () => {
   }, []);
 
   const centerX = 300;
-  const centerY = 200;
-  const radius = 150;
-  const nodeRadius = 8;
+  const centerY = 180;
+  const radius = 120;
+  const nodeRadius = 7;
 
   const getNodePosition = (angle: number) => {
     const rad = ((angle - 90) * Math.PI) / 180;
@@ -35,9 +35,9 @@ export const HeroVisualization = () => {
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto h-[340px] relative mb-6">
+    <div className="w-full max-w-xl mx-auto h-[280px] relative mb-4">
       <svg
-        viewBox="0 0 600 400"
+        viewBox="0 0 600 340"
         className="w-full h-full"
         preserveAspectRatio="xMidYMid meet"
       >
@@ -170,7 +170,7 @@ export const HeroVisualization = () => {
           
           // Calculate label position - outside the node
           const labelRad = ((node.angle - 90) * Math.PI) / 180;
-          const labelDistance = radius + 45;
+          const labelDistance = radius + 38;
           const labelX = centerX + Math.cos(labelRad) * labelDistance;
           const labelY = centerY + Math.sin(labelRad) * labelDistance;
           
