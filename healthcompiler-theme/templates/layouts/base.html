@@ -1,0 +1,65 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: false
+  label: Base Layout
+-->
+<!DOCTYPE html>
+<html lang="{{ html_lang }}" {{ html_lang_dir }}>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    {# Page Title #}
+    <title>{{ page_meta.html_title }}</title>
+    
+    {# Meta Description #}
+    {% if page_meta.meta_description %}
+      <meta name="description" content="{{ page_meta.meta_description }}">
+    {% endif %}
+    
+    {# Canonical URL #}
+    {% if page_meta.canonical_url %}
+      <link rel="canonical" href="{{ page_meta.canonical_url }}">
+    {% endif %}
+    
+    {# Open Graph #}
+    <meta property="og:title" content="{{ page_meta.html_title }}">
+    <meta property="og:description" content="{{ page_meta.meta_description }}">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="{{ theme.brand.company_name|default('HealthCompiler') }}">
+    
+    {# Twitter Card #}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ page_meta.html_title }}">
+    <meta name="twitter:description" content="{{ page_meta.meta_description }}">
+    
+    {# Favicon #}
+    {{ favicon_link_tag() }}
+    
+    {# Theme Stylesheets #}
+    {{ require_css(get_asset_url("../css/variables.css")) }}
+    {{ require_css(get_asset_url("../css/main.css")) }}
+    
+    {# HubSpot Required Tags #}
+    {{ standard_header_includes }}
+  </head>
+  
+  <body>
+    {# Header #}
+    {% include "../partials/header.html" %}
+    
+    {# Main Content #}
+    <main role="main" id="main-content">
+      {% block body %}{% endblock body %}
+    </main>
+    
+    {# Footer #}
+    {% include "../partials/footer.html" %}
+    
+    {# Theme JavaScript #}
+    {{ require_js(get_asset_url("../js/main.js"), { "defer": true }) }}
+    
+    {# HubSpot Required Tags #}
+    {{ standard_footer_includes }}
+  </body>
+</html>

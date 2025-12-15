@@ -1,0 +1,63 @@
+<!-- HealthCompiler Header Partial -->
+<header class="hc-header">
+  <div class="hc-container">
+    <div class="hc-header__inner">
+      <!-- Logo -->
+      <a href="/" class="hc-header__logo">
+        {% if theme.brand.logo.src %}
+          <img src="{{ theme.brand.logo.src }}" alt="{{ theme.brand.company_name }}" />
+        {% else %}
+          <span class="hc-header__logo-text">{{ theme.brand.company_name }}</span>
+        {% endif %}
+      </a>
+
+      <!-- Navigation -->
+      <nav class="hc-header__nav" role="navigation" aria-label="Main navigation">
+        {% if theme.navigation.main_menu %}
+          {% menu "main_menu" %}
+            {% for item in menu.children %}
+              <a 
+                href="{{ item.url }}" 
+                class="hc-header__nav-link {% if item.activeNode %}hc-header__nav-link--active{% endif %}"
+                {% if item.linkTarget %}target="{{ item.linkTarget }}"{% endif %}
+              >
+                {{ item.label }}
+              </a>
+            {% endfor %}
+          {% endmenu %}
+        {% else %}
+          <!-- Default Navigation -->
+          <a href="/" class="hc-header__nav-link">Home</a>
+          <a href="/platform" class="hc-header__nav-link">Platform</a>
+          <a href="/solutions" class="hc-header__nav-link">Solutions</a>
+          <a href="/resources" class="hc-header__nav-link">Resources</a>
+          <a href="/company" class="hc-header__nav-link">Company</a>
+        {% endif %}
+
+        <!-- Header CTA -->
+        <div class="hc-header__cta">
+          <a 
+            href="{{ theme.navigation.cta_button.url.href|default('/contact') }}" 
+            class="hc-btn hc-btn--primary"
+          >
+            {{ theme.navigation.cta_text|default('Request Demo') }}
+          </a>
+        </div>
+      </nav>
+
+      <!-- Mobile Toggle -->
+      <button 
+        class="hc-header__mobile-toggle" 
+        type="button" 
+        aria-label="Toggle navigation"
+        aria-expanded="false"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>

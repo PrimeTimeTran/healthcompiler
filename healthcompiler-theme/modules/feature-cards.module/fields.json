@@ -1,0 +1,85 @@
+[
+  {
+    "type": "text",
+    "name": "label",
+    "label": "Section Label",
+    "default": "Capabilities"
+  },
+  {
+    "type": "text",
+    "name": "title",
+    "label": "Section Title",
+    "default": "What We Do"
+  },
+  {
+    "type": "textarea",
+    "name": "description",
+    "label": "Section Description",
+    "default": "Modern healthcare data solutions engineered for performance, security, and scale."
+  },
+  {
+    "type": "group",
+    "name": "cards",
+    "label": "Feature Cards",
+    "occurrence": {
+      "min": 1,
+      "max": 6,
+      "default": 3
+    },
+    "children": [
+      {
+        "type": "choice",
+        "name": "icon",
+        "label": "Icon",
+        "display": "select",
+        "choices": [
+          ["analytics", "Analytics"],
+          ["data", "Database"],
+          ["automation", "Automation"],
+          ["check", "Checkmark"]
+        ],
+        "default": "analytics"
+      },
+      {
+        "type": "text",
+        "name": "title",
+        "label": "Card Title",
+        "default": "Healthcare Analytics"
+      },
+      {
+        "type": "textarea",
+        "name": "description",
+        "label": "Card Description",
+        "default": "Real-time dashboards and analytics built for clinical, operational, and financial insights."
+      },
+      {
+        "type": "link",
+        "name": "link",
+        "label": "Card Link (optional)",
+        "default": {
+          "url": {
+            "href": "",
+            "type": "CONTENT"
+          }
+        }
+      }
+    ],
+    "default": [
+      {
+        "icon": "analytics",
+        "title": "Healthcare Analytics & Dashboards",
+        "description": "Real-time dashboards and reporting built for clinical, operational, and financial insights. From patient outcomes to revenue cycle metrics."
+      },
+      {
+        "icon": "data",
+        "title": "Data Engineering & ETL Pipelines",
+        "description": "Automated data pipelines that unify EHR, claims, lab, and operational data into a single source of truth."
+      },
+      {
+        "icon": "automation",
+        "title": "Workflow Automation & APIs",
+        "description": "Streamline operations with intelligent automation. Connect systems, eliminate manual processes, and accelerate decision-making."
+      }
+    ]
+  }
+]

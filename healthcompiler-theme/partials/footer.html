@@ -1,0 +1,94 @@
+<!-- HealthCompiler Footer Partial -->
+<footer class="hc-footer">
+  <div class="hc-container">
+    <div class="hc-footer__grid">
+      <!-- Brand Column -->
+      <div class="hc-footer__brand">
+        <a href="/" class="hc-footer__logo">
+          {% if theme.brand.logo.src %}
+            <img src="{{ theme.brand.logo.src }}" alt="{{ theme.brand.company_name }}" />
+          {% else %}
+            <span>{{ theme.brand.company_name }}</span>
+          {% endif %}
+        </a>
+        <div class="hc-footer__description">
+          {{ theme.footer.footer_text|default('<p>Healthcare data platforms built for modern healthcare teams. Analytics, automation, and secure data architecture.</p>') }}
+        </div>
+        
+        <!-- Trust Badge -->
+        <div class="hc-trust-badges hc-mt-lg" style="justify-content: flex-start;">
+          <span class="hc-trust-badge">
+            <span class="hc-trust-badge__icon"></span>
+            HIPAA-Aligned • Secure by Design
+          </span>
+        </div>
+      </div>
+
+      <!-- Platform Links -->
+      <div class="hc-footer__column">
+        <h4 class="hc-footer__heading">Platform</h4>
+        <ul class="hc-footer__links">
+          <li><a href="/platform" class="hc-footer__link">Overview</a></li>
+          <li><a href="/platform/analytics" class="hc-footer__link">Analytics</a></li>
+          <li><a href="/platform/integrations" class="hc-footer__link">Integrations</a></li>
+          <li><a href="/platform/security" class="hc-footer__link">Security</a></li>
+        </ul>
+      </div>
+
+      <!-- Solutions Links -->
+      <div class="hc-footer__column">
+        <h4 class="hc-footer__heading">Solutions</h4>
+        {% if theme.footer.footer_menu_2 %}
+          {% menu "footer_menu_2" %}
+            <ul class="hc-footer__links">
+              {% for item in menu.children %}
+                <li>
+                  <a href="{{ item.url }}" class="hc-footer__link">{{ item.label }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          {% endmenu %}
+        {% else %}
+          <ul class="hc-footer__links">
+            <li><a href="/solutions/providers" class="hc-footer__link">Healthcare Providers</a></li>
+            <li><a href="/solutions/payers" class="hc-footer__link">Payers</a></li>
+            <li><a href="/solutions/startups" class="hc-footer__link">Health Tech</a></li>
+          </ul>
+        {% endif %}
+      </div>
+
+      <!-- Company Links -->
+      <div class="hc-footer__column">
+        <h4 class="hc-footer__heading">Company</h4>
+        {% if theme.footer.footer_menu_1 %}
+          {% menu "footer_menu_1" %}
+            <ul class="hc-footer__links">
+              {% for item in menu.children %}
+                <li>
+                  <a href="{{ item.url }}" class="hc-footer__link">{{ item.label }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          {% endmenu %}
+        {% else %}
+          <ul class="hc-footer__links">
+            <li><a href="/about" class="hc-footer__link">About</a></li>
+            <li><a href="/resources" class="hc-footer__link">Resources</a></li>
+            <li><a href="/contact" class="hc-footer__link">Contact</a></li>
+          </ul>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="hc-footer__bottom">
+      <p class="hc-footer__copyright">
+        © {{ year }} {{ theme.footer.copyright_text|default('HealthCompiler. All rights reserved.') }}
+      </p>
+      <div class="hc-footer__legal">
+        <a href="/privacy" class="hc-footer__link">Privacy Policy</a>
+        <a href="/terms" class="hc-footer__link">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>

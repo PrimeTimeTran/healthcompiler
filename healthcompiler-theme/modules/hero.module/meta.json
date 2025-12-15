@@ -1,0 +1,9 @@
+{
+  "label": "Hero Section",
+  "css_assets": [],
+  "js_assets": [],
+  "icon": "square_image",
+  "categories": ["hero", "banner"],
+  "host_template_types": ["PAGE", "BLOG_LISTING", "BLOG_POST"],
+  "is_available_for_new_content": true
+}

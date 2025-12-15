@@ -1,0 +1,86 @@
+<!-- CTA Banner Module -->
+<section class="hc-cta-banner">
+  <div class="hc-container hc-container--tight">
+    <div class="hc-cta-banner__content" data-animate>
+      <h2 class="hc-cta-banner__title">
+        {{ module.title|default("Let's build your healthcare data platform") }}
+      </h2>
+      
+      {% if module.description %}
+        <p class="hc-cta-banner__description">
+          {{ module.description }}
+        </p>
+      {% endif %}
+      
+      <div class="hc-cta-banner__actions">
+        {% if module.primary_cta.url.href %}
+          <a 
+            href="{{ module.primary_cta.url.href }}" 
+            class="hc-btn hc-btn--primary hc-btn--lg"
+            {% if module.primary_cta.open_in_new_tab %}target="_blank" rel="noopener"{% endif %}
+          >
+            {{ module.primary_cta_text|default('Schedule a Call') }}
+          </a>
+        {% else %}
+          <a href="/contact" class="hc-btn hc-btn--primary hc-btn--lg">
+            Schedule a Call
+          </a>
+        {% endif %}
+        
+        {% if module.secondary_cta.url.href %}
+          <a 
+            href="{{ module.secondary_cta.url.href }}" 
+            class="hc-btn hc-btn--secondary hc-btn--lg"
+            {% if module.secondary_cta.open_in_new_tab %}target="_blank" rel="noopener"{% endif %}
+          >
+            {{ module.secondary_cta_text|default('View Solutions') }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hc-cta-banner {
+    padding: var(--hc-space-4xl) 0;
+    background-color: var(--hc-surface);
+  }
+  
+  .hc-cta-banner__content {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .hc-cta-banner__title {
+    font-size: var(--hc-text-3xl);
+    font-weight: 700;
+    margin-bottom: var(--hc-space-md);
+    color: var(--hc-text-primary);
+  }
+  
+  .hc-cta-banner__description {
+    font-size: var(--hc-text-lg);
+    color: var(--hc-text-muted);
+    margin-bottom: var(--hc-space-xl);
+  }
+  
+  .hc-cta-banner__actions {
+    display: flex;
+    gap: var(--hc-space-md);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  @media (max-width: 768px) {
+    .hc-cta-banner__title {
+      font-size: var(--hc-text-2xl);
+    }
+    
+    .hc-cta-banner__actions {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+</style>

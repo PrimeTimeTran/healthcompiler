@@ -1,0 +1,24 @@
+{
+  "label": "HealthCompiler Theme",
+  "preview_path": "/",
+  "screenshot_path": "./images/template-previews/theme-screenshot.png",
+  "enable_domain_stylesheets": false,
+  "version": "1.0.0",
+  "author": "HealthCompiler",
+  "documentation_url": "https://www.healthcompiler.com",
+  "license": "MIT",
+  "responsive_breakpoints": [
+    {
+      "name": "mobile",
+      "mediaQuery": "(max-width: 767px)"
+    },
+    {
+      "name": "tablet",
+      "mediaQuery": "(min-width: 768px) and (max-width: 1023px)"
+    },
+    {
+      "name": "desktop",
+      "mediaQuery": "(min-width: 1024px)"
+    }
+  ]
+}

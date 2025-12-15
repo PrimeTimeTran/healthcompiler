@@ -1,0 +1,62 @@
+[
+  {
+    "type": "text",
+    "name": "title",
+    "label": "Title",
+    "default": "Let's build your healthcare data platform"
+  },
+  {
+    "type": "textarea",
+    "name": "description",
+    "label": "Description (optional)",
+    "default": "Get started with a personalized consultation. We'll discuss your data challenges and show you how HealthCompiler can help."
+  },
+  {
+    "type": "group",
+    "name": "primary_cta_group",
+    "label": "Primary CTA",
+    "children": [
+      {
+        "type": "text",
+        "name": "primary_cta_text",
+        "label": "Button Text",
+        "default": "Schedule a Call"
+      },
+      {
+        "type": "link",
+        "name": "primary_cta",
+        "label": "Button Link",
+        "default": {
+          "url": {
+            "href": "/contact",
+            "type": "CONTENT"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "name": "secondary_cta_group",
+    "label": "Secondary CTA (optional)",
+    "children": [
+      {
+        "type": "text",
+        "name": "secondary_cta_text",
+        "label": "Button Text",
+        "default": "View Solutions"
+      },
+      {
+        "type": "link",
+        "name": "secondary_cta",
+        "label": "Button Link",
+        "default": {
+          "url": {
+            "href": "/solutions",
+            "type": "CONTENT"
+          }
+        }
+      }
+    ]
+  }
+]

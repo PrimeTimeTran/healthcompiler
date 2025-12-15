@@ -1,0 +1,23 @@
+<!--
+  templateType: error_page
+  isAvailableForNewContent: false
+  label: 500 Error Page
+-->
+{% extends "../layouts/base.html" %}
+
+{% block body %}
+
+<section class="hc-section" style="min-height: 60vh; display: flex; align-items: center;">
+  <div class="hc-container hc-text-center">
+    <h1 style="font-size: var(--hc-text-6xl); color: var(--hc-accent); margin-bottom: var(--hc-space-lg);">500</h1>
+    <h2 style="margin-bottom: var(--hc-space-md);">Something Went Wrong</h2>
+    <p style="font-size: var(--hc-text-lg); color: var(--hc-text-muted); margin-bottom: var(--hc-space-xl); max-width: 480px; margin-left: auto; margin-right: auto;">
+      We're experiencing technical difficulties. Please try again later.
+    </p>
+    <a href="/" class="hc-btn hc-btn--primary hc-btn--lg">
+      Back to Home
+    </a>
+  </div>
+</section>
+
+{% endblock body %}

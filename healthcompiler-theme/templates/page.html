@@ -1,0 +1,48 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Standard Page
+  screenshotPath: ../images/template-previews/page.png
+-->
+{% extends "./layouts/base.html" %}
+
+{% block body %}
+
+{# Page Header #}
+<section class="hc-section hc-section--sm" style="background-color: var(--hc-bg-secondary);">
+  <div class="hc-container hc-container--tight">
+    <div class="hc-section-header">
+      {% if module.label %}
+        <span class="hc-section-header__label">{{ module.label }}</span>
+      {% endif %}
+      <h1 class="hc-section-header__title">{{ content.html_title }}</h1>
+      {% if page_meta.meta_description %}
+        <p class="hc-section-header__description">{{ page_meta.meta_description }}</p>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{# Flexible Content Area #}
+<section class="hc-section">
+  <div class="hc-container hc-container--tight">
+    {% dnd_area "main_content" %}
+      {% dnd_section %}
+        {% dnd_column %}
+          {% dnd_row %}
+            {% dnd_module path="@hubspot/rich_text" %}
+              {% module_attribute "html" %}
+                <p>Add your content here using the page editor.</p>
+              {% end_module_attribute %}
+            {% end_dnd_module %}
+          {% end_dnd_row %}
+        {% end_dnd_column %}
+      {% end_dnd_section %}
+    {% end_dnd_area %}
+  </div>
+</section>
+
+{# CTA Banner #}
+{% module "cta_banner" path="../modules/cta-banner.module" %}
+
+{% endblock body %}

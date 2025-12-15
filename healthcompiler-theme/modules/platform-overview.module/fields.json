@@ -1,0 +1,91 @@
+[
+  {
+    "type": "text",
+    "name": "label",
+    "label": "Section Label",
+    "default": "Platform"
+  },
+  {
+    "type": "text",
+    "name": "title",
+    "label": "Section Title",
+    "default": "How We Help"
+  },
+  {
+    "type": "textarea",
+    "name": "description",
+    "label": "Section Description",
+    "default": "HealthCompiler provides the infrastructure healthcare organizations need to consolidate data, generate insights, and automate critical workflows."
+  },
+  {
+    "type": "group",
+    "name": "benefits",
+    "label": "Benefits List",
+    "occurrence": {
+      "min": 1,
+      "max": 8,
+      "default": 4
+    },
+    "children": [
+      {
+        "type": "text",
+        "name": "text",
+        "label": "Benefit Text",
+        "default": "Reduce manual reporting"
+      }
+    ],
+    "default": [
+      { "text": "Reduce manual reporting by 80%" },
+      { "text": "Centralize healthcare data from any source" },
+      { "text": "Improve operational visibility across teams" },
+      { "text": "Enable data-driven decision making" }
+    ]
+  },
+  {
+    "type": "group",
+    "name": "highlights",
+    "label": "Visual Highlights",
+    "occurrence": {
+      "min": 1,
+      "max": 5,
+      "default": 4
+    },
+    "children": [
+      {
+        "type": "text",
+        "name": "icon",
+        "label": "Emoji Icon",
+        "default": "📊"
+      },
+      {
+        "type": "text",
+        "name": "text",
+        "label": "Highlight Text",
+        "default": "Real-time Analytics"
+      }
+    ],
+    "default": [
+      { "icon": "📊", "text": "Real-time Analytics" },
+      { "icon": "🔗", "text": "EHR Integrations" },
+      { "icon": "🔒", "text": "HIPAA Compliance" },
+      { "icon": "⚡", "text": "Automated Workflows" }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "cta_text",
+    "label": "CTA Button Text",
+    "default": "Explore Platform"
+  },
+  {
+    "type": "link",
+    "name": "cta",
+    "label": "CTA Button Link",
+    "default": {
+      "url": {
+        "href": "/platform",
+        "type": "CONTENT"
+      }
+    }
+  }
+]

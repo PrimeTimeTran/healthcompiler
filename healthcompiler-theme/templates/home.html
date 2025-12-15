@@ -1,0 +1,26 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Home Page
+  screenshotPath: ../images/template-previews/home.png
+-->
+{% extends "./layouts/base.html" %}
+
+{% block body %}
+
+{# Hero Section #}
+{% module "hero" path="../modules/hero.module" %}
+
+{# Platform Overview Section #}
+{% module "platform_overview" path="../modules/platform-overview.module" %}
+
+{# Feature Cards Section #}
+{% module "feature_cards" path="../modules/feature-cards.module" %}
+
+{# Outcomes Section #}
+{% module "outcomes" path="../modules/outcomes.module" %}
+
+{# CTA Banner Section #}
+{% module "cta_banner" path="../modules/cta-banner.module" %}
+
+{% endblock body %}
