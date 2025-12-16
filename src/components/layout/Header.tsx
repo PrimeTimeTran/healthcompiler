@@ -106,6 +106,7 @@ const whoWeServeCategories: SubMenuCategory[] = [
     items: [
       { label: 'Independent Primary Care', href: '/solutions/independent-primary-care' },
       { label: "ACO's", href: '/solutions/acos' },
+      { label: "CIN's", href: '/solutions/cins' },
     ]
   }
 ];
