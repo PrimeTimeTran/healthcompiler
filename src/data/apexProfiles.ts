@@ -1114,14 +1114,63 @@ export const apexProfiles: ApexProfile[] = [
     name: 'Jessica McCartin',
     image: 'https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/Jessica-800w.jpg',
     title: "Revolutionizing Healthcare: Jessica's Journey from Burnout to Innovative Care",
-    intro: "In a world where the healthcare system often feels overwhelmed by bureaucracy and impersonal interactions, Jessica stands out as a catalyst for change. Her journey from a frazzled family nurse practitioner, trapped in a high-volume practice, to a trailblazer in direct primary care (DPC) highlights the profound impact of resilience and innovation.",
+    intro: "In a world where the healthcare system often feels overwhelmed by bureaucracy and impersonal interactions, Jessica stands out as a catalyst for change. Her journey from a frazzled family nurse practitioner, trapped in a high-volume practice, to a trailblazer in direct primary care (DPC) highlights the profound impact of resilience and innovation in the medical field. Jessica's story is not just about her personal transformation; it serves as a guiding light for healthcare professionals grappling with similar challenges, offering insights into how to create a more compassionate, patient-centered approach to care.",
     category: 'ENHANCED ACCESS',
     sections: [
       {
-        heading: 'A Guiding Light',
+        heading: 'The Crucible of Traditional Practice',
         content: [
-          "Jessica's story is not just about her personal transformation; it serves as a guiding light for healthcare professionals grappling with similar challenges.",
-          "She offers insights into how to create a more compassionate, patient-centered approach to care."
+          "Jessica's 14-year journey through healthcare began in a high-volume private practice that pushed her to her limits. 'I was seeing upwards of 30 patients a day, often working over 60 hours a week and charting late into the night,' she recalls. This grueling pace not only took a toll on her well-being but also challenged her core values as a healthcare provider.",
+          "The turning point came when Jessica realized she was losing sight of what truly mattered—her patients. 'I found myself constantly rushing, unable to form the meaningful connections that drew me to healthcare in the first place,' she admits. This internal conflict became the catalyst for her search for a more fulfilling approach to medicine."
+        ]
+      },
+      {
+        heading: 'Cultivating Meaningful Patient Relationships',
+        content: [
+          "At the heart of Jessica's practice lies a commitment to forging deep connections with her patients. By allocating ample time for each consultation, she creates an environment where trust flourishes, and patients feel truly heard.",
+          "'When patients trust you, they're more likely to engage actively in their care, leading to better health outcomes,' Jessica observes. This approach not only enhances patient satisfaction but also contributes to more comprehensive and effective treatment plans."
+        ]
+      },
+      {
+        heading: 'Leveraging Technology for Enhanced Care',
+        content: [
+          "Jessica's embrace of cutting-edge technology sets her practice apart in today's digital age. 'I've integrated an AI-enhanced EHR system that streamlines my workflow, allowing me to focus more on patient interactions,' she explains.",
+          "'I can respond to inquiries via text or video calls, even while I'm grocery shopping,' she laughs, showcasing the flexibility that DPC provides. This level of accessibility not only meets patients where they are but also reinforces her commitment to personalized care."
+        ]
+      },
+      {
+        heading: 'Community Engagement: The Heart of Healthcare',
+        content: [
+          "Jessica emphasizes the critical role of community engagement in building a successful practice. While social media is a vital part of her marketing strategy, she believes that face-to-face interactions are equally important.",
+          "'I've found that attending local events, participating in health fairs, and even just walking around the neighborhood to introduce myself has been invaluable,' Jessica shares. 'These personal interactions create a sense of belonging and show that I'm truly invested in the community's well-being.'"
+        ]
+      },
+      {
+        heading: 'Data-Driven Decision Making',
+        content: [
+          "Jessica's success is underpinned by a commitment to analytics and continuous improvement. 'I closely monitor engagement metrics and patient retention rates to refine my services and marketing efforts,' she explains.",
+          "'By analyzing what works and what doesn't, I can refine my services and marketing efforts,' she notes, reinforcing the idea that informed decisions lead to better patient care. This analytical mindset extends to all aspects of her practice, from patient outreach to treatment protocols."
+        ]
+      },
+      {
+        heading: 'Envisioning the Future: A Comprehensive Medical Hub',
+        content: [
+          "Jessica's aspirations extend far beyond her current practice. In the next five years, she envisions her DPC model evolving into a comprehensive medical hub. 'I hope to create a dedicated space that offers a range of services, including mental health support, physical therapy, and occupational health,' she shares.",
+          "'My goal is to have a building that serves as a one-stop shop for healthcare,' she adds. By consolidating various services under one roof, she aims to provide seamless care that promotes overall well-being."
+        ]
+      },
+      {
+        heading: 'Advice for Aspiring DPC Providers',
+        content: [
+          "For healthcare professionals contemplating a similar transition, Jessica offers candid advice: Embrace the Challenge - 'Take the leap. Don't let fear hold you back.' Prepare Thoroughly - 'Develop a comprehensive business plan and set ambitious goals.' Invest in Continuous Learning - 'Staying informed about new techniques and trends is vital.'",
+          "Build a Support Network - Jessica credits much of her success to her collaborative team of professionals. 'Surrounding yourself with supportive and knowledgeable individuals can make all the difference,' she shares."
+        ]
+      },
+      {
+        heading: 'The Philosophy of the Oyster',
+        content: [
+          "Jessica's perspective on growth and opportunity is encapsulated in her belief that 'the world is your oyster.' This philosophy reflects her conviction that healthcare professionals must seize opportunities and embrace challenges to make a meaningful impact.",
+          "'Every challenge is an opportunity to learn and grow,' she explains. 'Whether it's mastering a new medical procedure, implementing a cutting-edge technology, or finding creative ways to engage with the community, there's always room for improvement and innovation in healthcare.'"
         ]
       }
     ]
@@ -1132,21 +1181,74 @@ export const apexProfiles: ApexProfile[] = [
     image: 'https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/dakotah-800w.png',
     title: "Dakotah Asher, PA-C, RT (R) Journey from FFS grind to DPC's patient-centered design",
     subtitle: "Dakota's practice now thrives, with quality care where empathy lives.",
-    intro: "In the heart of Tennessee, a quiet revolution in healthcare is taking place. At its center stands Dakota, a passionate physician assistant (PA) who has transformed her frustration with the traditional healthcare system into a thriving direct primary care (DPC) practice.",
+    intro: "In the heart of Tennessee, a quiet revolution in healthcare is taking place. At its center stands Dakota, a passionate physician assistant (PA) who has transformed her frustration with the traditional healthcare system into a thriving direct primary care (DPC) practice. Her story is not just one of personal triumph, but a beacon of hope for both healthcare providers and patients alike, showcasing a model that prioritizes quality care over quantity of patients seen.",
     category: 'ENHANCED ACCESS',
     sections: [
       {
-        heading: 'From Burnout to Breakthrough',
+        heading: 'The Path to Primary Care',
         content: [
-          "Her story is not just one of personal triumph, but a beacon of hope for both healthcare providers and patients alike.",
-          "She showcases a model that prioritizes quality care over quantity of patients seen."
+          "Dakota's journey into healthcare wasn't straightforward. Like many high school graduates, she felt pressured to choose a career path quickly. 'We're kind of forced to think that we all have to go to college immediately after we graduate,' Dakota reflects. 'There are really no other options, and if you don't go to college, you're looked at as not doing anything with your life.'",
+          "A suggestion from her father after a hospital visit led Dakota to consider radiology. She enrolled in a health science bachelor's program with a concentration in radiology, but during her clinical rotations, she discovered her true calling. 'I realized that I love patient care,' Dakota explains. 'I was able to connect with patients on a deep level.'"
         ]
       },
       {
-        heading: 'The Path to Primary Care',
+        heading: 'The Physician Assistant Path: A Perfect Fit',
         content: [
-          '"We\'re kind of forced to think that we all have to go to college immediately after we graduate," Dakota reflects.',
-          '"There are really no other options, and if you don\'t go to college, you\'re looked at as not doing anything with your life."'
+          "After taking a few years to travel and mature, Dakota found herself drawn back to healthcare at the age of 25. Her research led her to the physician assistant profession, a career that offered the perfect blend of patient care and medical decision-making.",
+          "'I discovered the physician assistant career field just by researching,' Dakota says. 'You know, we provide care just like a physician does, but the schooling was a lot less time and a lot less money financially to go to a PA program.'",
+          "'I specifically went into PA school wanting to focus on primary care because in that field, in this area of medicine, you're just really able to make deep connections with patients, really impact their lives,' Dakota explains. 'You know, you get to follow them through many decades of life.'"
+        ]
+      },
+      {
+        heading: 'The Reality of Traditional Primary Care',
+        content: [
+          "Armed with her PA degree and a passion for primary care, Dakota entered the workforce full of optimism. However, the reality of working in a traditional, insurance-driven primary care setting quickly dampened her enthusiasm.",
+          "'I quickly realized that you cannot provide great care under insurance guidelines and restrictions,' Dakota recalls. The financial realities of insurance reimbursements, particularly for PAs who receive only 80% of what physicians do for the same visit, created a system that prioritized quantity over quality.",
+          "'In order to earn your keep, as you would say, I had to see a very high volume of patients in very short time periods, you know, about 15 minutes per patient,' Dakota explains. 'And a lot of the patients I was dealing with needed much more time than that.'"
+        ]
+      },
+      {
+        heading: 'Discovering Direct Primary Care',
+        content: [
+          "Dakota's search for a better way to provide healthcare led her to the concept of direct primary care (DPC). This model, which operates outside the traditional insurance system, immediately resonated with her vision of what primary care should be.",
+          "'I started researching if there was a way to provide primary care without insurance. And that's where I found the direct primary care model, and it was exactly what I had been looking for,' Dakota enthuses. 'It was speaking my language. It was providers who were like-minded like myself in a community that wanted to provide better healthcare, but just needed more time to spend with patients.'"
+        ]
+      },
+      {
+        heading: 'Taking the Leap: Starting a DPC Practice',
+        content: [
+          "Armed with this new knowledge and driven by her passion for better patient care, Dakota made the bold decision to leave her traditional practice and start her own DPC clinic. It was a daunting prospect, especially for a young provider only two years into her career.",
+          "'It happened a little bit sooner than I had kind of anticipated, you know, being a young provider only two years into my career and starting my own business was a huge undertaking,' Dakota admits. 'But I was up for the challenge.'",
+          "'I actually had about 85 patients that followed me once I left my previous practice,' Dakota recalls. 'So I started out with 85, which was pretty good, you know, to not even have the doors open yet and have that many people signed up.'"
+        ]
+      },
+      {
+        heading: 'Building a Patient-Centered Practice',
+        content: [
+          "From the very beginning, Dakota's focus was on creating an environment that put patients first. 'It even boils down to the colors that we have on our walls are very calm and soothing. We play music in our office,' Dakota explains. 'I have six people that work for me, and they all are customer service-oriented because I really view primary care as customer service.'",
+          "'From the moment they walk into the door, they're met with a smiling face, all the way back to the nurses, to our providers, and then to the exit point of checkout. I mean, they really feel almost like royalty. And that's what we want.'"
+        ]
+      },
+      {
+        heading: 'The DPC Difference: Time, Access, and Comprehensive Care',
+        content: [
+          "At the heart of Dakota's DPC model is the luxury of time. Instead of the rushed 15-minute appointments typical in traditional practices, Dakota and her team spend anywhere from one to two hours with each patient.",
+          "'We have about an hour to two-hour appointments with patients, really getting to listen to them,' Dakota explains. In addition to primary care and lab work, Dakota's practice offers weight loss management, hormone replacement for men and women, and is even planning to add aesthetic services like Botox."
+        ]
+      },
+      {
+        heading: 'Growing Through Word of Mouth',
+        content: [
+          "One of the most remarkable aspects of Dakota's success is that it has been achieved almost entirely through word-of-mouth referrals. In just four years, her patient panel has grown from 85 to an impressive 1,400 patients – all without any formal marketing or advertising.",
+          "'We don't do any advertisement or any marketing. All of our patients just come from somebody who knows somebody who knows somebody who comes to see us and then they get referred to come and see us,' Dakota explains.",
+          "'We even have some physicians in our area that are in a primary care practice that even send patients to us to come see us for primary care because they just know the quality of care that we are able to provide is different than what they are able to.'"
+        ]
+      },
+      {
+        heading: 'Advice for Aspiring DPC Providers',
+        content: [
+          "For healthcare providers considering the switch to a DPC model, Dakota's journey offers valuable insights. 'Honestly, there's no \"don't\" shockingly,' Dakota says. 'Some do's: it's really, you have to be compassionate about healthcare. That's first and foremost.'",
+          "'If I wasn't passionate about what I do, the hard work that I put in in the beginning to be a solo provider... it would have been really difficult for me to do that.' She also notes that while marketing can be helpful, providing excellent care is the best way to grow a DPC practice."
         ]
       }
     ]
@@ -1156,14 +1258,51 @@ export const apexProfiles: ApexProfile[] = [
     name: 'Matt Ohrt',
     image: 'https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/Matt+Ohrt+-800w.png',
     title: 'Matt Ohrt: Transforming Employer Healthcare from the Inside Out',
-    intro: '"I realized companies don\'t view the purchase of their health plan or healthcare the same way they view any other purchase." That realization sent Matt Ohrt, a longtime HR leader who pivoted into healthcare innovation, on a mission to help employers buy better care.',
+    intro: "'I realized companies don't view the purchase of their health plan or healthcare the same way they view any other purchase.' That realization sent Matt Ohrt, a longtime HR leader who pivoted into healthcare innovation, on a mission to help employers buy better care. Through his work at Merrill Steel, his co-founding of Self-Fund Health, and new efforts like the Rise Up Health Plan, Matt has been building practical pathways employers can use to lower costs and improve care.",
     category: 'ENHANCED ACCESS',
     sections: [
       {
         heading: 'From HR Leader to Healthcare Innovator',
         content: [
           "Matt had an almost 25-year career in HR leadership, working for large companies, mostly in manufacturing, including Toyota Motor Manufacturing at their flagship plant in Georgetown, Kentucky.",
-          "Through his work at Merrill Steel, his co-founding of Self-Fund Health, and new efforts like the Rise Up Health Plan, Matt has been building practical pathways employers can use to lower costs and improve care."
+          "In 2016, as VP of HR at Merrill Steel, he was asked to tackle rising healthcare costs. This challenge started his career in the healthcare space. At the time, the company had a $5.5 million annual spend on healthcare. He led the organization to implement an on-site Direct Primary Care (DPC) clinic and other related changes that produced measurable savings and better access to care.",
+          "The result was about $1 million in annual savings while improving the quality of care. Employees could get appointments quickly, experienced shorter wait times, and expressed higher satisfaction."
+        ]
+      },
+      {
+        heading: 'Direct Primary Care as the Foundation',
+        content: [
+          "For Matt, DPC restores the doctor-patient relationship and covers the majority of everyday care needs. He explains that a well-run DPC model can handle 80 to 90 percent of care, reducing unnecessary referrals and guiding patients toward cost-effective specialty care when needed.",
+          "However, he emphasizes that DPC must be paired with a broader strategy. If the health plan's design pushes patients back into expensive hospital networks, much of DPC's savings potential is lost."
+        ]
+      },
+      {
+        heading: 'Treat Healthcare Like a Strategic Purchase',
+        content: [
+          "A recurring theme in Matt's work is that employers should manage healthcare with the same discipline they apply to other major purchases. In his view, companies often negotiate carefully when buying steel, equipment, or services, yet fail to apply the same scrutiny to healthcare contracts.",
+          "He encourages direct involvement from the CEO and CFO, rather than leaving healthcare decisions solely to HR. He also stresses the importance of true self-funding with a focus on managing spend, rather than simply changing the funding label without altering the cost drivers."
+        ]
+      },
+      {
+        heading: "Don't Feed the Beast — Rethinking How Employers Manage Healthcare",
+        content: [
+          "Matt's 220-plus-page book, Don't Feed the Beast, lays out a six-part 'success formula' for employers to transform how they approach healthcare. Since its release, it has sold over 6,000 copies across the country and sparked a speaking tour that has taken him to around 40 cities.",
+          "The book's core message is that employers should treat healthcare as a strategic business purchase rather than an administrative task managed solely by HR.",
+          "He is now developing a supplementary workbook version to make the process more actionable. This workbook will guide employers step-by-step through implementing the six-part formula, providing clear, numbered actions."
+        ]
+      },
+      {
+        heading: 'Good Care Feels Different',
+        content: [
+          "Matt also co-authored Good Care Feels Different, which he describes as a short, colorful, illustrated book designed to explain DPC in a simple and engaging way. It's intentionally light in tone and quick to read, about 10 minutes, making it an ideal handout for patients, employers, or anyone new to the concept.",
+          "The book is structured to be shareable, with the goal of helping more people quickly grasp how DPC works and why it feels different from traditional primary care. He envisions clinicians keeping copies on hand to give to patients who want to learn more."
+        ]
+      },
+      {
+        heading: 'The Path Forward',
+        content: [
+          "Matt's current work, including the Rise Up Health Plan and ongoing consulting, continues to focus on equipping employers with tools that reduce waste, improve primary care access, and guide patients toward high-value care.",
+          "He believes that when employers change how they purchase healthcare, it creates a ripple effect that can improve quality and lower costs across the system."
         ]
       }
     ]
@@ -1173,14 +1312,49 @@ export const apexProfiles: ApexProfile[] = [
     name: 'Neer Patel',
     image: 'https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/Neer+Patel-800w.png',
     title: 'Transforming Healthcare Benefits: A Visionary Approach by Neer Patel',
-    intro: "In the midst of an ever-evolving healthcare landscape, where rising costs and inefficiencies continue to challenge employers, Neer Patel stands as a trailblazer with a transformative vision for the future of health benefits. As the co-founder of Virtuous Benefits and a key player in the growth of DirectMed DPC, Patel is reshaping how businesses approach healthcare for their employees.",
+    intro: "In the midst of an ever-evolving healthcare landscape, where rising costs and inefficiencies continue to challenge employers, Neer Patel stands as a trailblazer with a transformative vision for the future of health benefits. As the co-founder of Virtuous Benefits and a key player in the growth of DirectMed DPC, Patel is reshaping how businesses approach healthcare for their employees. His journey from helping his wife, Dr. Katriny Ikbal, launch DirectMed DPC to creating innovative self-funded insurance models demonstrates the power of creativity, collaboration, and a patient-centric approach in overcoming the challenges of the broken healthcare system.",
     category: 'ENHANCED ACCESS',
     sections: [
       {
-        heading: 'A Transformative Vision',
+        heading: 'Redefining Healthcare with Open Access and Direct Primary Care',
         content: [
-          "His journey from helping his wife, Dr. Katriny Ikbal, launch DirectMed DPC to creating innovative self-funded insurance models demonstrates the power of creativity and collaboration.",
-          "A patient-centric approach is key to overcoming the challenges of the broken healthcare system."
+          "Patel envisions a future where open access health plans become the norm for employers, removing network restrictions and providing employees with more flexible care options. Central to this vision is Direct Primary Care (DPC), a model that offers high-quality, personalized care for a predictable monthly fee, bypassing the costly and complex claims processes of traditional insurance.",
+          "'When people have direct access to their primary care doctor, they feel more empowered and make better health decisions,' says Patel."
+        ]
+      },
+      {
+        heading: 'Unlocking Cost Savings: The Power of Self-Funded Insurance',
+        content: [
+          "Patel's work with Virtuous Benefits demonstrates how self-funded insurance can significantly lower costs for employers while maintaining comprehensive coverage. These plans pay cash prices for healthcare services, often 10 to 20 times less than traditional network prices, and avoid costly claims.",
+          "Moreover, unused claims dollars are refunded to employers, enabling reinvestment into health plans to improve them each year. 'Self-funded insurance gives employers control over healthcare costs while still providing quality care for employees,' Patel explains."
+        ]
+      },
+      {
+        heading: 'Elevating Care Quality: Direct Care Providers at the Core',
+        content: [
+          "At the heart of Patel's approach is the belief that quality care is crucial to improving health outcomes. By integrating DPC into health plans, Patel ensures employees have access to affordable, personalized healthcare.",
+          "DPC builds long-term patient-provider relationships, focusing on preventive care and holistic health—resulting in fewer claims and lower overall healthcare costs. 'When we focus on quality, we see better results at a fraction of the cost,' Patel notes."
+        ]
+      },
+      {
+        heading: 'Overcoming Challenges: Transitioning to a New Model',
+        content: [
+          "Transitioning from traditional insurance to self-funded, DPC-based models can be challenging for employers, often due to resistance to change. However, Patel emphasizes that education and clear communication are key.",
+          "'Once employers see the benefits of self-funded plans and DPC, the transition becomes much smoother,' Patel adds."
+        ]
+      },
+      {
+        heading: 'The Future of Health Benefits: Empowering Employers and Employees',
+        content: [
+          "Neer Patel is reshaping healthcare benefits with a focus on empowering employers and improving employee health. Through self-funded insurance and Direct Primary Care, employers can lower healthcare costs while enhancing care quality. Patel's goal is to expand this model nationwide, creating a healthier, more sustainable healthcare ecosystem.",
+          "'This is about more than saving money—it's about creating a healthier workforce,' Patel concludes."
+        ]
+      },
+      {
+        heading: 'A Blueprint for the Future',
+        content: [
+          "Neer Patel's work is reshaping how we think about healthcare benefits—moving away from a broken system focused on cost escalation and inefficiency toward one that prioritizes patient care, cost transparency, and sustainability.",
+          "Patel's vision for the future is one of empowerment—empowering employers to take control of their healthcare costs, empowering employees to take control of their health, and empowering healthcare providers to deliver the care patients truly need."
         ]
       }
     ]
@@ -1190,14 +1364,56 @@ export const apexProfiles: ApexProfile[] = [
     name: 'Dr. Jeffrey Hockings',
     image: 'https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/Dr.+Jeff+Headshot-800w.jpg',
     title: "Dr. Hockings's Mission: Reversing Type 2 Diabetes Through a Patented, Virtual Model",
-    intro: "For Dr. Jeffrey Hockings, the fight against diabetes began at home. He watched both his aunt and his father-in-law suffer and eventually lose their lives to complications from Type 2 Diabetes. The grief was heavy, but it also planted a conviction: there had to be a better way.",
+    intro: "For Dr. Jeffrey Hockings, the fight against diabetes began at home. He watched both his aunt and his father-in-law suffer and eventually lose their lives to complications from Type 2 Diabetes. The grief was heavy, but it also planted a conviction: there had to be a better way. Fifteen years ago, Dr. Hockings and his wife looked at the landscape of care and noticed something striking. While mainstream medicine had resigned itself to managing Type 2 Diabetes with a lifetime of medications, no one was building a true path to reversal. So, they decided to do it themselves.",
     category: 'ENHANCED ACCESS',
     sections: [
       {
         heading: 'From Personal Tragedy to a Patented Solution',
         content: [
           "What started as a homegrown effort has grown into the Diabetes Reversal Group (DRG), a patented and nationally scalable program built for one purpose: to help people reverse Type 2 Diabetes.",
-          "Fifteen years ago, Dr. Hockings and his wife looked at the landscape of care and noticed something striking. While mainstream medicine had resigned itself to managing Type 2 Diabetes with a lifetime of medications, no one was building a true path to reversal."
+          "Unlike conventional care, where the goal is simply to keep blood sugar numbers under control, DRG is designed around long-term freedom from the disease. Patients who join the program are given a complete, structured system including: A patented list of approved foods and drinks, patented nutritional supplements, weekly meal plans and recipes, weekly training videos and group support calls, exercise recommendations, shopping list, monthly newsletter, 240 recipes, and unlimited one-on-one support with DRG-certified coaches, five days a week."
+        ]
+      },
+      {
+        heading: 'A Different Path Than Mainstream Care',
+        content: [
+          "Dr. Hockings doesn't shy away from pointing out where his approach diverges from the status quo. 'Managing diabetes with medications still leads to horrific complications,' he says. 'Mainstream care doesn't aim to reverse the condition. Our program has one goal: reversal.'",
+          "It's this commitment, combined with measurable results, that makes DRG stand apart. The program holds a U.S. patent, a rarity in this field, and is backed by independent outcome data and a 15-year success record."
+        ]
+      },
+      {
+        heading: 'Built to Reach Anyone, Anywhere',
+        content: [
+          "One of the things that makes DRG unique is its accessibility. The program is fully virtual, so patients never need to leave their homes to get started. Coaching, support, and resources are delivered online, making it possible to reach people across the country, and soon, around the world.",
+          "To make the experience even smoother, DRG is rolling out a Salesforce-integrated patient app. Patients will be able to log meals, weight, blood sugar, and blood pressure, with the data syncing directly to DRG's coaching platform. With built-in AI support, the app will even answer common questions instantly."
+        ]
+      },
+      {
+        heading: 'A Partner, Not a Burden, for Clinics',
+        content: [
+          "For direct care clinics, DRG was built to fit in seamlessly. Providers can offer the protocol to their patients without adding new layers of work.",
+          "'When a patient joins, the clinic earns an average of $1,500,' Dr. Hockings explains. 'We handle everything else.' From done-for-you marketing emails to ongoing patient support, DRG was designed to lift pressure off clinics rather than add to it."
+        ]
+      },
+      {
+        heading: 'A Global Mission',
+        content: [
+          "The vision doesn't stop at American borders. With India facing one of the world's largest diabetes burdens, DRG is preparing to expand overseas.",
+          "'This is a global pandemic,' says Dr. Hockings. 'We have a solution that works, and we want to scale it worldwide.'"
+        ]
+      },
+      {
+        heading: 'A New Tool for Direct Primary Care',
+        content: [
+          "For Direct Primary Care (DPC) clinics, DRG's model is especially powerful. While prevention remains the heart of DPC, patients who are already struggling with chronic disease need more than maintenance. They need reversal.",
+          "'We don't compete with prevention efforts. We are focused on reversal,' Dr. Hockings notes. 'No one else has what we have, a patented system that helps people get off medications.' Too many patients are caught in a cycle of prescriptions and side effects. DRG offers a way to break that cycle."
+        ]
+      },
+      {
+        heading: 'A Partnership for Scale',
+        content: [
+          "Through a partnership with Health Compiler, DRG is now reaching deeper into the direct care ecosystem. Together, the two organizations are helping clinics bring a proven solution for diabetes reversal directly to their patients.",
+          "'This partnership allows us to help thousands of clinics offer a real solution to Type 2 Diabetes,' says Dr. Hockings. 'Together, we can reach millions of people and deliver the kind of care that truly changes lives.'"
         ]
       }
     ]
@@ -1207,14 +1423,56 @@ export const apexProfiles: ApexProfile[] = [
     name: 'Dr. Maryal Concepcion',
     image: 'https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/Maryal+Concepcion-800w.jpg',
     title: "Dr. Maryal Concepcion Journey: From Corporate Chaos to Caring Hands",
-    intro: "Dr. Maryal Concepcion, MD, FAAFP (Fellow of the American Academy of Family Physicians), is a Filipinx family doctor with a passion to fix the problems in healthcare. As the Owner and CEO of Big Trees MD in Calaveras County, California, and the host of the My DPC Story podcast, she's proving that medicine can be personal, affordable, and focused on the patient.",
+    intro: "Dr. Maryal Concepcion, MD, FAAFP (Fellow of the American Academy of Family Physicians), is a Filipinx family doctor with a passion to fix the problems in healthcare. As the Owner and CEO of Big Trees MD in Calaveras County, California, and the host of the My DPC Story podcast, she's proving that medicine can be personal, affordable, and focused on the patient. Her path is one of courage, rediscovery, and a strong commitment to revolutionizing healthcare. She chose DPC because she believes healthcare should be about building relationships, not rushing through appointments or dealing with insurance paperwork.",
     category: 'ENHANCED ACCESS',
     sections: [
       {
-        heading: 'Revolutionizing Healthcare',
+        heading: 'A Passion From the Start',
         content: [
-          "Her path is one of courage, rediscovery, and a strong commitment to revolutionizing healthcare.",
-          "Through her podcast, she shares stories of other DPC practitioners and helps spread the movement."
+          "Maryal's desire to help others started long before she became a doctor. Growing up in Sacramento, she was always involved in activities like the Latin Club, CSF, and even served as Lieutenant Governor of Key Club during her senior year. 'My family taught me that if someone needs you, you show up,' she says.",
+          "The couple chose rural life over the city, inspired by their time training in Nebraska. 'In a small town, we could do everything, full-scope medicine, cradle to grave,' Maryal explains. They dreamed of building close relationships with their patients, but their first jobs in corporate medicine crushed that dream."
+        ]
+      },
+      {
+        heading: 'The Struggles of Corporate Medicine',
+        content: [
+          "When Maryal became an attending physician, the reality of corporate medicine hit hard. The clinic she worked for didn't support her mission. 'They pushed us to see more patients, do more, faster,' she recalls. Instead of being able to deliver the hands-on care she loved, she was forced to refer patients out to specialists.",
+          "One day, a first-year resident called family doctors 'referralologists,' and that word stuck. 'It wasn't a joke, it was the truth, and it hurt,' she says. Even worse, the system treated her like just another number. The breaking point came in 2020, when she was 28 weeks pregnant and was given an ultimatum by her employer: sign a contract she hated or get fired."
+        ]
+      },
+      {
+        heading: 'Discovering DPC',
+        content: [
+          "In 2019, a conversation with a local orthopedic surgeon changed everything. 'Have you heard of DPC?' he asked. Maryal hadn't, but it felt like a lightbulb went off. Direct Primary Care, a model where patients pay a flat fee for unlimited visits and cut out insurance, seemed like the answer she had been searching for.",
+          "'It was like Neo taking the red pill in The Matrix,' she says with a grin. 'I went down the rabbit hole.' She dove in, attending a California family medicine conference where she met Dr. Janine Rethy, a pioneer in DPC, who spent an hour explaining the model."
+        ]
+      },
+      {
+        heading: 'Starting Big Trees MD',
+        content: [
+          "With her husband's support, Maryal launched Big Trees MD in Arnold, a small town two hours from Sacramento. He stayed in corporate medicine for a steady paycheck while she took the leap. 'If we'd opened a traditional practice, we would've left medicine entirely,' she admits.",
+          "Word quickly spread. When their old clinic switched to a non-physician model, patients returned to Maryal and her husband—the only full-scope doctors left in the county. 'People knew us and trusted us,' she says. One patient, who was prescribed antidepressants by her last doctor without a real conversation, told Maryal, 'You're the first one who asked why I'm on this.' That's the kind of care Maryal always dreamed of."
+        ]
+      },
+      {
+        heading: 'Spreading the Message',
+        content: [
+          "Maryal didn't just build a practice; she became an advocate for change. She's spoken on Capitol Hill, recorded almost over 150 podcast episodes with other DPC doctors, and created a directory and magazine to connect the DPC community.",
+          "Her advice? 'Know your \"why.\" If DPC doesn't fit your life—your family, your goals—it'll wear you out. But the beauty is, you can shape it. If it's not working, tweak it.' She loves teaching residents about options she never knew were available during her training. 'Back then, no one said you could open your own practice,' she says. Now, she's making sure they know they can."
+        ]
+      },
+      {
+        heading: 'Looking Ahead',
+        content: [
+          "Maryal sees a bright future for DPC. 'We're nimble,' she says, excited about potential changes in laws, like allowing patients to use health savings accounts for DPC or expanding Medicaid access. She points to a bipartisan bill from Reps. Kim Schrier and Dan Crenshaw, which pushes for everyday Americans to get 'concierge-level care' without the high price.",
+          "She's also excited about technology. Wearables, AI tools, and open-source platforms which she sees as essential for modern healthcare. And data? That's her secret weapon. At a summit, she saw the difference in cost—$200 for a mammogram in DPC versus $3,000 with insurance."
+        ]
+      },
+      {
+        heading: 'A Promise Kept',
+        content: [
+          "Maryal's story is more than about medicine—it's about sticking to what matters. From rural Nebraska to Capitol Hill, she's fought for a healthcare system that puts people first. 'It's old-time doctoring with a modern twist,' she says.",
+          "Dr. Maryal Concepcion shows us that when you follow what's truly right, opportunities open. Her journey inspires us all to rethink what's possible, one patient, one story, one bold step at a time."
         ]
       }
     ]
@@ -1224,14 +1482,67 @@ export const apexProfiles: ApexProfile[] = [
     name: 'Dr. Raymond Kordonowy',
     image: 'https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/Dr.+Raymond+Kordonowy-800w.png',
     title: "Direct, Transparent, and Personal: Inside Dr. Raymond Kordonowy's Approach to Care",
-    intro: "From his early training to a pioneering practice in Florida, Dr. Raymond Kordonowy has built a career around challenging the status quo. Among the first physicians to experience hospital employment during the HMO boom, he saw firsthand how bureaucracy and third-party payers compromised patient care.",
+    intro: "From his early training to a pioneering practice in Florida, Dr. Raymond Kordonowy has built a career around challenging the status quo. Among the first physicians to experience hospital employment during the HMO boom, he saw firsthand how bureaucracy and third-party payers compromised patient care. Rather than accepting the system, he created his own path, developing a membership-based model that blends Direct Primary Care with inpatient advocacy, technology, and radical transparency.",
     category: 'ENHANCED ACCESS',
     sections: [
       {
-        heading: 'Creating His Own Path',
+        heading: 'Starting Out: Education, Family, and First Practices',
         content: [
-          "Rather than accepting the system, he created his own path, developing a membership-based model that blends Direct Primary Care with inpatient advocacy, technology, and radical transparency.",
-          "He envisions a future of healthcare that belongs to independent physicians reclaiming their profession."
+          "Dr. Raymond Kordonowy's story begins in Kansas, where he studied liberal arts with a chemistry emphasis at the University of Kansas. He stayed at the same institution for medical school in Kansas City. During rotations, he realized internal medicine was where he belonged: 'I liked the differential diagnosis. I always wanted to be kind of a patient's main doctor.'",
+          "He married between his first and second year of medical school, started a family during residency, and eventually relocated to Florida, where his wife's family had moved. After residency and a chief residency in Atlanta, he joined two private practices in Fort Myers. These practices eventually merged and sold to Columbia Health Care in the mid-90s, making him one of the first primary care physicians to experience hospital system employment."
+        ]
+      },
+      {
+        heading: 'Breaking Away from the System',
+        content: [
+          "Frustration with third-party medicine grew as he saw bureaucracy take over patient care. Medicare's RVU payment system drove reimbursements down. Prior authorizations, administrative burden, and insurer control only worsened.",
+          "'I realized that the third-party system was destructive to my ethics and something I just couldn't function well in,' he explains. He left his old group when they decided to stay in Medicare. For him, the path was clear: find a way to practice medicine on his own terms.",
+          "A certified clinical lipidologist, Dr. Kordonowy wanted to spend time with patients teaching lifestyle changes and managing complex conditions like diabetes and cholesterol disorders. But under Medicare, a half-hour counseling visit could bankrupt a practice."
+        ]
+      },
+      {
+        heading: 'A Membership-Based Model',
+        content: [
+          "His solution was bold: bundle his services into a membership model, with direct contracts between doctor and patient. This approach would eliminate billing codes, prior authorizations, and dependence on insurers.",
+          "He structured pricing based on real operating costs, including diagnostic tools, staff, and technology. 'I didn't want to sit and submit codes for payment. It's a huge drag on the cost of a practice to have to get your money from third parties.'",
+          "This model gave him freedom to innovate. Instead of waiting for a new billing code to try an idea, he could introduce services immediately. He also leveraged bulk lab pricing to offer patients transparent, affordable options."
+        ]
+      },
+      {
+        heading: 'The Inpatient Advocate Service',
+        content: [
+          "One of Dr. Kordonowy's most unique innovations was the Inpatient Advocate Service. When hospitalist medicine displaced primary care doctors from inpatient care, patients lost continuity. He stepped in to restore it.",
+          "'I created what's called the Inpatient Advocate Service,' he says. 'It allows me to maintain my relationship and care with my patients, influencing and informing the hospitalist team with all the things I knew before the patient came to them.'",
+          "He would visit patients in the hospital at the end of his workday, help them navigate conflicting consultant opinions, clarify medications, and bring social context that hospitalists often missed. The service became a cornerstone of his 'Premier Program,' bundled into membership for patients."
+        ]
+      },
+      {
+        heading: 'Direct Care, Redefined',
+        content: [
+          "While he avoided the term 'concierge' because of its elitist connotation, patients understood it differently: paying directly for better access. Over time, he embraced both the concierge and Direct Primary Care (DPC) labels, recognizing his hybrid model offered something unique—outpatient DPC with inpatient continuity.",
+          "The membership model also unlocked a new kind of patient relationship. Every new patient visit includes a broad health and wellness assessment, complete with antioxidant testing and lab panels. 'Metrics is the new medicine,' he says. 'When patients can see visually what's happening, they're motivated to change their behavior.'"
+        ]
+      },
+      {
+        heading: 'Technology and the Virtual Hospital',
+        content: [
+          "Today, Dr. Kordonowy is pushing the boundaries of technology in DPC. His practice is piloting dashboards for blood pressure and heart failure management, integrating remote monitoring data, and working with AI to flag patients needing immediate attention.",
+          "'I envision direct primary care physicians becoming the virtual hospital,' he explains. 'We can do telemetry, vital signs, medications, even coordinate with home health or infusion companies. A lot of problems can be managed at home if you've got the right support system.'"
+        ]
+      },
+      {
+        heading: 'The Power of Transparency',
+        content: [
+          "Patients respond strongly to transparency in his practice. Clear fees, direct lab pricing, and open communication create trust. Importantly, every patient is asked to set a personal health goal, which is then translated into SMART goals—specific, measurable, actionable, rewarding, and time-specified.",
+          "'For us, if we've got to hospitalize you, we failed,' he says."
+        ]
+      },
+      {
+        heading: 'Looking Ahead: ICHRA and the Future of Direct Care',
+        content: [
+          "Dr. Kordonowy is also excited about policy changes that support direct care. With the expansion of health savings accounts and the new ICHRA legislation, small businesses will soon be able to fund DPC memberships as employee benefits.",
+          "'This completely changes things,' he says. 'All small businesses can now help pay for their employees to see doctors the way we are offering ourselves.'",
+          "Dr. Kordonowy believes more private physicians will 'leave the system' to reclaim their profession through Direct Primary Care. He sees doctors evolving beyond diagnosticians to serve as coaches, advocates, and even brokers for their patients. His Fort Myers practice, now home to three physicians, embodies this vision. Dr. Kordonowy's work reflects a simple but powerful truth: when physicians reclaim autonomy, patients regain real care."
         ]
       }
     ]
