@@ -155,15 +155,11 @@ const CategoryTile = ({ title, subtitle }: { title: string; subtitle: string }) 
 };
 
 // Profile Card Component
-const ProfileCard = ({ name, linkUrl, image, index }: { name: string; linkUrl: string; image: string; index: number }) => {
+const ProfileCard = ({ name, linkUrl, image, index, isClickable = true }: { name: string; linkUrl: string; image: string; index: number; isClickable?: boolean }) => {
   const initials = name.split(' ').map(n => n[0]).join('').slice(0, 2);
   
-  return (
-    <Link 
-      to={linkUrl}
-      className="group relative overflow-hidden rounded-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.3)] animate-fade-in block"
-      style={{ animationDelay: `${index * 50}ms` }}
-    >
+  const cardContent = (
+    <>
       {/* Profile Image */}
       <div className="aspect-[4/5] bg-gray-100 relative overflow-hidden">
         {image ? (
