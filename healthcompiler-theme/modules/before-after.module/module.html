@@ -1,0 +1,169 @@
+<!-- Before/After Module -->
+<section class="hc-before-after">
+  <style>
+    .hc-before-after {
+      padding: 4rem 0 5rem;
+      background: linear-gradient(135deg, #F8FAFC 0%, #FFFFFF 50%, #F8FAFC 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hc-before-after::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    
+    .hc-before-after__header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .hc-before-after__title {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 700;
+      color: #1E293B;
+      margin-bottom: 0.5rem;
+    }
+    
+    .hc-before-after__subtitle {
+      font-size: 1rem;
+      color: #64748B;
+    }
+    
+    .hc-before-after__grid {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 1.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    @media (min-width: 768px) {
+      .hc-before-after__grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    
+    .hc-before-after-card {
+      position: relative;
+      height: 8rem;
+      border-radius: 0.75rem;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    
+    .hc-before-after-card__before,
+    .hc-before-after-card__after {
+      position: absolute;
+      inset: 0;
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      transition: all 0.5s ease;
+    }
+    
+    .hc-before-after-card__before {
+      background: #F1F5F9;
+    }
+    
+    .hc-before-after-card__after {
+      background: #ECFDF5;
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    
+    .hc-before-after-card:hover .hc-before-after-card__before {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    
+    .hc-before-after-card:hover .hc-before-after-card__after {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    
+    .hc-before-after-card__icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    
+    .hc-before-after-card__before .hc-before-after-card__icon {
+      background: #FEE2E2;
+      color: #EF4444;
+    }
+    
+    .hc-before-after-card__after .hc-before-after-card__icon {
+      background: #D1FAE5;
+      color: #10B981;
+    }
+    
+    .hc-before-after-card__content {
+      flex: 1;
+    }
+    
+    .hc-before-after-card__label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.25rem;
+    }
+    
+    .hc-before-after-card__before .hc-before-after-card__label {
+      color: #EF4444;
+    }
+    
+    .hc-before-after-card__after .hc-before-after-card__label {
+      color: #10B981;
+    }
+    
+    .hc-before-after-card__text {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #1E293B;
+    }
+  </style>
+  
+  <div class="hc-container">
+    <div class="hc-before-after__header">
+      <h2 class="hc-before-after__title">{{ module.section_title }}</h2>
+      {% if module.section_subtitle %}
+        <p class="hc-before-after__subtitle">{{ module.section_subtitle }}</p>
+      {% endif %}
+    </div>
+    
+    <div class="hc-before-after__grid">
+      {% for item in module.items %}
+        <div class="hc-before-after-card">
+          <div class="hc-before-after-card__before">
+            <div class="hc-before-after-card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            </div>
+            <div class="hc-before-after-card__content">
+              <div class="hc-before-after-card__label">Before</div>
+              <div class="hc-before-after-card__text">{{ item.before }}</div>
+            </div>
+          </div>
+          <div class="hc-before-after-card__after">
+            <div class="hc-before-after-card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <div class="hc-before-after-card__content">
+              <div class="hc-before-after-card__label">After</div>
+              <div class="hc-before-after-card__text">{{ item.after }}</div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

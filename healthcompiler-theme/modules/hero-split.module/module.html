@@ -1,0 +1,207 @@
+<!-- Hero Split Module -->
+<section class="hc-hero-split">
+  <style>
+    .hc-hero-split {
+      position: relative;
+      padding: 6rem 0 4rem;
+      overflow: hidden;
+      background: linear-gradient(135deg, #F8FAFC 0%, #FFFFFF 50%, #F8FAFC 100%);
+    }
+    
+    .hc-hero-split::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    
+    .hc-hero-split__inner {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    
+    @media (min-width: 1024px) {
+      .hc-hero-split__inner {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    
+    .hc-hero-split__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.375rem 0.75rem;
+      background: rgba(233, 78, 135, 0.1);
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #E94E87;
+      margin-bottom: 1.5rem;
+    }
+    
+    .hc-hero-split__badge-dot {
+      width: 0.5rem;
+      height: 0.5rem;
+      background: #E94E87;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    
+    .hc-hero-split__headline {
+      font-size: clamp(2.25rem, 5vw, 3.75rem);
+      font-weight: 700;
+      line-height: 1.1;
+      color: #1E293B;
+      margin-bottom: 1.5rem;
+    }
+    
+    .hc-hero-split__headline-highlight {
+      background: linear-gradient(135deg, #E94E87 0%, #F97316 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .hc-hero-split__subheadline {
+      font-size: 1.125rem;
+      color: #64748B;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      max-width: 540px;
+    }
+    
+    .hc-hero-split__ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .hc-hero-split__cta-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.875rem 1.5rem;
+      background: linear-gradient(135deg, #E94E87 0%, #F97316 100%);
+      color: white;
+      font-weight: 500;
+      border-radius: 0.75rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+    .hc-hero-split__cta-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 15px -3px rgba(233, 78, 135, 0.3);
+    }
+    
+    .hc-hero-split__cta-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.875rem 1.5rem;
+      background: transparent;
+      color: #1E293B;
+      font-weight: 500;
+      border: 1px solid #E2E8F0;
+      border-radius: 0.75rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .hc-hero-split__cta-secondary:hover {
+      background: #F8FAFC;
+      border-color: #E94E87;
+    }
+    
+    .hc-hero-split__trust {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      font-size: 0.875rem;
+      color: #64748B;
+    }
+    
+    .hc-hero-split__trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+    }
+    
+    .hc-hero-split__trust-dot {
+      width: 0.375rem;
+      height: 0.375rem;
+      background: #22C55E;
+      border-radius: 50%;
+    }
+    
+    .hc-hero-split__visual {
+      position: relative;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+  </style>
+  
+  <div class="hc-container">
+    <div class="hc-hero-split__inner">
+      <!-- Content -->
+      <div class="hc-hero-split__content">
+        {% if module.badge_text %}
+          <div class="hc-hero-split__badge">
+            <span class="hc-hero-split__badge-dot"></span>
+            {{ module.badge_text }}
+          </div>
+        {% endif %}
+        
+        <h1 class="hc-hero-split__headline">
+          {% set headline_parts = module.headline|split(module.headline_highlight) %}
+          {{ headline_parts[0] }}<span class="hc-hero-split__headline-highlight">{{ module.headline_highlight }}</span>{% if headline_parts[1] %}{{ headline_parts[1] }}{% endif %}
+        </h1>
+        
+        <p class="hc-hero-split__subheadline">
+          {{ module.subheadline }}
+        </p>
+        
+        <div class="hc-hero-split__ctas">
+          {% if module.primary_cta_text %}
+            <a href="{{ module.primary_cta_link.url.href }}" class="hc-hero-split__cta-primary">
+              {{ module.primary_cta_text }}
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+          {% endif %}
+          
+          {% if module.secondary_cta_text %}
+            <a href="{{ module.secondary_cta_link.url.href }}" class="hc-hero-split__cta-secondary">
+              {{ module.secondary_cta_text }}
+            </a>
+          {% endif %}
+        </div>
+        
+        {% if module.trust_badges.badges %}
+          <div class="hc-hero-split__trust">
+            {% for badge in module.trust_badges.badges %}
+              <span class="hc-hero-split__trust-item">
+                <span class="hc-hero-split__trust-dot"></span>
+                {{ badge.text }}
+              </span>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+      
+      <!-- Visual -->
+      <div class="hc-hero-split__visual">
+        {% if module.show_animation %}
+          {% include './partials/animation-{{ module.animation_type }}.html' %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
