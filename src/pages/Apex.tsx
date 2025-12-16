@@ -301,9 +301,9 @@ const Apex = () => {
         {/* Filter Section */}
         <section className="py-6 bg-white border-b border-gray-200 sticky top-[72px] z-40 backdrop-blur-xl">
           <div className="container mx-auto px-6">
-            <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
+            <div className="flex justify-center">
               {/* Search */}
-              <div className="relative w-full md:w-80">
+              <div className="relative w-full max-w-md">
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                 <input
                   type="text"
@@ -313,7 +313,6 @@ const Apex = () => {
                   className="w-full pl-11 pr-4 py-3 rounded-full border border-gray-200 bg-gray-50 text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-apex-accent/50 focus:border-apex-accent/50 transition-all duration-300 font-apex-body"
                 />
               </div>
-
             </div>
           </div>
         </section>
