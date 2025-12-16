@@ -144,10 +144,6 @@ const Integration = () => {
             </p>
           </div>
 
-          {/* Integrations Title */}
-          <div className="max-w-6xl mx-auto mb-8">
-            <h2 className="text-2xl font-bold text-foreground">Integrations</h2>
-          </div>
 
           {/* Integrations Cloud with Central Hub */}
           <div className="max-w-6xl mx-auto mb-16">
@@ -278,7 +274,7 @@ const Integration = () => {
               <Button 
                 type="submit" 
                 size="lg" 
-                className="w-full sm:w-auto h-14 px-16 text-base font-semibold rounded-lg"
+                className="w-full sm:w-auto h-14 px-16 text-base font-semibold rounded-lg bg-primary hover:bg-primary/90 text-primary-foreground"
               >
                 Submit
               </Button>
