@@ -58,7 +58,7 @@ export const HeroVisualization = () => {
   }, []);
 
   return (
-    <div className="w-full h-[520px] relative" onMouseLeave={handleMouseLeave}>
+    <div className="w-full h-[420px] relative" onMouseLeave={handleMouseLeave}>
       <svg
         viewBox="0 0 600 520"
         className="w-full h-full"
