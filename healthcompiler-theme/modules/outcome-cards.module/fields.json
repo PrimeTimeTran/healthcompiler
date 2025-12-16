@@ -1,0 +1,67 @@
+[
+  {
+    "name": "section_title",
+    "label": "Section Title",
+    "type": "text",
+    "default": "Why an AI Receptionist"
+  },
+  {
+    "name": "cards",
+    "label": "Outcome Cards",
+    "type": "group",
+    "occurrence": {
+      "min": 1,
+      "max": 6,
+      "default": 3
+    },
+    "children": [
+      {
+        "name": "icon",
+        "label": "Icon",
+        "type": "choice",
+        "choices": [
+          ["phone", "Phone"],
+          ["users", "Users"],
+          ["zap", "Zap/Speed"],
+          ["shield", "Shield"],
+          ["heart", "Heart"],
+          ["trending-up", "Trending Up"],
+          ["check-circle", "Check Circle"],
+          ["calendar", "Calendar"],
+          ["brain", "Brain/AI"],
+          ["building", "Building"]
+        ],
+        "default": "phone"
+      },
+      {
+        "name": "title",
+        "label": "Title",
+        "type": "text",
+        "default": "Never Miss a Patient Interaction"
+      },
+      {
+        "name": "description",
+        "label": "Description",
+        "type": "text",
+        "default": "Every call and message answered"
+      }
+    ],
+    "default": [
+      {
+        "icon": "phone",
+        "title": "Never Miss a Patient Interaction",
+        "description": "Every call and message answered"
+      },
+      {
+        "icon": "users",
+        "title": "Reduce Front Desk Load",
+        "description": "Automate repetitive tasks"
+      },
+      {
+        "icon": "zap",
+        "title": "Improve Patient Experience",
+        "description": "Faster responses, fewer delays"
+      }
+    ]
+  }
+]

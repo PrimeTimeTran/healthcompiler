@@ -1,0 +1,66 @@
+[
+  {
+    "name": "section_title",
+    "label": "Section Title",
+    "type": "text",
+    "default": "From Incoming Requests to Action"
+  },
+  {
+    "name": "section_subtitle",
+    "label": "Section Subtitle",
+    "type": "text",
+    "default": "How the AI Receptionist handles every interaction"
+  },
+  {
+    "name": "steps",
+    "label": "Process Steps",
+    "type": "group",
+    "occurrence": {
+      "min": 2,
+      "max": 6,
+      "default": 4
+    },
+    "children": [
+      {
+        "name": "title",
+        "label": "Step Title",
+        "type": "text",
+        "default": "Answer"
+      },
+      {
+        "name": "description",
+        "label": "Step Description",
+        "type": "text",
+        "default": "Phone, text, and web in real time"
+      },
+      {
+        "name": "icon",
+        "label": "Icon",
+        "type": "choice",
+        "choices": [
+          ["phone", "Phone"],
+          ["brain", "Brain/Understand"],
+          ["zap", "Zap/Action"],
+          ["arrow-up-right", "Escalate"],
+          ["database", "Database"],
+          ["layers", "Layers"],
+          ["target", "Target"],
+          ["check", "Check"]
+        ],
+        "default": "phone"
+      }
+    ],
+    "default": [
+      { "title": "Answer", "description": "Phone, text, and web in real time", "icon": "phone" },
+      { "title": "Understand", "description": "Reason for call, intent, urgency", "icon": "brain" },
+      { "title": "Act", "description": "Schedule, confirm, route, or respond", "icon": "zap" },
+      { "title": "Escalate", "description": "Hand off to staff when needed", "icon": "arrow-up-right" }
+    ]
+  },
+  {
+    "name": "footer_text",
+    "label": "Footer Text",
+    "type": "text",
+    "default": "Continuous coverage, 24/7"
+  }
+]

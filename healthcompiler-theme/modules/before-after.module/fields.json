@@ -1,0 +1,43 @@
+[
+  {
+    "name": "section_title",
+    "label": "Section Title",
+    "type": "text",
+    "default": "Before vs After AI Receptionist"
+  },
+  {
+    "name": "section_subtitle",
+    "label": "Section Subtitle",
+    "type": "text",
+    "default": "The difference in practice"
+  },
+  {
+    "name": "items",
+    "label": "Before/After Items",
+    "type": "group",
+    "occurrence": {
+      "min": 1,
+      "max": 6,
+      "default": 3
+    },
+    "children": [
+      {
+        "name": "before",
+        "label": "Before",
+        "type": "text",
+        "default": "Missed calls"
+      },
+      {
+        "name": "after",
+        "label": "After",
+        "type": "text",
+        "default": "Every call answered"
+      }
+    ],
+    "default": [
+      { "before": "Missed calls", "after": "Every call answered" },
+      { "before": "Manual scheduling", "after": "Automated bookings" },
+      { "before": "Front desk overload", "after": "Staff focused on care" }
+    ]
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "name": "section_title",
+    "label": "Section Title",
+    "type": "text",
+    "default": "What the AI Receptionist Can Handle"
+  },
+  {
+    "name": "tiles",
+    "label": "Capability Tiles",
+    "type": "group",
+    "occurrence": {
+      "min": 1,
+      "max": 12,
+      "default": 6
+    },
+    "children": [
+      {
+        "name": "icon",
+        "label": "Icon",
+        "type": "choice",
+        "choices": [
+          ["calendar", "Calendar"],
+          ["user-plus", "User Plus"],
+          ["bell", "Bell"],
+          ["shield", "Shield"],
+          ["help-circle", "Help Circle"],
+          ["headphones", "Headphones"],
+          ["clipboard", "Clipboard"],
+          ["heart", "Heart"],
+          ["activity", "Activity"],
+          ["trending-up", "Trending Up"]
+        ],
+        "default": "calendar"
+      },
+      {
+        "name": "title",
+        "label": "Title",
+        "type": "text",
+        "default": "Appointment Scheduling"
+      },
+      {
+        "name": "hover_text",
+        "label": "Hover Description",
+        "type": "text",
+        "default": "Automatically books or reschedules appointments based on clinic rules and availability."
+      }
+    ],
+    "default": [
+      { "icon": "calendar", "title": "Appointment Scheduling", "hover_text": "Automatically books or reschedules appointments based on clinic rules and availability." },
+      { "icon": "user-plus", "title": "New Patient Intake", "hover_text": "Captures new patient information and initiates onboarding workflows." },
+      { "icon": "bell", "title": "Reminders & Confirmations", "hover_text": "Sends automated appointment reminders and handles confirmations." },
+      { "icon": "shield", "title": "Insurance & Eligibility", "hover_text": "Answers common insurance questions and routes complex inquiries." },
+      { "icon": "help-circle", "title": "General Inquiries", "hover_text": "Handles FAQs about hours, location, services, and policies." },
+      { "icon": "headphones", "title": "Smart Escalation", "hover_text": "Recognizes urgency and routes to the right staff member instantly." }
+    ]
+  }
+]

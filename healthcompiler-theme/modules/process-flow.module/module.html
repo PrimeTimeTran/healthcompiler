@@ -1,0 +1,212 @@
+<!-- Process Flow Module -->
+<section class="hc-process-flow" id="how-it-works">
+  <style>
+    .hc-process-flow {
+      padding: 4rem 0 5rem;
+      background: linear-gradient(135deg, #F8FAFC 0%, #FFFFFF 50%, #F8FAFC 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hc-process-flow::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    
+    .hc-process-flow__header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .hc-process-flow__title {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 700;
+      color: #1E293B;
+      margin-bottom: 0.5rem;
+    }
+    
+    .hc-process-flow__subtitle {
+      font-size: 1rem;
+      color: #64748B;
+    }
+    
+    .hc-process-flow__grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+    }
+    
+    @media (min-width: 1024px) {
+      .hc-process-flow__grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+    
+    .hc-process-step {
+      text-align: center;
+      position: relative;
+    }
+    
+    .hc-process-step__icon {
+      width: 4rem;
+      height: 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #F1F5F9;
+      border-radius: 1rem;
+      margin: 0 auto 1rem;
+      color: #64748B;
+      transition: all 0.5s ease;
+    }
+    
+    .hc-process-step.is-active .hc-process-step__icon {
+      background: linear-gradient(135deg, #E94E87 0%, #F97316 100%);
+      color: white;
+      box-shadow: 0 10px 25px -5px rgba(233, 78, 135, 0.4);
+      transform: scale(1.05);
+    }
+    
+    .hc-process-step__icon svg {
+      width: 1.75rem;
+      height: 1.75rem;
+    }
+    
+    .hc-process-step__number {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #E94E87;
+      margin-bottom: 0.5rem;
+    }
+    
+    .hc-process-step__title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #1E293B;
+      margin-bottom: 0.25rem;
+    }
+    
+    .hc-process-step__description {
+      font-size: 0.875rem;
+      color: #64748B;
+      max-width: 150px;
+      margin: 0 auto;
+    }
+    
+    .hc-process-step__connector {
+      display: none;
+      position: absolute;
+      right: -1rem;
+      top: 2rem;
+      color: #CBD5E1;
+    }
+    
+    @media (min-width: 1024px) {
+      .hc-process-step__connector {
+        display: block;
+      }
+    }
+    
+    .hc-process-step:last-child .hc-process-step__connector {
+      display: none;
+    }
+    
+    .hc-process-flow__footer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 2rem;
+      font-size: 0.875rem;
+      color: #64748B;
+    }
+    
+    .hc-process-flow__footer-dot {
+      width: 0.5rem;
+      height: 0.5rem;
+      background: #E94E87;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+  </style>
+  
+  <div class="hc-container">
+    <div class="hc-process-flow__header">
+      <h2 class="hc-process-flow__title">{{ module.section_title }}</h2>
+      {% if module.section_subtitle %}
+        <p class="hc-process-flow__subtitle">{{ module.section_subtitle }}</p>
+      {% endif %}
+    </div>
+    
+    <div class="hc-process-flow__grid">
+      {% for step in module.steps %}
+        <div class="hc-process-step" data-step="{{ loop.index }}">
+          <div class="hc-process-step__icon">
+            {% if step.icon == 'phone' %}
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            {% elif step.icon == 'brain' %}
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-1.54"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-1.54"/></svg>
+            {% elif step.icon == 'zap' %}
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            {% elif step.icon == 'arrow-up-right' %}
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+            {% elif step.icon == 'database' %}
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg>
+            {% elif step.icon == 'layers' %}
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/></svg>
+            {% elif step.icon == 'target' %}
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            {% elif step.icon == 'check' %}
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            {% endif %}
+          </div>
+          <span class="hc-process-step__number">Step {{ loop.index }}</span>
+          <h3 class="hc-process-step__title">{{ step.title }}</h3>
+          <p class="hc-process-step__description">{{ step.description }}</p>
+          
+          {% if not loop.last %}
+            <span class="hc-process-step__connector">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </span>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+    
+    {% if module.footer_text %}
+      <div class="hc-process-flow__footer">
+        <span class="hc-process-flow__footer-dot"></span>
+        {{ module.footer_text }}
+      </div>
+    {% endif %}
+  </div>
+  
+  <script>
+    (function() {
+      var steps = document.querySelectorAll('.hc-process-step');
+      var currentStep = 0;
+      
+      function cycleSteps() {
+        steps.forEach(function(step) {
+          step.classList.remove('is-active');
+        });
+        steps[currentStep].classList.add('is-active');
+        currentStep = (currentStep + 1) % steps.length;
+      }
+      
+      cycleSteps();
+      setInterval(cycleSteps, 2500);
+    })();
+  </script>
+</section>
