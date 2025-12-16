@@ -42,7 +42,7 @@ const App = () => (
           <Route path="/resources/apex" element={<Apex />} />
           <Route path="/solutions/hcc-suspecting" element={<HCCSuspecting />} />
           <Route path="/solutions/mips" element={<MIPSPerformance />} />
-          <Route path="/solutions/hedis-quality" element={<HEDISQuality />} />
+          <Route path="/solutions/hedis" element={<HEDISQuality />} />
           <Route path="/get-featured-form" element={<GetFeatured />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
