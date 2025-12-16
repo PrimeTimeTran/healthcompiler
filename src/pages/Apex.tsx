@@ -159,31 +159,45 @@ const ProfileCard = ({ name, linkUrl, image, index, isClickable = true }: { name
   const initials = name.split(' ').map(n => n[0]).join('').slice(0, 2);
   
   const cardContent = (
-    <>
-      {/* Profile Image */}
-      <div className="aspect-[4/5] bg-gray-100 relative overflow-hidden">
-        {image ? (
-          <img 
-            src={image} 
-            alt={name}
-            className="w-full h-full object-cover object-top transition-all duration-700 group-hover:scale-105"
-            loading="lazy"
-          />
-        ) : (
-          <div className="w-full h-full bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300 flex items-center justify-center">
-            <div className="w-24 h-24 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center shadow-lg">
-              <span className="text-2xl font-apex-display font-bold text-apex-bg">{initials}</span>
-            </div>
+    <div className="aspect-[4/5] bg-gray-100 relative overflow-hidden">
+      {image ? (
+        <img 
+          src={image} 
+          alt={name}
+          className="w-full h-full object-cover object-top transition-all duration-700 group-hover:scale-105"
+          loading="lazy"
+        />
+      ) : (
+        <div className="w-full h-full bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300 flex items-center justify-center">
+          <div className="w-24 h-24 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center shadow-lg">
+            <span className="text-2xl font-apex-display font-bold text-apex-bg">{initials}</span>
           </div>
-        )}
-        
-        {/* Name overlay at bottom */}
-        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent p-4 pt-12">
-          <h3 className="font-apex-body font-medium text-white text-sm md:text-base">
-            {name}
-          </h3>
         </div>
+      )}
+      
+      {/* Name overlay at bottom */}
+      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent p-4 pt-12">
+        <h3 className="font-apex-body font-medium text-white text-sm md:text-base">
+          {name}
+        </h3>
       </div>
+    </div>
+  );
+
+  if (!isClickable) {
+    return (
+      <div className="rounded-xl overflow-hidden shadow-lg">
+        {cardContent}
+      </div>
+    );
+  }
+
+  return (
+    <Link 
+      to={linkUrl}
+      className="block rounded-xl overflow-hidden shadow-lg transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 group"
+    >
+      {cardContent}
     </Link>
   );
 };
@@ -331,6 +345,7 @@ const Apex = () => {
                     linkUrl={item.linkUrl}
                     image={item.image}
                     index={index}
+                    isClickable={item.name !== 'Russell DuBose'}
                   />
                 )
               ))}
