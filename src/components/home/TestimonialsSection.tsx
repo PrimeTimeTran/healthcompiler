@@ -1,6 +1,7 @@
 import { Quote } from 'lucide-react';
 import brianFretwellImg from '@/assets/testimonial-brian-fretwell.png';
 import drKenRictorImg from '@/assets/dr-ken-rictor.png';
+import drWilliamBurkhartImg from '@/assets/dr-william-burkhart.png';
 
 interface Testimonial {
   quote: string;
@@ -25,9 +26,9 @@ const testimonials: Testimonial[] = [
   },
   {
     quote: "Self-funded employers should not underestimate the criticality of choosing the right data partner. Integrity and competency matters, which is why we chose Health Compiler.",
-    name: "Jennifer Walsh",
-    title: "CFO, TechServe Industries",
-    initials: "TSI",
+    name: "Dr. William Burkhart",
+    title: "Burkhart Direct Family Care",
+    image: drWilliamBurkhartImg,
   },
 ];
 
