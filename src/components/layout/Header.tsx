@@ -98,6 +98,7 @@ const whoWeServeCategories: SubMenuCategory[] = [
       { label: "TPA's & Health Plans", href: '/solutions/tpa-health-plans' },
       { label: 'Brokers & Advisors', href: '/solutions/brokers-advisors' },
       { label: 'Employers', href: '/solutions/employers' },
+      { label: 'Captives', href: '/solutions/captives' },
     ]
   },
   {
