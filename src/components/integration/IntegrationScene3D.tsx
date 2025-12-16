@@ -1,5 +1,5 @@
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Html, Float, OrbitControls } from '@react-three/drei';
+import { Html } from '@react-three/drei';
 import { useRef, useMemo } from 'react';
 import * as THREE from 'three';
 
@@ -42,105 +42,57 @@ const integrations = [
   { name: 'Paycom', x: 95, y: 84, highlighted: false },
 ];
 
-// Convert 2D percentage positions to 3D coordinates
-const to3DPosition = (x: number, y: number): [number, number, number] => {
-  const xPos = ((x - 50) / 50) * 6;
-  const yPos = ((50 - y) / 50) * 4;
-  const zPos = (Math.random() - 0.5) * 2;
+// Convert 2D percentage to 3D position
+const to3DPosition = (x: number, y: number, index: number): [number, number, number] => {
+  const xPos = ((x - 50) / 50) * 5;
+  const yPos = ((50 - y) / 50) * 3.5;
+  const zPos = (index % 5) * 0.15 - 0.3; // subtle depth variation
   return [xPos, yPos, zPos];
 };
 
-// Integration card component in 3D space
+// Integration card
 const IntegrationCard = ({ integration, index }: { integration: typeof integrations[0]; index: number }) => {
-  const position = useMemo(() => to3DPosition(integration.x, integration.y), [integration.x, integration.y]);
+  const position = useMemo(() => to3DPosition(integration.x, integration.y, index), [integration.x, integration.y, index]);
   
   return (
-    <Float
-      speed={1.5 + index * 0.1}
-      rotationIntensity={0.2}
-      floatIntensity={0.5}
-      floatingRange={[-0.1, 0.1]}
-    >
-      <group position={position}>
-        <Html
-          transform
-          occlude
-          distanceFactor={8}
-          style={{
-            transition: 'all 0.3s',
-          }}
+    <group position={position}>
+      <Html transform distanceFactor={8} style={{ pointerEvents: 'none' }}>
+        <div
+          className={`
+            px-3 py-2 rounded-lg border text-xs font-medium whitespace-nowrap
+            ${integration.highlighted 
+              ? 'border-primary bg-primary/10 text-primary shadow-sm' 
+              : 'border-border/60 bg-white/95 text-foreground'
+            }
+          `}
         >
-          <div
-            className={`
-              px-3 py-2 rounded-lg border text-xs font-medium
-              whitespace-nowrap cursor-pointer backdrop-blur-sm
-              transition-all duration-300 hover:scale-110
-              ${integration.highlighted 
-                ? 'border-primary bg-primary/20 text-primary shadow-md' 
-                : 'border-border/50 bg-white/90 text-foreground hover:border-primary/50'
-              }
-            `}
-          >
-            {integration.name}
-          </div>
-        </Html>
-      </group>
-    </Float>
-  );
-};
-
-// Animated connection lines
-const ConnectionLines = () => {
-  const linesRef = useRef<THREE.Group>(null);
-  
-  const lineData = useMemo(() => {
-    return Array.from({ length: 12 }, (_, i) => {
-      const angle = (i / 12) * Math.PI * 2;
-      const radius = 4 + Math.random() * 2;
-      return {
-        start: new THREE.Vector3(Math.cos(angle) * radius, Math.sin(angle) * (radius * 0.6), (Math.random() - 0.5) * 2),
-        end: new THREE.Vector3(0, 0, 0),
-      };
-    });
-  }, []);
-
-  return (
-    <group ref={linesRef}>
-      {lineData.map((line, i) => (
-        <AnimatedLine key={i} start={line.start} end={line.end} index={i} />
-      ))}
+          {integration.name}
+        </div>
+      </Html>
     </group>
   );
 };
 
-// Single animated line with particle
-const AnimatedLine = ({ start, end, index }: { start: THREE.Vector3; end: THREE.Vector3; index: number }) => {
+// Animated particle traveling along a line
+const ConnectionLine = ({ start, index }: { start: THREE.Vector3; index: number }) => {
   const particleRef = useRef<THREE.Mesh>(null);
+  const end = useMemo(() => new THREE.Vector3(0, 0, 0), []);
   
   const curve = useMemo(() => {
-    const midPoint = new THREE.Vector3().lerpVectors(start, end, 0.5);
-    midPoint.z += (Math.random() - 0.5) * 1;
-    return new THREE.QuadraticBezierCurve3(start, midPoint, end);
+    const mid = new THREE.Vector3().lerpVectors(start, end, 0.5);
+    mid.z += 0.3;
+    return new THREE.QuadraticBezierCurve3(start, mid, end);
   }, [start, end]);
 
-  const points = useMemo(() => curve.getPoints(50), [curve]);
+  const points = useMemo(() => curve.getPoints(30), [curve]);
   
-  const lineGeometry = useMemo(() => {
-    const geo = new THREE.BufferGeometry().setFromPoints(points);
-    return geo;
-  }, [points]);
-
-  const lineMaterial = useMemo(() => {
-    return new THREE.LineBasicMaterial({ color: '#e5e5e5', transparent: true, opacity: 0.3 });
-  }, []);
-
-  const lineObject = useMemo(() => {
-    return new THREE.Line(lineGeometry, lineMaterial);
-  }, [lineGeometry, lineMaterial]);
+  const lineGeometry = useMemo(() => new THREE.BufferGeometry().setFromPoints(points), [points]);
+  const lineMaterial = useMemo(() => new THREE.LineBasicMaterial({ color: '#e2e8f0', transparent: true, opacity: 0.5 }), []);
+  const lineObject = useMemo(() => new THREE.Line(lineGeometry, lineMaterial), [lineGeometry, lineMaterial]);
 
   useFrame(({ clock }) => {
     if (particleRef.current) {
-      const t = ((clock.getElapsedTime() * 0.3 + index * 0.1) % 1);
+      const t = ((clock.getElapsedTime() * 0.2 + index * 0.15) % 1);
       const point = curve.getPoint(t);
       particleRef.current.position.copy(point);
     }
@@ -150,111 +102,74 @@ const AnimatedLine = ({ start, end, index }: { start: THREE.Vector3; end: THREE.
     <group>
       <primitive object={lineObject} />
       <mesh ref={particleRef}>
-        <sphereGeometry args={[0.05, 16, 16]} />
-        <meshBasicMaterial color="#f97316" />
+        <sphereGeometry args={[0.04, 8, 8]} />
+        <meshBasicMaterial color="#f97316" transparent opacity={0.9} />
       </mesh>
     </group>
   );
 };
 
-// Central hub component
-const CentralHub = () => {
-  const hubRef = useRef<THREE.Group>(null);
-  
-  useFrame(({ clock }) => {
-    if (hubRef.current) {
-      hubRef.current.rotation.y = Math.sin(clock.getElapsedTime() * 0.5) * 0.1;
-    }
-  });
+// Connection lines from edges to center
+const ConnectionLines = () => {
+  const lines = useMemo(() => [
+    new THREE.Vector3(-4.5, 1.5, 0),
+    new THREE.Vector3(-4, -1, 0),
+    new THREE.Vector3(-3.5, -2.5, 0),
+    new THREE.Vector3(4.5, 2, 0),
+    new THREE.Vector3(4, 0, 0),
+    new THREE.Vector3(4.5, -2, 0),
+    new THREE.Vector3(-2, 3, 0),
+    new THREE.Vector3(2, 3, 0),
+    new THREE.Vector3(-1.5, -3, 0),
+    new THREE.Vector3(2, -3, 0),
+  ], []);
 
   return (
-    <Float speed={2} rotationIntensity={0.1} floatIntensity={0.3}>
-      <group ref={hubRef} position={[0, 0, 0]}>
-        {/* Glow effect */}
-        <mesh>
-          <sphereGeometry args={[1.2, 32, 32]} />
-          <meshBasicMaterial color="#f97316" transparent opacity={0.1} />
-        </mesh>
-        
-        <Html transform distanceFactor={6} center>
-          <div className="relative bg-white border border-border rounded-xl shadow-elevated p-4 w-44">
-            {/* Window controls */}
-            <div className="flex items-center gap-1.5 mb-3">
-              <div className="w-2 h-2 rounded-full bg-red-400"></div>
-              <div className="w-2 h-2 rounded-full bg-yellow-400"></div>
-              <div className="w-2 h-2 rounded-full bg-green-400"></div>
-            </div>
-            
-            {/* Content */}
-            <div className="flex items-center gap-2 mb-2">
-              <div className="w-5 h-5 bg-primary/20 rounded flex items-center justify-center">
-                <span className="text-xs">📊</span>
-              </div>
-              <div>
-                <h3 className="text-base font-bold text-foreground leading-tight">Insights</h3>
-                <p className="text-[9px] text-primary font-medium">HealthCompiler</p>
-              </div>
-            </div>
-            
-            {/* Skeleton lines */}
-            <div className="space-y-1.5 mb-3">
-              <div className="h-1.5 bg-muted rounded-full w-full"></div>
-              <div className="h-1.5 bg-muted rounded-full w-3/4"></div>
-              <div className="h-1.5 bg-muted rounded-full w-1/2"></div>
-            </div>
-            
-            {/* Mini chart */}
-            <div className="flex items-end gap-0.5 h-10">
-              {[30, 50, 40, 70, 55, 45, 65].map((h, i) => (
-                <div 
-                  key={i}
-                  className="flex-1 bg-primary/40 rounded-t-sm"
-                  style={{ 
-                    height: `${h}%`,
-                    animation: `pulse ${1.5 + i * 0.2}s ease-in-out infinite`,
-                  }}
-                ></div>
-              ))}
-            </div>
-          </div>
-        </Html>
-      </group>
-    </Float>
+    <group>
+      {lines.map((start, i) => (
+        <ConnectionLine key={i} start={start} index={i} />
+      ))}
+    </group>
   );
 };
 
-// Background particles
-const BackgroundParticles = () => {
-  const particlesRef = useRef<THREE.Points>(null);
-  
-  const particles = useMemo(() => {
-    const positions = new Float32Array(200 * 3);
-    for (let i = 0; i < 200; i++) {
-      positions[i * 3] = (Math.random() - 0.5) * 20;
-      positions[i * 3 + 1] = (Math.random() - 0.5) * 15;
-      positions[i * 3 + 2] = (Math.random() - 0.5) * 10;
-    }
-    return positions;
-  }, []);
-
-  useFrame(({ clock }) => {
-    if (particlesRef.current) {
-      particlesRef.current.rotation.y = clock.getElapsedTime() * 0.02;
-    }
-  });
-
+// Central hub
+const CentralHub = () => {
   return (
-    <points ref={particlesRef}>
-      <bufferGeometry>
-        <bufferAttribute
-          attach="attributes-position"
-          count={200}
-          array={particles}
-          itemSize={3}
-        />
-      </bufferGeometry>
-      <pointsMaterial size={0.03} color="#cbd5e1" transparent opacity={0.6} />
-    </points>
+    <group position={[0, 0, 0.5]}>
+      <Html transform distanceFactor={6} center>
+        <div className="relative bg-white border border-border rounded-xl shadow-lg p-4 w-44">
+          <div className="flex items-center gap-1.5 mb-3">
+            <div className="w-2 h-2 rounded-full bg-red-400"></div>
+            <div className="w-2 h-2 rounded-full bg-yellow-400"></div>
+            <div className="w-2 h-2 rounded-full bg-green-400"></div>
+          </div>
+          <div className="flex items-center gap-2 mb-2">
+            <div className="w-5 h-5 bg-primary/20 rounded flex items-center justify-center">
+              <span className="text-xs">📊</span>
+            </div>
+            <div>
+              <h3 className="text-base font-bold text-foreground leading-tight">Insights</h3>
+              <p className="text-[9px] text-primary font-medium">HealthCompiler</p>
+            </div>
+          </div>
+          <div className="space-y-1.5 mb-3">
+            <div className="h-1.5 bg-muted rounded-full w-full"></div>
+            <div className="h-1.5 bg-muted rounded-full w-3/4"></div>
+            <div className="h-1.5 bg-muted rounded-full w-1/2"></div>
+          </div>
+          <div className="flex items-end gap-0.5 h-8">
+            {[30, 50, 40, 70, 55, 45, 65].map((h, i) => (
+              <div 
+                key={i}
+                className="flex-1 bg-primary/40 rounded-t-sm"
+                style={{ height: `${h}%` }}
+              ></div>
+            ))}
+          </div>
+        </div>
+      </Html>
+    </group>
   );
 };
 
@@ -262,28 +177,17 @@ export const IntegrationScene3D = () => {
   return (
     <div className="w-full h-[550px] md:h-[650px] rounded-2xl overflow-hidden bg-gradient-to-br from-slate-50 to-white border border-border/50">
       <Canvas
-        camera={{ position: [0, 0, 10], fov: 50 }}
+        camera={{ position: [0, 0, 8], fov: 50 }}
         style={{ background: 'transparent' }}
       >
-        <ambientLight intensity={0.6} />
-        <pointLight position={[10, 10, 10]} intensity={0.5} />
+        <ambientLight intensity={0.8} />
         
-        <BackgroundParticles />
         <ConnectionLines />
         <CentralHub />
         
         {integrations.map((integration, index) => (
           <IntegrationCard key={integration.name} integration={integration} index={index} />
         ))}
-        
-        <OrbitControls
-          enableZoom={false}
-          enablePan={false}
-          maxPolarAngle={Math.PI / 2}
-          minPolarAngle={Math.PI / 3}
-          autoRotate
-          autoRotateSpeed={0.5}
-        />
       </Canvas>
     </div>
   );
