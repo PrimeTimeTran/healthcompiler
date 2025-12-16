@@ -314,32 +314,6 @@ const Apex = () => {
                 />
               </div>
 
-              {/* Category filters */}
-              <div className="flex flex-wrap gap-2 justify-center">
-                <button
-                  onClick={() => setActiveCategory(null)}
-                  className={`px-5 py-2 rounded-full text-sm font-apex-body font-medium transition-all duration-300 ${
-                    !activeCategory 
-                      ? 'bg-apex-bg text-white' 
-                      : 'bg-gray-100 text-gray-600 hover:text-gray-900 hover:bg-gray-200'
-                  }`}
-                >
-                  All
-                </button>
-                {allCategories.map(category => (
-                  <button
-                    key={category}
-                    onClick={() => setActiveCategory(category)}
-                    className={`px-5 py-2 rounded-full text-sm font-apex-body font-medium transition-all duration-300 ${
-                      activeCategory === category 
-                        ? 'bg-apex-bg text-white' 
-                        : 'bg-gray-100 text-gray-600 hover:text-gray-900 hover:bg-gray-200'
-                    }`}
-                  >
-                    {category}
-                  </button>
-                ))}
-              </div>
             </div>
           </div>
         </section>
