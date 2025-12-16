@@ -52,6 +52,7 @@ const solutionsCategories: SubMenuCategory[] = [
     items: [
       { label: 'Employer Analytics', href: '/solutions/employer-analytics' },
       { label: 'Health Outcomes', href: '/solutions/health-outcomes' },
+      { label: 'Surveys', href: '/solutions/surveys' },
     ]
   },
   {
