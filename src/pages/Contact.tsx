@@ -34,18 +34,6 @@ const Contact = () => {
 
   return (
     <Layout>
-      {/* Hero */}
-      <section className="section-padding bg-gradient-to-b from-background to-background-secondary">
-        <div className="container-tight mx-auto text-center">
-          <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Get in <span className="text-gradient">Touch</span>
-          </h1>
-          <p className="text-lg text-muted-foreground max-w-xl mx-auto">
-            Ready to discuss your healthcare data needs? 
-            Fill out the form below and we'll get back to you promptly.
-          </p>
-        </div>
-      </section>
 
       {/* Contact Form */}
       <section className="section-padding bg-background">
