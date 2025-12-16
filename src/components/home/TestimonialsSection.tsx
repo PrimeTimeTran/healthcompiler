@@ -69,7 +69,7 @@ export const TestimonialsSection = () => {
                   <img 
                     src={testimonial.image} 
                     alt={testimonial.name}
-                    className="w-14 h-14 rounded-full object-cover border-2 border-accent/20"
+                    className="w-14 h-14 rounded-full object-cover object-top border-2 border-accent/20"
                   />
                 ) : (
                   <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
