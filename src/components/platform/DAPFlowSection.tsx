@@ -319,14 +319,12 @@ export const DAPFlowSection = ({
                     )}
                   </div>
 
-                  {/* Step number */}
+                  {/* Step indicator dot */}
                   <div
-                    className={`w-10 h-10 rounded-xl flex items-center justify-center mb-3 text-sm font-bold transition-all duration-300 ${
-                      isHighlight ? 'bg-white/20 text-white' : isProcessing ? 'bg-[#E94E87]/20 text-[#E94E87] scale-110' : 'bg-accent/10 text-accent'
+                    className={`w-3 h-3 rounded-full mb-3 transition-all duration-300 ${
+                      isHighlight ? 'bg-white/50' : isProcessing ? 'bg-[#E94E87] scale-110' : 'bg-accent/30'
                     }`}
-                  >
-                    {idx + 1}
-                  </div>
+                  />
                   
                   <h3 className="text-lg font-semibold mb-2">{step.title}</h3>
                   {step.kicker && (
