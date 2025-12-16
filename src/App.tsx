@@ -14,6 +14,7 @@ import FDE from "./pages/FDE";
 import Partners from "./pages/Partners";
 import Infera from "./pages/Infera";
 import Apex from "./pages/Apex";
+import ApexProfile from "./pages/ApexProfile";
 import GetFeatured from "./pages/GetFeatured";
 import HCCSuspecting from "./pages/HCCSuspecting";
 import MIPSPerformance from "./pages/MIPSPerformance";
@@ -41,6 +42,7 @@ const App = () => (
           <Route path="/platform/fde" element={<FDE />} />
           <Route path="/platform/infera" element={<Infera />} />
           <Route path="/resources/apex" element={<Apex />} />
+          <Route path="/apex-magazine/:slug" element={<ApexProfile />} />
           <Route path="/solutions/hcc-suspecting" element={<HCCSuspecting />} />
           <Route path="/solutions/mips" element={<MIPSPerformance />} />
           <Route path="/solutions/hedis" element={<HEDISQuality />} />
