@@ -25,7 +25,7 @@ const testimonials: Testimonial[] = [
     image: drKenRictorImg,
   },
   {
-    quote: "Self-funded employers should not underestimate the criticality of choosing the right data partner. Integrity and competency matters, which is why we chose Health Compiler.",
+    quote: "I didn't know how important optimizing my local SEO was going to be for growing my practice until Health Compiler fixed it for me and my recruitment rate doubled overnight. I've been very impressed with Health Compiler, their professionalism, their attention to detail, and their commitment to delivering results.",
     name: "Dr. William Burkhart",
     title: "Burkhart Direct Family Care",
     image: drWilliamBurkhartImg,
