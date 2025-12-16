@@ -35,7 +35,7 @@ const personas = [
   },
   {
     icon: Heart,
-    title: 'Direct Primary Care',
+    title: 'Direct Care',
     description: 'Patient engagement, AI call triage, and outcomes reporting.',
   },
   {
