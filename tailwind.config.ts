@@ -18,6 +18,7 @@ export default {
         display: ['Outfit', 'sans-serif'],
         'apex-display': ['Cormorant Garamond', 'serif'],
         'apex-body': ['DM Sans', 'sans-serif'],
+        'lato': ['Lato', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
