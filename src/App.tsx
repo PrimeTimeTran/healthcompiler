@@ -18,6 +18,7 @@ import GetFeatured from "./pages/GetFeatured";
 import HCCSuspecting from "./pages/HCCSuspecting";
 import MIPSPerformance from "./pages/MIPSPerformance";
 import HEDISQuality from "./pages/HEDISQuality";
+import AIReceptionist from "./pages/AIReceptionist";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -43,6 +44,7 @@ const App = () => (
           <Route path="/solutions/hcc-suspecting" element={<HCCSuspecting />} />
           <Route path="/solutions/mips" element={<MIPSPerformance />} />
           <Route path="/solutions/hedis" element={<HEDISQuality />} />
+          <Route path="/solutions/ai-receptionist" element={<AIReceptionist />} />
           <Route path="/get-featured-form" element={<GetFeatured />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
