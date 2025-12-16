@@ -10,6 +10,9 @@ const dataInputs = [
   'Wearables & RPM',
   'SDoH Factors',
   'Third-party Data',
+  'Communication',
+  'Membership',
+  'Billing',
 ];
 
 const steps = [
