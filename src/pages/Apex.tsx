@@ -261,7 +261,7 @@ const Apex = () => {
       `}</style>
 
       {/* APEX Page Wrapper with light/white theme for grid section */}
-      <div className="apex-page min-h-screen">
+      <div className="apex-page min-h-screen font-lato">
         {/* Hero Section - Dark */}
         <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-apex-bg">
           {/* Word Grid Background */}
