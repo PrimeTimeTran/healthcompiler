@@ -22,6 +22,8 @@ import HEDISQuality from "./pages/HEDISQuality";
 import AIReceptionist from "./pages/AIReceptionist";
 import WhoWeServe from "./pages/WhoWeServe";
 import DirectPrimaryCare from "./pages/DirectPrimaryCare";
+import ConciergeMedicine from "./pages/ConciergeMedicine";
+import FunctionalMedicine from "./pages/FunctionalMedicine";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -50,6 +52,8 @@ const App = () => (
           <Route path="/solutions/hedis" element={<HEDISQuality />} />
           <Route path="/solutions/ai-receptionist" element={<AIReceptionist />} />
           <Route path="/solutions/direct-primary-care" element={<DirectPrimaryCare />} />
+          <Route path="/solutions/concierge" element={<ConciergeMedicine />} />
+          <Route path="/solutions/functional-medicine" element={<FunctionalMedicine />} />
           <Route path="/get-featured-form" element={<GetFeatured />} />
           <Route path="/who-we-serve" element={<WhoWeServe />} />
           <Route path="*" element={<NotFound />} />
