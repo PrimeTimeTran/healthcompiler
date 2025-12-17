@@ -30,6 +30,7 @@ import BrokersAdvisors from "./pages/BrokersAdvisors";
 import FAQs from "./pages/FAQs";
 import NewsEvents from "./pages/NewsEvents";
 import Whitepaper from "./pages/Whitepaper";
+import Blogs from "./pages/Blogs";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -55,6 +56,7 @@ const App = () => (
           <Route path="/resources/faqs" element={<FAQs />} />
           <Route path="/resources/news-events" element={<NewsEvents />} />
           <Route path="/resources/whitepaper" element={<Whitepaper />} />
+          <Route path="/resources/blogs" element={<Blogs />} />
           <Route path="/apex-magazine/:slug" element={<ApexProfile />} />
           <Route path="/solutions/hcc-suspecting" element={<HCCSuspecting />} />
           <Route path="/solutions/mips" element={<MIPSPerformance />} />
