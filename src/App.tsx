@@ -27,6 +27,9 @@ import FunctionalMedicine from "./pages/FunctionalMedicine";
 import Employers from "./pages/Employers";
 import ACOs from "./pages/ACOs";
 import BrokersAdvisors from "./pages/BrokersAdvisors";
+import FAQs from "./pages/FAQs";
+import NewsEvents from "./pages/NewsEvents";
+import Whitepaper from "./pages/Whitepaper";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -49,6 +52,9 @@ const App = () => (
           <Route path="/platform/fde" element={<FDE />} />
           <Route path="/platform/infera" element={<Infera />} />
           <Route path="/resources/apex" element={<Apex />} />
+          <Route path="/resources/faqs" element={<FAQs />} />
+          <Route path="/resources/news-events" element={<NewsEvents />} />
+          <Route path="/resources/whitepaper" element={<Whitepaper />} />
           <Route path="/apex-magazine/:slug" element={<ApexProfile />} />
           <Route path="/solutions/hcc-suspecting" element={<HCCSuspecting />} />
           <Route path="/solutions/mips" element={<MIPSPerformance />} />
@@ -62,7 +68,6 @@ const App = () => (
           <Route path="/solutions/brokers-advisors" element={<BrokersAdvisors />} />
           <Route path="/get-featured-form" element={<GetFeatured />} />
           <Route path="/who-we-serve" element={<WhoWeServe />} />
-          <Route path="*" element={<NotFound />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
