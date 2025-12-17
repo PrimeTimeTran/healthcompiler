@@ -1,0 +1,102 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Functional Medicine
+-->
+{% extends "./layouts/base.html" %}
+
+{% block body %}
+  {% module "hero" path="./modules/solution-hero.module"
+    eyebrow="Functional Medicine"
+    headline="AI Powered Data Solutions for Functional Medicine Practices"
+    subheadline="Clear insights. Zero extra work."
+    description="<p>You bring a personalized approach to every patient. We bring the data support to match.</p><p>Health Compiler helps functional medicine practitioners stay ahead of patient needs, with structured insights into engagement, outcomes, chronic trends, and coordinated care. No extra clicks. Just the value clarity you need.</p>"
+    cta_text="Book A Demo"
+  %}
+
+  {% module "intro_section" path="./modules/solution-content.module"
+    sections=[
+      {
+        "section_title": "What Moves the Needle in Patient Health",
+        "section_content": "<p>When data is fragmented, it's easy to miss the bigger picture.</p><p>Health Compiler helps you close the loop, spot what's missing, and make informed clinical decisions faster.</p>",
+        "background_style": "light"
+      },
+      {
+        "section_title": "Your insights should match your intentions.",
+        "section_content": "<p>We help you stay fully in tune with your patients, with no extra documentation or manual tracking.</p><p><strong>Seamless System Integration:</strong> Easily connect with your existing communication platforms like Spruce and electronic medical record (EMR) systems such as Elation and Hint, ensuring a smooth data collection process.</p>",
+        "background_style": "muted"
+      }
+    ]
+  %}
+
+  {% module "benefits" path="./modules/benefits-grid.module"
+    section_title="Key Features and Benefits"
+    benefits=[
+      {
+        "title": "Automated Tracking",
+        "description": "Our platform automatically tracks essential utilization and engagement metrics, eliminating the need for manual data gathering."
+      },
+      {
+        "title": "HIPAA Compliance",
+        "description": "Rest assured that all data management and analysis are fully HIPAA compliant, maintaining the highest standards of privacy and security."
+      },
+      {
+        "title": "Accessible Employer Insights",
+        "description": "Employers can log in to view crucial utilization metrics, including message volume, after-hours interactions, and key trends in patient encounters."
+      },
+      {
+        "title": "Data-Driven Growth",
+        "description": "Leverage these consolidated metrics to demonstrate your practice's effectiveness, attracting new patients and expanding your business."
+      },
+      {
+        "title": "Personalized Primary Care Dashboards",
+        "description": "As a Functional medicine provider, you can access tailored dashboards to gain insights into utilization and engagement, empowering you to continuously enhance care quality and service delivery."
+      }
+    ]
+  %}
+
+  {% module "stats" path="./modules/stats-section.module"
+    highlights=[
+      { "text": "30+ Integrations with wearables, med devices & health systems" },
+      { "text": "HIPAA & SOC 2 Compliant" },
+      { "text": "Solutions" }
+    ]
+    stats=[
+      { "value": "100,000+", "label": "API calls average supported per customer" },
+      { "value": "12,000+", "label": "data elements curated from 150+ Health Systems & Wearables" }
+    ]
+  %}
+
+  {% module "measure_section" path="./modules/benefits-grid.module"
+    section_title="Measure What Matters"
+    section_subtitle="Functional medicine is intentional and deeply personalized. Your data should reflect that. We help you surface meaningful signals from noise, without adding to your admin burden."
+    benefits=[
+      {
+        "title": "Patient engagement reports",
+        "description": "See how often your patients interact with care, spot gaps in follow-up, and track engagement trends over time."
+      },
+      {
+        "title": "Chronic Risk Insights",
+        "description": "Identify patients with rising risk, unmanaged conditions, or missed screenings, before they escalate."
+      },
+      {
+        "title": "Metrics For Coordinated Care",
+        "description": "Track whether patients are completing essential care steps, like imaging, labs, and procedures, and identify where coordination may be falling short."
+      },
+      {
+        "title": "Customized Dashboards Built for How You Practice",
+        "description": "Visualize the data that matters most to your clinic, with layouts tailored to your workflows."
+      },
+      {
+        "title": "Patient-Facing Insights & Cost-Savings Reports",
+        "description": "Equip patients with personalized 'health report cards' and cost-savings summaries, backed by real data from your practice."
+      }
+    ]
+  %}
+
+  {% module "cta" path="./modules/cta-banner.module"
+    title="Built Around Your Practice"
+    description="Health Compiler works alongside your team to shape analytics that align with your care philosophy. No generic metrics, just relevant, meaningful insights that reflect how you practice."
+    primary_cta_text="Schedule a Demo"
+  %}
+{% endblock body %}

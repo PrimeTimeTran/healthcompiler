@@ -1,0 +1,88 @@
+{# Feature Image Grid Module #}
+<section class="feature-image-grid">
+  <div class="feature-image-grid__container">
+    {% for feature in module.features %}
+      <div class="feature-image-grid__item feature-image-grid__item--{{ feature.image_position }}">
+        <div class="feature-image-grid__content">
+          {% if feature.title %}
+            <h3 class="feature-image-grid__title">{{ feature.title }}</h3>
+          {% endif %}
+          {% if feature.description %}
+            <p class="feature-image-grid__description">{{ feature.description }}</p>
+          {% endif %}
+        </div>
+        {% if feature.image.src %}
+          <div class="feature-image-grid__image">
+            <img src="{{ feature.image.src }}" alt="{{ feature.image.alt|default(feature.title) }}" />
+          </div>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+<style>
+  .feature-image-grid {
+    padding: var(--spacing-16) 0 var(--spacing-20);
+    background: var(--hc-bg-secondary);
+  }
+  
+  .feature-image-grid__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-4);
+  }
+  
+  .feature-image-grid__item {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-8);
+    align-items: center;
+    margin-bottom: var(--spacing-16);
+  }
+  
+  .feature-image-grid__item:last-child {
+    margin-bottom: 0;
+  }
+  
+  @media (min-width: 768px) {
+    .feature-image-grid__item {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-12);
+    }
+    
+    .feature-image-grid__item--left .feature-image-grid__content {
+      order: 2;
+    }
+    
+    .feature-image-grid__item--left .feature-image-grid__image {
+      order: 1;
+    }
+  }
+  
+  .feature-image-grid__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--hc-text-primary);
+    margin-bottom: var(--spacing-4);
+  }
+  
+  @media (min-width: 768px) {
+    .feature-image-grid__title {
+      font-size: 1.875rem;
+    }
+  }
+  
+  .feature-image-grid__description {
+    font-size: 1.125rem;
+    color: var(--hc-text-muted);
+    line-height: 1.7;
+  }
+  
+  .feature-image-grid__image img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  }
+</style>

@@ -1,0 +1,88 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Employers
+-->
+{% extends "./layouts/base.html" %}
+
+{% block body %}
+  {# Breadcrumb #}
+  <div class="breadcrumb">
+    <div class="breadcrumb__container">
+      <span>Employers</span>
+    </div>
+  </div>
+
+  {% module "hero" path="./modules/solution-hero.module"
+    headline="Employers can Level up cost savings, better outcomes with solid benefits using human capital data"
+    description="<p>Our platform + expertise can help reduces your healthcare spend by eliminating waste and enhancing risk outcomes</p>"
+    cta_text="Unlock Insights now"
+  %}
+
+  {% module "process_steps" path="./modules/data-process-steps.module"
+    intro_text="<p>Integrating your human capital data provides you and your advisors with a comprehensive view of the challenges and cost-saving opportunities within your population. Leverage these insights to make strategic decisions that lower expenses and enhance member health.</p>"
+    steps=[
+      { "title": "Extraction", "description": "Unlock data from diverse sources with precision and efficiency.", "icon_name": "database" },
+      { "title": "Ingestion", "description": "Seamlessly integrate data into your ecosystem at scale.", "icon_name": "upload" },
+      { "title": "Transformation", "description": "Turn raw data into actionable insights with advanced processing.", "icon_name": "settings" },
+      { "title": "Loading", "description": "Deliver clean, ready-to-use data to your systems with speed.", "icon_name": "download" },
+      { "title": "Visualization", "description": "Unveil insights through intuitive and dynamic dashboards.", "icon_name": "chart" },
+      { "title": "Action", "description": "Drive impactful decisions with data-driven strategies.", "icon_name": "bolt" }
+    ]
+  %}
+
+  {% module "solutions_section" path="./modules/solution-content.module"
+    sections=[
+      {
+        "section_title": "Health Compiler Solutions",
+        "section_content": "<p>By integrating your human capital data, you and your advisors gain a thorough understanding of the challenges and potential cost-saving opportunities within your workforce. Leverage these insights to make strategic decisions that lower expenses and improve member health. We focus on providing employees with real-time analytics and comprehensive data insights. Our platform enhances transparency regarding the value and ROI of Direct Care services, offering continuous insights into service value, employee engagement, Human Capital Analytics, and healthcare utilization.</p>",
+        "background_style": "muted"
+      }
+    ]
+  %}
+
+  {% module "benefits" path="./modules/benefits-grid.module"
+    section_title="Key Benefits"
+    benefits=[
+      { "title": "Transparency", "description": "Collect and enhance your data intelligently. Monitor your programs financially in real time to minimize waste in healthcare spending and achieve better outcomes." },
+      { "title": "Quantifiable", "description": "Our solutions identify the key areas to focus on for maximum impact, enabling measurable savings and improved outcomes for your employees." },
+      { "title": "Accountability", "description": "Maintain vendor accountability through complete data transparency. Track results in real time to assess and modify strategies as necessary." },
+      { "title": "Intuitive Platform", "description": "Get immediate answers with a flexible platform that provides high-level dashboards and detailed data reports at your fingertips." },
+      { "title": "Team of Experts", "description": "Collaborate with industry experts and innovative analysts who work with your team to uncover opportunities, identify inefficiencies, and monitor emerging risks." },
+      { "title": "Plan Design Benchmarking", "description": "Health Compiler's proprietary benchmarking technology offers a comprehensive benefits strategy that sets you apart from competitors." },
+      { "title": "Targeted Solutions", "description": "We apply clinical and industry methodologies to analyze your claims data, effectively identifying savings tailored to your unique profile." }
+    ]
+  %}
+
+  {% module "realtime_section" path="./modules/solution-content.module"
+    sections=[
+      {
+        "section_title": "Real-Time Data, Real-World Decisions",
+        "section_content": "<p>Say goodbye to waiting for quarterly reports or manual data compilations. HC Insights delivers real-time data on Direct Primary Care (DPC) performance, directly influencing employer decision-making. With our all-encompassing dashboard, you can track service utilization trends, monitor employee health engagement, and evaluate the financial impact of healthcare investments - all in one convenient location.</p>",
+        "background_style": "muted"
+      }
+    ]
+  %}
+
+  {% module "cta" path="./modules/cta-banner.module"
+    title="Are you ready to discover the value of direct care services?"
+    description="Let Health Compiler Insights guide you towards informed decisions and transparent healthcare solutions. Connect with us today to learn more."
+    primary_cta_text="Book Your Demo"
+  %}
+{% endblock body %}
+
+<style>
+  .breadcrumb {
+    background: var(--hc-bg-secondary);
+    padding: var(--spacing-3) 0;
+    border-bottom: 1px solid var(--hc-surface);
+  }
+  
+  .breadcrumb__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-4);
+    font-size: 0.875rem;
+    color: var(--hc-text-muted);
+  }
+</style>

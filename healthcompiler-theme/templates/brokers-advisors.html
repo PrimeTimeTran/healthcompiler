@@ -1,0 +1,112 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Brokers & Advisors
+-->
+{% extends "./layouts/base.html" %}
+
+{% block body %}
+  {# Breadcrumb #}
+  <div class="breadcrumb">
+    <div class="breadcrumb__container">
+      <span>Benefits Advisors</span>
+    </div>
+  </div>
+
+  {% module "hero" path="./modules/solution-hero.module"
+    headline="Unlock the Power of Self Funded Plans & Showcase it's value"
+    description="<p>As an Employee Benefits Advisor, your role in shaping healthcare strategies is pivotal. Understanding and showcasing innovative models like Direct Primary Care (DPC) can empower you to enhance existing employer relationships and open new opportunities. At HC Insights, we provide you with the tools to effectively illustrate the value of DPC plans, ensuring you stand out as a credible advisor in the evolving healthcare landscape.</p>"
+    cta_text="Unlock Insights now"
+  %}
+
+  {% module "why_dpc" path="./modules/solution-content.module"
+    sections=[
+      {
+        "section_title": "Why Direct Primary Care?",
+        "section_content": "<p>Direct Primary Care is revolutionizing how primary healthcare is delivered. By establishing a direct relationship between patients and their primary care providers, DPC bypasses traditional insurance complexities, allowing for:</p>",
+        "background_style": "light"
+      }
+    ]
+  %}
+
+  {% module "dpc_benefits" path="./modules/benefits-grid.module"
+    benefits=[
+      { "title": "Personalized Care", "description": "DPC offers longer appointment times and direct communication with physicians, fostering a more personalized healthcare experience." },
+      { "title": "Increased Access", "description": "Patients enjoy same-day or next-day visits, reducing wait times and enhancing satisfaction." },
+      { "title": "Targeted Solutions", "description": "Employers can budget healthcare costs more effectively with fixed monthly fees per employee, eliminating unexpected expenses associated with traditional insurance models." }
+    ]
+  %}
+
+  {% module "value_prop" path="./modules/solution-content.module"
+    sections=[
+      {
+        "section_title": "The Value Proposition for Employers",
+        "section_content": "<p>Presenting DPC to your clients can significantly impact their employee health strategies. Here's how:</p>",
+        "background_style": "muted"
+      }
+    ]
+  %}
+
+  {% module "value_cards" path="./modules/benefits-grid.module"
+    benefits=[
+      { "title": "Enhanced Employee Health", "description": "Studies show that DPC models lead to better health outcomes, particularly for chronic disease management. Continuous access to care encourages proactive health monitoring." },
+      { "title": "Reduced Healthcare Costs", "description": "By focusing on preventive care and reducing unnecessary emergency visits, DPC can lower overall healthcare expenditures for employers." },
+      { "title": "Improved Employee Satisfaction", "description": "A patient-centered approach leads to happier employees who feel valued and supported in their health journey." }
+    ]
+  %}
+
+  {% module "analytics" path="./modules/solution-content.module"
+    sections=[
+      {
+        "section_title": "Continuous Access to Analytics",
+        "section_content": "<p>With HC Insights, you gain continuous access to robust analytics that demonstrate the effectiveness of DPC services. This data allows you to:</p>",
+        "background_style": "light"
+      }
+    ]
+  %}
+
+  {% module "analytics_features" path="./modules/benefits-grid.module"
+    benefits=[
+      { "title": "Provide Transparency", "description": "Share clear insights into how DPC positively influences employee health and reduces costs." },
+      { "title": "Reinforce Confidence", "description": "Equip your clients with solid data that reinforces their investment in DPC models." },
+      { "title": "Enhance Advisory Credibility", "description": "By leveraging analytics, you position yourself as a knowledgeable advisor who understands the intricacies of modern healthcare solutions." }
+    ]
+  %}
+
+  {% module "empowerment" path="./modules/solution-content.module"
+    sections=[
+      {
+        "section_title": "",
+        "section_content": "<p>Empower your advisory practice by embracing Direct Primary Care. With HC Insights as your partner, you can confidently present DPC's benefits to both current and prospective clients. Together, we can transform healthcare strategies that not only meet employer needs but also enhance the well-being of employees. For more information on how HC Insights can support your efforts in promoting Direct Primary Care, contact us today.</p><p class='highlight'><strong>Let's work together to create healthier workplaces through innovative healthcare solutions.</strong></p>",
+        "background_style": "muted"
+      }
+    ]
+  %}
+
+  {% module "cta" path="./modules/cta-banner.module"
+    title="Book Your Demo"
+    primary_cta_text="Schedule a Demo"
+  %}
+{% endblock body %}
+
+<style>
+  .breadcrumb {
+    background: var(--hc-bg-secondary);
+    padding: var(--spacing-3) 0;
+    border-bottom: 1px solid var(--hc-surface);
+  }
+  
+  .breadcrumb__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-4);
+    font-size: 0.875rem;
+    color: var(--hc-text-muted);
+  }
+  
+  .highlight {
+    color: var(--hc-cta);
+    font-size: 1.5rem;
+    text-align: center;
+  }
+</style>

@@ -1,0 +1,42 @@
+[
+  {
+    "name": "features",
+    "label": "Features",
+    "type": "group",
+    "occurrence": {
+      "min": 0,
+      "max": 10
+    },
+    "children": [
+      {
+        "name": "title",
+        "label": "Title",
+        "type": "text",
+        "default": "Feature Title"
+      },
+      {
+        "name": "description",
+        "label": "Description",
+        "type": "text",
+        "default": "Feature description text."
+      },
+      {
+        "name": "image",
+        "label": "Image",
+        "type": "image",
+        "default": null
+      },
+      {
+        "name": "image_position",
+        "label": "Image Position",
+        "type": "choice",
+        "choices": [
+          ["left", "Left"],
+          ["right", "Right"]
+        ],
+        "default": "right"
+      }
+    ],
+    "default": []
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "name": "section_title",
+    "label": "Section Title",
+    "type": "text",
+    "default": "Industries We Serve"
+  },
+  {
+    "name": "section_description",
+    "label": "Description",
+    "type": "text",
+    "default": ""
+  },
+  {
+    "name": "industries",
+    "label": "Industries",
+    "type": "group",
+    "occurrence": { "min": 0, "max": 8 },
+    "children": [
+      { "name": "title", "label": "Title", "type": "text", "default": "" },
+      { "name": "description", "label": "Description", "type": "text", "default": "" },
+      { "name": "icon", "label": "Icon Image", "type": "image", "default": null }
+    ],
+    "default": []
+  }
+]

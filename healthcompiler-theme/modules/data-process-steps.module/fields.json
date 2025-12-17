@@ -1,0 +1,46 @@
+[
+  {
+    "name": "intro_text",
+    "label": "Introduction Text",
+    "type": "richtext",
+    "default": ""
+  },
+  {
+    "name": "steps",
+    "label": "Process Steps",
+    "type": "group",
+    "occurrence": {
+      "min": 0,
+      "max": 10
+    },
+    "children": [
+      {
+        "name": "title",
+        "label": "Title",
+        "type": "text",
+        "default": "Step Title"
+      },
+      {
+        "name": "description",
+        "label": "Description",
+        "type": "text",
+        "default": "Step description."
+      },
+      {
+        "name": "icon_name",
+        "label": "Icon Name",
+        "type": "choice",
+        "choices": [
+          ["database", "Database"],
+          ["upload", "Upload"],
+          ["settings", "Settings"],
+          ["download", "Download"],
+          ["chart", "Chart"],
+          ["bolt", "Bolt/Action"]
+        ],
+        "default": "database"
+      }
+    ],
+    "default": []
+  }
+]

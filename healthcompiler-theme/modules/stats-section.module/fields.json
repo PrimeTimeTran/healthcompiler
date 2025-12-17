@@ -1,0 +1,44 @@
+[
+  {
+    "name": "stats",
+    "label": "Statistics",
+    "type": "group",
+    "occurrence": {
+      "min": 0,
+      "max": 6
+    },
+    "children": [
+      {
+        "name": "value",
+        "label": "Value/Number",
+        "type": "text",
+        "default": "100+"
+      },
+      {
+        "name": "label",
+        "label": "Label",
+        "type": "text",
+        "default": "Stat label"
+      }
+    ],
+    "default": []
+  },
+  {
+    "name": "highlights",
+    "label": "Text Highlights",
+    "type": "group",
+    "occurrence": {
+      "min": 0,
+      "max": 6
+    },
+    "children": [
+      {
+        "name": "text",
+        "label": "Text",
+        "type": "text",
+        "default": "Highlight text"
+      }
+    ],
+    "default": []
+  }
+]

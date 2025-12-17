@@ -1,0 +1,21 @@
+[
+  {
+    "name": "section_title",
+    "label": "Section Title",
+    "type": "text",
+    "default": "Our testimonials"
+  },
+  {
+    "name": "testimonials",
+    "label": "Testimonials",
+    "type": "group",
+    "occurrence": { "min": 0, "max": 10 },
+    "children": [
+      { "name": "quote", "label": "Quote", "type": "text", "default": "" },
+      { "name": "name", "label": "Name", "type": "text", "default": "" },
+      { "name": "title", "label": "Title/Role", "type": "text", "default": "" },
+      { "name": "image", "label": "Photo", "type": "image", "default": null }
+    ],
+    "default": []
+  }
+]

@@ -1,0 +1,79 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: ACOs - Utilization & Cost Evaluation
+-->
+{% extends "./layouts/base.html" %}
+
+{% block body %}
+  {# Breadcrumb #}
+  <div class="breadcrumb">
+    <div class="breadcrumb__container">
+      <span>ACO (accountable care organizations)</span>
+    </div>
+  </div>
+
+  {% module "hero" path="./modules/solution-hero.module"
+    eyebrow="HealthCompiler Insight for ACO's"
+    headline="ACO Utilization & Cost Evaluation"
+    description="<p>HealthCompiler Insight for ACOs is an advanced reporting interface designed to provide Accountable Care Organizations with comprehensive clinical and claims data analysis. Our solution equips ACOs with crucial insights into healthcare utilization and cost trends, promoting data-driven decision-making and optimized care management strategies.</p>"
+    cta_text="Contact Us"
+  %}
+
+  {% module "overview" path="./modules/solution-content.module"
+    sections=[
+      {
+        "section_title": "Unlock Deeper Insights from Your Data",
+        "section_content": "<p><strong>HealthCompiler Insight for ACO</strong> offers a sophisticated reporting interface for analyzing claims data, purpose-built to support Medicare, Medicaid, and commercial ACO populations. Designed with both primary care and specialty care in mind, this platform helps organizations manage costs and improve care quality across the continuum. Users can track utilization patterns, explore detailed patient cohort analyses, and uncover potential cost-saving opportunities. The web-based tool features predefined data views and benchmarks, delivering convenient access to personalized, comprehensive reports tailored to the unique needs of value-based care organizations.</p>",
+        "background_style": "light"
+      }
+    ]
+  %}
+
+  {% module "help_cards" path="./modules/benefits-grid.module"
+    section_title="How do we help ACO's"
+    benefits=[
+      { "title": "Cost and Utilization", "description": "Effective cost management and resource utilization." },
+      { "title": "Care Management", "description": "Comprehensive care coordination and patient management." },
+      { "title": "Patient Risk attribution", "description": "Accurate and timely patient risk assessment (CMS HCC and HSS HCC)." },
+      { "title": "ACO Reporting", "description": "Detailed and compliant ACO performance reporting." },
+      { "title": "Quality and Evidence based reporting", "description": "Reporting grounded in quality metrics and evidence-based practices." },
+      { "title": "Membership and Critical care", "description": "Management of membership data and critical care coordination." },
+      { "title": "HCC Coding", "description": "Structured coding, better forecasting" },
+      { "title": "Patient 360", "description": "Holistic view of patient data and insights." },
+      { "title": "Health Outcomes", "description": "Healthy people, stronger communities" }
+    ]
+  %}
+
+  {% module "features" path="./modules/solution-content.module"
+    sections=[
+      {
+        "section_title": "Key Solution Features",
+        "section_content": "<p><strong>1. Dynamic Dashboards:</strong> Take full control with interactive dashboards, offering customized views through user-friendly filters tailored to each client population.</p><p><strong>2. Versatile Data Views:</strong> Explore data from various perspectives with customizable reporting views. Filter data by time period, demographics, provider groups, regions, and more to extract meaningful insights.</p><p><strong>3. Comprehensive Summaries:</strong> Get a high-level overview including population characteristics, risk scores, and annual per member costs for quick insights into your ACO's performance.</p><p><strong>4. Claims Utilization Analysis:</strong> Assess service utilization against benchmarks to identify areas for cost reduction. Benchmarks are adjusted for risk or demographics to ensure accurate performance evaluation.</p><p><strong>5. Leakage Identification:</strong> Identify high out-of-network utilization to address potential leakage issues. Drill down into specific service categories to understand patient-provider interactions better.</p>",
+        "background_style": "light"
+      }
+    ]
+  %}
+
+  {% module "cta" path="./modules/cta-banner.module"
+    title="Let Health Compiler do the heavy lifting"
+    description="Unveil the value of your services and free yourself from the manual effort of reporting. Ready to enhance your practice's efficiency and growth? Connect with us today."
+    primary_cta_text="Schedule a demo"
+  %}
+{% endblock body %}
+
+<style>
+  .breadcrumb {
+    background: var(--hc-bg-secondary);
+    padding: var(--spacing-3) 0;
+    border-bottom: 1px solid var(--hc-surface);
+  }
+  
+  .breadcrumb__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-4);
+    font-size: 0.875rem;
+    color: var(--hc-text-muted);
+  }
+</style>

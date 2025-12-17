@@ -1,0 +1,78 @@
+{# Stats Section Module #}
+<section class="stats-section">
+  <div class="stats-section__container">
+    {% if module.highlights %}
+      <div class="stats-section__highlights">
+        {% for highlight in module.highlights %}
+          <p class="stats-section__highlight">{{ highlight.text }}</p>
+        {% endfor %}
+      </div>
+    {% endif %}
+    
+    {% if module.stats %}
+      <div class="stats-section__stats">
+        {% for stat in module.stats %}
+          <div class="stats-section__stat">
+            <p class="stats-section__value">{{ stat.value }}</p>
+            <p class="stats-section__label">{{ stat.label }}</p>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  .stats-section {
+    padding: var(--spacing-16) 0;
+    background: rgba(250, 172, 104, 0.05);
+  }
+  
+  .stats-section__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-4);
+  }
+  
+  .stats-section__highlights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-8);
+    text-align: center;
+    margin-bottom: var(--spacing-8);
+  }
+  
+  .stats-section__highlight {
+    font-size: 1.125rem;
+    color: var(--hc-text-muted);
+  }
+  
+  .stats-section__stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-8);
+    text-align: center;
+  }
+  
+  .stats-section__stat {
+    padding: var(--spacing-4);
+  }
+  
+  .stats-section__value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--hc-cta);
+    margin-bottom: var(--spacing-2);
+  }
+  
+  @media (min-width: 768px) {
+    .stats-section__value {
+      font-size: 2.5rem;
+    }
+  }
+  
+  .stats-section__label {
+    font-size: 1rem;
+    color: var(--hc-text-muted);
+  }
+</style>

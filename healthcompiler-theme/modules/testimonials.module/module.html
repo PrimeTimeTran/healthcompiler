@@ -1,0 +1,38 @@
+{# Testimonials Module #}
+<section class="testimonials">
+  <div class="testimonials__container">
+    {% if module.section_title %}
+      <h2 class="testimonials__title">{{ module.section_title }}</h2>
+    {% endif %}
+    <div class="testimonials__grid">
+      {% for item in module.testimonials %}
+        <div class="testimonials__card">
+          <div class="testimonials__quote-icon">❝</div>
+          <p class="testimonials__quote">{{ item.quote }}</p>
+          <div class="testimonials__author">
+            <div>
+              <p class="testimonials__name">{{ item.name }}</p>
+              <p class="testimonials__role">{{ item.title }}</p>
+            </div>
+            {% if item.image.src %}
+              <img src="{{ item.image.src }}" alt="{{ item.name }}" class="testimonials__image" />
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+<style>
+.testimonials { padding: var(--spacing-20) 0; background: var(--hc-bg-secondary); }
+.testimonials__container { max-width: 1200px; margin: 0 auto; padding: 0 var(--spacing-4); }
+.testimonials__title { font-size: 2rem; font-weight: 700; margin-bottom: var(--spacing-12); }
+.testimonials__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-6); }
+.testimonials__card { background: rgba(255,255,255,0.5); border-radius: 12px; padding: var(--spacing-8); display: flex; flex-direction: column; justify-content: space-between; min-height: 320px; }
+.testimonials__quote-icon { font-size: 2rem; color: var(--hc-cta); margin-bottom: var(--spacing-4); }
+.testimonials__quote { color: var(--hc-text-primary); line-height: 1.7; font-size: 0.95rem; }
+.testimonials__author { display: flex; align-items: center; justify-content: space-between; margin-top: var(--spacing-8); padding-top: var(--spacing-6); border-top: 1px solid var(--hc-surface); }
+.testimonials__name { font-weight: 600; color: var(--hc-text-primary); }
+.testimonials__role { font-size: 0.875rem; color: var(--hc-text-muted); }
+.testimonials__image { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; }
+</style>

@@ -1,0 +1,129 @@
+{# Solution Hero Module #}
+<section class="solution-hero">
+  <div class="solution-hero__container">
+    <div class="solution-hero__content">
+      {% if module.eyebrow %}
+        <p class="solution-hero__eyebrow">{{ module.eyebrow }}</p>
+      {% endif %}
+      
+      {% if module.headline %}
+        <h1 class="solution-hero__headline">{{ module.headline }}</h1>
+      {% endif %}
+      
+      {% if module.subheadline %}
+        <h2 class="solution-hero__subheadline">{{ module.subheadline }}</h2>
+      {% endif %}
+      
+      {% if module.description %}
+        <div class="solution-hero__description">{{ module.description }}</div>
+      {% endif %}
+      
+      {% if module.cta_text and module.cta_url.url.href %}
+        <a href="{{ module.cta_url.url.href }}" class="solution-hero__cta">
+          {{ module.cta_text }}
+        </a>
+      {% endif %}
+    </div>
+    
+    {% if module.hero_image.src %}
+      <div class="solution-hero__image">
+        <img src="{{ module.hero_image.src }}" alt="{{ module.hero_image.alt }}" />
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  .solution-hero {
+    padding: var(--spacing-16) 0 var(--spacing-20);
+    background: linear-gradient(135deg, var(--hc-accent) 0%, var(--hc-bg-primary) 50%, var(--hc-bg-primary) 100%);
+  }
+  
+  .solution-hero__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-4);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-12);
+    align-items: center;
+  }
+  
+  @media (min-width: 1024px) {
+    .solution-hero__container {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  .solution-hero__content {
+    max-width: 800px;
+  }
+  
+  .solution-hero__eyebrow {
+    color: var(--hc-cta);
+    font-weight: 600;
+    margin-bottom: var(--spacing-4);
+    font-size: 1rem;
+  }
+  
+  .solution-hero__headline {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--hc-text-primary);
+    margin-bottom: var(--spacing-6);
+    line-height: 1.2;
+  }
+  
+  @media (min-width: 768px) {
+    .solution-hero__headline {
+      font-size: 3rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .solution-hero__headline {
+      font-size: 3.5rem;
+    }
+  }
+  
+  .solution-hero__subheadline {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--hc-text-primary);
+    margin-bottom: var(--spacing-4);
+  }
+  
+  .solution-hero__description {
+    font-size: 1.125rem;
+    color: var(--hc-text-muted);
+    margin-bottom: var(--spacing-8);
+    line-height: 1.7;
+  }
+  
+  .solution-hero__description p {
+    margin-bottom: var(--spacing-4);
+  }
+  
+  .solution-hero__cta {
+    display: inline-block;
+    background: var(--hc-cta);
+    color: white;
+    padding: var(--spacing-3) var(--spacing-6);
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  
+  .solution-hero__cta:hover {
+    background: var(--hc-cta-hover);
+    transform: translateY(-2px);
+  }
+  
+  .solution-hero__image img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  }
+</style>

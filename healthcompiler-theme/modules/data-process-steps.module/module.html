@@ -1,0 +1,108 @@
+{# Data Process Steps Module #}
+<section class="data-process-steps">
+  <div class="data-process-steps__container">
+    {% if module.intro_text %}
+      <div class="data-process-steps__intro">{{ module.intro_text }}</div>
+    {% endif %}
+    
+    <div class="data-process-steps__grid">
+      {% for step in module.steps %}
+        <div class="data-process-steps__item">
+          <div class="data-process-steps__icon">
+            {% if step.icon_name == "database" %}
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg>
+            {% elif step.icon_name == "upload" %}
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>
+            {% elif step.icon_name == "settings" %}
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+            {% elif step.icon_name == "download" %}
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+            {% elif step.icon_name == "chart" %}
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="20" y2="10"/><line x1="18" x2="18" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="16"/></svg>
+            {% elif step.icon_name == "bolt" %}
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            {% endif %}
+          </div>
+          <h4 class="data-process-steps__title">{{ step.title }}</h4>
+          <p class="data-process-steps__description">{{ step.description }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .data-process-steps {
+    padding: var(--spacing-16) 0;
+    background: var(--hc-bg-primary);
+  }
+  
+  .data-process-steps__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-4);
+  }
+  
+  .data-process-steps__intro {
+    font-size: 1.125rem;
+    color: var(--hc-text-muted);
+    line-height: 1.7;
+    margin-bottom: var(--spacing-12);
+    max-width: 900px;
+  }
+  
+  .data-process-steps__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-6);
+  }
+  
+  @media (min-width: 768px) {
+    .data-process-steps__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .data-process-steps__grid {
+      grid-template-columns: repeat(6, 1fr);
+    }
+  }
+  
+  .data-process-steps__item {
+    text-align: center;
+    padding: var(--spacing-6);
+    border-radius: 12px;
+    background: var(--hc-bg-secondary);
+    transition: all 0.2s ease;
+  }
+  
+  .data-process-steps__item:hover {
+    background: var(--hc-surface);
+  }
+  
+  .data-process-steps__icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto var(--spacing-4);
+    background: rgba(250, 172, 104, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--hc-cta);
+  }
+  
+  .data-process-steps__title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--hc-text-primary);
+    margin-bottom: var(--spacing-2);
+  }
+  
+  .data-process-steps__description {
+    font-size: 0.875rem;
+    color: var(--hc-text-muted);
+    line-height: 1.5;
+  }
+</style>

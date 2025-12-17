@@ -1,0 +1,71 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Direct Primary Care
+-->
+{% extends "./layouts/base.html" %}
+
+{% block body %}
+  {% module "hero" path="./modules/solution-hero.module"
+    eyebrow="Direct Primary Care"
+    headline="An Analytics & Growth Platform Built for Direct Primary Care"
+    description="<p>Smarter patient care. Stronger growth. All powered by AI-driven insights and data solutions designed for DPC practices.</p>"
+    cta_text="Show me a Demo"
+  %}
+
+  {% module "data_solutions" path="./modules/solution-content.module"
+    sections=[
+      {
+        "section_title": "The Data Solution for Direct Primary Care",
+        "section_content": "<p>Employers want proof of value. We make it simple for your DPC practice to deliver it. With Health Compiler, you get <strong>direct primary care solutions</strong> that track outcomes, streamline operations, and prove impact, without extra dashboards or manual reporting.</p><p><strong>Our data solutions help you demonstrate:</strong></p><ul><li><strong>ROI</strong> – Show measurable savings and the long-term value of your care model.</li><li><strong>Engagement & Utilization Analytics</strong> – Highlight how patients use and benefit from your services.</li><li><strong>Chronic Risk Coordination</strong> – Track, manage, and report risk across your patient panel.</li><li><strong>Care Gaps & Preventive Metrics</strong> – Capture missed screenings or follow-ups before they escalate.</li><li><strong>Population Insights</strong> – Give employers clear, actionable reporting on workforce health.</li></ul><p>With Health Compiler's <strong>patient data analytics</strong> and <strong>patient data management</strong>, you'll have everything you need to build trust with patients and employers.</p>",
+        "background_style": "light"
+      },
+      {
+        "section_title": "EHR Integration Solutions",
+        "section_content": "<p>Your practice shouldn't waste time managing disconnected systems. Our platform provides seamless <strong>EHR integration solutions</strong>, bringing labs, imaging, procedures, and clinical notes together into one connected record. No double entry. No lost data. Just smarter, unified <strong>patient data solutions</strong> for DPC.</p>",
+        "background_style": "muted"
+      },
+      {
+        "section_title": "AI-Powered Growth for DPC Practices",
+        "section_content": "<p>Growing a Direct Primary Care practice takes more than excellent care, it takes visibility. That's why we built <strong>AI-powered growth solutions</strong> designed specifically for DPC:</p><ul><li><strong>SEO & Marketing Automation</strong> – Attract the right patients with optimized content and targeted campaigns.</li><li><strong>AI Chatbots</strong> – Provide 24/7 patient support, answer questions, and capture leads instantly.</li><li><strong>AI Outreach System</strong> – Personalized outreach that keeps your practice top of mind with patients and employers.</li><li><strong>Automated Lead Capture</strong> – Every inquiry flows straight into your pipeline, no opportunities lost.</li></ul><p>With these tools, our <strong>direct primary care solutions</strong> help you grow sustainably while keeping patient care at the center.</p>",
+        "background_style": "light"
+      }
+    ]
+  %}
+
+  {% module "features" path="./modules/feature-image-grid.module"
+    features=[
+      {
+        "title": "Engagement & Utilization Analytics",
+        "description": "Gain insights into patient interactions to enhance care delivery, empowering healthcare providers to improve patient experiences and overall health outcomes.",
+        "image_position": "right"
+      },
+      {
+        "title": "Utilization Gaps",
+        "description": "Comprehensive care coordination fosters better communication and enhances patient outcomes throughout the treatment process.",
+        "image_position": "left"
+      },
+      {
+        "title": "Chronic Risk",
+        "description": "Patients with existing chronic conditions. It showcases top chronic prevailing in your patients' populations.",
+        "image_position": "right"
+      },
+      {
+        "title": "Claims Utilization Data",
+        "description": "Assess service utilization against established benchmarks to identify cost-saving opportunities, with adjustments made for risk factors or demographics to ensure accurate performance evaluation.",
+        "image_position": "left"
+      },
+      {
+        "title": "Growth",
+        "description": "Expand your Concierge medicine practice by leveraging our effective marketing strategies.",
+        "image_position": "right"
+      }
+    ]
+  %}
+
+  {% module "cta" path="./modules/cta-banner.module"
+    title="See How Data + AI Can Grow Your DPC Practice"
+    description="Your time belongs with your patients. Let us handle the data and growth tools that fuel success."
+    primary_cta_text="Schedule a Demo"
+  %}
+{% endblock body %}

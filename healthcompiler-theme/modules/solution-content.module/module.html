@@ -1,0 +1,92 @@
+{# Solution Content Sections Module #}
+{% for section in module.sections %}
+<section class="solution-section solution-section--{{ section.background_style }}">
+  <div class="solution-section__container">
+    {% if section.section_title %}
+      <h2 class="solution-section__title">{{ section.section_title }}</h2>
+    {% endif %}
+    
+    {% if section.section_content %}
+      <div class="solution-section__content">{{ section.section_content }}</div>
+    {% endif %}
+  </div>
+</section>
+{% endfor %}
+
+<style>
+  .solution-section {
+    padding: var(--spacing-16) 0;
+  }
+  
+  .solution-section--light {
+    background: var(--hc-bg-primary);
+  }
+  
+  .solution-section--muted {
+    background: var(--hc-bg-secondary);
+  }
+  
+  .solution-section--primary {
+    background: var(--hc-cta);
+    color: white;
+  }
+  
+  .solution-section--primary .solution-section__title,
+  .solution-section--primary .solution-section__content {
+    color: white;
+  }
+  
+  .solution-section__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-4);
+  }
+  
+  .solution-section__title {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: var(--hc-text-primary);
+    margin-bottom: var(--spacing-6);
+  }
+  
+  @media (min-width: 768px) {
+    .solution-section__title {
+      font-size: 2.25rem;
+    }
+  }
+  
+  .solution-section__content {
+    font-size: 1.125rem;
+    color: var(--hc-text-muted);
+    line-height: 1.7;
+    max-width: 900px;
+  }
+  
+  .solution-section__content p {
+    margin-bottom: var(--spacing-4);
+  }
+  
+  .solution-section__content strong {
+    color: var(--hc-text-primary);
+  }
+  
+  .solution-section__content ul {
+    list-style: none;
+    padding: 0;
+    margin: var(--spacing-4) 0;
+  }
+  
+  .solution-section__content li {
+    padding-left: var(--spacing-6);
+    position: relative;
+    margin-bottom: var(--spacing-3);
+  }
+  
+  .solution-section__content li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--hc-cta);
+    font-weight: bold;
+  }
+</style>
