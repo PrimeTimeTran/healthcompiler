@@ -1,11 +1,11 @@
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
+import elationLogo from "@/assets/elation-logo.png";
 
 const partners = [
   {
     name: "Elation",
-    logo: "Ëlation",
-    logoColor: "text-pink-500",
+    logoImage: elationLogo,
     description: "Elation Health is a cloud-based healthcare platform designed for physicians, facilitating patient-provider connections through a health information network. Founded in 2010 and based in San Francisco, the company enables collaboration among healthcare providers by allowing them to share patient information effectively at the point of care.",
     link: "#"
   },
@@ -80,13 +80,19 @@ const Partners = () => {
                   <div className="absolute bottom-4 right-4 w-6 h-6 border-r-2 border-b-2 border-border/50"></div>
                   
                   <div className="text-center">
-                    <span className={`text-3xl md:text-4xl font-bold ${partner.logoColor}`}>
-                      {partner.logo}
-                    </span>
-                    {partner.logoSubtext && (
-                      <p className={`text-xs mt-1 tracking-wider ${partner.logoColor} opacity-80`}>
-                        {partner.logoSubtext}
-                      </p>
+                    {partner.logoImage ? (
+                      <img src={partner.logoImage} alt={partner.name} className="h-12 md:h-16 w-auto mx-auto" />
+                    ) : (
+                      <>
+                        <span className={`text-3xl md:text-4xl font-bold ${partner.logoColor}`}>
+                          {partner.logo}
+                        </span>
+                        {partner.logoSubtext && (
+                          <p className={`text-xs mt-1 tracking-wider ${partner.logoColor} opacity-80`}>
+                            {partner.logoSubtext}
+                          </p>
+                        )}
+                      </>
                     )}
                   </div>
                 </div>
