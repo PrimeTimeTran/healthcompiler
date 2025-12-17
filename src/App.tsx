@@ -24,6 +24,9 @@ import WhoWeServe from "./pages/WhoWeServe";
 import DirectPrimaryCare from "./pages/DirectPrimaryCare";
 import ConciergeMedicine from "./pages/ConciergeMedicine";
 import FunctionalMedicine from "./pages/FunctionalMedicine";
+import Employers from "./pages/Employers";
+import ACOs from "./pages/ACOs";
+import BrokersAdvisors from "./pages/BrokersAdvisors";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -54,8 +57,12 @@ const App = () => (
           <Route path="/solutions/direct-primary-care" element={<DirectPrimaryCare />} />
           <Route path="/solutions/concierge" element={<ConciergeMedicine />} />
           <Route path="/solutions/functional-medicine" element={<FunctionalMedicine />} />
+          <Route path="/solutions/employers" element={<Employers />} />
+          <Route path="/solutions/acos" element={<ACOs />} />
+          <Route path="/solutions/brokers-advisors" element={<BrokersAdvisors />} />
           <Route path="/get-featured-form" element={<GetFeatured />} />
           <Route path="/who-we-serve" element={<WhoWeServe />} />
+          <Route path="*" element={<NotFound />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
