@@ -1,0 +1,44 @@
+[
+  {
+    "name": "section_title",
+    "label": "Section Title",
+    "type": "text",
+    "default": "Key Benefits"
+  },
+  {
+    "name": "section_subtitle",
+    "label": "Section Subtitle",
+    "type": "text",
+    "default": ""
+  },
+  {
+    "name": "benefits",
+    "label": "Benefits",
+    "type": "group",
+    "occurrence": {
+      "min": 0,
+      "max": 12
+    },
+    "children": [
+      {
+        "name": "title",
+        "label": "Title",
+        "type": "text",
+        "default": "Benefit Title"
+      },
+      {
+        "name": "description",
+        "label": "Description",
+        "type": "text",
+        "default": "Benefit description text."
+      },
+      {
+        "name": "icon",
+        "label": "Icon Image",
+        "type": "image",
+        "default": null
+      }
+    ],
+    "default": []
+  }
+]

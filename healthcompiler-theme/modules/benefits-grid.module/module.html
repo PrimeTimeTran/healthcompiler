@@ -1,0 +1,113 @@
+{# Benefits Grid Module #}
+<section class="benefits-grid">
+  <div class="benefits-grid__container">
+    {% if module.section_title %}
+      <h2 class="benefits-grid__title">{{ module.section_title }}</h2>
+    {% endif %}
+    
+    {% if module.section_subtitle %}
+      <p class="benefits-grid__subtitle">{{ module.section_subtitle }}</p>
+    {% endif %}
+    
+    <div class="benefits-grid__items">
+      {% for benefit in module.benefits %}
+        <div class="benefits-grid__item">
+          {% if benefit.icon.src %}
+            <img src="{{ benefit.icon.src }}" alt="{{ benefit.title }}" class="benefits-grid__icon" />
+          {% endif %}
+          <h3 class="benefits-grid__item-title">{{ benefit.title }}</h3>
+          <p class="benefits-grid__item-description">{{ benefit.description }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .benefits-grid {
+    padding: var(--spacing-16) 0;
+    background: var(--hc-bg-primary);
+  }
+  
+  .benefits-grid__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-4);
+  }
+  
+  .benefits-grid__title {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: var(--hc-text-primary);
+    margin-bottom: var(--spacing-4);
+    text-align: center;
+  }
+  
+  @media (min-width: 768px) {
+    .benefits-grid__title {
+      font-size: 2.25rem;
+    }
+  }
+  
+  .benefits-grid__subtitle {
+    font-size: 1.125rem;
+    color: var(--hc-text-muted);
+    text-align: center;
+    margin-bottom: var(--spacing-12);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .benefits-grid__items {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-8);
+  }
+  
+  @media (min-width: 640px) {
+    .benefits-grid__items {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .benefits-grid__items {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  .benefits-grid__item {
+    background: white;
+    border-radius: 12px;
+    padding: var(--spacing-6);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    border: 1px solid var(--hc-surface);
+    transition: all 0.2s ease;
+  }
+  
+  .benefits-grid__item:hover {
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    transform: translateY(-4px);
+  }
+  
+  .benefits-grid__icon {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    margin-bottom: var(--spacing-4);
+  }
+  
+  .benefits-grid__item-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--hc-text-primary);
+    margin-bottom: var(--spacing-3);
+  }
+  
+  .benefits-grid__item-description {
+    font-size: 1rem;
+    color: var(--hc-text-muted);
+    line-height: 1.6;
+  }
+</style>

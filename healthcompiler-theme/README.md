@@ -73,23 +73,30 @@ The theme uses the HealthCompiler brand colors:
 
 ## 📦 Modules
 
-### Hero Section
-Full-width hero with headline, subheadline, dual CTAs, and trust badges.
+### Solution Pages
+- **solution-hero.module** - Hero section with eyebrow, headline, description, CTA
+- **solution-content.module** - Flexible content sections with background options
+- **feature-image-grid.module** - Alternating image/text feature rows
+- **benefits-grid.module** - Grid of benefit cards with icons
+- **data-process-steps.module** - Process flow visualization
+- **stats-section.module** - Statistics and highlights display
 
-### Feature Cards
-3-column grid of feature cards with icons and descriptions.
+### Home Page
+- **hero.module** - Full-width hero with CTAs and trust badges
+- **testimonials.module** - Customer testimonials grid
+- **industries-grid.module** - Industries we serve cards
 
-### Platform Overview
-Two-column layout with benefits list and visual highlights.
+### Global
+- **cta-banner.module** - Call-to-action section
+- **footer.module** - Multi-column footer
 
-### Outcomes / Industries
-4-column grid showing target industries/use cases.
-
-### CTA Banner
-Centered call-to-action section with primary and secondary buttons.
-
-### Footer
-Multi-column footer with navigation, description, and legal links.
+### Page Templates
+- `direct-primary-care.html` - DPC solution page
+- `concierge-medicine.html` - Concierge solution page
+- `functional-medicine.html` - Functional medicine page
+- `employers.html` - Employers solution page
+- `acos.html` - ACO solution page
+- `brokers-advisors.html` - Brokers & advisors page
 
 ## ✏️ Customization
 

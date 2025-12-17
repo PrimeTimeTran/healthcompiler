@@ -1,0 +1,49 @@
+[
+  {
+    "name": "eyebrow",
+    "label": "Eyebrow Text",
+    "type": "text",
+    "default": "Solution"
+  },
+  {
+    "name": "headline",
+    "label": "Headline",
+    "type": "text",
+    "default": "Your Headline Here"
+  },
+  {
+    "name": "subheadline",
+    "label": "Subheadline",
+    "type": "text",
+    "default": ""
+  },
+  {
+    "name": "description",
+    "label": "Description",
+    "type": "richtext",
+    "default": "<p>Your description here.</p>"
+  },
+  {
+    "name": "cta_text",
+    "label": "CTA Button Text",
+    "type": "text",
+    "default": "Show me a Demo"
+  },
+  {
+    "name": "cta_url",
+    "label": "CTA Button URL",
+    "type": "link",
+    "default": {
+      "url": {
+        "href": "/contact",
+        "type": "CONTENT"
+      }
+    }
+  },
+  {
+    "name": "hero_image",
+    "label": "Hero Image (Optional)",
+    "type": "image",
+    "default": null
+  }
+]

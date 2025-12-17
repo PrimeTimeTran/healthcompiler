@@ -1,0 +1,28 @@
+{# Industries Grid Module #}
+<section class="industries-grid">
+  <div class="industries-grid__container">
+    {% if module.section_title %}<h2 class="industries-grid__title">{{ module.section_title }}</h2>{% endif %}
+    {% if module.section_description %}<p class="industries-grid__description">{{ module.section_description }}</p>{% endif %}
+    <div class="industries-grid__items">
+      {% for industry in module.industries %}
+        <div class="industries-grid__item">
+          {% if industry.icon.src %}<img src="{{ industry.icon.src }}" alt="{{ industry.title }}" class="industries-grid__icon" />{% endif %}
+          <h3 class="industries-grid__item-title">{{ industry.title }}</h3>
+          <p class="industries-grid__item-desc">{{ industry.description }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+<style>
+.industries-grid { padding: var(--spacing-16) 0; background: var(--hc-bg-primary); }
+.industries-grid__container { max-width: 1200px; margin: 0 auto; padding: 0 var(--spacing-4); text-align: center; }
+.industries-grid__title { font-size: 2rem; font-weight: 700; margin-bottom: var(--spacing-4); }
+.industries-grid__description { color: var(--hc-text-muted); margin-bottom: var(--spacing-12); max-width: 600px; margin-left: auto; margin-right: auto; }
+.industries-grid__items { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--spacing-6); }
+.industries-grid__item { background: white; border-radius: 16px; padding: var(--spacing-6); border: 1px solid var(--hc-surface); transition: all 0.2s; }
+.industries-grid__item:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.1); transform: translateY(-4px); }
+.industries-grid__icon { width: 48px; height: 48px; margin-bottom: var(--spacing-4); }
+.industries-grid__item-title { font-size: 1.125rem; font-weight: 600; margin-bottom: var(--spacing-2); }
+.industries-grid__item-desc { font-size: 0.875rem; color: var(--hc-text-muted); }
+</style>
