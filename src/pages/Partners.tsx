@@ -1,6 +1,11 @@
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import elationLogo from "@/assets/elation-logo.png";
+import fmmaLogo from "@/assets/fmma-logo.png";
+import hintLogo from "@/assets/hint-logo.png";
+import akuteHealthLogo from "@/assets/akute-health-logo.png";
+import drgLogo from "@/assets/drg-logo.png";
+import somedocsLogo from "@/assets/somedocs-logo.png";
 
 const partners = [
   {
@@ -11,39 +16,31 @@ const partners = [
   },
   {
     name: "FMMA Member",
-    logo: "FREE MARKET",
-    logoSubtext: "MEDICAL ASSOCIATION",
-    logoColor: "text-teal-600",
+    logoImage: fmmaLogo,
     description: "The Free Market Medical Association (FMMA) promotes transparency and competition in healthcare, advocating for a system where patients can shop for medical services at competitive prices through platforms like ShopHealth, organizing events such as their annual conference to foster collaboration and innovation in the direct care movement.",
     link: "#"
   },
   {
     name: "Hint",
-    logo: "hint",
-    logoColor: "text-orange-500",
+    logoImage: hintLogo,
     description: "Hint Health is a leading platform for Direct Primary Care (DPC) management, offering streamlined solutions for membership management, billing, and patient payments. Founded to empower providers and patients, Hint's tools help practices operate more efficiently, reduce administrative burdens, and focus on delivering high-quality, personalized care.",
     link: "#"
   },
   {
     name: "Akute Health",
-    logo: "AkuteHealth",
-    logoColor: "text-green-500",
+    logoImage: akuteHealthLogo,
     description: "Akute Health is a modern EHR platform designed for direct-to-patient care models like DPC, concierge, and digital health. It combines scheduling, charting, billing, telemedicine, and patient communication into one seamless system. Built for ease of use and rapid growth, Akute helps providers streamline operations, improve patient experience, and scale efficiently without the complexity of traditional healthcare software.",
     link: "#"
   },
   {
     name: "Diabetes Reversal Group (DRG)",
-    logo: "DRG",
-    logoSubtext: "DIABETES REVERSAL GROUP",
-    logoColor: "text-teal-700",
+    logoImage: drgLogo,
     description: "Diabetes Reversal Group (DRG) is the world's first clinically led, one-stop service focused on reversing Type 2 Diabetes naturally. With over 13 years of success, DRG offers a patented, non drug approach, combining personalized nutrition, targeted supplements, and exercise protocols. Led by experts like Dr. Kristine Burke and Dr. Hockings, the company empowers patients to restore metabolic balance and reduce reliance on medications.",
     link: "#"
   },
   {
     name: "SomeDocs",
-    logo: "oMeDocs",
-    logoSubtext: "DOCTORS ON SOCIAL MEDIA | EST 2018",
-    logoColor: "text-green-600",
+    logoImage: somedocsLogo,
     description: "Health Compiler is a proud member of SomeDocs, the ultimate hub for healthcare professionals seeking to amplify their impact. SomeDocs offers cutting-edge tools, resources, and a vibrant community to help doctors build strong online presences, connect with peers, and share expertise. By joining this dynamic network, Health Compiler aligns with SomeDocs' mission to empower healthcare providers and drive innovation in the industry.",
     link: "#"
   },
@@ -80,20 +77,7 @@ const Partners = () => {
                   <div className="absolute bottom-4 right-4 w-6 h-6 border-r-2 border-b-2 border-border/50"></div>
                   
                   <div className="text-center">
-                    {partner.logoImage ? (
-                      <img src={partner.logoImage} alt={partner.name} className="h-12 md:h-16 w-auto mx-auto" />
-                    ) : (
-                      <>
-                        <span className={`text-3xl md:text-4xl font-bold ${partner.logoColor}`}>
-                          {partner.logo}
-                        </span>
-                        {partner.logoSubtext && (
-                          <p className={`text-xs mt-1 tracking-wider ${partner.logoColor} opacity-80`}>
-                            {partner.logoSubtext}
-                          </p>
-                        )}
-                      </>
-                    )}
+                    <img src={partner.logoImage} alt={partner.name} className="h-12 md:h-16 w-auto mx-auto" />
                   </div>
                 </div>
 
