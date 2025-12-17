@@ -80,7 +80,7 @@ const Partners = () => {
                     <img 
                       src={partner.logoImage} 
                       alt={partner.name} 
-                      className={`h-12 md:h-16 w-auto mx-auto ${partner.name === "FMMA Member" ? "mix-blend-multiply" : ""}`} 
+                      className={`w-auto mx-auto ${partner.name === "FMMA Member" ? "h-20 md:h-24 mix-blend-multiply" : "h-12 md:h-16"}`} 
                     />
                   </div>
                 </div>
