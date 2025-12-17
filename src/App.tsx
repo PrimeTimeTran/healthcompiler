@@ -1,58 +1,73 @@
-const App = () => {
-  return (
-    <div className="min-h-screen bg-slate-900 text-white p-8">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold mb-4 text-emerald-400">HealthCompiler HubSpot Theme</h1>
-        <p className="text-xl text-slate-300 mb-8">
-          This project contains HubL templates and modules for HubSpot CMS deployment.
-        </p>
-        
-        <div className="bg-slate-800 rounded-lg p-6 mb-6">
-          <h2 className="text-2xl font-semibold mb-4 text-emerald-300">📁 Theme Location</h2>
-          <code className="bg-slate-700 px-3 py-1 rounded text-emerald-400">healthcompiler-theme/</code>
-        </div>
+import { Toaster } from "@/components/ui/toaster";
+import { Toaster as Sonner } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ScrollToTop } from "@/components/ui/scroll-to-top";
+import Index from "./pages/Index";
+import Capabilities from "./pages/Capabilities";
+import Solutions from "./pages/Solutions";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import Integration from "./pages/Integration";
+import FDE from "./pages/FDE";
+import Partners from "./pages/Partners";
+import Infera from "./pages/Infera";
+import Apex from "./pages/Apex";
+import ApexProfile from "./pages/ApexProfile";
+import GetFeatured from "./pages/GetFeatured";
+import HCCSuspecting from "./pages/HCCSuspecting";
+import MIPSPerformance from "./pages/MIPSPerformance";
+import HEDISQuality from "./pages/HEDISQuality";
+import AIReceptionist from "./pages/AIReceptionist";
+import WhoWeServe from "./pages/WhoWeServe";
+import DirectPrimaryCare from "./pages/DirectPrimaryCare";
+import ConciergeMedicine from "./pages/ConciergeMedicine";
+import FunctionalMedicine from "./pages/FunctionalMedicine";
+import Employers from "./pages/Employers";
+import ACOs from "./pages/ACOs";
+import BrokersAdvisors from "./pages/BrokersAdvisors";
+import NotFound from "./pages/NotFound";
 
-        <div className="bg-slate-800 rounded-lg p-6 mb-6">
-          <h2 className="text-2xl font-semibold mb-4 text-emerald-300">📦 Modules</h2>
-          <ul className="space-y-2 text-slate-300">
-            <li>• hero.module - Hero sections</li>
-            <li>• solution-hero.module - Solution page heroes</li>
-            <li>• solution-content.module - Solution details</li>
-            <li>• feature-cards.module - Feature cards grid</li>
-            <li>• feature-image-grid.module - Image/text features</li>
-            <li>• benefits-grid.module - Benefits display</li>
-            <li>• testimonials.module - Customer testimonials</li>
-            <li>• industries-grid.module - Industries served</li>
-            <li>• cta-banner.module - Call to action</li>
-            <li>• footer.module - Site footer</li>
-          </ul>
-        </div>
+const queryClient = new QueryClient();
 
-        <div className="bg-slate-800 rounded-lg p-6 mb-6">
-          <h2 className="text-2xl font-semibold mb-4 text-emerald-300">📄 Templates</h2>
-          <ul className="space-y-2 text-slate-300">
-            <li>• home.html - Home page</li>
-            <li>• direct-primary-care.html</li>
-            <li>• concierge-medicine.html</li>
-            <li>• functional-medicine.html</li>
-            <li>• employers.html</li>
-            <li>• acos.html</li>
-            <li>• brokers-advisors.html</li>
-          </ul>
-        </div>
+const App = () => (
+  <QueryClientProvider client={queryClient}>
+    <TooltipProvider>
+      <Toaster />
+      <Sonner />
+      <BrowserRouter>
+        <ScrollToTop />
+        <Routes>
+          <Route path="/" element={<Index />} />
+          <Route path="/capabilities" element={<Capabilities />} />
+          <Route path="/solutions" element={<Solutions />} />
+          <Route path="/partners" element={<Partners />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/platform/integration" element={<Integration />} />
+          <Route path="/platform/fde" element={<FDE />} />
+          <Route path="/platform/infera" element={<Infera />} />
+          <Route path="/resources/apex" element={<Apex />} />
+          <Route path="/apex-magazine/:slug" element={<ApexProfile />} />
+          <Route path="/solutions/hcc-suspecting" element={<HCCSuspecting />} />
+          <Route path="/solutions/mips" element={<MIPSPerformance />} />
+          <Route path="/solutions/hedis" element={<HEDISQuality />} />
+          <Route path="/solutions/ai-receptionist" element={<AIReceptionist />} />
+          <Route path="/solutions/direct-primary-care" element={<DirectPrimaryCare />} />
+          <Route path="/solutions/concierge" element={<ConciergeMedicine />} />
+          <Route path="/solutions/functional-medicine" element={<FunctionalMedicine />} />
+          <Route path="/solutions/employers" element={<Employers />} />
+          <Route path="/solutions/acos" element={<ACOs />} />
+          <Route path="/solutions/brokers-advisors" element={<BrokersAdvisors />} />
+          <Route path="/get-featured-form" element={<GetFeatured />} />
+          <Route path="/who-we-serve" element={<WhoWeServe />} />
+          <Route path="*" element={<NotFound />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </TooltipProvider>
+  </QueryClientProvider>
+);
 
-        <div className="bg-slate-800 rounded-lg p-6">
-          <h2 className="text-2xl font-semibold mb-4 text-emerald-300">🚀 Deployment</h2>
-          <p className="text-slate-300 mb-4">To deploy to HubSpot CMS:</p>
-          <ol className="list-decimal list-inside space-y-2 text-slate-300">
-            <li>Install HubSpot CLI: <code className="bg-slate-700 px-2 py-1 rounded">npm install -g @hubspot/cli</code></li>
-            <li>Initialize: <code className="bg-slate-700 px-2 py-1 rounded">hs init</code></li>
-            <li>Upload theme: <code className="bg-slate-700 px-2 py-1 rounded">hs upload healthcompiler-theme healthcompiler-theme</code></li>
-          </ol>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-export default App
+export default App;
