@@ -69,19 +69,15 @@ const Partners = () => {
                 className="group bg-card border border-border rounded-2xl overflow-hidden hover:shadow-elevated transition-all duration-300 hover:-translate-y-1 flex flex-col"
               >
                 {/* Logo Area */}
-                <div className="bg-white p-6 md:p-8 flex items-center justify-center min-h-[140px] relative">
+                <div className="bg-muted/30 p-8 md:p-10 flex items-center justify-center min-h-[180px] relative">
                   {/* Corner brackets */}
-                  <div className="absolute top-3 left-3 w-5 h-5 border-l-2 border-t-2 border-border/30"></div>
-                  <div className="absolute top-3 right-3 w-5 h-5 border-r-2 border-t-2 border-border/30"></div>
-                  <div className="absolute bottom-3 left-3 w-5 h-5 border-l-2 border-b-2 border-border/30"></div>
-                  <div className="absolute bottom-3 right-3 w-5 h-5 border-r-2 border-b-2 border-border/30"></div>
+                  <div className="absolute top-4 left-4 w-6 h-6 border-l-2 border-t-2 border-border/50"></div>
+                  <div className="absolute top-4 right-4 w-6 h-6 border-r-2 border-t-2 border-border/50"></div>
+                  <div className="absolute bottom-4 left-4 w-6 h-6 border-l-2 border-b-2 border-border/50"></div>
+                  <div className="absolute bottom-4 right-4 w-6 h-6 border-r-2 border-b-2 border-border/50"></div>
                   
-                  <div className="flex items-center justify-center w-full h-20">
-                    <img 
-                      src={partner.logoImage} 
-                      alt={partner.name} 
-                      className="max-h-16 max-w-[200px] w-auto h-auto object-contain mix-blend-multiply" 
-                    />
+                  <div className="text-center">
+                    <img src={partner.logoImage} alt={partner.name} className="h-12 md:h-16 w-auto mx-auto" />
                   </div>
                 </div>
 
