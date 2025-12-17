@@ -126,7 +126,7 @@ const resourcesCategories: SubMenuCategory[] = [
   {
     category: 'Community',
     items: [
-      { label: 'Partners & Memberships', href: '/resources/partners-memberships' },
+      { label: 'Partners & Memberships', href: '/partners' },
       { label: 'News & Events', href: '/resources/news-events' },
     ]
   }
