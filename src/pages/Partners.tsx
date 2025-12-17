@@ -77,7 +77,11 @@ const Partners = () => {
                   <div className="absolute bottom-4 right-4 w-6 h-6 border-r-2 border-b-2 border-border/50"></div>
                   
                   <div className="text-center">
-                    <img src={partner.logoImage} alt={partner.name} className="h-12 md:h-16 w-auto mx-auto" />
+                    <img 
+                      src={partner.logoImage} 
+                      alt={partner.name} 
+                      className={`h-12 md:h-16 w-auto mx-auto ${partner.name === "FMMA Member" ? "mix-blend-multiply" : ""}`} 
+                    />
                   </div>
                 </div>
 
