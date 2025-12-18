@@ -32,6 +32,7 @@ import FAQs from "./pages/FAQs";
 import NewsEvents from "./pages/NewsEvents";
 import Whitepaper from "./pages/Whitepaper";
 import Blogs from "./pages/Blogs";
+import Terms from "./pages/Terms";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -72,6 +73,7 @@ const App = () => (
           <Route path="/solutions/brokers-advisors" element={<BrokersAdvisors />} />
           <Route path="/get-featured-form" element={<GetFeatured />} />
           <Route path="/who-we-serve" element={<WhoWeServe />} />
+          <Route path="/terms" element={<Terms />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
