@@ -20,6 +20,12 @@ const resourcesLinks = [
   { label: 'Contact Us', href: '/contact' },
 ];
 
+const contactLinks = [
+  { label: 'Tech Support', href: 'mailto:support@healthcompiler.com' },
+  { label: 'Customer Success', href: 'mailto:success@healthcompiler.com' },
+  { label: 'Sales', href: 'mailto:info@healthcompiler.com' },
+];
+
 const socialLinks = [
   { icon: Linkedin, href: 'https://www.linkedin.com/company/healthcompiler', label: 'LinkedIn', color: '#0A66C2' },
   { icon: Instagram, href: 'https://www.instagram.com/healthcompiler/', label: 'Instagram', color: '#E4405F' },
@@ -101,7 +107,7 @@ export const Footer = () => {
           </div>
 
           {/* Quick Links */}
-          <div className="md:col-span-3 lg:col-span-4">
+          <div className="md:col-span-3 lg:col-span-3">
             <h4 className="font-display font-semibold text-foreground text-lg mb-6 tracking-wide">
               QUICK LINKS
             </h4>
@@ -120,7 +126,7 @@ export const Footer = () => {
           </div>
 
           {/* Resources */}
-          <div className="md:col-span-3">
+          <div className="md:col-span-2">
             <h4 className="font-display font-semibold text-foreground text-lg mb-6 tracking-wide">
               RESOURCES
             </h4>
@@ -133,6 +139,25 @@ export const Footer = () => {
                   >
                     {link.label}
                   </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div className="md:col-span-2">
+            <h4 className="font-display font-semibold text-foreground text-lg mb-6 tracking-wide">
+              REACH OUT
+            </h4>
+            <ul className="space-y-4">
+              {contactLinks.map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    className="text-muted-foreground hover:text-accent transition-colors"
+                  >
+                    {link.label}
+                  </a>
                 </li>
               ))}
             </ul>
