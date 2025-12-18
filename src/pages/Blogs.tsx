@@ -68,15 +68,88 @@ const blogPosts = [
     image: "https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/HC+Blog+Images+%2825%29-1920w.png",
     link: "https://www.healthcompiler.com/improving-patient-outcomes-with-cloud-native-healthcare-solutions"
   },
+  // Additional posts (loaded on "More Posts" click)
+  {
+    title: "The Future of Healthcare Data Interoperability",
+    date: "September 25, 2025",
+    description: "Explore how FHIR standards and modern APIs are enabling seamless data exchange between healthcare systems and improving care coordination.",
+    image: "https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/HC+Blog+Images+%2824%29-1920w.png",
+    link: "https://www.healthcompiler.com/the-future-of-healthcare-data-interoperability"
+  },
+  {
+    title: "Understanding Risk Adjustment in Value-Based Care",
+    date: "September 18, 2025",
+    description: "A comprehensive guide to HCC coding, risk adjustment factors, and how they impact reimbursement in Medicare Advantage and ACO programs.",
+    image: "https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/HC+Blog+Images+%2823%29-1920w.png",
+    link: "https://www.healthcompiler.com/understanding-risk-adjustment-in-value-based-care"
+  },
+  {
+    title: "How DPC Practices Can Leverage Data Analytics for Growth",
+    date: "September 10, 2025",
+    description: "Discover how Direct Primary Care practices use data-driven insights to improve patient outcomes, reduce costs, and scale their membership.",
+    image: "https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/HC+Blog+Images+%2822%29-1920w.png",
+    link: "https://www.healthcompiler.com/how-dpc-practices-can-leverage-data-analytics-for-growth"
+  },
+  {
+    title: "Employer Healthcare Benefits: Trends for 2026",
+    date: "September 3, 2025",
+    description: "What employers need to know about emerging healthcare benefit trends, from personalized medicine to mental health support and preventive care.",
+    image: "https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/HC+Blog+Images+%2821%29-1920w.png",
+    link: "https://www.healthcompiler.com/employer-healthcare-benefits-trends-for-2026"
+  },
+  {
+    title: "Building a Patient-Centered Healthcare Technology Stack",
+    date: "August 28, 2025",
+    description: "How to select and integrate healthcare technologies that put patients first while maintaining operational efficiency and data security.",
+    image: "https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/HC+Blog+Images+%2820%29-1920w.png",
+    link: "https://www.healthcompiler.com/building-a-patient-centered-healthcare-technology-stack"
+  },
+  {
+    title: "The Role of Preventive Care in Reducing Healthcare Costs",
+    date: "August 20, 2025",
+    description: "Evidence-based insights on how preventive care programs deliver significant ROI for employers and improve long-term health outcomes.",
+    image: "https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/HC+Blog+Images+%2819%29-1920w.png",
+    link: "https://www.healthcompiler.com/the-role-of-preventive-care-in-reducing-healthcare-costs"
+  },
+  {
+    title: "Navigating HIPAA Compliance in the Age of AI",
+    date: "August 12, 2025",
+    description: "Essential guidelines for healthcare organizations implementing AI solutions while maintaining strict HIPAA compliance and patient privacy.",
+    image: "https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/HC+Blog+Images+%2818%29-1920w.png",
+    link: "https://www.healthcompiler.com/navigating-hipaa-compliance-in-the-age-of-ai"
+  },
+  {
+    title: "How TPAs Can Modernize Claims Processing with AI",
+    date: "August 5, 2025",
+    description: "Third-party administrators are revolutionizing claims management through intelligent automation, reducing errors and accelerating payments.",
+    image: "https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/HC+Blog+Images+%2817%29-1920w.png",
+    link: "https://www.healthcompiler.com/how-tpas-can-modernize-claims-processing-with-ai"
+  },
 ];
+
+const POSTS_PER_PAGE = 9;
 
 const Blogs = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [visiblePosts, setVisiblePosts] = useState(POSTS_PER_PAGE);
 
   const filteredPosts = blogPosts.filter(post =>
     post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
     post.description.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  const displayedPosts = filteredPosts.slice(0, visiblePosts);
+  const hasMorePosts = visiblePosts < filteredPosts.length;
+
+  const handleLoadMore = () => {
+    setVisiblePosts(prev => prev + POSTS_PER_PAGE);
+  };
+
+  // Reset visible posts when search query changes
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value);
+    setVisiblePosts(POSTS_PER_PAGE);
+  };
 
   return (
     <Layout>
@@ -88,13 +161,13 @@ const Blogs = () => {
         
         <div className="container mx-auto px-4 text-center relative z-10">
           <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary font-medium text-sm mb-6">
-            Insights & Resources
+            Blogs
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-            Health Compiler <span className="text-gradient">Blog</span>
+            Blogs
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-10">
-            Discover insights on Direct Primary Care, Wellness, Health Analytics, and the future of healthcare technology.
+            Insights & Resources on Direct Primary Care, Wellness, Health Analytics & More
           </p>
           
           {/* Search Bar */}
@@ -102,9 +175,9 @@ const Blogs = () => {
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
             <Input
               type="text"
-              placeholder="Search articles..."
+              placeholder="Search the blog"
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={handleSearchChange}
               className="pl-12 pr-4 py-3 h-14 bg-card border-border/50 rounded-xl shadow-soft focus:shadow-card transition-shadow"
             />
           </div>
@@ -115,7 +188,7 @@ const Blogs = () => {
       <section className="py-16 md:py-24 bg-background">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredPosts.map((post, index) => (
+            {displayedPosts.map((post, index) => (
               <a
                 key={index}
                 href={post.link}
@@ -140,27 +213,20 @@ const Blogs = () => {
 
                 {/* Content */}
                 <div className="p-6">
-                  {/* Date Badge */}
-                  <div className="flex items-center gap-2 text-muted-foreground text-sm mb-3">
-                    <Calendar className="w-4 h-4" />
-                    <span>{post.date}</span>
-                  </div>
-                  
                   {/* Title */}
                   <h3 className="text-lg font-semibold text-foreground mb-3 line-clamp-2 group-hover:text-accent transition-colors duration-300">
                     {post.title}
                   </h3>
                   
-                  {/* Description */}
-                  <p className="text-muted-foreground text-sm line-clamp-3 mb-4">
-                    {post.description}
+                  {/* Date */}
+                  <p className="text-sm text-muted-foreground mb-3">
+                    {post.date}
                   </p>
                   
-                  {/* Read More Link */}
-                  <span className="inline-flex items-center gap-2 text-sm font-medium text-accent group-hover:gap-3 transition-all duration-300">
-                    Read Article
-                    <ArrowRight className="w-4 h-4" />
-                  </span>
+                  {/* Description */}
+                  <p className="text-muted-foreground text-sm line-clamp-3">
+                    {post.description}
+                  </p>
                 </div>
               </a>
             ))}
@@ -175,12 +241,16 @@ const Blogs = () => {
             </div>
           )}
 
-          {/* Load More */}
-          {filteredPosts.length > 0 && (
-            <div className="text-center mt-16">
-              <Button variant="outline" size="lg" className="rounded-full px-8 border-2 border-primary/50 hover:border-primary hover:bg-primary/5">
-                Load More Posts
-                <ArrowRight className="ml-2 w-4 h-4" />
+          {/* More Posts Button */}
+          {hasMorePosts && (
+            <div className="text-center mt-12">
+              <Button 
+                onClick={handleLoadMore}
+                variant="outline" 
+                size="lg" 
+                className="px-8 py-3 border-2 border-foreground/20 hover:border-foreground/40 hover:bg-muted/50 font-medium"
+              >
+                More Posts
               </Button>
             </div>
           )}
