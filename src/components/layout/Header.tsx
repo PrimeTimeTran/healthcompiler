@@ -353,7 +353,7 @@ export const Header = () => {
                                     </span>
                                     {guideNestedOpen && (
                                       <div 
-                                        className="guide-nested-dropdown absolute left-full top-0 ml-2 z-50"
+                                        className="guide-nested-dropdown absolute left-full top-[-8px] ml-0 z-50"
                                         onMouseEnter={() => setGuideNestedOpen(true)}
                                         onMouseLeave={() => setGuideNestedOpen(false)}
                                       >
