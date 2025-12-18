@@ -100,7 +100,7 @@ const About = () => {
                   <img 
                     src={leader.photo} 
                     alt={leader.name}
-                    className={`w-full h-full ${index === 2 ? 'object-cover object-top scale-90' : 'object-cover'}`}
+                    className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6 text-center">
