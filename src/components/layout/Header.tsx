@@ -320,12 +320,12 @@ export const Header = () => {
 
               {openDropdown === 'Resources' && (
                 <div className="absolute top-full right-0 pt-2 z-50">
-                  <div className="bg-background border border-border rounded-lg shadow-xl animate-fade-in w-auto min-w-[280px] p-5">
-                    <div className="grid grid-cols-2 gap-8">
+                  <div className="bg-background border border-border rounded-lg shadow-xl animate-fade-in p-5">
+                    <div className="flex gap-10">
                       {resourcesCategories.map((category) => (
-                        <div key={category.category}>
+                        <div key={category.category} className="min-w-[140px]">
                           <h4 className="font-semibold text-foreground mb-3 text-sm">{category.category}</h4>
-                          <ul className="space-y-2">
+                          <ul className="space-y-2.5">
                             {category.items.map((item) => (
                               <li key={item.href}>
                                 <Link
