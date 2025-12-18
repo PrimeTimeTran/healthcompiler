@@ -38,6 +38,15 @@ import NotFound from "./pages/NotFound";
 import DirectPrimaryCareGuide from "./pages/guide/DirectPrimaryCareGuide";
 import DirectSpecialtyCareGuide from "./pages/guide/DirectSpecialtyCareGuide";
 import SelfFundedHealthPlansGuide from "./pages/guide/SelfFundedHealthPlansGuide";
+import DPCSummit2025 from "./pages/articles/DPCSummit2025";
+import AkuteHealthPartnership from "./pages/articles/AkuteHealthPartnership";
+import HarnessingDataFreeMarket from "./pages/articles/HarnessingDataFreeMarket";
+import HintPartnership from "./pages/articles/HintPartnership";
+import FMMAMembership from "./pages/articles/FMMAMembership";
+import ElationPartnership from "./pages/articles/ElationPartnership";
+import AnalyticsExpansion from "./pages/articles/AnalyticsExpansion";
+import RosettaFest2024 from "./pages/articles/RosettaFest2024";
+import HintSummit2025 from "./pages/articles/HintSummit2025";
 
 const queryClient = new QueryClient();
 
