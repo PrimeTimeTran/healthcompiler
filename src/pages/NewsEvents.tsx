@@ -1,5 +1,6 @@
 import { Layout } from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 const featuredNews = {
   title: "Health Compiler and Hint Partner to Deliver Data-Driven Proof of Direct Primary Care's Impact on Employers, Practices, and Patients",
@@ -104,65 +105,122 @@ const newsEvents = [
 const NewsEvents = () => {
   return (
     <Layout>
-      <section className="relative py-16 md:py-24 bg-gradient-to-br from-primary/5 to-secondary/10">
+      {/* Hero Section */}
+      <section className="py-20 md:py-28 bg-background">
         <div className="container mx-auto px-4">
-          <p className="text-primary font-medium mb-4">News & Events</p>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground">
-            News & Events
-          </h1>
-        </div>
-      </section>
+          <div className="text-center mb-16">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4">
+              News & <span className="text-gradient italic">Events</span>
+            </h1>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Stay updated with the latest news, events, and webinars from Health Compiler
+            </p>
+          </div>
 
-      <section className="py-16 bg-background">
-        <div className="container mx-auto px-4">
-          {featuredNews.isInternal ? (
-            <Link to={featuredNews.link} className="block max-w-4xl mx-auto">
-              <div className="bg-pink-100 rounded-2xl overflow-hidden hover:shadow-xl transition-shadow">
-                <img src={featuredNews.image} alt={featuredNews.title} className="w-full h-auto object-cover" />
-              </div>
-              <h2 className="text-2xl md:text-3xl font-bold text-foreground mt-6 hover:text-primary transition-colors">
-                {featuredNews.title}
-              </h2>
-              <span className="inline-block mt-4 text-primary font-medium hover:underline">Read Full News →</span>
-            </Link>
-          ) : (
-            <a href={featuredNews.link} target="_blank" rel="noopener noreferrer" className="block max-w-4xl mx-auto">
-              <div className="bg-pink-100 rounded-2xl overflow-hidden hover:shadow-xl transition-shadow">
-                <img src={featuredNews.image} alt={featuredNews.title} className="w-full h-auto object-cover" />
-              </div>
-              <h2 className="text-2xl md:text-3xl font-bold text-foreground mt-6 hover:text-primary transition-colors">
-                {featuredNews.title}
-              </h2>
-              <span className="inline-block mt-4 text-primary font-medium hover:underline">Read Full News →</span>
-            </a>
-          )}
-        </div>
-      </section>
+          {/* Featured News */}
+          <div className="max-w-4xl mx-auto mb-16">
+            {featuredNews.isInternal ? (
+              <Link to={featuredNews.link} className="block group">
+                <div className="bg-card border border-border rounded-2xl overflow-hidden hover:shadow-elevated transition-all duration-300 hover:-translate-y-1">
+                  <div className="bg-muted/30 relative">
+                    <div className="absolute top-4 left-4 w-6 h-6 border-l-2 border-t-2 border-border/50 z-10"></div>
+                    <div className="absolute top-4 right-4 w-6 h-6 border-r-2 border-t-2 border-border/50 z-10"></div>
+                    <div className="absolute bottom-4 left-4 w-6 h-6 border-l-2 border-b-2 border-border/50 z-10"></div>
+                    <div className="absolute bottom-4 right-4 w-6 h-6 border-r-2 border-b-2 border-border/50 z-10"></div>
+                    <img src={featuredNews.image} alt={featuredNews.title} className="w-full h-auto object-cover" />
+                  </div>
+                  <div className="p-6">
+                    <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors">
+                      {featuredNews.title}
+                    </h2>
+                    <Button variant="outline" className="border-primary/50 text-primary hover:bg-primary/10 hover:text-primary">
+                      Read Full News
+                    </Button>
+                  </div>
+                </div>
+              </Link>
+            ) : (
+              <a href={featuredNews.link} target="_blank" rel="noopener noreferrer" className="block group">
+                <div className="bg-card border border-border rounded-2xl overflow-hidden hover:shadow-elevated transition-all duration-300 hover:-translate-y-1">
+                  <div className="bg-muted/30 relative">
+                    <div className="absolute top-4 left-4 w-6 h-6 border-l-2 border-t-2 border-border/50 z-10"></div>
+                    <div className="absolute top-4 right-4 w-6 h-6 border-r-2 border-t-2 border-border/50 z-10"></div>
+                    <div className="absolute bottom-4 left-4 w-6 h-6 border-l-2 border-b-2 border-border/50 z-10"></div>
+                    <div className="absolute bottom-4 right-4 w-6 h-6 border-r-2 border-b-2 border-border/50 z-10"></div>
+                    <img src={featuredNews.image} alt={featuredNews.title} className="w-full h-auto object-cover" />
+                  </div>
+                  <div className="p-6">
+                    <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors">
+                      {featuredNews.title}
+                    </h2>
+                    <Button variant="outline" className="border-primary/50 text-primary hover:bg-primary/10 hover:text-primary">
+                      Read Full News
+                    </Button>
+                  </div>
+                </div>
+              </a>
+            )}
+          </div>
 
-      <section className="py-16 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* News Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {newsEvents.map((item, index) => (
-              <div key={index} className="bg-card border border-border rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
-                {item.isInternal ? (
-                  <Link to={item.link}><img src={item.image} alt={item.title} className="w-full h-48 object-cover" /></Link>
-                ) : (
-                  <a href={item.link} target="_blank" rel="noopener noreferrer"><img src={item.image} alt={item.title} className="w-full h-48 object-cover" /></a>
-                )}
-                <div className="p-6">
-                  <span className={`inline-block px-3 py-1 text-xs font-medium rounded-full mb-3 ${
+              <div 
+                key={index}
+                className="group bg-card border border-border rounded-2xl overflow-hidden hover:shadow-elevated transition-all duration-300 hover:-translate-y-1 flex flex-col"
+              >
+                {/* Image Area */}
+                <div className="bg-muted/30 relative min-h-[180px] flex items-center justify-center overflow-hidden">
+                  <div className="absolute top-4 left-4 w-6 h-6 border-l-2 border-t-2 border-border/50 z-10"></div>
+                  <div className="absolute top-4 right-4 w-6 h-6 border-r-2 border-t-2 border-border/50 z-10"></div>
+                  <div className="absolute bottom-4 left-4 w-6 h-6 border-l-2 border-b-2 border-border/50 z-10"></div>
+                  <div className="absolute bottom-4 right-4 w-6 h-6 border-r-2 border-b-2 border-border/50 z-10"></div>
+                  
+                  {item.isInternal ? (
+                    <Link to={item.link} className="w-full h-full">
+                      <img src={item.image} alt={item.title} className="w-full h-48 object-cover" />
+                    </Link>
+                  ) : (
+                    <a href={item.link} target="_blank" rel="noopener noreferrer" className="w-full h-full">
+                      <img src={item.image} alt={item.title} className="w-full h-48 object-cover" />
+                    </a>
+                  )}
+                </div>
+
+                {/* Content */}
+                <div className="p-6 flex flex-col flex-1">
+                  <span className={`inline-block px-3 py-1 text-xs font-medium rounded-full mb-3 w-fit ${
                     item.type === 'event' ? 'bg-blue-100 text-blue-700' :
                     item.type === 'webinar' ? 'bg-purple-100 text-purple-700' : 'bg-green-100 text-green-700'
                   }`}>
                     {item.type === 'event' ? 'Event' : item.type === 'webinar' ? 'Webinar' : 'News'}
                   </span>
-                  <h3 className="text-lg font-semibold text-foreground mb-2 line-clamp-2">{item.title}</h3>
-                  {item.description && <p className="text-muted-foreground text-sm mb-4 line-clamp-3">{item.description}</p>}
-                  {item.isInternal ? (
-                    <Link to={item.link} className="text-primary font-medium hover:underline">Learn More →</Link>
-                  ) : (
-                    <a href={item.link} target="_blank" rel="noopener noreferrer" className="text-primary font-medium hover:underline">Learn More →</a>
+                  
+                  <h3 className="text-xl font-bold text-foreground mb-3 line-clamp-2">
+                    {item.title}
+                  </h3>
+                  
+                  {item.description && (
+                    <p className="text-muted-foreground text-sm leading-relaxed flex-1 line-clamp-3 mb-4">
+                      {item.description}
+                    </p>
                   )}
+                  
+                  <div className="mt-auto">
+                    {item.isInternal ? (
+                      <Link to={item.link}>
+                        <Button variant="outline" className="w-full border-primary/50 text-primary hover:bg-primary/10 hover:text-primary">
+                          Learn more
+                        </Button>
+                      </Link>
+                    ) : (
+                      <a href={item.link} target="_blank" rel="noopener noreferrer">
+                        <Button variant="outline" className="w-full border-primary/50 text-primary hover:bg-primary/10 hover:text-primary">
+                          Learn more
+                        </Button>
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
             ))}
