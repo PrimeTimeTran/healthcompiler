@@ -91,7 +91,7 @@ const About = () => {
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-12">
-              What Our Users Say
+              What Our User Say
             </h2>
             <div className="relative">
               <Quote className="w-12 h-12 text-primary/20 mx-auto mb-6" />
