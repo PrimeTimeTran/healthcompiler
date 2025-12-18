@@ -5,10 +5,10 @@ import hipaaSoc2Badge from '@/assets/hipaa-soc2-badge.png';
 import fmmaBadge from '@/assets/fmma-badge.png';
 const quickLinks = [
   { label: 'Home', href: '/' },
-  { label: 'HC Insights', href: '/solutions/employer-analytics' },
-  { label: 'HC Growth', href: '/solutions/marketing-automation' },
-  { label: 'Health Analytics', href: '/solutions/health-outcomes' },
-  { label: 'Patient Engagement', href: '/solutions/patient-engagement' },
+  { label: 'Platform', href: '/platform' },
+  { label: 'Solutions', href: '/solutions' },
+  { label: 'Who We Serve', href: '/who-we-serve' },
+  { label: 'Resources', href: '/resources' },
   { label: 'Integrations', href: '/platform/integration' },
 ];
 
