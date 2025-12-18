@@ -33,6 +33,7 @@ import NewsEvents from "./pages/NewsEvents";
 import Whitepaper from "./pages/Whitepaper";
 import Blogs from "./pages/Blogs";
 import Terms from "./pages/Terms";
+import Privacy from "./pages/Privacy";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -74,6 +75,7 @@ const App = () => (
           <Route path="/get-featured-form" element={<GetFeatured />} />
           <Route path="/who-we-serve" element={<WhoWeServe />} />
           <Route path="/terms" element={<Terms />} />
+          <Route path="/privacy" element={<Privacy />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
