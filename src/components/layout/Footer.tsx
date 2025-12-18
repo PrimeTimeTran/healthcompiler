@@ -86,16 +86,16 @@ export const Footer = () => {
             </div>
 
             {/* Compliance Badges */}
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-8">
               <img 
                 src={hipaaSoc2Badge} 
                 alt="HIPAA Compliant and AICPA SOC 2" 
-                className="h-14 w-auto object-contain"
+                className="h-20 w-auto object-contain"
               />
               <img 
                 src={fmmaBadge} 
                 alt="Free Market Medical Association" 
-                className="h-14 w-auto object-contain"
+                className="h-20 w-auto object-contain mix-blend-multiply"
               />
             </div>
           </div>
