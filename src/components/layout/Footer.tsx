@@ -9,7 +9,7 @@ const quickLinks = [
   { label: 'HC Growth', href: '/solutions/marketing-automation' },
   { label: 'Health Analytics', href: '/solutions/health-outcomes' },
   { label: 'Patient Engagement', href: '/solutions/patient-engagement' },
-  { label: 'Integrations', href: '/integration' },
+  { label: 'Integrations', href: '/platform/integration' },
 ];
 
 const resourcesLinks = [
