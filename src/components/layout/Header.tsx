@@ -113,11 +113,17 @@ const whoWeServeCategories: SubMenuCategory[] = [
   }
 ];
 
+const guideSubItems: SubMenuItem[] = [
+  { label: 'Direct Primary Care (DPC)', href: '/resources/guide/direct-primary-care' },
+  { label: 'Direct Speciality Care', href: '/resources/guide/direct-speciality-care' },
+  { label: 'Self-Funded Health Plans', href: '/resources/guide/self-funded-health-plans' },
+];
+
 const resourcesCategories: SubMenuCategory[] = [
   {
     category: 'Learn',
     items: [
-      { label: 'Guide', href: '/resources/guide' },
+      { label: 'Guide', href: '' }, // Not clickable, has nested dropdown
       { label: 'Whitepaper', href: '/resources/whitepaper' },
       { label: 'Blogs', href: '/resources/blogs' },
       { label: 'FAQs', href: '/resources/faqs' },
@@ -136,6 +142,7 @@ export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [openMobileDropdown, setOpenMobileDropdown] = useState<string | null>(null);
+  const [guideNestedOpen, setGuideNestedOpen] = useState(false);
   const location = useLocation();
 
   const handleMouseEnter = (label: string) => {
@@ -319,7 +326,7 @@ export const Header = () => {
               </Link>
 
               {openDropdown === 'Resources' && (
-                <div className="absolute top-full right-0 pt-2 z-50">
+                <div className="absolute top-full right-0 pt-2 z-50" onMouseLeave={() => setGuideNestedOpen(false)}>
                   <div className="bg-background border border-border rounded-lg shadow-xl animate-fade-in p-5">
                     <div className="flex gap-10">
                       {resourcesCategories.map((category) => (
@@ -327,14 +334,56 @@ export const Header = () => {
                           <h4 className="font-semibold text-foreground mb-3 text-sm">{category.category}</h4>
                           <ul className="space-y-2.5">
                             {category.items.map((item) => (
-                              <li key={item.href}>
-                                <Link
-                                  to={item.href}
-                                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors whitespace-nowrap"
-                                >
-                                  <span className="text-accent">»</span>
-                                  {item.label}
-                                </Link>
+                              <li key={item.label} className="relative">
+                                {item.label === 'Guide' ? (
+                                  <div
+                                    className="relative"
+                                    onMouseEnter={() => setGuideNestedOpen(true)}
+                                    onMouseLeave={(e) => {
+                                      const relatedTarget = e.relatedTarget as HTMLElement;
+                                      if (!relatedTarget?.closest('.guide-nested-dropdown')) {
+                                        setGuideNestedOpen(false);
+                                      }
+                                    }}
+                                  >
+                                    <span className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors whitespace-nowrap cursor-pointer">
+                                      <span className="text-accent">»</span>
+                                      {item.label}
+                                      <ChevronRight size={12} className="ml-auto" />
+                                    </span>
+                                    {guideNestedOpen && (
+                                      <div 
+                                        className="guide-nested-dropdown absolute left-full top-0 ml-2 z-50"
+                                        onMouseEnter={() => setGuideNestedOpen(true)}
+                                        onMouseLeave={() => setGuideNestedOpen(false)}
+                                      >
+                                        <div className="bg-background border border-border rounded-lg shadow-xl p-3 min-w-[200px]">
+                                          <ul className="space-y-2">
+                                            {guideSubItems.map((subItem) => (
+                                              <li key={subItem.href}>
+                                                <Link
+                                                  to={subItem.href}
+                                                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors whitespace-nowrap"
+                                                >
+                                                  <span className="text-accent">»</span>
+                                                  {subItem.label}
+                                                </Link>
+                                              </li>
+                                            ))}
+                                          </ul>
+                                        </div>
+                                      </div>
+                                    )}
+                                  </div>
+                                ) : (
+                                  <Link
+                                    to={item.href}
+                                    className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors whitespace-nowrap"
+                                  >
+                                    <span className="text-accent">»</span>
+                                    {item.label}
+                                  </Link>
+                                )}
                               </li>
                             ))}
                           </ul>
