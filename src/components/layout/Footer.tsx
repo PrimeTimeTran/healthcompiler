@@ -86,21 +86,17 @@ export const Footer = () => {
             </div>
 
             {/* Compliance Badges */}
-            <div className="flex flex-wrap items-center gap-4 sm:gap-6">
-              <div className="bg-white rounded-lg p-3 shadow-sm">
-                <img 
-                  src={hipaaSoc2Badge} 
-                  alt="HIPAA Compliant and AICPA SOC 2" 
-                  className="h-12 sm:h-14 md:h-16 w-auto object-contain"
-                />
-              </div>
-              <div className="bg-white rounded-lg p-3 shadow-sm">
-                <img 
-                  src={fmmaBadge} 
-                  alt="Free Market Medical Association" 
-                  className="h-8 sm:h-10 md:h-12 w-auto object-contain"
-                />
-              </div>
+            <div className="flex items-center gap-6">
+              <img 
+                src={hipaaSoc2Badge} 
+                alt="HIPAA Compliant and AICPA SOC 2" 
+                className="h-14 w-auto object-contain"
+              />
+              <img 
+                src={fmmaBadge} 
+                alt="Free Market Medical Association" 
+                className="h-14 w-auto object-contain"
+              />
             </div>
           </div>
 
