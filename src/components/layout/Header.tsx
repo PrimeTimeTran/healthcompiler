@@ -346,10 +346,12 @@ export const Header = () => {
                                       }
                                     }}
                                   >
-                                    <span className="inline-flex items-center text-sm text-muted-foreground hover:text-accent transition-colors whitespace-nowrap cursor-pointer">
-                                      <span className="text-accent mr-2">»</span>
-                                      {item.label}
-                                      <ChevronRight size={12} className="ml-1" />
+                                    <span className="flex items-center justify-between w-full text-sm text-muted-foreground hover:text-accent transition-colors whitespace-nowrap cursor-pointer">
+                                      <span className="flex items-center">
+                                        <span className="text-accent mr-2">»</span>
+                                        {item.label}
+                                      </span>
+                                      <ChevronRight size={12} className="ml-auto" />
                                     </span>
                                     {guideNestedOpen && (
                                       <div 
