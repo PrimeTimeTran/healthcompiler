@@ -91,6 +91,15 @@ const App = () => (
           <Route path="/resources/guide/direct-primary-care" element={<DirectPrimaryCareGuide />} />
           <Route path="/resources/guide/direct-speciality-care" element={<DirectSpecialtyCareGuide />} />
           <Route path="/resources/guide/self-funded-health-plans" element={<SelfFundedHealthPlansGuide />} />
+          <Route path="/resources/news-events/dpc-summit-2025" element={<DPCSummit2025 />} />
+          <Route path="/resources/news-events/akute-health-partnership" element={<AkuteHealthPartnership />} />
+          <Route path="/resources/news-events/harnessing-data-free-market" element={<HarnessingDataFreeMarket />} />
+          <Route path="/resources/news-events/hint-partnership" element={<HintPartnership />} />
+          <Route path="/resources/news-events/fmma-membership" element={<FMMAMembership />} />
+          <Route path="/resources/news-events/elation-partnership" element={<ElationPartnership />} />
+          <Route path="/resources/news-events/analytics-expansion" element={<AnalyticsExpansion />} />
+          <Route path="/resources/news-events/rosettafest-2024" element={<RosettaFest2024 />} />
+          <Route path="/resources/news-events/hint-summit-rosettafest-2025" element={<HintSummit2025 />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
