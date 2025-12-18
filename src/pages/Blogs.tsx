@@ -1,6 +1,6 @@
 import { Layout } from "@/components/layout/Layout";
 import { useState } from "react";
-import { Search, ArrowRight, Calendar } from "lucide-react";
+import { Search, Loader2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
@@ -132,6 +132,7 @@ const POSTS_PER_PAGE = 9;
 const Blogs = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [visiblePosts, setVisiblePosts] = useState(POSTS_PER_PAGE);
+  const [isLoading, setIsLoading] = useState(false);
 
   const filteredPosts = blogPosts.filter(post =>
     post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -142,7 +143,12 @@ const Blogs = () => {
   const hasMorePosts = visiblePosts < filteredPosts.length;
 
   const handleLoadMore = () => {
-    setVisiblePosts(prev => prev + POSTS_PER_PAGE);
+    setIsLoading(true);
+    // Simulate loading delay like the source page
+    setTimeout(() => {
+      setVisiblePosts(prev => prev + POSTS_PER_PAGE);
+      setIsLoading(false);
+    }, 500);
   };
 
   // Reset visible posts when search query changes
@@ -153,39 +159,32 @@ const Blogs = () => {
 
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="relative py-20 md:py-28 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-secondary/10 to-accent/5" />
-        <div className="absolute top-20 right-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-10 left-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
-        
+      {/* Hero Section - matching source page style */}
+      <section className="relative py-16 md:py-20 overflow-hidden bg-gradient-to-b from-primary/5 to-background">
         <div className="container mx-auto px-4 text-center relative z-10">
-          <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary font-medium text-sm mb-6">
-            Blogs
-          </span>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary mb-4" style={{ fontFamily: 'serif' }}>
             Blogs
           </h1>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-10">
+          <p className="text-base md:text-lg text-foreground max-w-3xl mx-auto mb-8 font-medium">
             Insights & Resources on Direct Primary Care, Wellness, Health Analytics & More
           </p>
           
-          {/* Search Bar */}
+          {/* Search Bar - matching source style */}
           <div className="max-w-xl mx-auto relative">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
             <Input
               type="text"
               placeholder="Search the blog"
               value={searchQuery}
               onChange={handleSearchChange}
-              className="pl-12 pr-4 py-3 h-14 bg-card border-border/50 rounded-xl shadow-soft focus:shadow-card transition-shadow"
+              className="pl-4 pr-12 py-3 h-12 bg-card border border-border rounded-md shadow-sm focus:ring-2 focus:ring-primary/20"
             />
+            <Search className="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
           </div>
         </div>
       </section>
 
       {/* Blog Grid */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-12 md:py-16 bg-background">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {displayedPosts.map((post, index) => (
@@ -194,27 +193,21 @@ const Blogs = () => {
                 href={post.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group bg-card rounded-2xl overflow-hidden shadow-soft hover:shadow-elevated transition-all duration-300 hover:-translate-y-2 border border-border/50"
+                className="group block"
               >
-                {/* Image Container */}
-                <div className="relative overflow-hidden h-52">
+                {/* Image */}
+                <div className="relative overflow-hidden rounded-lg mb-4">
                   <img
                     src={post.image}
                     alt={post.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="w-full h-48 md:h-56 object-cover transition-transform duration-300 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  
-                  {/* Read More Indicator */}
-                  <div className="absolute bottom-4 right-4 w-10 h-10 rounded-full bg-card/90 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 shadow-card">
-                    <ArrowRight className="w-5 h-5 text-accent" />
-                  </div>
                 </div>
 
                 {/* Content */}
-                <div className="p-6">
+                <div>
                   {/* Title */}
-                  <h3 className="text-lg font-semibold text-foreground mb-3 line-clamp-2 group-hover:text-accent transition-colors duration-300">
+                  <h3 className="text-lg md:text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors line-clamp-2">
                     {post.title}
                   </h3>
                   
@@ -224,7 +217,7 @@ const Blogs = () => {
                   </p>
                   
                   {/* Description */}
-                  <p className="text-muted-foreground text-sm line-clamp-3">
+                  <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3">
                     {post.description}
                   </p>
                 </div>
@@ -241,16 +234,24 @@ const Blogs = () => {
             </div>
           )}
 
-          {/* More Posts Button */}
+          {/* More Posts Button - matching source style */}
           {hasMorePosts && (
             <div className="text-center mt-12">
               <Button 
                 onClick={handleLoadMore}
+                disabled={isLoading}
                 variant="outline" 
                 size="lg" 
-                className="px-8 py-3 border-2 border-foreground/20 hover:border-foreground/40 hover:bg-muted/50 font-medium"
+                className="px-8 py-3 min-w-[140px] border border-foreground/30 hover:border-foreground hover:bg-muted/30 font-medium rounded-md transition-all"
               >
-                More Posts
+                {isLoading ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Loading...
+                  </>
+                ) : (
+                  "More Posts"
+                )}
               </Button>
             </div>
           )}
