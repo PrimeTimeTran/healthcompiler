@@ -243,11 +243,11 @@ export const Header = () => {
                           <ul className="space-y-2">
                             {category.items.map((item) => (
                               <li key={item.href}>
+                                <span className="text-accent mr-2">»</span>
                                 <Link
                                   to={item.href}
-                                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors"
+                                  className="text-sm text-muted-foreground hover:text-accent transition-colors"
                                 >
-                                  <span className="text-accent">»</span>
                                   {item.label}
                                 </Link>
                               </li>
@@ -289,11 +289,11 @@ export const Header = () => {
                           <ul className="space-y-2">
                             {category.items.map((item) => (
                               <li key={item.href}>
+                                <span className="text-accent mr-2">»</span>
                                 <Link
                                   to={item.href}
-                                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors"
+                                  className="text-sm text-muted-foreground hover:text-accent transition-colors"
                                 >
-                                  <span className="text-accent">»</span>
                                   {item.label}
                                 </Link>
                               </li>
@@ -346,10 +346,10 @@ export const Header = () => {
                                       }
                                     }}
                                   >
-                                    <span className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors whitespace-nowrap cursor-pointer">
-                                      <span className="text-accent">»</span>
+                                    <span className="inline-flex items-center text-sm text-muted-foreground hover:text-accent transition-colors whitespace-nowrap cursor-pointer">
+                                      <span className="text-accent mr-2">»</span>
                                       {item.label}
-                                      <ChevronRight size={12} className="ml-auto" />
+                                      <ChevronRight size={12} className="ml-1" />
                                     </span>
                                     {guideNestedOpen && (
                                       <div 
@@ -361,11 +361,11 @@ export const Header = () => {
                                           <ul className="space-y-2">
                                             {guideSubItems.map((subItem) => (
                                               <li key={subItem.href}>
+                                                <span className="text-accent mr-2">»</span>
                                                 <Link
                                                   to={subItem.href}
-                                                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors whitespace-nowrap"
+                                                  className="text-sm text-muted-foreground hover:text-accent transition-colors whitespace-nowrap"
                                                 >
-                                                  <span className="text-accent">»</span>
                                                   {subItem.label}
                                                 </Link>
                                               </li>
@@ -376,13 +376,15 @@ export const Header = () => {
                                     )}
                                   </div>
                                 ) : (
-                                  <Link
-                                    to={item.href}
-                                    className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors whitespace-nowrap"
-                                  >
-                                    <span className="text-accent">»</span>
-                                    {item.label}
-                                  </Link>
+                                  <>
+                                    <span className="text-accent mr-2">»</span>
+                                    <Link
+                                      to={item.href}
+                                      className="text-sm text-muted-foreground hover:text-accent transition-colors whitespace-nowrap"
+                                    >
+                                      {item.label}
+                                    </Link>
+                                  </>
                                 )}
                               </li>
                             ))}
