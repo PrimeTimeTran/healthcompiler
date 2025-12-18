@@ -60,18 +60,18 @@ export const Footer = () => {
             </p>
 
             {/* Legal Links */}
-            <div className="flex gap-8 mb-6">
+            <div className="flex gap-4 mb-6">
               <Link 
                 to="/privacy" 
-                className="text-sm text-foreground underline hover:text-accent transition-colors"
+                className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-foreground bg-background border border-border/60 rounded-lg hover:border-accent hover:text-accent hover:bg-accent/5 transition-all duration-200"
               >
                 Privacy Policy
               </Link>
               <Link 
                 to="/terms" 
-                className="text-sm text-foreground underline hover:text-accent transition-colors"
+                className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-foreground bg-background border border-border/60 rounded-lg hover:border-accent hover:text-accent hover:bg-accent/5 transition-all duration-200"
               >
-                Terms of service
+                Terms of Service
               </Link>
             </div>
 
