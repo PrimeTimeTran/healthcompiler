@@ -2,19 +2,25 @@ import { Layout } from '@/components/layout/Layout';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Quote } from 'lucide-react';
+import mehulPhoto from '@/assets/mehul-agarwal.png';
+import santoshPhoto from '@/assets/santosh-pujari.png';
+import burhanPhoto from '@/assets/burhan-mithaiwala.png';
 
 const leadershipTeam = [
   {
     name: 'Mehul Agarwal',
     role: 'Business, Product, Marketing',
+    photo: mehulPhoto,
   },
   {
     name: 'Santosh Pujari',
     role: 'Data, Engineering, Tech',
+    photo: santoshPhoto,
   },
   {
     name: 'Burhan Mithaiwala',
     role: 'Product, Customer Success',
+    photo: burhanPhoto,
   },
 ];
 
@@ -68,9 +74,11 @@ const About = () => {
                 className="bg-card rounded-2xl overflow-hidden shadow-lg group"
               >
                 <div className="aspect-square bg-gradient-to-br from-muted to-muted/50 flex items-center justify-center relative overflow-hidden">
-                  <div className="w-32 h-32 rounded-full bg-gradient-to-br from-primary/30 to-accent/30 flex items-center justify-center text-foreground font-bold text-4xl">
-                    {leader.name.split(' ').map(n => n[0]).join('')}
-                  </div>
+                  <img 
+                    src={leader.photo} 
+                    alt={leader.name}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <div className="p-6 text-center">
                   <h3 className="font-display text-xl font-bold text-foreground mb-1">
@@ -86,23 +94,37 @@ const About = () => {
         </div>
       </section>
 
-      {/* Testimonial */}
+      {/* Testimonial with Video */}
       <section className="py-16 md:py-24 bg-background">
         <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-12">
-              What Our User Say
-            </h2>
-            <div className="relative">
-              <Quote className="w-12 h-12 text-primary/20 mx-auto mb-6" />
-              <blockquote className="text-xl md:text-2xl text-foreground leading-relaxed mb-8">
-                "Before Health Compiler, compiling these metrics was a manual and time-consuming process. Now, everything is captured automatically, and employers can access a dashboard with these metrics anytime."
-              </blockquote>
-              <div className="flex items-center justify-center gap-4">
-                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary/30 to-accent/30 flex items-center justify-center text-foreground font-bold text-xl">
-                  KR
-                </div>
-                <div className="text-left">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Video */}
+            <div className="order-2 lg:order-1">
+              <div className="rounded-xl overflow-hidden shadow-lg">
+                <video 
+                  controls
+                  poster="https://irp.cdn-website.com/c9f7398c/dms3rep/multi/GPIwi8FgRgyjPBVfuyoF_Health+Compiler-4K.v2.0000000.jpg"
+                  className="w-full"
+                >
+                  <source 
+                    src="https://vid.cdn-website.com/c9f7398c/videos/GPIwi8FgRgyjPBVfuyoF_Health+Compiler-4K-v.mp4" 
+                    type="video/mp4" 
+                  />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </div>
+            
+            {/* Testimonial Text */}
+            <div className="order-1 lg:order-2">
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-8">
+                What Our User Say
+              </h2>
+              <div className="relative">
+                <blockquote className="text-lg md:text-xl text-muted-foreground italic leading-relaxed mb-6">
+                  "Before Health Compiler, compiling these metrics was a manual and time-consuming process. Now, everything is captured automatically, and employers can access a dashboard with these metrics anytime."
+                </blockquote>
+                <div className="mt-6">
                   <p className="font-display font-bold text-foreground">Dr. Ken Rictor</p>
                   <p className="text-muted-foreground">Genovo Health</p>
                 </div>
@@ -112,8 +134,29 @@ const About = () => {
         </div>
       </section>
 
-      {/* Team Members */}
+      {/* Cal.com Booking Widget */}
       <section className="py-16 md:py-24 bg-background-secondary">
+        <div className="container mx-auto px-6">
+          <div className="max-w-3xl mx-auto">
+            <div 
+              className="rounded-xl overflow-hidden shadow-lg bg-card"
+              style={{ minHeight: '600px' }}
+            >
+              <iframe
+                src="https://cal.com/mehulhc/30min?embed=true&theme=light"
+                width="100%"
+                height="600"
+                frameBorder="0"
+                className="w-full"
+                title="Schedule a meeting with Mehul Agarwal"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Team Members */}
+      <section className="py-16 md:py-24 bg-background">
         <div className="container mx-auto px-6">
           <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-10">
             Built by the Best
@@ -132,7 +175,7 @@ const About = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-16 md:py-24 bg-background-secondary">
         <div className="container mx-auto px-6 text-center">
           <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4 max-w-4xl mx-auto">
             Let Health Compiler do the heavy lifting, so you can focus on what you do best — providing exceptional Direct Care
