@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Search, Loader2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const blogPosts = [
   {
@@ -68,7 +69,7 @@ const blogPosts = [
     image: "https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/HC+Blog+Images+%2825%29-1920w.png",
     link: "https://www.healthcompiler.com/improving-patient-outcomes-with-cloud-native-healthcare-solutions"
   },
-  // Additional posts (loaded on "More Posts" click)
+  // Second batch (loaded on first "More Posts" click)
   {
     title: "The Future of Healthcare Data Interoperability",
     date: "September 25, 2025",
@@ -125,14 +126,99 @@ const blogPosts = [
     image: "https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/HC+Blog+Images+%2817%29-1920w.png",
     link: "https://www.healthcompiler.com/how-tpas-can-modernize-claims-processing-with-ai"
   },
+  {
+    title: "Direct Primary Care: A Solution for Rising Healthcare Costs",
+    date: "July 29, 2025",
+    description: "Learn how Direct Primary Care practices offer transparent pricing, better access to care, and significant cost savings for patients and employers.",
+    image: "https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/HC+Blog+Images+%2816%29-1920w.png",
+    link: "https://www.healthcompiler.com/direct-primary-care-a-solution-for-rising-healthcare-costs"
+  },
+  // Third batch (loaded on second "More Posts" click)
+  {
+    title: "Maximizing ROI on Employee Wellness Programs",
+    date: "July 22, 2025",
+    description: "Data-driven strategies for designing and measuring effective corporate wellness initiatives that improve employee health and reduce costs.",
+    image: "https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/HC+Blog+Images+%2815%29-1920w.png",
+    link: "https://www.healthcompiler.com/maximizing-roi-on-employee-wellness-programs"
+  },
+  {
+    title: "The Impact of Social Determinants on Health Outcomes",
+    date: "July 15, 2025",
+    description: "Understanding how social factors like housing, education, and food security affect patient health and how healthcare providers can address them.",
+    image: "https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/HC+Blog+Images+%2814%29-1920w.png",
+    link: "https://www.healthcompiler.com/the-impact-of-social-determinants-on-health-outcomes"
+  },
+  {
+    title: "Telemedicine Best Practices for Primary Care Providers",
+    date: "July 8, 2025",
+    description: "How to deliver high-quality virtual care that maintains patient relationships and meets clinical standards in the evolving healthcare landscape.",
+    image: "https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/HC+Blog+Images+%2813%29-1920w.png",
+    link: "https://www.healthcompiler.com/telemedicine-best-practices-for-primary-care-providers"
+  },
+  {
+    title: "Healthcare Analytics: Turning Data Into Actionable Insights",
+    date: "July 1, 2025",
+    description: "A practical guide for healthcare organizations looking to leverage their data for better decision-making and improved patient outcomes.",
+    image: "https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/HC+Blog+Images+%2812%29-1920w.png",
+    link: "https://www.healthcompiler.com/healthcare-analytics-turning-data-into-actionable-insights"
+  },
+  {
+    title: "The Rise of Concierge Medicine in America",
+    date: "June 24, 2025",
+    description: "Exploring the growth of concierge medical practices and what this membership-based model means for the future of personalized healthcare.",
+    image: "https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/HC+Blog+Images+%2811%29-1920w.png",
+    link: "https://www.healthcompiler.com/the-rise-of-concierge-medicine-in-america"
+  },
+  {
+    title: "Chronic Disease Management in the Digital Age",
+    date: "June 17, 2025",
+    description: "How technology-enabled care management programs are improving outcomes for patients with diabetes, heart disease, and other chronic conditions.",
+    image: "https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/HC+Blog+Images+%2810%29-1920w.png",
+    link: "https://www.healthcompiler.com/chronic-disease-management-in-the-digital-age"
+  },
+  {
+    title: "Value-Based Care: What Employers Need to Know",
+    date: "June 10, 2025",
+    description: "Understanding how value-based care arrangements can help employers control healthcare costs while improving quality of care for employees.",
+    image: "https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/HC+Blog+Images+%289%29-1920w.png",
+    link: "https://www.healthcompiler.com/value-based-care-what-employers-need-to-know"
+  },
+  {
+    title: "Mental Health in the Workplace: A Strategic Priority",
+    date: "June 3, 2025",
+    description: "Why mental health benefits are essential for employee wellbeing and how organizations can build supportive mental health programs.",
+    image: "https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/HC+Blog+Images+%288%29-1920w.png",
+    link: "https://www.healthcompiler.com/mental-health-in-the-workplace-a-strategic-priority"
+  },
+  {
+    title: "Healthcare Price Transparency: New Rules and Opportunities",
+    date: "May 27, 2025",
+    description: "How new federal price transparency requirements are changing healthcare and what it means for providers, payers, and patients.",
+    image: "https://lirp.cdn-website.com/c9f7398c/dms3rep/multi/opt/HC+Blog+Images+%287%29-1920w.png",
+    link: "https://www.healthcompiler.com/healthcare-price-transparency-new-rules-and-opportunities"
+  },
 ];
 
 const POSTS_PER_PAGE = 9;
+
+// Skeleton card component for loading state
+const BlogCardSkeleton = () => (
+  <div className="block animate-pulse">
+    <Skeleton className="w-full h-48 md:h-56 rounded-lg mb-4" />
+    <Skeleton className="h-6 w-full mb-2" />
+    <Skeleton className="h-6 w-3/4 mb-2" />
+    <Skeleton className="h-4 w-1/3 mb-3" />
+    <Skeleton className="h-4 w-full mb-1" />
+    <Skeleton className="h-4 w-full mb-1" />
+    <Skeleton className="h-4 w-2/3" />
+  </div>
+);
 
 const Blogs = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [visiblePosts, setVisiblePosts] = useState(POSTS_PER_PAGE);
   const [isLoading, setIsLoading] = useState(false);
+  const [loadingNewCards, setLoadingNewCards] = useState(false);
 
   const filteredPosts = blogPosts.filter(post =>
     post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -141,14 +227,21 @@ const Blogs = () => {
 
   const displayedPosts = filteredPosts.slice(0, visiblePosts);
   const hasMorePosts = visiblePosts < filteredPosts.length;
+  
+  // Calculate how many skeleton cards to show
+  const remainingPosts = filteredPosts.length - visiblePosts;
+  const skeletonCount = Math.min(POSTS_PER_PAGE, remainingPosts);
 
   const handleLoadMore = () => {
     setIsLoading(true);
+    setLoadingNewCards(true);
+    
     // Simulate loading delay like the source page
     setTimeout(() => {
-      setVisiblePosts(prev => prev + POSTS_PER_PAGE);
+      setVisiblePosts(prev => Math.min(prev + POSTS_PER_PAGE, filteredPosts.length));
       setIsLoading(false);
-    }, 500);
+      setLoadingNewCards(false);
+    }, 800);
   };
 
   // Reset visible posts when search query changes
@@ -187,6 +280,7 @@ const Blogs = () => {
       <section className="py-12 md:py-16 bg-background">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Rendered blog posts */}
             {displayedPosts.map((post, index) => (
               <a
                 key={index}
@@ -223,6 +317,11 @@ const Blogs = () => {
                 </div>
               </a>
             ))}
+            
+            {/* Skeleton cards while loading */}
+            {loadingNewCards && Array.from({ length: skeletonCount }).map((_, index) => (
+              <BlogCardSkeleton key={`skeleton-${index}`} />
+            ))}
           </div>
 
           {filteredPosts.length === 0 && (
@@ -235,7 +334,7 @@ const Blogs = () => {
           )}
 
           {/* More Posts Button - matching source style */}
-          {hasMorePosts && (
+          {hasMorePosts && !loadingNewCards && (
             <div className="text-center mt-12">
               <Button 
                 onClick={handleLoadMore}
@@ -254,6 +353,13 @@ const Blogs = () => {
                 )}
               </Button>
             </div>
+          )}
+          
+          {/* Show remaining count */}
+          {hasMorePosts && !loadingNewCards && (
+            <p className="text-center text-sm text-muted-foreground mt-4">
+              Showing {displayedPosts.length} of {filteredPosts.length} posts
+            </p>
           )}
         </div>
       </section>
