@@ -12,37 +12,37 @@ const partners = [
     name: "Elation",
     logoImage: elationLogo,
     description: "Elation Health is a cloud-based healthcare platform designed for physicians, facilitating patient-provider connections through a health information network. Founded in 2010 and based in San Francisco, the company enables collaboration among healthcare providers by allowing them to share patient information effectively at the point of care.",
-    link: "#"
+    link: "https://partners.elationhealth.com/partners/health-compiler"
   },
   {
     name: "FMMA Member",
     logoImage: fmmaLogo,
     description: "The Free Market Medical Association (FMMA) promotes transparency and competition in healthcare, advocating for a system where patients can shop for medical services at competitive prices through platforms like ShopHealth, organizing events such as their annual conference to foster collaboration and innovation in the direct care movement.",
-    link: "#"
+    link: "https://www.healthcompiler.com/health-compiler-joins-fmma-to-promote-healthcare-transparency"
   },
   {
     name: "Hint",
     logoImage: hintLogo,
     description: "Hint Health is a leading platform for Direct Primary Care (DPC) management, offering streamlined solutions for membership management, billing, and patient payments. Founded to empower providers and patients, Hint's tools help practices operate more efficiently, reduce administrative burdens, and focus on delivering high-quality, personalized care.",
-    link: "#"
+    link: "https://www.hint.com/ecosystem/healthcompiler"
   },
   {
     name: "Akute Health",
     logoImage: akuteHealthLogo,
     description: "Akute Health is a modern EHR platform designed for direct-to-patient care models like DPC, concierge, and digital health. It combines scheduling, charting, billing, telemedicine, and patient communication into one seamless system. Built for ease of use and rapid growth, Akute helps providers streamline operations, improve patient experience, and scale efficiently without the complexity of traditional healthcare software.",
-    link: "#"
+    link: "https://www.akutehealth.com/features/seamless-integrations"
   },
   {
     name: "Diabetes Reversal Group (DRG)",
     logoImage: drgLogo,
     description: "Diabetes Reversal Group (DRG) is the world's first clinically led, one-stop service focused on reversing Type 2 Diabetes naturally. With over 13 years of success, DRG offers a patented, non drug approach, combining personalized nutrition, targeted supplements, and exercise protocols. Led by experts like Dr. Kristine Burke and Dr. Hockings, the company empowers patients to restore metabolic balance and reduce reliance on medications.",
-    link: "#"
+    link: "https://www.akutehealth.com/features/seamless-integrations"
   },
   {
     name: "SomeDocs",
     logoImage: somedocsLogo,
     description: "Health Compiler is a proud member of SomeDocs, the ultimate hub for healthcare professionals seeking to amplify their impact. SomeDocs offers cutting-edge tools, resources, and a vibrant community to help doctors build strong online presences, connect with peers, and share expertise. By joining this dynamic network, Health Compiler aligns with SomeDocs' mission to empower healthcare providers and drive innovation in the industry.",
-    link: "#"
+    link: "https://doctorsonsocialmedia.com/"
   },
 ];
 
@@ -95,12 +95,18 @@ const Partners = () => {
                   </p>
                   
                   <div className="mt-6">
-                    <Button 
-                      variant="outline" 
-                      className="w-full border-primary/50 text-primary hover:bg-primary/10 hover:text-primary"
+                    <a 
+                      href={partner.link} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
                     >
-                      Learn more
-                    </Button>
+                      <Button 
+                        variant="outline" 
+                        className="w-full border-primary/50 text-primary hover:bg-primary/10 hover:text-primary"
+                      >
+                        Learn more
+                      </Button>
+                    </a>
                   </div>
                 </div>
               </div>
