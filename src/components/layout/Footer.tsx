@@ -23,7 +23,7 @@ const resourcesLinks = [
 const socialLinks = [
   { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn', color: '#0A66C2' },
   { icon: Instagram, href: 'https://instagram.com', label: 'Instagram', color: '#E4405F' },
-  { icon: Mail, href: 'mailto:info@healthcompiler.com', label: 'Email', color: '#EA4335' },
+  { icon: Mail, href: 'mailto:info@healthcompiler.com', label: 'Email', color: '#000000' },
   { icon: Youtube, href: 'https://youtube.com', label: 'YouTube', color: '#FF0000' },
 ];
 
