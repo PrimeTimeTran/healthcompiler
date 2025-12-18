@@ -35,6 +35,9 @@ import Blogs from "./pages/Blogs";
 import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
 import NotFound from "./pages/NotFound";
+import DirectPrimaryCareGuide from "./pages/guide/DirectPrimaryCareGuide";
+import DirectSpecialtyCareGuide from "./pages/guide/DirectSpecialtyCareGuide";
+import SelfFundedHealthPlansGuide from "./pages/guide/SelfFundedHealthPlansGuide";
 
 const queryClient = new QueryClient();
 
@@ -76,6 +79,9 @@ const App = () => (
           <Route path="/who-we-serve" element={<WhoWeServe />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/privacy" element={<Privacy />} />
+          <Route path="/resources/guide/direct-primary-care" element={<DirectPrimaryCareGuide />} />
+          <Route path="/resources/guide/direct-speciality-care" element={<DirectSpecialtyCareGuide />} />
+          <Route path="/resources/guide/self-funded-health-plans" element={<SelfFundedHealthPlansGuide />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
