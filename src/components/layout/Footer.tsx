@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 import { Linkedin, Instagram, Mail, Youtube } from 'lucide-react';
 import logo from '@/assets/healthcompiler-logo.webp';
-
+import hipaaSoc2Badge from '@/assets/hipaa-soc2-badge.png';
+import fmmaBadge from '@/assets/fmma-badge.png';
 const quickLinks = [
   { label: 'Home', href: '/' },
   { label: 'HC Insights', href: '/solutions/employer-analytics' },
@@ -85,25 +86,17 @@ export const Footer = () => {
             </div>
 
             {/* Compliance Badges */}
-            <div className="flex items-center gap-4">
-              <div className="bg-card border border-border rounded-full p-2 w-14 h-14 flex items-center justify-center shadow-soft">
-                <div className="text-center">
-                  <div className="text-[8px] font-bold text-foreground leading-none">HIPAA</div>
-                  <div className="text-[6px] text-muted-foreground">COMPLIANT</div>
-                </div>
-              </div>
-              <div className="bg-card border border-border rounded-full p-2 w-14 h-14 flex items-center justify-center shadow-soft">
-                <div className="text-center">
-                  <div className="text-[7px] font-bold text-foreground leading-none">AICPA</div>
-                  <div className="text-[8px] font-bold text-blue-600">SOC 2</div>
-                </div>
-              </div>
-              <div className="bg-card border border-border rounded-md px-3 py-2 flex items-center gap-1 shadow-soft">
-                <div className="text-[8px] font-bold text-foreground leading-tight">
-                  FREE MARKET<br/>
-                  <span className="text-[6px] font-normal text-muted-foreground">MEDICAL ASSOCIATION</span>
-                </div>
-              </div>
+            <div className="flex items-center gap-6">
+              <img 
+                src={hipaaSoc2Badge} 
+                alt="HIPAA Compliant and AICPA SOC 2" 
+                className="h-16 object-contain"
+              />
+              <img 
+                src={fmmaBadge} 
+                alt="Free Market Medical Association" 
+                className="h-12 object-contain"
+              />
             </div>
           </div>
 
