@@ -21,10 +21,10 @@ const resourcesLinks = [
 ];
 
 const socialLinks = [
-  { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
-  { icon: Instagram, href: 'https://instagram.com', label: 'Instagram' },
-  { icon: Mail, href: 'mailto:info@healthcompiler.com', label: 'Email' },
-  { icon: Youtube, href: 'https://youtube.com', label: 'YouTube' },
+  { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn', color: '#0A66C2' },
+  { icon: Instagram, href: 'https://instagram.com', label: 'Instagram', color: '#E4405F' },
+  { icon: Mail, href: 'mailto:info@healthcompiler.com', label: 'Email', color: '#EA4335' },
+  { icon: Youtube, href: 'https://youtube.com', label: 'YouTube', color: '#FF0000' },
 ];
 
 export const Footer = () => {
@@ -77,10 +77,10 @@ export const Footer = () => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 flex items-center justify-center text-foreground hover:text-accent transition-colors"
+                  className="w-10 h-10 flex items-center justify-center cursor-pointer transition-transform duration-200 hover:scale-110"
                   aria-label={social.label}
                 >
-                  <social.icon className="w-6 h-6" />
+                  <social.icon className="w-6 h-6" style={{ color: social.color }} />
                 </a>
               ))}
             </div>
