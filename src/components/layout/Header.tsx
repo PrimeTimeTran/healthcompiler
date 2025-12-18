@@ -361,13 +361,15 @@ export const Header = () => {
 
           {/* Desktop CTA - Right side */}
           <div className="hidden lg:flex items-center gap-6">
-            <Link 
-              to="/login" 
+            <a 
+              href="https://insights.healthcompiler.com/" 
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-[15px] font-medium text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1.5"
             >
               Sign in
               <span className="text-accent">→</span>
-            </Link>
+            </a>
             <Button variant="gradient" size="default" className="rounded-full px-5" asChild>
               <Link to="/contact">
                 Request a Demo
