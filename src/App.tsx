@@ -26,6 +26,7 @@ import ConciergeMedicine from "./pages/ConciergeMedicine";
 import FunctionalMedicine from "./pages/FunctionalMedicine";
 import Employers from "./pages/Employers";
 import EmployerAnalytics from "./pages/EmployerAnalytics";
+import HealthOutcomes from "./pages/HealthOutcomes";
 import ACOs from "./pages/ACOs";
 import BrokersAdvisors from "./pages/BrokersAdvisors";
 import FAQs from "./pages/FAQs";
@@ -82,6 +83,7 @@ const App = () => (
           <Route path="/solutions/functional-medicine" element={<FunctionalMedicine />} />
           <Route path="/solutions/employers" element={<Employers />} />
           <Route path="/solutions/employer-analytics" element={<EmployerAnalytics />} />
+          <Route path="/solutions/health-outcomes" element={<HealthOutcomes />} />
           <Route path="/solutions/acos" element={<ACOs />} />
           <Route path="/solutions/brokers-advisors" element={<BrokersAdvisors />} />
           <Route path="/get-featured-form" element={<GetFeatured />} />
