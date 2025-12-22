@@ -1,6 +1,6 @@
 import { Layout } from "@/components/layout/Layout";
 import { useState } from "react";
-import { Search, Loader2 } from "lucide-react";
+import { Search, Loader2, Calendar, ArrowRight } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -10,14 +10,15 @@ const POSTS_PER_PAGE = 9;
 
 // Skeleton card component for loading state
 const BlogCardSkeleton = () => (
-  <div className="block animate-pulse">
-    <Skeleton className="w-full h-48 md:h-56 rounded-lg mb-4" />
-    <Skeleton className="h-6 w-full mb-2" />
-    <Skeleton className="h-6 w-3/4 mb-2" />
-    <Skeleton className="h-4 w-1/3 mb-3" />
-    <Skeleton className="h-4 w-full mb-1" />
-    <Skeleton className="h-4 w-full mb-1" />
-    <Skeleton className="h-4 w-2/3" />
+  <div className="group block animate-pulse">
+    <div className="relative overflow-hidden rounded-2xl bg-muted h-52 md:h-60 mb-5" />
+    <div className="space-y-3">
+      <Skeleton className="h-4 w-24 rounded-full" />
+      <Skeleton className="h-6 w-full" />
+      <Skeleton className="h-6 w-4/5" />
+      <Skeleton className="h-4 w-full" />
+      <Skeleton className="h-4 w-2/3" />
+    </div>
   </div>
 );
 
@@ -59,34 +60,54 @@ const Blogs = () => {
 
   return (
     <Layout>
-      {/* Hero Section - matching source page style */}
-      <section className="relative py-16 md:py-20 overflow-hidden bg-gradient-to-b from-primary/5 to-background">
+      {/* Hero Section */}
+      <section className="relative py-20 md:py-28 overflow-hidden">
+        {/* Background gradients */}
+        <div className="absolute inset-0 bg-gradient-to-b from-secondary/50 via-background to-background" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full bg-primary/10 blur-3xl opacity-60" />
+        
         <div className="container mx-auto px-4 text-center relative z-10">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary mb-4" style={{ fontFamily: 'serif' }}>
-            Blogs
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
+            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+            <span className="text-sm font-medium text-primary">Insights & Resources</span>
+          </div>
+          
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-5 font-display tracking-tight">
+            Our Blog
           </h1>
-          <p className="text-base md:text-lg text-foreground max-w-3xl mx-auto mb-8 font-medium">
-            Insights & Resources on Direct Primary Care, Wellness, Health Analytics & More
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
+            Discover insights on Direct Primary Care, Wellness, Health Analytics, and innovative healthcare solutions.
           </p>
           
-          {/* Search Bar - matching source style */}
-          <div className="max-w-xl mx-auto relative">
-            <Input
-              type="text"
-              placeholder="Search the blog"
-              value={searchQuery}
-              onChange={handleSearchChange}
-              className="pl-4 pr-12 py-3 h-12 bg-card border border-border rounded-md shadow-sm focus:ring-2 focus:ring-primary/20"
-            />
-            <Search className="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+          {/* Search Bar */}
+          <div className="max-w-xl mx-auto relative group">
+            <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 to-accent/20 rounded-2xl blur-lg opacity-0 group-focus-within:opacity-100 transition-opacity duration-300" />
+            <div className="relative">
+              <Input
+                type="text"
+                placeholder="Search articles..."
+                value={searchQuery}
+                onChange={handleSearchChange}
+                className="pl-5 pr-12 py-4 h-14 bg-card border-border/50 rounded-xl shadow-soft focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all duration-300 text-base"
+              />
+              <div className="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-lg bg-muted">
+                <Search className="h-4 w-4 text-muted-foreground" />
+              </div>
+            </div>
           </div>
+          
+          {/* Post count */}
+          <p className="text-sm text-muted-foreground mt-4">
+            {filteredPosts.length} article{filteredPosts.length !== 1 ? 's' : ''} available
+          </p>
         </div>
       </section>
 
       {/* Blog Grid */}
-      <section className="py-12 md:py-16 bg-background">
+      <section className="py-12 md:py-20 bg-background">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
             {/* Rendered blog posts */}
             {displayedPosts.map((post, index) => (
               <a
@@ -96,29 +117,43 @@ const Blogs = () => {
                 rel="noopener noreferrer"
                 className="group block"
               >
-                {/* Image */}
-                <div className="relative overflow-hidden rounded-lg mb-4">
-                  <img
-                    src={post.image}
-                    alt={post.title}
-                    className="w-full h-48 md:h-56 object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
+                {/* Image Container */}
+                <div className="relative overflow-hidden rounded-2xl mb-5 bg-muted">
+                  <div className="aspect-[16/10]">
+                    <img
+                      src={post.image}
+                      alt={post.title}
+                      className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                  </div>
+                  {/* Overlay on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  
+                  {/* Read More indicator */}
+                  <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                    <span className="text-white text-sm font-medium">Read Article</span>
+                    <ArrowRight className="w-4 h-4 text-white" />
+                  </div>
                 </div>
 
                 {/* Content */}
-                <div>
+                <div className="space-y-3">
+                  {/* Date */}
+                  <div className="flex items-center gap-2 text-muted-foreground">
+                    <Calendar className="w-3.5 h-3.5" />
+                    <span className="text-xs font-medium uppercase tracking-wider">
+                      {post.date}
+                    </span>
+                  </div>
+                  
                   {/* Title */}
-                  <h3 className="text-lg md:text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors line-clamp-2">
+                  <h3 className="text-lg md:text-xl font-semibold text-foreground group-hover:text-primary transition-colors duration-300 line-clamp-2 leading-snug font-display">
                     {post.title}
                   </h3>
                   
-                  {/* Date */}
-                  <p className="text-sm text-muted-foreground mb-3">
-                    {post.date}
-                  </p>
-                  
                   {/* Description */}
-                  <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3">
+                  <p className="text-muted-foreground text-sm leading-relaxed line-clamp-2">
                     {post.description}
                   </p>
                 </div>
@@ -132,41 +167,42 @@ const Blogs = () => {
           </div>
 
           {filteredPosts.length === 0 && (
-            <div className="text-center py-16">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-muted flex items-center justify-center">
+            <div className="text-center py-20">
+              <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-muted flex items-center justify-center">
                 <Search className="w-8 h-8 text-muted-foreground" />
               </div>
-              <p className="text-muted-foreground text-lg">No blog posts found matching your search.</p>
+              <h3 className="text-xl font-semibold text-foreground mb-2 font-display">No results found</h3>
+              <p className="text-muted-foreground">Try adjusting your search to find what you're looking for.</p>
             </div>
           )}
 
-          {/* More Posts Button - matching source style */}
+          {/* More Posts Button */}
           {hasMorePosts && !loadingNewCards && (
-            <div className="text-center mt-12">
+            <div className="text-center mt-16 space-y-4">
               <Button 
                 onClick={handleLoadMore}
                 disabled={isLoading}
-                variant="outline" 
                 size="lg" 
-                className="px-8 py-3 min-w-[140px] border border-foreground/30 hover:border-foreground hover:bg-muted/30 font-medium rounded-md transition-all"
+                className="group px-10 py-6 bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground font-semibold rounded-xl shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-all duration-300 hover:scale-105"
               >
                 {isLoading ? (
                   <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    <Loader2 className="mr-2 h-5 w-5 animate-spin" />
                     Loading...
                   </>
                 ) : (
-                  "More Posts"
+                  <>
+                    Load More Articles
+                    <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                  </>
                 )}
               </Button>
+              
+              {/* Show remaining count */}
+              <p className="text-sm text-muted-foreground">
+                Showing {displayedPosts.length} of {filteredPosts.length} articles
+              </p>
             </div>
-          )}
-          
-          {/* Show remaining count */}
-          {hasMorePosts && !loadingNewCards && (
-            <p className="text-center text-sm text-muted-foreground mt-4">
-              Showing {displayedPosts.length} of {filteredPosts.length} posts
-            </p>
           )}
         </div>
       </section>
