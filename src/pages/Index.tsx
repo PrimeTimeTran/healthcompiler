@@ -9,8 +9,8 @@ import { CTASection } from "@/components/home/CTASection";
 const Index = () => {
   return (
     <Layout>
-      {/* <HeroSectionAlt /> */}
-      {/* <WhatWeDoSection /> */}
+      <HeroSectionAlt />
+      <WhatWeDoSection />
       <HowWeHelpSection />
       <IndustriesSection />
       <CTASection />
