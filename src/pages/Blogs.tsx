@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
 import { useBlogPosts } from '@/hooks/useBlogPosts'
+import { Link } from 'react-router-dom'
 
 const POSTS_PER_PAGE = 9
 
@@ -143,11 +144,9 @@ const Blogs = () => {
             {/* Rendered blog posts */}
             {!loading &&
               displayedPosts.map((post, index) => (
-                <a
-                  key={index}
-                  href={post.link}
-                  target='_blank'
-                  rel='noopener noreferrer'
+                <Link
+                  key={post.id || index}
+                  to={`/resources/blogs/${post.slug}`}
                   className='group block'
                 >
                   {/* Image Container */}
@@ -192,7 +191,7 @@ const Blogs = () => {
                       {post.description}
                     </p>
                   </div>
-                </a>
+                </Link>
               ))}
 
             {/* Skeleton cards while loading */}
