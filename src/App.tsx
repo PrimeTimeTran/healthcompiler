@@ -38,6 +38,7 @@ import BlogPost from './pages/BlogPost'
 import Terms from './pages/Terms'
 import Privacy from './pages/Privacy'
 import NotFound from './pages/NotFound'
+import Careers from './pages/Careers'
 import DirectPrimaryCareGuide from './pages/guide/DirectPrimaryCareGuide'
 import DirectSpecialtyCareGuide from './pages/guide/DirectSpecialtyCareGuide'
 import SelfFundedHealthPlansGuide from './pages/guide/SelfFundedHealthPlansGuide'
@@ -248,6 +249,10 @@ const App = () => (
           <Route
             path='*'
             element={<NotFound />}
+          />
+          <Route
+            path='/careers'
+            element={<Careers />}
           />
         </Routes>
       </BrowserRouter>

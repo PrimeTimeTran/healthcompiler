@@ -1,6 +1,9 @@
 // src/services/strapi.ts
-const STRAPI_BASE_URL =
-  import.meta.env.VITE_STRAPI_URL || 'http://localhost:1337'
+
+import { STRAPI_API_TOKEN } from '../lib/constants'
+
+export const STRAPI_URL = 'https://strapi-app-890407456021.us-east1.run.app'
+// export const STRAPI_URL = 'http://localhost:8080'
 
 export interface StrapiBlogPost {
   id: number
@@ -8,8 +11,8 @@ export interface StrapiBlogPost {
     title: string
     date: string
     description: string
-    content?: string // Add content field for full blog post
-    slug?: string // Add slug for URL routing
+    content?: string 
+    slug?: string
     image: {
       data: {
         attributes: {
@@ -37,15 +40,11 @@ export interface BlogPost {
 
 export const fetchBlogPosts = async (): Promise<BlogPost[]> => {
   try {
-    const response = await fetch(
-      // 'http://localhost:1337/api/articles?populate=*',
-      'http://localhost:1337/api/articles?populate=cover',
-      {
-        headers: {
-          Authorization: `Bearer e8d73b614ade3ea31f7f37ea7cc5f05b5d7f28ce84b811a12204a430c2f6bc2d2ad689f58f947f341a67c899ef1ea4e8ce7f0756879cacef78fb6dfa171649f499d7c9be2e5695444ddddfa6b03dee229755dac7b1f5d78b6c5ef8e401796535ea40b1eb17483116014153a79b51cc2bf766c5f65256e2a56bc2595be266f518`,
-        },
-      }
-    )
+    const response = await fetch(`${STRAPI_URL}/api/articles?populate=cover`, {
+      headers: {
+        Authorization: `Bearer ${STRAPI_API_TOKEN}`,
+      },
+    })
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`)
     }
@@ -59,9 +58,7 @@ export const fetchBlogPosts = async (): Promise<BlogPost[]> => {
       description: item.description || item.attributes?.description,
       content: item.content || item.attributes?.content,
       slug: item.slug || item.attributes?.slug,
-      image: `http://localhost:1337${
-        item.cover?.formats?.thumbnail?.url || ''
-      }`,
+      image: `${STRAPI_URL}${item.cover?.formats?.thumbnail?.url || ''}`,
       link: item.link || item.attributes?.link,
     }))
   } catch (error) {
@@ -73,10 +70,10 @@ export const fetchBlogPosts = async (): Promise<BlogPost[]> => {
 export const fetchBlogPost = async (id: string): Promise<BlogPost | null> => {
   try {
     const response = await fetch(
-      `http://localhost:1337/api/articles/${id}?populate=*`,
+      `${STRAPI_URL}/api/articles/${id}?populate=*`,
       {
         headers: {
-          Authorization: `Bearer e8d73b614ade3ea31f7f37ea7cc5f05b5d7f28ce84b811a12204a430c2f6bc2d2ad689f58f947f341a67c899ef1ea4e8ce7f0756879cacef78fb6dfa171649f499d7c9be2e5695444ddddfa6b03dee229755dac7b1f5d78b6c5ef8e401796535ea40b1eb17483116014153a79b51cc2bf766c5f65256e2a56bc2595be266f518`,
+          Authorization: `Bearer ${STRAPI_API_TOKEN}`,
         },
       }
     )
@@ -89,7 +86,6 @@ export const fetchBlogPost = async (id: string): Promise<BlogPost | null> => {
     const data = await response.json()
 
     const item = data.data
-    console.log({ IMG: item.cover.formats.thumbnail.url })
     return {
       id: item.id,
       title: item.title || item.attributes?.title,
@@ -97,7 +93,7 @@ export const fetchBlogPost = async (id: string): Promise<BlogPost | null> => {
       description: item.description || item.attributes?.description,
       content: item.content || item.attributes?.content,
       slug: item.slug || item.attributes?.slug,
-      image: `http://localhost:1337${item.cover.formats.thumbnail.url || ''}`,
+      image: `${STRAPI_URL}${item.cover.formats.thumbnail.url || ''}`,
       // link: item.link || item.attributes?.link,
       link: item.slug,
     }

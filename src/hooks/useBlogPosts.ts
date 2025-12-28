@@ -2,9 +2,10 @@
 import { useState, useEffect } from 'react'
 import { fetchBlogPosts, BlogPost } from '@/services/strapi'
 
-/**
- * Fetch all blog posts
- */
+import { STRAPI_API_TOKEN } from '../lib/constants'
+
+export const STRAPI_URL = 'https://strapi-app-890407456021.us-east1.run.app'
+
 export const useBlogPosts = () => {
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([])
   const [loading, setLoading] = useState(true)
@@ -35,7 +36,12 @@ export const useBlogPosts = () => {
 
 export async function getBlogPostBySlug(slug: string) {
   const res = await fetch(
-    `http://localhost:1337/api/articles?filters[slug][$eq]=${slug}&populate=*`
+    `${STRAPI_URL}/api/articles/?filters[slug][$eq]=${slug}&populate=*`,
+    {
+      headers: {
+        Authorization: `Bearer ${STRAPI_API_TOKEN}`,
+      },
+    }
   )
 
   if (!res.ok) {
