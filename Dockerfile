@@ -4,7 +4,7 @@ WORKDIR /app
 
 # Copy package.json & install dependencies (needed for `serve`)
 COPY package*.json ./
-RUN npm ci --only=production
+RUN npm ci --only=production --legacy-peer-deps
 
 # Copy your built frontend
 COPY dist ./dist

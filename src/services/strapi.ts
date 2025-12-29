@@ -1,9 +1,9 @@
 // src/services/strapi.ts
 
-import { STRAPI_API_TOKEN } from '../lib/constants'
+import { STRAPI_URL, STRAPI_API_TOKEN } from '../lib/constants'
 
 // export const STRAPI_URL = 'https://strapi-app-890407456021.us-east1.run.app'
-export const STRAPI_URL = 'http://localhost:8080'
+// export const STRAPI_URL = 'http://localhost:8080'
 
 export interface StrapiBlogPost {
   id: number
