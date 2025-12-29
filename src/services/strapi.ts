@@ -2,8 +2,8 @@
 
 import { STRAPI_API_TOKEN } from '../lib/constants'
 
-export const STRAPI_URL = 'https://strapi-app-890407456021.us-east1.run.app'
-// export const STRAPI_URL = 'http://localhost:8080'
+// export const STRAPI_URL = 'https://strapi-app-890407456021.us-east1.run.app'
+export const STRAPI_URL = 'http://localhost:8080'
 
 export interface StrapiBlogPost {
   id: number
@@ -11,7 +11,7 @@ export interface StrapiBlogPost {
     title: string
     date: string
     description: string
-    content?: string 
+    content?: string
     slug?: string
     image: {
       data: {
