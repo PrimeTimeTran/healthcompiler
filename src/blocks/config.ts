@@ -3,7 +3,13 @@ import RichText from './RichText'
 import TwoColumn from './TwoColumn'
 import ImageBlock from './ImageBlock'
 
-const config: { [key: string]: ComponentConfig<any, any, any> } = {
+interface ComponentConfig<T = any, U = any, V = any> {
+  render: React.ComponentType<T>;
+  fields?: U;
+  schema?: V;
+}
+
+const config: { [key: string]: ComponentConfig<any, any, any> | object } = {
   components: {
     Hero: {
       render: Hero,
