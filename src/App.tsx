@@ -29,6 +29,7 @@ import EmployerAnalytics from './pages/EmployerAnalytics'
 import HealthOutcomes from './pages/HealthOutcomes'
 import Surveys from './pages/Surveys'
 import ACOs from './pages/ACOs'
+import UrgentCare from './pages/UrgentCare'
 import BrokersAdvisors from './pages/BrokersAdvisors'
 import FAQs from './pages/FAQs'
 import NewsEvents from './pages/NewsEvents'
@@ -188,6 +189,10 @@ const App = () => (
           <Route
             path='/solutions/acos'
             element={<ACOs />}
+          />
+          <Route
+            path='/solutions/urgent-care'
+            element={<UrgentCare />}
           />
           <Route
             path='/solutions/brokers-advisors'
