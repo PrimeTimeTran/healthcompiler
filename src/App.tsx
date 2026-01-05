@@ -52,6 +52,7 @@ import ElationPartnership from './pages/articles/ElationPartnership'
 import AnalyticsExpansion from './pages/articles/AnalyticsExpansion'
 import RosettaFest2024 from './pages/articles/RosettaFest2024'
 import HintSummit2025 from './pages/articles/HintSummit2025'
+import Marketing from './pages/Marketing'
 
 const queryClient = new QueryClient()
 
@@ -66,6 +67,10 @@ const App = () => (
           <Route
             path='/'
             element={<Index />}
+          />
+          <Route
+            path='/marketing'
+            element={<Marketing />}
           />
           <Route
             path='/platform'
