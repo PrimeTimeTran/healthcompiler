@@ -1,10 +1,2 @@
-// Local
-export const STRAPI_URL = 'http://localhost:8080'
-export const STRAPI_API_TOKEN =
-  '3729639169d357ee7b052d041c4815eb1bccec3f00f43197910a160b44adc6aa412b6d17bc7c208e1a5385351a57a19322d56c5877e8178508ec90724e12f234ea1c7859ede88cda23efd6129bfcd34b6a02bb02adaac61ac1206ac824149ea43e93e678883b4c228adf220efa71f82ae5aee60e177be7d2ff17afdb736b1db4'
-
-// Production
-// GCP Token
-// export const STRAPI_URL = 'https://strapi-app-890407456021.us-east1.run.app'
-// export const STRAPI_API_TOKEN =
-//   '1a88e54ffd29401a9a64209c87d957f38510f43cf3842cc389d5864b278a029d0cbda93ae2592c8cfdb7f922d2c24580152b93636349dbf432b6417d63e2c8be449cd1fdfd18815efc076e9f71d20dc02cc381b96f818bb5bf98777c2a585adba5cfb6ad5db49e9c22f96c008629602c3080298765c60ef7462f55fd528cb39a'
+export const VITE_STRAPI_URL = import.meta.env.VITE_STRAPI_URL
+export const VITE_STRAPI_API_TOKEN = import.meta.env.VITE_STRAPI_API_TOKEN

@@ -1,23 +1,33 @@
-# Use a small Node image
+# Build stage
+FROM node:20-alpine AS build
+WORKDIR /app
+
+# Install build tools
+RUN apk add --no-cache python3 make g++
+RUN npm install -g npm@11.7.0
+
+# Copy dependencies and install
+COPY package*.json ./
+RUN npm ci --legacy-peer-deps
+
+# Copy source
+COPY . .
+
+# Copy production env for Vite
+COPY .env.production .env
+
+# Build frontend
+RUN npm run build
+
+# Runtime image
 FROM node:20-alpine AS runtime
 WORKDIR /app
 
-# Copy package.json & install dependencies (needed for `serve`)
-COPY package*.json ./
-RUN npm ci --only=production --legacy-peer-deps
-
-# Copy your built frontend
-COPY dist ./dist
-
-# Install a simple static server
+RUN apk add --no-cache curl
 RUN npm install -g serve
 
-# Set environment variable for runtime if needed
+COPY --from=build /app/dist ./dist
+
 ENV PORT=8080
-ENV VITE_STRAPI_URL=https://strapi-app-890407456021.us-east1.run.app
-
-# Expose port
 EXPOSE 8080
-
-# Serve the static frontend
 CMD ["serve", "-s", "dist", "-l", "8080"]

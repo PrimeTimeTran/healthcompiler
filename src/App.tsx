@@ -53,6 +53,7 @@ import AnalyticsExpansion from './pages/articles/AnalyticsExpansion'
 import RosettaFest2024 from './pages/articles/RosettaFest2024'
 import HintSummit2025 from './pages/articles/HintSummit2025'
 import Marketing from './pages/Marketing'
+import Developer from './pages/Developer'
 
 const queryClient = new QueryClient()
 
@@ -71,6 +72,10 @@ const App = () => (
           <Route
             path='/marketing'
             element={<Marketing />}
+          />
+          <Route
+            path='/developer'
+            element={<Developer />}
           />
           <Route
             path='/platform'
