@@ -10,8 +10,8 @@ const Developer = () => {
         </div>
 
         <div>
-          <h1>Strapi API Token</h1>
-          {import.meta.env.VITE_STRAPI_API_TOKEN}
+          <h1>Strapi API Token(First 25 chars)</h1>
+          {import.meta.env.VITE_STRAPI_API_TOKEN.slice(0, 25)}
         </div>
       </div>
     </Layout>
