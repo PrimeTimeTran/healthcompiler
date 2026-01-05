@@ -55,6 +55,7 @@ import RosettaFest2024 from './pages/articles/RosettaFest2024'
 import HintSummit2025 from './pages/articles/HintSummit2025'
 import Marketing from './pages/Marketing'
 import Developer from './pages/Developer'
+import Form from './pages/Form'
 
 const queryClient = new QueryClient()
 
@@ -73,6 +74,10 @@ const App = () => (
           <Route
             path='/marketing'
             element={<Marketing />}
+          />
+          <Route
+            path='/form'
+            element={<Form />}
           />
           <Route
             path='/developer'
