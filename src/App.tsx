@@ -56,6 +56,7 @@ import HintSummit2025 from './pages/articles/HintSummit2025'
 import Marketing from './pages/Marketing'
 import Developer from './pages/Developer'
 import Form from './pages/Form'
+import BookADemo from './pages/BookADemo'
 
 const queryClient = new QueryClient()
 
@@ -70,6 +71,10 @@ const App = () => (
           <Route
             path='/'
             element={<Index />}
+          />
+          <Route
+            path='/book-a-demo'
+            element={<BookADemo />}
           />
           <Route
             path='/marketing'
