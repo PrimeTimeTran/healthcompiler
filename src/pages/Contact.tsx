@@ -21,7 +21,7 @@ const Contact = () => {
         fields: [
           { name: 'name', value: formData.name },
           { name: 'email', value: formData.email },
-          { name: 'phone', value: formData.phone || '' },
+          { name: 'company', value: formData.company || '' },
           { name: 'message', value: formData.message },
         ],
         context: {
@@ -64,6 +64,17 @@ const Contact = () => {
       [e.target.name]: e.target.value,
     }))
   }
+
+  return (
+    <div
+      className='hs-form-frame'
+      data-region='na1'
+      data-form-id='e3e19336-05db-4c5f-8bb2-0b553d3c9b15'
+      data-portal-id='21742361'
+    ></div>
+  )
+
+  // <script src="https://js.hsforms.net/forms/embed/21742361.js" defer></script>
 
   return (
     <Layout>
