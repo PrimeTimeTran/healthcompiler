@@ -169,7 +169,7 @@ const App = () => (
             element={<AIReceptionist />}
           />
           <Route
-            path='/solutions/direct-primary-care'
+            path='/who-we-serve/direct-primary-care'
             element={<DirectPrimaryCare />}
           />
           <Route
@@ -185,7 +185,7 @@ const App = () => (
             element={<Employers />}
           />
           <Route
-            path='/solutions/employer-analytics'
+            path='/who-we-serve/employer-analytics'
             element={<EmployerAnalytics />}
           />
           <Route
