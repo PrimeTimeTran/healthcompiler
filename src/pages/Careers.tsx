@@ -19,7 +19,7 @@ export default function Careers() {
   return (
     <Layout>
       <div className='m-64'>
-        <h1>Careers</h1>
+        <h1 className="text-4xl font-bold">Careers</h1>
         {careers.map((c) => {
           return (
             <div>
