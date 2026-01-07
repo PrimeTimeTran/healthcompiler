@@ -1,7 +1,8 @@
+import { useState, useEffect } from "react";
 import { Layout } from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { CheckCircle, Brain, Bot, TrendingUp, Users, MessageSquare, Quote } from "lucide-react";
+import { CheckCircle, Brain, Bot, TrendingUp, Quote } from "lucide-react";
 
 // Import images
 import engagementUtilization from "@/assets/dpc-engagement-utilization.png";
@@ -11,6 +12,182 @@ import careGaps from "@/assets/dpc-care-gaps.png";
 import elationLogo from "@/assets/elation-logo.png";
 import hintLogo from "@/assets/hint-logo.png";
 import akuteLogo from "@/assets/akute-health-logo.png";
+
+// DPC Data Clarity Visualization
+const DPCClarityVisualization = () => {
+  const [activeMetric, setActiveMetric] = useState(0);
+  
+  const dataStreams = [
+    { label: 'Engagement', color: 'hsl(217, 91%, 60%)' },
+    { label: 'Utilization', color: 'hsl(142, 76%, 36%)' },
+    { label: 'Outcomes', color: 'hsl(280, 65%, 60%)' },
+    { label: 'Growth', color: 'hsl(45, 93%, 47%)' },
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveMetric((prev) => (prev + 1) % dataStreams.length);
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="relative w-full h-[400px] flex items-center justify-center">
+      <svg viewBox="0 0 400 400" className="w-full h-full max-w-md">
+        <defs>
+          <linearGradient id="dpcCoreGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="hsl(var(--primary))" />
+            <stop offset="100%" stopColor="hsl(217, 91%, 60%)" />
+          </linearGradient>
+          <filter id="dpcGlow">
+            <feGaussianBlur stdDeviation="3" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+          <filter id="dpcSoftGlow">
+            <feGaussianBlur stdDeviation="6" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+
+        {/* Outer ring - pulsing */}
+        <circle 
+          cx="200" 
+          cy="200" 
+          r="150" 
+          fill="none" 
+          stroke="hsl(var(--border))" 
+          strokeWidth="1" 
+          strokeDasharray="8 4"
+          opacity="0.3"
+        >
+          <animateTransform
+            attributeName="transform"
+            type="rotate"
+            from="0 200 200"
+            to="360 200 200"
+            dur="60s"
+            repeatCount="indefinite"
+          />
+        </circle>
+
+        {/* Data stream paths flowing inward */}
+        {dataStreams.map((stream, i) => {
+          const angle = (i * 90 - 45) * (Math.PI / 180);
+          const startX = 200 + Math.cos(angle) * 160;
+          const startY = 200 + Math.sin(angle) * 160;
+          const midX = 200 + Math.cos(angle) * 100;
+          const midY = 200 + Math.sin(angle) * 100;
+          const isActive = i === activeMetric;
+          
+          return (
+            <g key={stream.label}>
+              {/* Connection path */}
+              <path
+                d={`M${startX},${startY} Q${midX},${midY} 200,200`}
+                fill="none"
+                stroke={isActive ? stream.color : "hsl(var(--border))"}
+                strokeWidth={isActive ? "2" : "1"}
+                strokeDasharray={isActive ? "0" : "4 4"}
+                opacity={isActive ? 0.8 : 0.3}
+                className="transition-all duration-500"
+              />
+              
+              {/* Animated particle flowing inward */}
+              <circle 
+                r={isActive ? "5" : "3"} 
+                fill={stream.color} 
+                filter={isActive ? "url(#dpcGlow)" : ""}
+                opacity={isActive ? 1 : 0.5}
+              >
+                <animateMotion
+                  dur={`${2 + i * 0.3}s`}
+                  repeatCount="indefinite"
+                  path={`M${startX - 200},${startY - 200} Q${midX - 200},${midY - 200} 0,0`}
+                />
+              </circle>
+              
+              {/* Data label node */}
+              <g>
+                <rect
+                  x={startX - 45}
+                  y={startY - 14}
+                  width="90"
+                  height="28"
+                  rx="14"
+                  fill="hsl(var(--card))"
+                  stroke={isActive ? stream.color : "hsl(var(--border))"}
+                  strokeWidth={isActive ? "2" : "1"}
+                  className="transition-all duration-300"
+                />
+                <text 
+                  x={startX} 
+                  y={startY + 5} 
+                  textAnchor="middle" 
+                  className="fill-foreground text-[11px] font-medium"
+                >
+                  {stream.label}
+                </text>
+              </g>
+            </g>
+          );
+        })}
+
+        {/* Central clarity core */}
+        <g>
+          {/* Outer glow ring */}
+          <circle 
+            cx="200" 
+            cy="200" 
+            r="70" 
+            fill="url(#dpcCoreGradient)" 
+            opacity="0.15"
+            filter="url(#dpcSoftGlow)"
+          >
+            <animate attributeName="r" values="70;75;70" dur="3s" repeatCount="indefinite" />
+          </circle>
+          
+          {/* Main core circle */}
+          <circle 
+            cx="200" 
+            cy="200" 
+            r="55" 
+            fill="url(#dpcCoreGradient)" 
+            filter="url(#dpcGlow)"
+          >
+            <animate attributeName="r" values="55;58;55" dur="2s" repeatCount="indefinite" />
+          </circle>
+          
+          {/* Inner highlight */}
+          <circle cx="200" cy="200" r="45" fill="hsl(var(--card))" opacity="0.15" />
+          
+          {/* Core text */}
+          <text x="200" y="195" textAnchor="middle" className="fill-white text-[12px] font-semibold">
+            Clarity
+          </text>
+          <text x="200" y="212" textAnchor="middle" className="fill-white/80 text-[10px]">
+            Layer
+          </text>
+        </g>
+
+        {/* Insight pulses emanating from center */}
+        <circle cx="200" cy="200" r="60" fill="none" stroke="hsl(var(--primary))" strokeWidth="1" opacity="0">
+          <animate attributeName="r" values="60;120" dur="2s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="0.5;0" dur="2s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="200" cy="200" r="60" fill="none" stroke="hsl(var(--primary))" strokeWidth="1" opacity="0">
+          <animate attributeName="r" values="60;120" dur="2s" begin="1s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="0.5;0" dur="2s" begin="1s" repeatCount="indefinite" />
+        </circle>
+      </svg>
+    </div>
+  );
+};
 
 const DirectPrimaryCare = () => {
   const dataNeeds = [
@@ -59,22 +236,61 @@ const DirectPrimaryCare = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-primary/10 via-background to-background py-20 lg:py-32">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl">
-            <p className="text-primary font-medium mb-4">Direct Primary Care</p>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-              Direct Primary Care, Supported With Clarity
-            </h1>
-            <p className="text-lg text-muted-foreground mb-4">
-              Health Compiler supports Direct Primary Care practices with AI-powered data and growth solutions that make day-to-day operations simpler and long-term value easier to show.
-            </p>
-            <p className="text-lg text-muted-foreground mb-8">
-              We work alongside your existing tools to give you clear insight into engagement, utilization, outcomes, and growth—without changing how you practice medicine.
-            </p>
-            <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
-              <Link to="/contact">Book a Demo</Link>
-            </Button>
+      <section className="relative bg-gradient-to-br from-slate-50 via-white to-slate-50 py-20 lg:py-32 overflow-hidden">
+        {/* Subtle grid pattern */}
+        <div className="absolute inset-0 opacity-[0.03]" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+        }} />
+        
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left: Text */}
+            <div className="max-w-xl">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
+                <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                Direct Primary Care
+              </div>
+              
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
+                Direct Primary Care,{' '}
+                <span className="text-primary">Supported With Clarity</span>
+              </h1>
+              
+              <p className="text-lg text-muted-foreground mb-4">
+                Health Compiler supports Direct Primary Care practices with AI-powered data and growth solutions that make day-to-day operations simpler and long-term value easier to show.
+              </p>
+              <p className="text-lg text-muted-foreground mb-8">
+                We work alongside your existing tools to give you clear insight into engagement, utilization, outcomes, and growth—without changing how you practice medicine.
+              </p>
+              
+              <div className="flex flex-wrap gap-4 mb-6">
+                <Button asChild size="lg" className="gap-2 bg-primary hover:bg-primary/90">
+                  <Link to="/contact">
+                    Book a Demo
+                  </Link>
+                </Button>
+              </div>
+
+              <div className="flex items-center gap-6 text-sm text-muted-foreground">
+                <span className="flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
+                  Workflow-friendly
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
+                  AI-powered
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
+                  Employer-ready
+                </span>
+              </div>
+            </div>
+
+            {/* Right: Visualization */}
+            <div className="lg:pl-8">
+              <DPCClarityVisualization />
+            </div>
           </div>
         </div>
       </section>
