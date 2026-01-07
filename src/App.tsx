@@ -22,6 +22,7 @@ import HEDISQuality from './pages/HEDISQuality'
 import AIReceptionist from './pages/AIReceptionist'
 import WhoWeServe from './pages/WhoWeServe'
 import DirectPrimaryCare from './pages/DirectPrimaryCare'
+import DPCNetworks from './pages/DPCNetworks'
 import ConciergeMedicine from './pages/ConciergeMedicine'
 import FunctionalMedicine from './pages/FunctionalMedicine'
 import Employers from './pages/Employers'
@@ -171,6 +172,10 @@ const App = () => (
           <Route
             path='/who-we-serve/direct-primary-care'
             element={<DirectPrimaryCare />}
+          />
+          <Route
+            path='/dpc-networks'
+            element={<DPCNetworks />}
           />
           <Route
             path='/solutions/concierge'
