@@ -94,7 +94,10 @@ const whoWeServeCategories: SubMenuCategory[] = [
         label: 'Direct Primary Care',
         href: '/who-we-serve/direct-primary-care',
       },
-      { label: 'DPC Networks', href: '/solutions/dpc-networks' },
+      {
+        label: 'DPC Networks',
+        href: '/who-we-serve/direct-primary-care-networks',
+      },
       { label: 'Concierge', href: '/solutions/concierge' },
       {
         label: 'Managed Service Orgs',

@@ -174,7 +174,7 @@ const App = () => (
             element={<DirectPrimaryCare />}
           />
           <Route
-            path='/dpc-networks'
+            path='/who-we-serve/direct-primary-care-networks'
             element={<DPCNetworks />}
           />
           <Route
