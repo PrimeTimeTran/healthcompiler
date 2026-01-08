@@ -111,7 +111,7 @@ const whoWeServeCategories: SubMenuCategory[] = [
       { label: 'Functional Medicine', href: '/solutions/functional-medicine' },
       { label: 'Urgent Care', href: '/solutions/urgent-care' },
       { label: 'Pediatrics', href: '/solutions/pediatrics' },
-      { label: 'Medical Weight Loss', href: '/solutions/medical-weight-loss' },
+      { label: 'Medical Weight Loss', href: '/medical-weight-loss' },
     ],
   },
   {
