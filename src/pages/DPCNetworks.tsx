@@ -320,9 +320,8 @@ const DPCNetworks = () => {
               </div>
 
               <h1 className='text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight'>
-                <span className='text-primary'>
-                  Clear, Actionable Data Insights
-                </span>
+                Clear, Actionable{' '}
+                <span className='text-primary'>Data Insights</span>
               </h1>
 
               <p className='text-xl text-muted-foreground mb-8'>

@@ -348,7 +348,7 @@ const DirectPrimaryCare = () => {
               </div>
 
               <h1 className='text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight'>
-                <span className='text-primary'>Supported With Clarity</span>
+                Supported With <span className='text-primary'>Clarity</span>
               </h1>
 
               <p className='text-lg text-muted-foreground mb-4'>
