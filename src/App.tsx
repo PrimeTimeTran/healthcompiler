@@ -23,6 +23,7 @@ import AIReceptionist from './pages/AIReceptionist'
 import WhoWeServe from './pages/WhoWeServe'
 import DirectPrimaryCare from './pages/DirectPrimaryCare'
 import DPCNetworks from './pages/DPCNetworks'
+import MedicalWeightLoss from './pages/MedicalWeightLoss'
 import ConciergeMedicine from './pages/ConciergeMedicine'
 import FunctionalMedicine from './pages/FunctionalMedicine'
 import Employers from './pages/Employers'
@@ -176,6 +177,10 @@ const App = () => (
           <Route
             path='/who-we-serve/direct-primary-care-networks'
             element={<DPCNetworks />}
+          />
+          <Route
+            path='/medical-weight-loss'
+            element={<MedicalWeightLoss />}
           />
           <Route
             path='/solutions/concierge'
