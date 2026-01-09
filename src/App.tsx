@@ -59,6 +59,7 @@ import Marketing from './pages/Marketing'
 import Developer from './pages/Developer'
 import Form from './pages/Form'
 import BookADemo from './pages/BookADemo'
+import Pediatrics from './pages/Pediatrics'
 
 const queryClient = new QueryClient()
 
@@ -81,6 +82,10 @@ const App = () => (
           <Route
             path='/marketing'
             element={<Marketing />}
+          />
+          <Route
+            path='/solutions/pediatrics'
+            element={<Pediatrics />}
           />
           <Route
             path='/form'
@@ -142,10 +147,6 @@ const App = () => (
             path='/resources/blogs'
             element={<Blogs />}
           />
-          {/* <Route
-            path='/resources/blogs/:id'
-            element={<BlogPost />}
-          /> */}
           <Route
             path='/resources/blogs/:slug'
             element={<BlogPost />}

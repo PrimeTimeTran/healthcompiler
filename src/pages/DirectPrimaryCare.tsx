@@ -342,13 +342,15 @@ const DirectPrimaryCare = () => {
           <div className='grid grid-cols-1 lg:grid-cols-2 gap-12 items-center'>
             {/* Left: Text */}
             <div className='max-w-xl'>
-              <div className='inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6'>
+              {/* Pill thingy */}
+              {/* <div className='inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6'>
                 <span className='w-2 h-2 rounded-full bg-primary animate-pulse' />
                 Direct Primary Care
-              </div>
+              </div> */}
 
               <h1 className='text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight'>
-                Supported With <span className='text-primary'>Clarity</span>
+                <span className='text-primary'>Direct Primary Care </span>
+                Supported With Clarity
               </h1>
 
               <p className='text-lg text-muted-foreground mb-4'>
