@@ -198,6 +198,7 @@ export const Header = () => {
             className='flex items-center gap-2 hover:opacity-80 transition-opacity flex-shrink-0'
           >
             <img
+              rel='preload'
               src={logo}
               alt='HealthCompiler'
               className='h-8 md:h-10'
