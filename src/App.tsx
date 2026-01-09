@@ -60,6 +60,8 @@ import Developer from './pages/Developer'
 import Form from './pages/Form'
 import BookADemo from './pages/BookADemo'
 import Pediatrics from './pages/Pediatrics'
+import MarketingAutomation from './pages/MarketingAutomation'
+import AiCallTriaging from './pages/AiCallTriaging'
 
 const queryClient = new QueryClient()
 
@@ -82,6 +84,14 @@ const App = () => (
           <Route
             path='/marketing'
             element={<Marketing />}
+          />
+          <Route
+            path='/marketing-automation'
+            element={<MarketingAutomation />}
+          />
+          <Route
+            path='/ai-call-triaging'
+            element={<AiCallTriaging />}
           />
           <Route
             path='/solutions/pediatrics'

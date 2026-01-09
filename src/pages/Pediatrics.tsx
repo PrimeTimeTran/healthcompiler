@@ -52,11 +52,13 @@ const Pediatrics = () => {
               </div>
 
               <h1 className='text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight'>
-                Pediatrics
+                <span className='text-primary'>Clarity </span> for Busy
+                Pediatric Practices
               </h1>
 
               <p className='text-xl text-muted-foreground mb-8'>
-                Clarity for Busy Pediatric Practices
+                See how families engage with your practice, where follow-ups are
+                falling behind, and which preventive needs need attention.
               </p>
 
               <div className='flex flex-wrap gap-4 mb-6'>

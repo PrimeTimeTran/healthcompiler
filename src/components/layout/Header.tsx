@@ -65,15 +65,14 @@ const solutionsCategories: SubMenuCategory[] = [
     ],
   },
   {
-    category: 'AI-Powered Tools',
+    category: 'Patient Engagement',
     items: [
       { label: 'AI Receptionist', href: '/solutions/ai-receptionist' },
-      { label: 'AI Call Triaging', href: '/solutions/ai-call-triaging' },
+      { label: 'AI Call Triaging', href: '/ai-call-triaging' },
       {
         label: 'Marketing Automation',
-        href: '/solutions/marketing-automation',
+        href: '/marketing-automation',
       },
-      { label: 'Patient Engagement', href: '/solutions/patient-engagement' },
     ],
   },
   {
