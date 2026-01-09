@@ -33,6 +33,7 @@ import Surveys from './pages/Surveys'
 import ACOs from './pages/ACOs'
 import UrgentCare from './pages/UrgentCare'
 import BrokersAdvisors from './pages/BrokersAdvisors'
+import ManagedServiceOrgs from './pages/ManagedServiceOrgs'
 import FAQs from './pages/FAQs'
 import NewsEvents from './pages/NewsEvents'
 import Whitepaper from './pages/Whitepaper'
@@ -216,6 +217,10 @@ const App = () => (
           <Route
             path='/solutions/brokers-advisors'
             element={<BrokersAdvisors />}
+          />
+          <Route
+            path='/solutions/managed-service-orgs'
+            element={<ManagedServiceOrgs />}
           />
           <Route
             path='/get-featured-form'
