@@ -1,206 +1,590 @@
+import { useState, useEffect } from 'react'
 import { Layout } from '@/components/layout/Layout'
-import { Button } from '@/components/ui/button'
 import { Link } from 'react-router-dom'
+import { Button } from '@/components/ui/button'
+import { CheckCircle, Brain, Bot, TrendingUp, Heart, Shield, Users } from 'lucide-react'
 
-// Reusing images from DPC page
-import engagementUtilizationImg from '@/assets/dpc-engagement-utilization.png'
-import careGapsImg from '@/assets/dpc-care-gaps.png'
-import chronicRiskImg from '@/assets/dpc-chronic-risk.png'
-import claimsUtilizationImg from '@/assets/dpc-claims-utilization.png'
-import marketingAnalyticsImg from '@/assets/dpc-marketing-analytics.png'
+// Integration logos
+import elationLogo from '@/assets/elation-logo.png'
+import hintLogo from '@/assets/hint-logo.png'
+import akuteLogo from '@/assets/akute-health-logo.png'
+
+// Concierge Care Visualization
+const ConciergeCareVisualization = () => {
+  const [activeMetric, setActiveMetric] = useState(0)
+
+  const dataStreams = [
+    { label: 'Engagement', color: 'hsl(217, 91%, 60%)' },
+    { label: 'Outcomes', color: 'hsl(142, 76%, 36%)' },
+    { label: 'Trends', color: 'hsl(280, 65%, 60%)' },
+    { label: 'Growth', color: 'hsl(45, 93%, 47%)' },
+  ]
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveMetric((prev) => (prev + 1) % dataStreams.length)
+    }, 2000)
+    return () => clearInterval(interval)
+  }, [])
+
+  return (
+    <div className='relative w-full h-[400px] flex items-center justify-center'>
+      <svg
+        viewBox='0 0 400 400'
+        className='w-full h-full max-w-md'
+      >
+        <defs>
+          <linearGradient
+            id='conciergeCoreGradient'
+            x1='0%'
+            y1='0%'
+            x2='100%'
+            y2='100%'
+          >
+            <stop
+              offset='0%'
+              stopColor='hsl(var(--primary))'
+            />
+            <stop
+              offset='100%'
+              stopColor='hsl(280, 65%, 60%)'
+            />
+          </linearGradient>
+          <filter id='conciergeGlow'>
+            <feGaussianBlur
+              stdDeviation='3'
+              result='blur'
+            />
+            <feMerge>
+              <feMergeNode in='blur' />
+              <feMergeNode in='SourceGraphic' />
+            </feMerge>
+          </filter>
+          <filter id='conciergeSoftGlow'>
+            <feGaussianBlur
+              stdDeviation='6'
+              result='blur'
+            />
+            <feMerge>
+              <feMergeNode in='blur' />
+              <feMergeNode in='SourceGraphic' />
+            </feMerge>
+          </filter>
+        </defs>
+
+        {/* Outer ring - elegant rotation */}
+        <circle
+          cx='200'
+          cy='200'
+          r='150'
+          fill='none'
+          stroke='hsl(var(--border))'
+          strokeWidth='1'
+          strokeDasharray='12 6'
+          opacity='0.3'
+        >
+          <animateTransform
+            attributeName='transform'
+            type='rotate'
+            from='0 200 200'
+            to='360 200 200'
+            dur='80s'
+            repeatCount='indefinite'
+          />
+        </circle>
+
+        {/* Premium service rings */}
+        <circle
+          cx='200'
+          cy='200'
+          r='120'
+          fill='none'
+          stroke='hsl(280, 65%, 60%)'
+          strokeWidth='0.5'
+          opacity='0.2'
+        />
+        <circle
+          cx='200'
+          cy='200'
+          r='100'
+          fill='none'
+          stroke='hsl(var(--primary))'
+          strokeWidth='0.5'
+          opacity='0.3'
+        />
+
+        {/* Data stream paths flowing inward */}
+        {dataStreams.map((stream, i) => {
+          const angle = (i * 90 - 45) * (Math.PI / 180)
+          const startX = 200 + Math.cos(angle) * 160
+          const startY = 200 + Math.sin(angle) * 160
+          const midX = 200 + Math.cos(angle) * 100
+          const midY = 200 + Math.sin(angle) * 100
+          const isActive = i === activeMetric
+
+          return (
+            <g key={stream.label}>
+              {/* Connection path */}
+              <path
+                d={`M${startX},${startY} Q${midX},${midY} 200,200`}
+                fill='none'
+                stroke={isActive ? stream.color : 'hsl(var(--border))'}
+                strokeWidth={isActive ? '2' : '1'}
+                strokeDasharray={isActive ? '0' : '4 4'}
+                opacity={isActive ? 0.8 : 0.3}
+                className='transition-all duration-500'
+              />
+
+              {/* Animated particle flowing inward */}
+              <circle
+                r={isActive ? '5' : '3'}
+                fill={stream.color}
+                filter={isActive ? 'url(#conciergeGlow)' : ''}
+                opacity={isActive ? 1 : 0.5}
+              >
+                <animateMotion
+                  dur={`${2.5 + i * 0.3}s`}
+                  repeatCount='indefinite'
+                  path={`M${startX - 200},${startY - 200} Q${midX - 200},${
+                    midY - 200
+                  } 0,0`}
+                />
+              </circle>
+
+              {/* Data label node */}
+              <g>
+                <rect
+                  x={startX - 45}
+                  y={startY - 14}
+                  width='90'
+                  height='28'
+                  rx='14'
+                  fill='hsl(var(--card))'
+                  stroke={isActive ? stream.color : 'hsl(var(--border))'}
+                  strokeWidth={isActive ? '2' : '1'}
+                  className='transition-all duration-300'
+                />
+                <text
+                  x={startX}
+                  y={startY + 5}
+                  textAnchor='middle'
+                  className='fill-foreground text-[11px] font-medium'
+                >
+                  {stream.label}
+                </text>
+              </g>
+            </g>
+          )
+        })}
+
+        {/* Central premium core */}
+        <g>
+          {/* Outer glow ring */}
+          <circle
+            cx='200'
+            cy='200'
+            r='70'
+            fill='url(#conciergeCoreGradient)'
+            opacity='0.15'
+            filter='url(#conciergeSoftGlow)'
+          >
+            <animate
+              attributeName='r'
+              values='70;75;70'
+              dur='4s'
+              repeatCount='indefinite'
+            />
+          </circle>
+
+          {/* Main core circle */}
+          <circle
+            cx='200'
+            cy='200'
+            r='55'
+            fill='url(#conciergeCoreGradient)'
+            filter='url(#conciergeGlow)'
+          >
+            <animate
+              attributeName='r'
+              values='55;58;55'
+              dur='3s'
+              repeatCount='indefinite'
+            />
+          </circle>
+
+          {/* Inner highlight */}
+          <circle
+            cx='200'
+            cy='200'
+            r='45'
+            fill='hsl(var(--card))'
+            opacity='0.15'
+          />
+
+          {/* Core text */}
+          <text
+            x='200'
+            y='195'
+            textAnchor='middle'
+            className='fill-white text-[12px] font-semibold'
+          >
+            Insight
+          </text>
+          <text
+            x='200'
+            y='212'
+            textAnchor='middle'
+            className='fill-white/80 text-[10px]'
+          >
+            Layer
+          </text>
+        </g>
+
+        {/* Insight pulses emanating from center */}
+        <circle
+          cx='200'
+          cy='200'
+          r='60'
+          fill='none'
+          stroke='hsl(280, 65%, 60%)'
+          strokeWidth='1'
+          opacity='0'
+        >
+          <animate
+            attributeName='r'
+            values='60;120'
+            dur='3s'
+            repeatCount='indefinite'
+          />
+          <animate
+            attributeName='opacity'
+            values='0.4;0'
+            dur='3s'
+            repeatCount='indefinite'
+          />
+        </circle>
+        <circle
+          cx='200'
+          cy='200'
+          r='60'
+          fill='none'
+          stroke='hsl(var(--primary))'
+          strokeWidth='1'
+          opacity='0'
+        >
+          <animate
+            attributeName='r'
+            values='60;120'
+            dur='3s'
+            begin='1.5s'
+            repeatCount='indefinite'
+          />
+          <animate
+            attributeName='opacity'
+            values='0.4;0'
+            dur='3s'
+            begin='1.5s'
+            repeatCount='indefinite'
+          />
+        </circle>
+      </svg>
+    </div>
+  )
+}
 
 const ConciergeMedicine = () => {
+  const practiceInsights = [
+    'Understand patient engagement and utilization',
+    'Track outcomes and care trends over time',
+    'Identify gaps before they affect continuity',
+    'Support thoughtful, sustainable growth',
+    'Clearly communicate value to patients and partners',
+  ]
+
+  const supportFeatures = [
+    {
+      icon: Brain,
+      title: 'AI-Powered Analytics',
+      description:
+        'Clear views into engagement, utilization, outcomes, and trends across your patient panel.',
+      subtext:
+        'Designed to support confident decisions and thoughtful care planning.',
+    },
+    {
+      icon: Bot,
+      title: 'AI Agents for Patient Interaction',
+      description: 'Two AI agents built for concierge practice workflows:',
+      bullets: [
+        'An AI receptionist for new inquiries',
+        'A triage agent for existing patients',
+      ],
+      subtext:
+        'Built to support responsiveness without replacing the human touch.',
+    },
+    {
+      icon: TrendingUp,
+      title: 'Marketing Automation',
+      description:
+        'Automation that helps practices stay visible and follow up consistently, without adding extra work.',
+    },
+  ]
+
+  const valueProps = [
+    {
+      icon: Heart,
+      title: 'Preserves Personal Care',
+      description: 'Technology that supports, never replaces, the high-touch relationship.',
+    },
+    {
+      icon: Shield,
+      title: 'Shows Impact Clearly',
+      description: 'Demonstrate value to patients and partners with clear, credible data.',
+    },
+    {
+      icon: Users,
+      title: 'Supports Growth',
+      description: 'Scale thoughtfully while maintaining the quality your patients expect.',
+    },
+  ]
+
   return (
     <Layout>
       {/* Hero Section */}
-      <section className='relative bg-gradient-to-br from-primary/10 via-background to-background py-20 lg:py-32'>
+      <section className='relative bg-gradient-to-br from-slate-50 via-white to-slate-50 py-20 lg:py-32 overflow-hidden'>
+        {/* Subtle grid pattern */}
+        <div
+          className='absolute inset-0 opacity-[0.03]'
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          }}
+        />
+
+        <div className='container mx-auto px-4 relative z-10'>
+          <div className='grid grid-cols-1 lg:grid-cols-2 gap-12 items-center'>
+            {/* Left: Text */}
+            <div className='max-w-xl'>
+              <div className='inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6'>
+                <span className='w-2 h-2 rounded-full bg-primary animate-pulse' />
+                Concierge Medicine
+              </div>
+
+              <h1 className='text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight'>
+                Clear Insight for <span className='text-primary'>Concierge Care</span>
+              </h1>
+
+              <p className='text-lg text-muted-foreground mb-8'>
+                See engagement, outcomes, and trends across your patient panel without disrupting high-touch care.
+              </p>
+
+              <div className='flex flex-wrap gap-4 mb-6'>
+                <Button
+                  asChild
+                  size='lg'
+                  className='gap-2 bg-primary hover:bg-primary/90'
+                >
+                  <Link to='/contact'>Book a Demo</Link>
+                </Button>
+              </div>
+
+              <div className='flex items-center gap-6 text-sm text-muted-foreground'>
+                <span className='flex items-center gap-1.5'>
+                  <span className='w-1.5 h-1.5 rounded-full bg-green-500' />
+                  High-touch friendly
+                </span>
+                <span className='flex items-center gap-1.5'>
+                  <span className='w-1.5 h-1.5 rounded-full bg-green-500' />
+                  AI-powered
+                </span>
+                <span className='flex items-center gap-1.5'>
+                  <span className='w-1.5 h-1.5 rounded-full bg-green-500' />
+                  Premium care ready
+                </span>
+              </div>
+            </div>
+
+            {/* Right: Visualization */}
+            <div className='lg:pl-8'>
+              <ConciergeCareVisualization />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* One Place for Insight Section */}
+      <section className='py-20 bg-background'>
         <div className='container mx-auto px-4'>
           <div className='max-w-4xl'>
-            <p className='text-primary font-medium mb-4'>Concierge Medicine</p>
-            <h1 className='text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6'>
-              AI-Powered Data & Growth Solutions for Concierge Medical Services
-              That
-              <span className='text-primary'> Put Care First</span>
-            </h1>
-            <p className='text-lg text-muted-foreground mb-4'>
-              Health Compiler brings the power of advanced analytics and AI to
-              concierge medicine, without adding complexity.
-            </p>
+            <h2 className='text-3xl md:text-4xl font-bold text-foreground mb-6'>
+              One Place for Meaningful Practice Insight
+            </h2>
             <p className='text-lg text-muted-foreground mb-8'>
-              See how your patients engage. Spot care gaps early. Improve
-              outcomes continuously.
+              Health Compiler helps practices:
             </p>
+            <div className='space-y-4 mb-8'>
+              {practiceInsights.map((insight, index) => (
+                <div
+                  key={index}
+                  className='flex items-start gap-3'
+                >
+                  <CheckCircle className='h-6 w-6 text-primary flex-shrink-0 mt-0.5' />
+                  <p className='text-foreground'>{insight}</p>
+                </div>
+              ))}
+            </div>
+            <p className='text-lg text-muted-foreground'>
+              All while preserving the personal nature of concierge care.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* How We Support Concierge Practices */}
+      <section className='py-20 bg-muted/30'>
+        <div className='container mx-auto px-4'>
+          <h2 className='text-3xl md:text-4xl font-bold text-foreground mb-12 text-center'>
+            How We Support Concierge Practices
+          </h2>
+          <div className='grid md:grid-cols-3 gap-8'>
+            {supportFeatures.map((feature, index) => (
+              <div
+                key={index}
+                className='bg-background rounded-xl p-8 shadow-sm border border-border'
+              >
+                <div className='w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6'>
+                  <feature.icon className='h-6 w-6 text-primary' />
+                </div>
+                <h3 className='text-xl font-bold text-foreground mb-4'>
+                  {feature.title}
+                </h3>
+                <p className='text-muted-foreground mb-4'>
+                  {feature.description}
+                </p>
+                {feature.bullets && (
+                  <ul className='space-y-2 mb-4'>
+                    {feature.bullets.map((bullet, bIndex) => (
+                      <li
+                        key={bIndex}
+                        className='flex items-start gap-2 text-muted-foreground'
+                      >
+                        <span className='text-primary mt-1'>•</span>
+                        {bullet}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                {feature.subtext && (
+                  <p className='text-sm text-muted-foreground italic'>
+                    {feature.subtext}
+                  </p>
+                )}
+              </div>
+            ))}
+          </div>
+          <div className='text-center mt-10'>
             <Button
               asChild
+              variant='outline'
               size='lg'
-              className='bg-primary hover:bg-primary/90'
             >
-              <Link to='/contact'>Show me a Demo</Link>
+              <Link to='/capabilities'>Explore</Link>
             </Button>
           </div>
         </div>
       </section>
 
-      {/* Analytics Platform Section */}
+      {/* Fits Your Existing Workflow */}
       <section className='py-20 bg-background'>
         <div className='container mx-auto px-4'>
-          <div className='text-center max-w-4xl mx-auto mb-16'>
+          <div className='text-center max-w-3xl mx-auto mb-12'>
             <h2 className='text-3xl md:text-4xl font-bold text-foreground mb-6'>
-              Analytics Platform for Concierge Medicine
+              Fits Your Existing Workflow
             </h2>
+            <p className='text-lg text-muted-foreground mb-4'>
+              Health Compiler integrates seamlessly with the tools concierge practices already use.
+            </p>
             <p className='text-lg text-muted-foreground'>
-              We offer a sophisticated Engagement and Utilization Analytics
-              platform specifically designed for Concierge medicine. This tool
-              simplifies the collection and analysis of key healthcare metrics,
-              providing clear and actionable insights. It transcends basic data
-              gathering by delivering meaningful information that highlights the
-              effectiveness of your services on patient outcomes.
+              No workflow disruption. No forced changes.
             </p>
           </div>
-        </div>
-      </section>
-
-      {/* Engagement & Utilization Analytics */}
-      <section className='py-16 bg-muted/30'>
-        <div className='container mx-auto px-4'>
-          <div className='grid md:grid-cols-2 gap-12 items-center'>
-            <div>
-              <h3 className='text-2xl md:text-3xl font-bold text-foreground mb-4'>
-                Engagement & Utilization Analytics
-              </h3>
-              <p className='text-lg text-muted-foreground'>
-                Gain insights into patient interactions to enhance care
-                delivery, empowering healthcare providers to improve patient
-                experiences and overall health outcomes.
-              </p>
-            </div>
-            <div>
-              <img
-                src={engagementUtilizationImg}
-                alt='Engagement & Utilization Analytics Dashboard'
-                className='rounded-lg shadow-lg w-full'
-              />
-            </div>
+          <div className='flex flex-wrap justify-center items-center gap-8 md:gap-12'>
+            <img
+              src={elationLogo}
+              alt='Elation Health'
+              className='h-10 md:h-12 object-contain opacity-80 hover:opacity-100 transition-opacity'
+            />
+            <img
+              src={hintLogo}
+              alt='Hint Health'
+              className='h-10 md:h-12 object-contain opacity-80 hover:opacity-100 transition-opacity'
+            />
+            <img
+              src={akuteLogo}
+              alt='Akute Health'
+              className='h-10 md:h-12 object-contain opacity-80 hover:opacity-100 transition-opacity'
+            />
           </div>
         </div>
       </section>
 
-      {/* Utilization Gaps */}
-      <section className='py-16 bg-background'>
+      {/* Value Props Section */}
+      <section className='py-20 bg-muted/30'>
         <div className='container mx-auto px-4'>
-          <div className='grid md:grid-cols-2 gap-12 items-center'>
-            <div className='order-2 md:order-1'>
-              <img
-                src={careGapsImg}
-                alt='Utilization Gaps Dashboard'
-                className='rounded-lg shadow-lg w-full'
-              />
-            </div>
-            <div className='order-1 md:order-2'>
-              <h3 className='text-2xl md:text-3xl font-bold text-foreground mb-4'>
-                Utilization Gaps
-              </h3>
-              <p className='text-lg text-muted-foreground'>
-                Comprehensive care coordination fosters better communication and
-                enhances patient outcomes throughout the treatment process.
-              </p>
-            </div>
+          <div className='text-center max-w-3xl mx-auto mb-12'>
+            <h2 className='text-3xl md:text-4xl font-bold text-foreground mb-6'>
+              A Support Layer for Personalized Care
+            </h2>
+            <p className='text-lg text-muted-foreground'>
+              Health Compiler works in the background, helping concierge practices operate with clarity, show impact, and maintain the level of care patients expect.
+            </p>
           </div>
-        </div>
-      </section>
-
-      {/* Chronic Risk */}
-      <section className='py-16 bg-muted/30'>
-        <div className='container mx-auto px-4'>
-          <div className='grid md:grid-cols-2 gap-12 items-center'>
-            <div>
-              <h3 className='text-2xl md:text-3xl font-bold text-foreground mb-4'>
-                Chronic Risk
-              </h3>
-              <p className='text-lg text-muted-foreground'>
-                Patients with existing chronic conditions. It showcases top
-                chronic prevailing in your patients' populations.
-              </p>
-            </div>
-            <div>
-              <img
-                src={chronicRiskImg}
-                alt='Chronic Risk Dashboard'
-                className='rounded-lg shadow-lg w-full'
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Claims Utilization Data */}
-      <section className='py-16 bg-background'>
-        <div className='container mx-auto px-4'>
-          <div className='grid md:grid-cols-2 gap-12 items-center'>
-            <div className='order-2 md:order-1'>
-              <img
-                src={claimsUtilizationImg}
-                alt='Claims Utilization Data Dashboard'
-                className='rounded-lg shadow-lg w-full'
-              />
-            </div>
-            <div className='order-1 md:order-2'>
-              <h3 className='text-2xl md:text-3xl font-bold text-foreground mb-4'>
-                Claims Utilization Data
-              </h3>
-              <p className='text-lg text-muted-foreground'>
-                Assess service utilization against established benchmarks to
-                identify cost-saving opportunities, with adjustments made for
-                risk factors or demographics to ensure accurate performance
-                evaluation.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Growth */}
-      <section className='py-16 bg-muted/30'>
-        <div className='container mx-auto px-4'>
-          <div className='grid md:grid-cols-2 gap-12 items-center'>
-            <div>
-              <h3 className='text-2xl md:text-3xl font-bold text-foreground mb-4'>
-                Growth
-              </h3>
-              <p className='text-lg text-muted-foreground'>
-                Expand your Concierge medicine practice by leveraging our
-                effective marketing strategies.
-              </p>
-            </div>
-            <div>
-              <img
-                src={marketingAnalyticsImg}
-                alt='Marketing Analytics Dashboard'
-                className='rounded-lg shadow-lg w-full'
-              />
-            </div>
+          <div className='grid md:grid-cols-3 gap-8'>
+            {valueProps.map((prop, index) => (
+              <div
+                key={index}
+                className='text-center p-8 bg-background rounded-xl border border-border'
+              >
+                <div className='w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6'>
+                  <prop.icon className='h-7 w-7 text-primary' />
+                </div>
+                <h3 className='text-xl font-bold text-foreground mb-3'>
+                  {prop.title}
+                </h3>
+                <p className='text-muted-foreground'>
+                  {prop.description}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className='py-20 bg-primary/5'>
-        <div className='container mx-auto px-4 text-center'>
-          <h2 className='text-3xl md:text-4xl font-bold text-foreground mb-6'>
-            Ready to Elevate Your Concierge Medicine
-          </h2>
-          <p className='text-lg text-muted-foreground max-w-3xl mx-auto mb-8'>
-            Welcome to a new era of healthcare management. With our Concierge
-            medicine analytics solution, you're not just providing services;
-            you're creating healthcare experiences that are rooted in value.
-          </p>
-          <Button
-            asChild
-            size='lg'
-            className='bg-primary hover:bg-primary/90'
-          >
-            <Link to='/contact'>Schedule a Demo</Link>
-          </Button>
+      <section className='py-20 bg-gradient-to-br from-primary/5 via-primary/10 to-primary/5'>
+        <div className='container mx-auto px-4'>
+          <div className='max-w-3xl mx-auto text-center'>
+            <h2 className='text-3xl md:text-4xl font-bold text-foreground mb-6'>
+              Ready to See How This Fits Your Practice?
+            </h2>
+            <p className='text-lg text-muted-foreground mb-8'>
+              Discover how Health Compiler can support your concierge practice with clear insight and thoughtful automation.
+            </p>
+            <div className='flex flex-wrap justify-center gap-4'>
+              <Button
+                asChild
+                size='lg'
+                className='bg-primary hover:bg-primary/90'
+              >
+                <Link to='/contact'>Book a Demo</Link>
+              </Button>
+              <Button
+                asChild
+                variant='outline'
+                size='lg'
+              >
+                <Link to='/contact'>Talk to Our Team</Link>
+              </Button>
+            </div>
+          </div>
         </div>
       </section>
     </Layout>
