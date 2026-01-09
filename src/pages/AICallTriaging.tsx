@@ -3,10 +3,6 @@ import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { CheckCircle, PhoneCall } from 'lucide-react'
 
-// Optional: replace with real logos later
-// import epicLogo from '@/assets/epic-logo.png'
-// import athenaLogo from '@/assets/athena-logo.png'
-
 const AiCallTriaging = () => {
   const benefits = [
     'Identifies the intent of incoming patient calls',

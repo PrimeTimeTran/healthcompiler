@@ -61,7 +61,7 @@ import Form from './pages/Form'
 import BookADemo from './pages/BookADemo'
 import Pediatrics from './pages/Pediatrics'
 import MarketingAutomation from './pages/MarketingAutomation'
-import AiCallTriaging from './pages/AiCallTriaging'
+import AiCallTriaging from './pages/AICallTriaging'
 
 const queryClient = new QueryClient()
 
