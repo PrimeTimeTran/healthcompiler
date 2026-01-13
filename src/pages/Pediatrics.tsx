@@ -40,31 +40,26 @@ const Pediatrics = () => {
         <div className='container mx-auto px-6 py-24 lg:py-32'>
           <div className='grid lg:grid-cols-2 gap-16 lg:gap-20 items-center'>
             <div className='space-y-8'>
-              <div className='grid grid-cols-1 lg:grid-cols-1 gap-12 items-center'>
-                <div className='max-w-xl'>
-                  <h1 className='text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-[1.1]'>
-                    <span className='text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent'>
-                      Clarity
-                    </span>{' '}
-                    for Busy Pediatric Practices
-                  </h1>
+              <h1 className='text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-[1.1]'>
+                <span className='text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent'>
+                  Clarity
+                </span>{' '}
+                for Busy Pediatric Practices
+              </h1>
 
-                  <p className='text-xl text-muted-foreground mb-8'>
-                    See how families engage with your practice, where follow-ups
-                    are falling behind, and which preventive needs need
-                    attention.
-                  </p>
+              <p className='text-xl text-muted-foreground mb-8'>
+                See how families engage with your practice, where follow-ups are
+                falling behind, and which preventive needs need attention.
+              </p>
 
-                  <div className='flex flex-wrap gap-4 mb-6'>
-                    <Button
-                      asChild
-                      size='lg'
-                      variant='gradient'
-                    >
-                      <Link to='/contact'>Book a Demo</Link>
-                    </Button>
-                  </div>
-                </div>
+              <div className='flex flex-wrap gap-4 mb-6'>
+                <Button
+                  asChild
+                  size='lg'
+                  variant='gradient'
+                >
+                  <Link to='/contact'>Book a Demo</Link>
+                </Button>
               </div>
             </div>
             <div className='relative h-[450px] flex items-center justify-center'></div>
