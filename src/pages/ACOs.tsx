@@ -16,6 +16,7 @@ import {
   ArrowRight,
 } from 'lucide-react'
 import acoHeroImg from '@/assets/aco-hero-image.png'
+import { CTAButton, GridSection } from '@/components/ui'
 
 const ACOs = () => {
   const helpCards = [
@@ -122,29 +123,40 @@ const ACOs = () => {
 
   return (
     <Layout>
-      <section className='py-16 md:py-24 bg-gradient-to-br from-primary/5 to-background relative overflow-hidden'>
-        <div className='container mx-auto px-4'>
-          <div className='grid lg:grid-cols-2 gap-12 items-center'>
-            <div>
-              <h1 className='text-4xl md:text-5xl font-bold mb-6'>
-                <span className='text-primary'>ACO Utilization</span> & Cost
-                Evaluation
+      <GridSection>
+        <div className='container mx-auto px-6 py-24 lg:py-32'>
+          <div className='grid lg:grid-cols-2 gap-16 lg:gap-20 items-center'>
+            <div className='space-y-8'>
+              <h1 className='text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-[1.1]'>
+                <span className='text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent'>
+                  ACO Utilization
+                </span>{' '}
+                & Cost Evaluation
               </h1>
-              <p className='text-lg text-muted-foreground mb-8'>
-                HealthCompiler Insight for ACOs is an advanced reporting
-                interface designed to provide Accountable Care Organizations
-                with comprehensive clinical and claims data analysis. Our
-                solution equips ACOs with crucial insights into healthcare
-                utilization and cost trends, promoting data-driven
-                decision-making and optimized care management strategies.
+              <h2 className='text-primary text-2xl font-bold mb-4'>Overview</h2>
+              <h3 className='text-2xl font-bold mb-6'>
+                Unlock Deeper Insights from Your Data
+              </h3>
+              <p className='text-muted-foreground'>
+                <strong>HealthCompiler Insight for ACO</strong> offers a
+                sophisticated reporting interface for analyzing claims data,
+                purpose-built to support Medicare, Medicaid, and commercial ACO
+                populations. Designed with both primary care and specialty care
+                in mind, this platform helps organizations manage costs and
+                improve care quality across the continuum. Users can track
+                utilization patterns, explore detailed patient cohort analyses,
+                and uncover potential cost-saving opportunities. The web-based
+                tool features predefined data views and benchmarks, delivering
+                convenient access to personalized, comprehensive reports
+                tailored to the unique needs of value-based care organizations.
               </p>
-              <Button
-                asChild
-                size='lg'
-                className='bg-primary hover:bg-primary/90'
-              >
-                <Link to='/contact'>Contact Us</Link>
-              </Button>
+              <CTAButton
+                link='/contact'
+                text='See Your Intelligence Layer'
+                iconSuffix={
+                  <ArrowRight className='ml-2 transition-transform group-hover:translate-x-1' />
+                }
+              />
             </div>
             <div className='flex justify-center'>
               <img
@@ -155,8 +167,7 @@ const ACOs = () => {
             </div>
           </div>
         </div>
-      </section>
-
+      </GridSection>
       {/* Overview Section */}
       <section className='py-16 bg-background'>
         <div className='container mx-auto px-4'>
@@ -338,13 +349,13 @@ const ACOs = () => {
             Ready to enhance your practice's efficiency and growth? Connect with
             us today.
           </p>
-          <Button
-            asChild
-            size='lg'
-            variant='secondary'
-          >
-            <Link to='/contact'>Schedule a demo</Link>
-          </Button>
+          <CTAButton
+            link='/contact'
+            text='Schedule a Demo'
+            iconSuffix={
+              <ArrowRight className='ml-2 transition-transform group-hover:translate-x-1' />
+            }
+          />
         </div>
       </section>
     </Layout>
