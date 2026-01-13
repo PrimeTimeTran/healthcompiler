@@ -1,8 +1,15 @@
 import { Layout } from '@/components/layout/Layout'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
-import { MessageSquare, CheckCircle, Search, Workflow } from 'lucide-react'
-
+import {
+  Search,
+  Workflow,
+  ArrowRight,
+  CheckCircle,
+  MessageSquare,
+} from 'lucide-react'
+import CTAButton from '@/components/ui/CTAButton'
+import { GridSection } from '@/components/ui/GridSection'
 const MarketingAutomation = () => {
   const crmBenefits = [
     'Track leads from every source in one place',
@@ -21,36 +28,29 @@ const MarketingAutomation = () => {
 
   return (
     <Layout>
-      {/* Hero – split layout */}
-      <section className='py-20 lg:py-28 bg-background'>
-        <div className='container mx-auto px-4'>
-          <div className='grid lg:grid-cols-2 gap-12 items-center'>
-            {/* Left */}
-            <div>
-              <div className='inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6'>
-                <MessageSquare className='h-4 w-4' />
-                Marketing Automation
+      <GridSection>
+        <div className='container mx-auto px-6 py-24 lg:py-32'>
+          <div className='grid lg:grid-cols-2 gap-16 lg:gap-20 items-center'>
+            <div className='space-y-8'>
+              <div>
+                <h1 className='text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-[1.1]'>
+                  Turn Inquiries Into Conversations
+                </h1>
+
+                <p className='text-lg text-muted-foreground mb-8'>
+                  Health Compiler provides a unified system that captures every
+                  inquiry, organizes it, and keeps communication moving forward
+                  without manual effort.
+                </p>
+                <CTAButton
+                  link='/contact'
+                  text='Book a Demo'
+                  iconSuffix={
+                    <ArrowRight className='ml-2 transition-transform group-hover:translate-x-1' />
+                  }
+                />
               </div>
-
-              <h1 className='text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight'>
-                Turn Inquiries Into Conversations
-              </h1>
-
-              <p className='text-lg text-muted-foreground mb-8'>
-                Health Compiler provides a unified system that captures every
-                inquiry, organizes it, and keeps communication moving forward
-                without manual effort.
-              </p>
-
-              <Button
-                asChild
-                size='lg'
-                className='bg-primary hover:bg-primary/90'
-              >
-                <Link to='/contact'>Book a Demo</Link>
-              </Button>
             </div>
-
             {/* Right – visual placeholder */}
             <div className='bg-muted/30 rounded-xl p-10 border border-border'>
               <Workflow className='h-10 w-10 text-primary mb-4' />
@@ -64,9 +64,7 @@ const MarketingAutomation = () => {
             </div>
           </div>
         </div>
-      </section>
-
-      {/* CRM + Automation Section */}
+      </GridSection>
       <section className='py-20 bg-muted/30'>
         <div className='container mx-auto px-4'>
           <div className='max-w-4xl'>

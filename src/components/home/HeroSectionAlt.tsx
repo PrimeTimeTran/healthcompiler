@@ -300,7 +300,7 @@ export const HeroSectionAlt = () => {
 
       {/* Grid pattern overlay */}
       <div
-        className='absolute inset-0 opacity-[0.03]'
+        className='absolute inset-0 opacity-[0.03] pointer-events-none'
         style={{
           backgroundImage: `linear-gradient(#1a1a2e 1px, transparent 1px),
                            linear-gradient(90deg, #1a1a2e 1px, transparent 1px)`,

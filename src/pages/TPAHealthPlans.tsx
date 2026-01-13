@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { Layout } from '@/components/layout/Layout'
 import { CheckCircle } from 'lucide-react'
+import CTAButton from '@/components/ui/CTAButton'
+import { GridSection } from '@/components/ui'
 
 const TPAHealthPlans = () => {
   const performanceBenefits = [
@@ -20,37 +22,35 @@ const TPAHealthPlans = () => {
 
   return (
     <Layout>
-      {/* Hero */}
-      <section className='relative bg-gradient-to-br from-slate-50 via-white to-slate-50 py-20 lg:py-32'>
-        <div className='container mx-auto px-4'>
-          <div className='max-w-3xl'>
-            <div className='inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6'>
-              <span className='w-2 h-2 rounded-full bg-primary animate-pulse' />
-              Employers & Sponsors
+      <GridSection>
+        <div className='container mx-auto px-6 py-24 lg:py-32'>
+          <div className='grid lg:grid-cols-2 gap-16 lg:gap-20 items-center'>
+            <div className='space-y-8'>
+              <div className='max-w-3xl'>
+                <h1 className='text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight'>
+                  Measure How{' '}
+                  <span className='text-primary'>Care Strategies</span> Perform
+                  — Across Models
+                </h1>
+
+                <p className='text-xl text-muted-foreground mb-8'>
+                  Understand what’s working, where risk is emerging, and how
+                  different care approaches perform over time.
+                </p>
+
+                <Button
+                  asChild
+                  size='lg'
+                  variant='gradient'
+                >
+                  <Link to='/contact'>Book a Demo</Link>
+                </Button>
+              </div>
             </div>
-
-            <h1 className='text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight'>
-              Measure How <span className='text-primary'>Care Strategies</span>{' '}
-              Perform — Across Models
-            </h1>
-
-            <p className='text-xl text-muted-foreground mb-8'>
-              Understand what’s working, where risk is emerging, and how
-              different care approaches perform over time.
-            </p>
-
-            <Button
-              variant='gradient'
-              size='lg'
-              asChild
-            >
-              <Link to='/contact'>Book a Demo</Link>
-            </Button>
           </div>
         </div>
-      </section>
+      </GridSection>
 
-      {/* Performance Measurement */}
       <section className='py-20 bg-background'>
         <div className='container mx-auto px-4'>
           <div className='max-w-4xl'>
@@ -118,14 +118,10 @@ const TPAHealthPlans = () => {
             Move from episodic reporting to continuous insight that supports
             confident decisions and sponsor trust.
           </p>
-
-          <Button
-            variant='gradient'
-            size='lg'
-            asChild
-          >
-            <Link to='/contact'>Request a Demo</Link>
-          </Button>
+          <CTAButton
+            text='Request a Demo'
+            link='/contact'
+          />
         </div>
       </section>
     </Layout>

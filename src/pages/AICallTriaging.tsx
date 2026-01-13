@@ -1,7 +1,9 @@
 import { Layout } from '@/components/layout/Layout'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
-import { CheckCircle, PhoneCall } from 'lucide-react'
+import CTAButton from '@/components/ui/CTAButton'
+import { ArrowRight, CheckCircle } from 'lucide-react'
+import { GridSection } from '@/components/ui'
 
 const AICallTriaging = () => {
   const benefits = [
@@ -12,37 +14,30 @@ const AICallTriaging = () => {
 
   return (
     <Layout>
-      {/* Hero */}
-      <section className='relative bg-gradient-to-br from-slate-50 via-white to-slate-50 py-20 lg:py-28'>
-        <div className='container mx-auto px-4'>
-          <div className='max-w-3xl'>
-            <div className='inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6'>
-              <PhoneCall className='h-4 w-4' />
-              AI Call Triaging
+      <GridSection>
+        <div className='container mx-auto px-6 my-auto lg:py-32'>
+          <div className='grid lg:grid-cols-2 gap-16 lg:gap-20 items-center'>
+            <div className='max-w-3xl'>
+              <h1 className='text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight'>
+                Route Patient Calls With Clarity
+              </h1>
+
+              <p className='text-lg text-muted-foreground mb-8'>
+                AI Call Triaging helps practices handle calls from existing
+                patients by understanding the reason for the call and routing it
+                appropriately.
+              </p>
+              <CTAButton
+                link='/contact'
+                text='Request a Demo'
+                iconSuffix={
+                  <ArrowRight className='ml-2 transition-transform group-hover:translate-x-1' />
+                }
+              />
             </div>
-
-            <h1 className='text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight'>
-              Route Patient Calls With Clarity
-            </h1>
-
-            <p className='text-lg text-muted-foreground mb-8'>
-              AI Call Triaging helps practices handle calls from existing
-              patients by understanding the reason for the call and routing it
-              appropriately.
-            </p>
-
-            <Button
-              asChild
-              size='lg'
-              className='bg-primary hover:bg-primary/90'
-            >
-              <Link to='/contact'>Request a Demo</Link>
-            </Button>
           </div>
         </div>
-      </section>
-
-      {/* How It Helps */}
+      </GridSection>
       <section className='py-20 bg-background'>
         <div className='container mx-auto px-4'>
           <div className='max-w-3xl'>

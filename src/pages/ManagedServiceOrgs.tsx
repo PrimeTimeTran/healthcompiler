@@ -2,7 +2,16 @@ import { useState, useEffect } from 'react'
 import { Layout } from '@/components/layout/Layout'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
-import { CheckCircle, Eye, TrendingUp, Users, Building2, BarChart3, Shield } from 'lucide-react'
+import {
+  CheckCircle,
+  Eye,
+  TrendingUp,
+  Users,
+  Building2,
+  BarChart3,
+  Shield,
+} from 'lucide-react'
+import { CTAButton, GridSection } from '@/components/ui'
 
 // MSO Network Visualization
 const MSOVisualization = () => {
@@ -254,22 +263,26 @@ const ManagedServiceOrgs = () => {
     {
       icon: Eye,
       title: 'Complete Visibility',
-      description: 'See engagement and utilization patterns across all practices from one unified view.',
+      description:
+        'See engagement and utilization patterns across all practices from one unified view.',
     },
     {
       icon: TrendingUp,
       title: 'Trend Identification',
-      description: 'Spot operational and care-related issues before they become problems.',
+      description:
+        'Spot operational and care-related issues before they become problems.',
     },
     {
       icon: Users,
       title: 'Informed Support',
-      description: 'Guide practices with data-driven insights instead of assumptions.',
+      description:
+        'Guide practices with data-driven insights instead of assumptions.',
     },
     {
       icon: BarChart3,
       title: 'Leadership Reporting',
-      description: 'Share clear, actionable views with leadership and partners effortlessly.',
+      description:
+        'Share clear, actionable views with leadership and partners effortlessly.',
     },
   ]
 
@@ -277,12 +290,14 @@ const ManagedServiceOrgs = () => {
     {
       icon: Building2,
       title: 'Consistency',
-      description: 'Drive consistent quality across all practices without forcing uniformity.',
+      description:
+        'Drive consistent quality across all practices without forcing uniformity.',
     },
     {
       icon: Shield,
       title: 'Quality',
-      description: 'Maintain high standards through visibility and proactive support.',
+      description:
+        'Maintain high standards through visibility and proactive support.',
     },
     {
       icon: TrendingUp,
@@ -293,43 +308,27 @@ const ManagedServiceOrgs = () => {
 
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className='relative bg-gradient-to-br from-slate-50 via-white to-slate-50 py-20 lg:py-32 overflow-hidden'>
-        {/* Subtle grid pattern */}
-        <div
-          className='absolute inset-0 opacity-[0.03]'
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          }}
-        />
-
-        <div className='container mx-auto px-4 relative z-10'>
-          <div className='grid grid-cols-1 lg:grid-cols-2 gap-12 items-center'>
-            {/* Left: Text */}
-            <div className='max-w-xl'>
-              <div className='inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6'>
-                <span className='w-2 h-2 rounded-full bg-primary animate-pulse' />
-                Managed Service Organizations
-              </div>
-
+      <GridSection>
+        <div className='container mx-auto px-6 py-24 lg:py-32'>
+          <div className='grid lg:grid-cols-2 gap-16 lg:gap-20 items-center'>
+            <div className='space-y-8'>
               <h1 className='text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight'>
-                Supporting Practices with <span className='text-primary'>Data</span>
+                Supporting Practices with{' '}
+                <span className='text-primary'>Data</span>
               </h1>
 
               <p className='text-lg text-muted-foreground mb-8'>
-                Helping Managed Service Organizations bring clarity, consistency, and confidence with AI powered data solutions.
+                Helping Managed Service Organizations bring clarity,
+                consistency, and confidence with AI powered data solutions.
               </p>
 
               <div className='flex flex-wrap gap-4 mb-6'>
-                <Button
-                  asChild
-                  size='lg'
-                  className='gap-2 bg-primary hover:bg-primary/90'
-                >
-                  <Link to='/contact'>Request a Demo</Link>
-                </Button>
+                <CTAButton
+                  link='/contact'
+                  text='Request a Demo'
+                  suffixIconDefault
+                />
               </div>
-
               <div className='flex items-center gap-6 text-sm text-muted-foreground'>
                 <span className='flex items-center gap-1.5'>
                   <span className='w-1.5 h-1.5 rounded-full bg-green-500' />
@@ -352,7 +351,7 @@ const ManagedServiceOrgs = () => {
             </div>
           </div>
         </div>
-      </section>
+      </GridSection>
 
       {/* Seeing the Bigger Picture */}
       <section className='py-20 bg-background'>
@@ -365,10 +364,13 @@ const ManagedServiceOrgs = () => {
               We give MSOs a clearer view across the organizations they support.
             </p>
             <p className='text-lg text-muted-foreground mb-6'>
-              Instead of piecing together updates, MSOs can understand how practices are engaging patients, how care is being used, and where coordination or support can make the biggest difference.
+              Instead of piecing together updates, MSOs can understand how
+              practices are engaging patients, how care is being used, and where
+              coordination or support can make the biggest difference.
             </p>
             <p className='text-lg text-muted-foreground'>
-              This creates alignment without interfering with how individual practices operate.
+              This creates alignment without interfering with how individual
+              practices operate.
             </p>
           </div>
         </div>
@@ -438,13 +440,16 @@ const ManagedServiceOrgs = () => {
               Built to Support, Not Disrupt
             </h2>
             <p className='text-lg text-muted-foreground mb-6'>
-              Practices continue using the tools and workflows they are comfortable with.
+              Practices continue using the tools and workflows they are
+              comfortable with.
             </p>
             <p className='text-lg text-muted-foreground mb-6'>
-              Health Compiler works quietly in the background, creating a shared layer of insight for the MSO.
+              Health Compiler works quietly in the background, creating a shared
+              layer of insight for the MSO.
             </p>
             <p className='text-lg text-muted-foreground'>
-              This makes it easier to guide, support, and standardize where it matters without forcing uniformity everywhere else.
+              This makes it easier to guide, support, and standardize where it
+              matters without forcing uniformity everywhere else.
             </p>
           </div>
         </div>
@@ -458,7 +463,10 @@ const ManagedServiceOrgs = () => {
               Why This Matters for Managed Service Organizations
             </h2>
             <p className='text-lg text-muted-foreground'>
-              Strong MSOs are measured by how well they support consistency, quality, and growth across practices. Health Compiler helps MSOs stay ahead by turning everyday activity into clear signals they can act on.
+              Strong MSOs are measured by how well they support consistency,
+              quality, and growth across practices. Health Compiler helps MSOs
+              stay ahead by turning everyday activity into clear signals they
+              can act on.
             </p>
           </div>
           <div className='grid md:grid-cols-3 gap-8'>
@@ -473,9 +481,7 @@ const ManagedServiceOrgs = () => {
                 <h3 className='text-xl font-bold text-foreground mb-3'>
                   {item.title}
                 </h3>
-                <p className='text-muted-foreground'>
-                  {item.description}
-                </p>
+                <p className='text-muted-foreground'>{item.description}</p>
               </div>
             ))}
           </div>
@@ -490,7 +496,8 @@ const ManagedServiceOrgs = () => {
               Ready for Clearer Insight Across Your Organization?
             </h2>
             <p className='text-lg text-muted-foreground mb-8'>
-              If you support multiple practices and want better visibility without added operational burden, let's talk.
+              If you support multiple practices and want better visibility
+              without added operational burden, let's talk.
             </p>
             <div className='flex flex-wrap justify-center gap-4'>
               <Button

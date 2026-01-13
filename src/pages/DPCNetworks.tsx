@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Layout } from '@/components/layout/Layout'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
+import CTAButton from '@/components/ui/CTAButton'
 import {
   CheckCircle,
   Eye,
@@ -16,6 +17,7 @@ import {
   Network,
   Sparkles,
 } from 'lucide-react'
+import { GridSection } from '@/components/ui'
 
 // Network Clarity Visualization - shows multiple practices flowing into centralized view
 const NetworkVisualization = () => {
@@ -300,25 +302,10 @@ const DPCNetworks = () => {
 
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className='relative bg-gradient-to-br from-slate-50 via-white to-slate-50 py-20 lg:py-32 overflow-hidden'>
-        {/* Subtle grid pattern */}
-        <div
-          className='absolute inset-0 opacity-[0.03]'
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          }}
-        />
-
-        <div className='container mx-auto px-4 relative z-10'>
-          <div className='grid grid-cols-1 lg:grid-cols-2 gap-12 items-center'>
-            {/* Left: Text */}
-            <div className='max-w-xl'>
-              <div className='inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6'>
-                <span className='w-2 h-2 rounded-full bg-primary animate-pulse' />
-                DPC Networks
-              </div>
-
+      <GridSection>
+        <div className='container mx-auto px-6 py-24 lg:py-32'>
+          <div className='grid lg:grid-cols-2 gap-16 lg:gap-20 items-center'>
+            <div className='space-y-8'>
               <h1 className='text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight'>
                 Clear, Actionable{' '}
                 <span className='text-primary'>Data Insights</span>
@@ -330,13 +317,11 @@ const DPCNetworks = () => {
               </p>
 
               <div className='flex flex-wrap gap-4 mb-6'>
-                <Button
-                  asChild
-                  size='lg'
-                  className='gap-2 bg-primary hover:bg-primary/90'
-                >
-                  <Link to='/contact'>Request a Demo</Link>
-                </Button>
+                <CTAButton
+                  link='/contact'
+                  text='Request a Demo'
+                  suffixIconDefault
+                />
               </div>
 
               <div className='flex items-center gap-6 text-sm text-muted-foreground'>
@@ -361,40 +346,7 @@ const DPCNetworks = () => {
             </div>
           </div>
         </div>
-      </section>
-
-      {/* A Clear View Across Practices */}
-      <section className='py-20 bg-background'>
-        <div className='container mx-auto px-4'>
-          <div className='max-w-4xl'>
-            <h2 className='text-3xl md:text-4xl font-bold text-foreground mb-6'>
-              A Clear View Across Practices
-            </h2>
-            <p className='text-lg text-muted-foreground mb-4'>
-              Running a DPC network means supporting many practices at once.
-            </p>
-            <p className='text-xl font-medium text-foreground mb-8'>
-              We make that simpler.
-            </p>
-            <p className='text-lg text-muted-foreground mb-6'>
-              With Health Compiler, DPC networks can:
-            </p>
-            <div className='space-y-4 mb-8'>
-              {networkBenefits.map((benefit, index) => (
-                <div
-                  key={index}
-                  className='flex items-start gap-3'
-                >
-                  <CheckCircle className='h-6 w-6 text-primary flex-shrink-0 mt-0.5' />
-                  <p className='text-foreground'>{benefit}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* How This Helps You Day to Day */}
+      </GridSection>
       <section className='py-20 bg-muted/30'>
         <div className='container mx-auto px-4'>
           <h2 className='text-3xl md:text-4xl font-bold text-foreground mb-12 text-center'>

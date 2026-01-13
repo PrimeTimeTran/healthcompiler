@@ -6,6 +6,7 @@ import { CheckCircle } from 'lucide-react'
 import automatedTrackingImg from '@/assets/fm-automated-tracking.png'
 import hipaaComplianceImg from '@/assets/fm-hipaa-compliance.png'
 import employerInsightsImg from '@/assets/fm-employer-insights.png'
+import { CTAButton, GridSection } from '@/components/ui'
 
 const FunctionalMedicine = () => {
   const dataNeeds = [
@@ -17,33 +18,27 @@ const FunctionalMedicine = () => {
   ]
   return (
     <Layout>
-      <section className='relative bg-gradient-to-br from-primary/10 via-background to-background py-20 lg:py-32'>
-        <div className='container mx-auto px-4'>
-          <div className='max-w-4xl'>
-            <p className='text-primary font-medium mb-4'>Functional Medicine</p>
-            <h1 className='text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6'>
-              Functional Medicine
-            </h1>
-            <h2 className='text-2xl md:text-3xl font-semibold text-foreground mb-4'>
-              Clarity for Personalized, Root-Cause Care
-            </h2>
-            <p className='text-lg text-muted-foreground mb-4'>
-              Track engagement, follow-through, and outcomes across long-term
-              care plans. Layered patient data becomes easier to understand,
-              compare, and act on over time.
-            </p>
-            <Button
-              asChild
-              size='lg'
-              className='bg-primary hover:bg-primary/90'
-            >
-              <Link to='/contact'>Book A Demo</Link>
-            </Button>
+      <GridSection>
+        <div className='container mx-auto px-6 py-24 lg:py-32'>
+          <div className='grid lg:grid-cols-2 gap-16 lg:gap-20 items-center'>
+            <div className='space-y-8'>
+              <h1 className='text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6'>
+                Clarity for Personalized, Root-Cause Care
+              </h1>
+              <p className='text-lg text-muted-foreground mb-4'>
+                Track engagement, follow-through, and outcomes across long-term
+                care plans. Layered patient data becomes easier to understand,
+                compare, and act on over time.
+              </p>
+              <CTAButton
+                link='/contact'
+                text='Book a Demo'
+                suffixIconDefault
+              />
+            </div>
           </div>
         </div>
-      </section>
-
-      {/* Insights Section */}
+      </GridSection>
       <section className='py-16 bg-primary/5'>
         <div className='container mx-auto px-4'>
           <div className='grid md:grid-cols-2 gap-12 items-center'>

@@ -213,7 +213,7 @@ export const Header = () => {
               onMouseLeave={handleMouseLeave}
             >
               <Link
-                to='/platform'
+                to='#'
                 className={`flex items-center gap-1.5 text-[15px] font-medium transition-colors hover:text-foreground py-2 ${
                   location.pathname.startsWith('/platform')
                     ? 'text-foreground'
@@ -274,7 +274,7 @@ export const Header = () => {
               onMouseLeave={handleMouseLeave}
             >
               <Link
-                to='/solutions'
+                to='#'
                 className={`flex items-center gap-1.5 text-[15px] font-medium transition-colors hover:text-foreground py-2 ${
                   location.pathname === '/solutions'
                     ? 'text-foreground'

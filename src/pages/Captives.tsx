@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { Layout } from '@/components/layout/Layout'
 import { CheckCircle } from 'lucide-react'
+import { GridSection } from '@/components/ui'
 
 const Captives = () => {
   const governanceBenefits = [
@@ -19,37 +20,32 @@ const Captives = () => {
 
   return (
     <Layout>
-      {/* Hero */}
-      <section className='relative bg-gradient-to-br from-slate-50 via-white to-slate-50 py-20 lg:py-32'>
-        <div className='container mx-auto px-4'>
-          <div className='max-w-3xl'>
-            <div className='inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6'>
-              <span className='w-2 h-2 rounded-full bg-primary animate-pulse' />
-              Captives
+      <GridSection>
+        <div className='container mx-auto px-6 py-24 lg:py-32'>
+          <div className='grid lg:grid-cols-2 gap-16 lg:gap-20 items-center'>
+            <div className='space-y-8'>
+              <h1 className='text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight'>
+                Enable{' '}
+                <span className='text-primary'>Fiduciary Governance</span>{' '}
+                Across Shared Risk
+              </h1>
+
+              <p className='text-xl text-muted-foreground mb-8'>
+                Gain a clear, comparable view across members to support sound
+                governance, transparency, and consistent decision-making.
+              </p>
+
+              <Button
+                variant='gradient'
+                size='lg'
+                asChild
+              >
+                <Link to='/contact'>Book a Demo</Link>
+              </Button>
             </div>
-
-            <h1 className='text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight'>
-              Enable <span className='text-primary'>Fiduciary Governance</span>{' '}
-              Across Shared Risk
-            </h1>
-
-            <p className='text-xl text-muted-foreground mb-8'>
-              Gain a clear, comparable view across members to support sound
-              governance, transparency, and consistent decision-making.
-            </p>
-
-            <Button
-              variant='gradient'
-              size='lg'
-              asChild
-            >
-              <Link to='/contact'>Book a Demo</Link>
-            </Button>
           </div>
         </div>
-      </section>
-
-      {/* Governance */}
+      </GridSection>
       <section className='py-20 bg-background'>
         <div className='container mx-auto px-4'>
           <div className='max-w-4xl'>
