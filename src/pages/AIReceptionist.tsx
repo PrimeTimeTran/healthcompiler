@@ -463,11 +463,12 @@ const AIReceptionist = () => {
         <div className='container mx-auto px-6 py-24 lg:py-32'>
           <div className='grid grid-cols-1 lg:grid-cols-2 gap-12 items-center'>
             <div>
-              <h1 className='text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight'>
+              <h1 className='text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-[1.1]'>
                 AI Receptionist for{' '}
-                <span className='text-primary'>Modern Healthcare</span>
+                <span className='text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent'>
+                  Modern Healthcare
+                </span>
               </h1>
-
               <p className='text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed max-w-xl'>
                 Answer every call. Schedule every visit. Route every
                 request—automatically.

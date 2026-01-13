@@ -42,9 +42,11 @@ const Pediatrics = () => {
             <div className='space-y-8'>
               <div className='grid grid-cols-1 lg:grid-cols-1 gap-12 items-center'>
                 <div className='max-w-xl'>
-                  <h1 className='text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight'>
-                    <span className='text-primary'>Clarity </span> for Busy
-                    Pediatric Practices
+                  <h1 className='text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-[1.1]'>
+                    <span className='text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent'>
+                      Clarity
+                    </span>{' '}
+                    for Busy Pediatric Practices
                   </h1>
 
                   <p className='text-xl text-muted-foreground mb-8'>

@@ -106,10 +106,12 @@ const Employers = () => {
         <div className='container mx-auto px-6 py-24 lg:py-32'>
           <div className='grid lg:grid-cols-2 gap-16 lg:gap-20 items-center'>
             <div className='space-y-8'>
-              <h1 className='text-4xl md:text-5xl font-bold mb-6'>
+              <h1 className='text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-[1.1]'>
                 Employers can Level up cost savings, better outcomes with solid
                 benefits using{' '}
-                <span className='text-primary'>human capital data</span>
+                <span className='text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent'>
+                  Human Capital Data
+                </span>
               </h1>
               <p className='text-xl text-muted-foreground mb-8'>
                 Our platform + expertise can help reduces your healthcare spend
