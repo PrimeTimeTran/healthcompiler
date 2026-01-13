@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { CheckCircle, PhoneCall } from 'lucide-react'
 
-const AiCallTriaging = () => {
+const AICallTriaging = () => {
   const benefits = [
     'Identifies the intent of incoming patient calls',
     'Reduces front-desk overload',
@@ -122,4 +122,4 @@ const AiCallTriaging = () => {
   )
 }
 
-export default AiCallTriaging
+export default AICallTriaging

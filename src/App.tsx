@@ -61,7 +61,7 @@ import Form from './pages/Form'
 import BookADemo from './pages/BookADemo'
 import Pediatrics from './pages/Pediatrics'
 import MarketingAutomation from './pages/MarketingAutomation'
-import AiCallTriaging from './pages/AiCallTriaging'
+import AICallTriaging from './pages/AICallTriaging'
 import BrokersAndAdvisors from './pages/BrokersAndAdvisors'
 import Captives from './pages/Captives'
 import EmployersLoop from './pages/EmployersLoop'
@@ -111,7 +111,7 @@ const App = () => (
           />
           <Route
             path='/ai-call-triaging'
-            element={<AiCallTriaging />}
+            element={<AICallTriaging />}
           />
           <Route
             path='/solutions/pediatrics'
