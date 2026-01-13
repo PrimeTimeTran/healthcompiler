@@ -61,7 +61,12 @@ import Form from './pages/Form'
 import BookADemo from './pages/BookADemo'
 import Pediatrics from './pages/Pediatrics'
 import MarketingAutomation from './pages/MarketingAutomation'
-import AiCallTriaging from './pages/AICallTriaging'
+import AiCallTriaging from './pages/AiCallTriaging'
+
+import BrokersAndAdvisors from './pages/BrokersAndAdvisors'
+import Captives from './pages/Captives'
+import EmployersLoop from './pages/EmployersLoop'
+import TPAHealthPlans from './pages/TPAHealthPlans'
 
 const queryClient = new QueryClient()
 
@@ -76,6 +81,22 @@ const App = () => (
           <Route
             path='/'
             element={<Index />}
+          />
+          <Route
+            path='/brokers-advisors'
+            element={<BrokersAndAdvisors />}
+          />
+          <Route
+            path='/captives'
+            element={<Captives />}
+          />
+          <Route
+            path='/employers-loop'
+            element={<EmployersLoop />}
+          />
+          <Route
+            path='/tpa-health-plans'
+            element={<TPAHealthPlans />}
           />
           <Route
             path='/book-a-demo'
@@ -281,6 +302,7 @@ const App = () => (
             path='/resources/news-events/fmma-membership'
             element={<FMMAMembership />}
           />
+
           <Route
             path='/resources/news-events/elation-partnership'
             element={<ElationPartnership />}

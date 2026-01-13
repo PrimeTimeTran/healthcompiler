@@ -116,10 +116,10 @@ const whoWeServeCategories: SubMenuCategory[] = [
   {
     category: 'Care Purchasers',
     items: [
-      { label: "TPA's & Health Plans", href: '/solutions/tpa-health-plans' },
-      { label: 'Brokers & Advisors', href: '/solutions/brokers-advisors' },
+      { label: "TPA's & Health Plans", href: '/tpa-health-plans' },
+      { label: 'Brokers & Advisors', href: '/brokers-advisors' },
       { label: 'Employers', href: '/solutions/employers' },
-      { label: 'Captives', href: '/solutions/captives' },
+      { label: 'Captives', href: '/captives' },
     ],
   },
   {
