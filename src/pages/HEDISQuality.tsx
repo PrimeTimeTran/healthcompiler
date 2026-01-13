@@ -596,16 +596,11 @@ const CTASection = () => {
         <p className='text-lg text-muted-foreground max-w-xl mx-auto mb-8'>
           Stop reporting on quality. Start improving it—every day.
         </p>
-        <Button
-          size='lg'
-          className='group'
-          asChild
-        >
-          <Link to='/contact'>
-            Book a quality performance walkthrough
-            <ArrowRight className='ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform' />
-          </Link>
-        </Button>
+        <CTAButton
+          link='/contact'
+          text='Book a quality performance walkthrough'
+          suffixIconDefault
+        />
       </div>
     </section>
   )

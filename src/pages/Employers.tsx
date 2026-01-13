@@ -16,7 +16,7 @@ import intuitivePlatformImg from '@/assets/employers-intuitive-platform.png'
 import teamExpertsImg from '@/assets/employers-team-experts.png'
 import planBenchmarkingImg from '@/assets/employers-plan-benchmarking.png'
 import targetedSolutionsImg from '@/assets/employers-targeted-solutions.png'
-import { GridSection } from '@/components/ui'
+import { CTAButton, GridSection } from '@/components/ui'
 
 const Employers = () => {
   const dataProcessSteps = [
@@ -232,13 +232,11 @@ const Employers = () => {
             and transparent healthcare solutions. Connect with us today to learn
             more.
           </p>
-          <Button
-            asChild
-            size='lg'
-            variant='secondary'
-          >
-            <Link to='/contact'>Book Your Demo</Link>
-          </Button>
+          <CTAButton
+            link='/contact'
+            text='Book a Demo'
+            suffixIconDefault
+          />
         </div>
       </section>
     </Layout>

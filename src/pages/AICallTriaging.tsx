@@ -106,14 +106,11 @@ const AICallTriaging = () => {
           <h2 className='text-3xl md:text-4xl font-bold text-foreground mb-6'>
             See How AI Call Triaging Fits Your Practice
           </h2>
-
-          <Button
-            asChild
-            size='lg'
-            className='bg-primary hover:bg-primary/90'
-          >
-            <Link to='/contact'>Request a Demo</Link>
-          </Button>
+          <CTAButton
+            link='/contact'
+            text='Request a Demo'
+            suffixIconDefault
+          />
         </div>
       </section>
     </Layout>

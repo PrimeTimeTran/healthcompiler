@@ -688,16 +688,11 @@ const FinalCTASection = () => {
           <p className='text-lg text-white/70 mb-8'>
             Measure less. Improve more. Stay ahead—automatically.
           </p>
-          <Button
-            size='lg'
-            className='group bg-white text-slate-900 hover:bg-white/90'
-            asChild
-          >
-            <Link to='/contact'>
-              Book a MIPS performance walkthrough
-              <ArrowRight className='ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform' />
-            </Link>
-          </Button>
+          <CTAButton
+            link='/contact'
+            text='Book a MIPS performance walkthrough'
+            suffixIconDefault
+          />
         </div>
       </div>
     </section>

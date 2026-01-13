@@ -177,13 +177,11 @@ const MarketingAutomation = () => {
             Ready to See How This Works for Your Practice?
           </h2>
 
-          <Button
-            asChild
-            size='lg'
-            className='bg-primary hover:bg-primary/90'
-          >
-            <Link to='/contact'>Request a Demo</Link>
-          </Button>
+          <CTAButton
+            link='/contact'
+            text='Request a Demo'
+            suffixIconDefault
+          />
         </div>
       </section>
     </Layout>

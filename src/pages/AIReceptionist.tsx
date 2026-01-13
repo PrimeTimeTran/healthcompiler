@@ -690,16 +690,11 @@ const AIReceptionist = () => {
             <p className='text-lg md:text-xl text-muted-foreground mb-8'>
               So your team can focus on patients—not phones.
             </p>
-            <Button
-              size='lg'
-              className='gap-2'
-              asChild
-            >
-              <Link to='/contact'>
-                Book your demo
-                <ArrowRight className='w-4 h-4' />
-              </Link>
-            </Button>
+            <CTAButton
+              link='/contact'
+              text='Book your Demo'
+              suffixIconDefault
+            />
           </div>
         </div>
       </section>

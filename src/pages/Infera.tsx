@@ -73,8 +73,11 @@ const Infera = () => {
       <GridSection>
         <div className='container mx-auto px-6 relative'>
           <div className='max-w-4xl mx-auto text-center'>
-            <h1 className='font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6'>
-              Meet <span className='text-gradient'>Infera</span>
+            <h1 className='text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-[1.1]'>
+              Meet{' '}
+              <span className='text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent'>
+                Infera
+              </span>
             </h1>
             <p className='text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed'>
               The AI engine purpose-built for healthcare — powering intelligent

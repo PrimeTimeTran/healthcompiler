@@ -568,13 +568,11 @@ const ConciergeMedicine = () => {
               with clear insight and thoughtful automation.
             </p>
             <div className='flex flex-wrap justify-center gap-4'>
-              <Button
-                asChild
-                size='lg'
-                className='bg-primary hover:bg-primary/90'
-              >
-                <Link to='/contact'>Book a Demo</Link>
-              </Button>
+              <CTAButton
+                link='/contact'
+                text='Book a Demo'
+                suffixIconDefault
+              />
               <Button
                 asChild
                 variant='outline'

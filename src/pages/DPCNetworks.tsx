@@ -484,13 +484,11 @@ const DPCNetworks = () => {
               If you want fewer blind spots and clearer insight across your DPC
               network, let's talk.
             </p>
-            <Button
-              asChild
-              size='lg'
-              className='gap-2 bg-primary hover:bg-primary/90'
-            >
-              <Link to='/contact'>Request a Demo</Link>
-            </Button>
+            <CTAButton
+              link='/contact'
+              text='Request a Demo'
+              suffixIconDefault
+            />
           </div>
         </div>
       </section>

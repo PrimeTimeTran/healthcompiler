@@ -608,16 +608,11 @@ const CTASection = () => {
           </h2>
 
           <div className='flex flex-col sm:flex-row gap-4 justify-center mb-8'>
-            <Button
-              size='lg'
-              className='group'
-              asChild
-            >
-              <Link to='/contact'>
-                Explore the Platform
-                <ArrowRight className='ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform' />
-              </Link>
-            </Button>
+            <CTAButton
+              link='/contact'
+              text='Explore the Platform'
+              suffixIconDefault
+            />
             <Button
               size='lg'
               variant='outline'

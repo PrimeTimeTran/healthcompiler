@@ -551,13 +551,11 @@ const MedicalWeightLoss = () => {
               program.
             </p>
             <div className='flex flex-wrap justify-center gap-4'>
-              <Button
-                asChild
-                size='lg'
-                className='gap-2 bg-primary hover:bg-primary/90'
-              >
-                <Link to='/book-a-demo'>Book a Demo</Link>
-              </Button>
+              <CTAButton
+                link='/contact'
+                text='Book a Demo'
+                suffixIconDefault
+              />
               <Button
                 asChild
                 variant='outline'

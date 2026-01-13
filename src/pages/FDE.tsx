@@ -564,16 +564,13 @@ const CTASection = () => {
         <p className='text-lg text-muted-foreground max-w-xl mx-auto mb-8'>
           Expert engineers. Embedded with your team. Production-ready in weeks.
         </p>
-        <Button
-          size='lg'
-          className='group'
-          asChild
-        >
-          <Link to='/contact'>
-            Book a 20-min FDE scoping call
-            <ArrowRight className='ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform' />
-          </Link>
-        </Button>
+        <CTAButton
+          link='/contact'
+          text='Book a 20-min FDE scoping call'
+          iconSuffix={
+            <ArrowRight className='ml-2 transition-transform group-hover:translate-x-1' />
+          }
+        />
       </div>
     </section>
   )

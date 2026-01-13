@@ -557,16 +557,11 @@ const FinalCTASection = () => {
           <p className='text-lg text-white/70 mb-8'>
             Turn suspect conditions into documented HCCs with confidence.
           </p>
-          <Button
-            size='lg'
-            className='group bg-white text-slate-900 hover:bg-white/90'
-            asChild
-          >
-            <Link to='/contact'>
-              Book a discovery call
-              <ArrowRight className='ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform' />
-            </Link>
-          </Button>
+          <CTAButton
+            link='/contact'
+            text='Book a discovery call'
+            suffixIconDefault
+          />
         </div>
       </div>
     </section>

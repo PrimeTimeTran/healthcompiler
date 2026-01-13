@@ -502,13 +502,11 @@ const ManagedServiceOrgs = () => {
               without added operational burden, let's talk.
             </p>
             <div className='flex flex-wrap justify-center gap-4'>
-              <Button
-                asChild
-                size='lg'
-                className='bg-primary hover:bg-primary/90'
-              >
-                <Link to='/contact'>Request a Demo</Link>
-              </Button>
+              <CTAButton
+                link='/contact'
+                text='Request a Demo'
+                suffixIconDefault
+              />
             </div>
           </div>
         </div>

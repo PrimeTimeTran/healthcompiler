@@ -126,13 +126,13 @@ const FunctionalMedicine = () => {
               </p>
             </div>
           </div>
-          <Button
-            asChild
-            size='lg'
-            className='bg-primary hover:bg-primary/90 align-middle  w-1/4 mx-auto'
-          >
-            <Link to='/contact'>Explore</Link>
-          </Button>
+          <div className='flex justify-center'>
+            <CTAButton
+              link='/contact'
+              text='Explore'
+              suffixIconDefault
+            />
+          </div>
         </div>
       </section>
 
@@ -162,13 +162,11 @@ const FunctionalMedicine = () => {
             care, and outcomes, so teams can focus on what matters most.
           </p>
           <div className='flex justify-center'>
-            <Button
-              asChild
-              size='lg'
-              className='bg-primary hover:bg-primary/90 w-1/4'
-            >
-              <Link to='/contact'>Book A Demo</Link>
-            </Button>
+            <CTAButton
+              link='/contact'
+              text='Book a Demo'
+              suffixIconDefault
+            />
           </div>
         </div>
       </section>
