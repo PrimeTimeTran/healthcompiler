@@ -344,7 +344,7 @@ export const Header = () => {
               </Link>
 
               {openDropdown === 'Who We Serve' && (
-                <div className='absolute top-full left-0 pt-2 z-50'>
+                <div className='absolute top-full left-1/2 -translate-x-1/2 pt-2 z-50'>
                   <div className='bg-background border border-border rounded-lg shadow-xl animate-fade-in w-[900px] p-6'>
                     <div className='grid grid-cols-4 gap-6'>
                       {whoWeServeCategories.map((category) => (
