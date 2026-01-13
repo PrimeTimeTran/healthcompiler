@@ -35,7 +35,6 @@ const Integration = () => {
   return (
     <Layout>
       <section className='relative py-16 md:py-24 bg-gradient-to-br from-slate-50 via-white to-slate-50 overflow-hidden'>
-        {/* Subtle grid background */}
         <div
           className='absolute inset-0 opacity-[0.03]'
           style={{
@@ -44,13 +43,13 @@ const Integration = () => {
             backgroundSize: '80px 80px',
           }}
         />
-
         <div className='container mx-auto px-4 relative'>
-          {/* Header */}
           <div className='text-center mb-12'>
-            <h1 className='text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4'>
+            <h1 className='text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-[1.1]'>
               Connect with your{' '}
-              <span className='text-gradient'>existing apps</span>
+              <span className='text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent'>
+                existing apps
+              </span>
             </h1>
             <p className='text-lg text-muted-foreground max-w-2xl mx-auto'>
               Seamlessly integrate with 50+ healthcare and business applications
