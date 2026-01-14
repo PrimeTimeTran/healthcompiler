@@ -47,9 +47,7 @@ const Integration = () => {
           <div className='text-center mb-12'>
             <h1 className='text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-[1.1]'>
               Connect with your{' '}
-              <span className='text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent'>
-                existing apps
-              </span>
+              <span className='text-primary'>existing apps</span>
             </h1>
             <p className='text-lg text-muted-foreground max-w-2xl mx-auto'>
               Seamlessly integrate with 50+ healthcare and business applications

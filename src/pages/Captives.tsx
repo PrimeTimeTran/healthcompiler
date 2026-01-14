@@ -26,9 +26,7 @@ const Captives = () => {
             <div className='space-y-8'>
               <h1 className='text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-[1.1]'>
                 Enable{' '}
-                <span className='text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent'>
-                  Fiduciary Governance
-                </span>{' '}
+                <span className='text-primary'>Fiduciary Governance</span>{' '}
                 Across Shared Risk
               </h1>
 

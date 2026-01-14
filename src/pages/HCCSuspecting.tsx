@@ -42,9 +42,7 @@ const HeroSection = () => {
           <div className='space-y-8'>
             <h1 className='text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-[1.1]'>
               HCC Suspecting for{' '}
-              <span className='text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent'>
-                Better Risk Capture
-              </span>
+              <span className='text-primary'>Better Risk Capture</span>
             </h1>
 
             <p className='text-lg md:text-xl text-muted-foreground leading-relaxed max-w-xl'>

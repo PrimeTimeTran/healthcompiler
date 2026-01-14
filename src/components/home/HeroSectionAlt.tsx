@@ -367,7 +367,7 @@ export const HeroSectionAlt = () => {
                       key={word}
                       className={`inline-block transition-all duration-700 ${
                         idx === activeWord
-                          ? 'text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent scale-105'
+                          ? 'text-primary bg-clip-text bg-gradient-to-r  scale-105'
                           : 'text-muted-foreground/20 scale-100 hidden'
                       }`}
                     >
@@ -500,7 +500,7 @@ export const HeroSectionAlt = () => {
                     <div className='text-[10px] text-muted-foreground uppercase tracking-widest mb-1'>
                       Powered by
                     </div>
-                    <div className='text-2xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent group-hover:scale-105 transition-transform'>
+                    <div className='text-2xl font-display font-bold text-primary group-hover:scale-105 transition-transform'>
                       Infera
                     </div>
                   </Link>

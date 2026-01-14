@@ -24,9 +24,7 @@ const FunctionalMedicine = () => {
             <div className='space-y-8'>
               <h1 className='text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-[1.1]'>
                 Clarity for Personalized{' '}
-                <span className='text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent'>
-                  Root-Cause Care
-                </span>
+                <span className='text-primary'>Root-Cause Care</span>
               </h1>
               <p className='text-lg text-muted-foreground mb-4'>
                 Track engagement, follow-through, and outcomes across long-term

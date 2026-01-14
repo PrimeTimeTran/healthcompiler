@@ -34,7 +34,7 @@ export function HealthOutcomesCTA() {
         <div className='max-w-3xl mx-auto text-center'>
           <h2 className='text-3xl md:text-4xl lg:text-5xl font-bold mb-6'>
             Move From Reactive to{' '}
-            <span className='text-gradient'>Proactive Care</span>
+            <span className='text-primary'>Proactive Care</span>
           </h2>
           <p className='text-lg text-muted-foreground mb-10 max-w-2xl mx-auto'>
             Support better health outcomes across your population with real-time

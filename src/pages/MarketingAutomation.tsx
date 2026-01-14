@@ -35,9 +35,7 @@ const MarketingAutomation = () => {
               <div>
                 <h1 className='text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-[1.1]'>
                   Turn Inquiries Into{' '}
-                  <span className='text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent'>
-                    Conversations
-                  </span>
+                  <span className='text-primary'>Conversations</span>
                 </h1>
 
                 <p className='text-lg text-muted-foreground mb-8'>

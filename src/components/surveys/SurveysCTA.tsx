@@ -34,7 +34,7 @@ export function SurveysCTA() {
         <div className='max-w-3xl mx-auto text-center'>
           <h2 className='text-3xl md:text-4xl lg:text-5xl font-bold mb-6'>
             Turn Feedback Into a{' '}
-            <span className='text-gradient'>System, Not a Task</span>
+            <span className='text-primary'>System, Not a Task</span>
           </h2>
           <p className='text-lg text-muted-foreground mb-10 max-w-2xl mx-auto'>
             Collect better signals. Respond sooner. Improve experience

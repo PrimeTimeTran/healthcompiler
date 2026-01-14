@@ -26,10 +26,8 @@ const BrokersAndAdvisors = () => {
             <div className='space-y-8'>
               <div className='max-w-3xl'>
                 <h1 className='text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-[1.1]'>
-                  <span className='text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent'>
-                    Use Data
-                  </span>{' '}
-                  to Win and Retain Clients
+                  <span className='text-primary'>Use Data</span> to Win and
+                  Retain Clients
                 </h1>
 
                 <p className='text-xl text-muted-foreground mb-8'>

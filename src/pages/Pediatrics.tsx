@@ -41,10 +41,8 @@ const Pediatrics = () => {
           <div className='grid lg:grid-cols-2 gap-16 lg:gap-20 items-center'>
             <div className='space-y-8'>
               <h1 className='text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-[1.1]'>
-                <span className='text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent'>
-                  Clarity
-                </span>{' '}
-                for Busy Pediatric Practices
+                <span className='text-primary'>Clarity</span> for Busy Pediatric
+                Practices
               </h1>
 
               <p className='text-xl text-muted-foreground mb-8'>
@@ -109,8 +107,7 @@ const Pediatrics = () => {
           <div className='text-center mb-14'>
             <h2 className='font-display text-3xl md:text-4xl font-bold text-foreground mb-4'>
               How We
-              <span className='text-gradient'> Support</span> Pediatric
-              Practices
+              <span className='text-primary'> Support</span> Pediatric Practices
             </h2>
             <p className='text-muted-foreground text-lg max-w-2xl mx-auto'>
               Infera adapts to your specific needs — whether you're managing
@@ -126,7 +123,7 @@ const Pediatrics = () => {
                 className='p-6 m-6 bg-white border border-border/50 rounded-xl hover:shadow-xl hover:border-accent/30 transition-all duration-300 flex flex-col items-center text-center w-1/2'
               >
                 <div className='w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mb-4'>
-                  <persona.icon className='w-6 h-6 text-accent' />
+                  <persona.icon className='w-6 h-6 text-primary' />
                 </div>
                 <h3 className='font-semibold text-foreground mb-2'>
                   {persona.title}

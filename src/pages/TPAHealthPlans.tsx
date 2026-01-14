@@ -29,10 +29,8 @@ const TPAHealthPlans = () => {
               <div className='max-w-3xl'>
                 <h1 className='text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-[1.1]'>
                   Measure How{' '}
-                  <span className='text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent'>
-                    Care Strategies
-                  </span>{' '}
-                  Perform — Across Models
+                  <span className='text-primary'>Care Strategies</span> Perform
+                  — Across Models
                 </h1>
 
                 <p className='text-xl text-muted-foreground mb-8'>

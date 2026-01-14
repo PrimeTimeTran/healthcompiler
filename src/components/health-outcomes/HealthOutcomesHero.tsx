@@ -43,9 +43,7 @@ export function HealthOutcomesHero() {
 
             <h1 className='text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-[1.1]'>
               Health Outcomes That Enable{' '}
-              <span className='text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent'>
-                Proactive Care
-              </span>
+              <span className='text-primary'>Proactive Care</span>
             </h1>
 
             <h2 className='text-lg md:text-xl text-muted-foreground leading-relaxed max-w-xl'>

@@ -128,10 +128,8 @@ const ACOs = () => {
           <div className='grid lg:grid-cols-2 gap-16 lg:gap-20 items-center'>
             <div className='space-y-8'>
               <h1 className='text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-[1.1]'>
-                <span className='text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent'>
-                  ACO Utilization
-                </span>{' '}
-                & Cost Evaluation
+                <span className='text-primary'>ACO Utilization</span> & Cost
+                Evaluation
               </h1>
               <h2 className='text-primary text-2xl font-bold mb-4'>Overview</h2>
               <h3 className='text-2xl font-bold mb-6'>

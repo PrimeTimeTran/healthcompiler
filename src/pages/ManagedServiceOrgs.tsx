@@ -314,9 +314,7 @@ const ManagedServiceOrgs = () => {
             <div className='space-y-8'>
               <h1 className='text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-[1.1]'>
                 Supporting Practices with{' '}
-                <span className='text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent'>
-                  Data
-                </span>
+                <span className='text-primary'>Data</span>
               </h1>
 
               <p className='text-lg text-muted-foreground mb-8'>

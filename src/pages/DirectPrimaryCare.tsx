@@ -337,9 +337,7 @@ const DirectPrimaryCare = () => {
           <div className='grid lg:grid-cols-2 gap-16 lg:gap-20 items-center'>
             <div className='space-y-8'>
               <h1 className='text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-[1.1]'>
-                <span className='text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent'>
-                  Direct Primary Care{' '}
-                </span>
+                <span className='text-primary'>Direct Primary Care </span>
                 Supported With Clarity
               </h1>
 

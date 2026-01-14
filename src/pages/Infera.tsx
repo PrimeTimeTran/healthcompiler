@@ -74,10 +74,7 @@ const Infera = () => {
         <div className='container mx-auto px-6 relative'>
           <div className='max-w-4xl mx-auto text-center'>
             <h1 className='text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-[1.1]'>
-              Meet{' '}
-              <span className='text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent'>
-                Infera
-              </span>
+              Meet <span className='text-primary '>Infera</span>
             </h1>
             <p className='text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed'>
               The AI engine purpose-built for healthcare — powering intelligent
@@ -118,7 +115,7 @@ const Infera = () => {
         <div className='container mx-auto px-6 relative'>
           <div className='text-center mb-14'>
             <h2 className='font-display text-3xl md:text-4xl font-bold text-foreground mb-4'>
-              Built for <span className='text-gradient'>Your Organization</span>
+              Built for <span className='text-primary'>Your Organization</span>
             </h2>
             <p className='text-muted-foreground text-lg max-w-2xl mx-auto'>
               Infera adapts to your specific needs — whether you're managing
@@ -153,7 +150,7 @@ const Infera = () => {
         <div className='container mx-auto px-6'>
           <div className='text-center mb-14'>
             <h2 className='font-display text-3xl md:text-4xl font-bold text-foreground mb-4'>
-              Why <span className='text-gradient'>Infera</span>?
+              Why <span className='text-primary'>Infera</span>?
             </h2>
             <p className='text-muted-foreground text-lg max-w-2xl mx-auto'>
               Built specifically for healthcare, Infera delivers intelligence
@@ -197,8 +194,7 @@ const Infera = () => {
         <div className='container mx-auto px-6 text-center relative'>
           <h2 className='font-display text-3xl md:text-4xl font-bold text-foreground mb-4'>
             Ready to{' '}
-            <span className='text-gradient'>activate your healthcare data</span>
-            ?
+            <span className='text-primary'>activate your healthcare data</span>?
           </h2>
           <p className='text-muted-foreground text-lg max-w-2xl mx-auto mb-8'>
             See how Infera can transform your organization — whether you're a
