@@ -250,7 +250,7 @@ const WhyItMattersSection = () => {
   ]
 
   return (
-    <section className='py-24 bg-white'>
+    <section className='py-20 md:py-28 bg-gradient-to-b from-background to-muted/20'>
       <div className='container mx-auto px-6'>
         <div className='text-center mb-16'>
           <h2 className='text-3xl md:text-4xl font-display font-bold text-foreground'>
@@ -325,7 +325,7 @@ const HowItWorksSection = () => {
   return (
     <section
       ref={sectionRef}
-      className='py-24 bg-gradient-to-b from-slate-50 to-white'
+      className='py-20 md:py-28 bg-background'
     >
       <div className='container mx-auto px-6'>
         <div className='text-center mb-16'>
@@ -418,7 +418,7 @@ const ResultsSection = () => {
   ]
 
   return (
-    <section className='py-24 bg-white'>
+    <section className='py-20 md:py-28 bg-muted/40'>
       <div className='container mx-auto px-6'>
         <div className='text-center mb-16'>
           <h2 className='text-3xl md:text-4xl font-display font-bold text-foreground'>
@@ -501,7 +501,7 @@ const BuiltForHealthcareSection = () => {
   ]
 
   return (
-    <section className='py-24 bg-gradient-to-b from-white to-slate-50'>
+    <section className='py-20 md:py-28 bg-background'>
       <div className='container mx-auto px-6'>
         <div className='max-w-3xl mx-auto'>
           <h2 className='text-3xl md:text-4xl font-display font-bold text-foreground text-center mb-12'>

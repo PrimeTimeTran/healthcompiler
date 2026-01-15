@@ -508,7 +508,7 @@ const AIReceptionist = () => {
         </div>
       </GridSection>
       {/* Why Section */}
-      <section className='py-16 md:py-24 bg-white'>
+      <section className='py-20 md:py-28 bg-background'>
         <div className='container mx-auto px-6'>
           <h2 className='text-3xl md:text-4xl font-bold text-center text-foreground mb-12'>
             Why an AI Receptionist
@@ -548,16 +548,7 @@ const AIReceptionist = () => {
           </div>
         </div>
       </section>
-
-      {/* How It Works - Animation #2 */}
-      <section className='py-16 md:py-24 bg-gradient-to-br from-slate-50 via-white to-slate-50 relative overflow-hidden'>
-        <div
-          className='absolute inset-0 opacity-[0.03] pointer-events-none'
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          }}
-        />
-
+      <section className='py-20 md:py-28 bg-muted/40'>
         <div className='container mx-auto px-6 relative z-10'>
           <div className='text-center mb-12'>
             <h2 className='text-3xl md:text-4xl font-bold text-foreground mb-4'>
@@ -593,7 +584,7 @@ const AIReceptionist = () => {
       </section>
 
       {/* Capabilities */}
-      <section className='py-16 md:py-24 bg-white'>
+      <section className='py-20 md:py-28 bg-background'>
         <div className='container mx-auto px-6'>
           <div className='text-center mb-12'>
             <h2 className='text-3xl md:text-4xl font-bold text-foreground mb-4'>
@@ -613,16 +604,7 @@ const AIReceptionist = () => {
           </div>
         </div>
       </section>
-
-      {/* Before/After - Animation #3 */}
-      <section className='py-16 md:py-24 bg-gradient-to-br from-slate-50 via-white to-slate-50 relative overflow-hidden'>
-        <div
-          className='absolute inset-0 opacity-[0.03] pointer-events-none'
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          }}
-        />
-
+      <section className='py-20 md:py-28 bg-muted/40'>
         <div className='container mx-auto px-6 relative z-10'>
           <div className='text-center mb-12'>
             <h2 className='text-3xl md:text-4xl font-bold text-foreground mb-4'>
@@ -643,9 +625,7 @@ const AIReceptionist = () => {
           </div>
         </div>
       </section>
-
-      {/* Built For Section */}
-      <section className='py-16 md:py-24 bg-white'>
+      <section className='py-20 md:py-28 bg-background'>
         <div className='container mx-auto px-6'>
           <div className='max-w-3xl mx-auto'>
             <h2 className='text-3xl md:text-4xl font-bold text-foreground mb-8 text-center'>
@@ -670,16 +650,7 @@ const AIReceptionist = () => {
           </div>
         </div>
       </section>
-
-      {/* Final CTA */}
-      <section className='py-16 md:py-24 bg-gradient-to-br from-slate-50 via-white to-slate-50 relative overflow-hidden'>
-        <div
-          className='absolute inset-0 opacity-[0.03] pointer-events-none'
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          }}
-        />
-
+      <section className='py-20 md:py-28 bg-muted/40'>
         <div className='container mx-auto px-6 relative z-10'>
           <div className='max-w-3xl mx-auto text-center'>
             <h2 className='text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6'>
