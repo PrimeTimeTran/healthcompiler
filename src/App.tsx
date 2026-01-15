@@ -66,6 +66,7 @@ import BrokersAndAdvisors from './pages/BrokersAndAdvisors'
 import Captives from './pages/Captives'
 import EmployersLoop from './pages/EmployersLoop'
 import TPAHealthPlans from './pages/TPAHealthPlans'
+import DesignKit from './pages/DesignKit/DesignKit'
 
 const queryClient = new QueryClient()
 
@@ -80,6 +81,10 @@ const App = () => (
           <Route
             path='/'
             element={<Index />}
+          />
+          <Route
+            path='/design-kit'
+            element={<DesignKit />}
           />
           <Route
             path='/brokers-advisors'

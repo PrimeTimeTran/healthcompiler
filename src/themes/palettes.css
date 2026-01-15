@@ -1,0 +1,77 @@
+html[data-palette='new'] {
+  --background: 0 0% 100%;
+  --foreground: 222 47% 11%;
+  --muted: 210 40% 96%;
+  --muted-foreground: 215 16% 47%;
+  --border: 214 32% 91%;
+  --ring: 222 89% 55%;
+  --primary: 222 89% 55%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 210 40% 96%;
+  --secondary-foreground: 222 47% 11%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --link: 222 89% 55%;
+}
+
+html[data-palette='new'].dark {
+  --background: 222 47% 11%;
+  --foreground: 0 0% 100%;
+
+  --muted: 222 30% 18%;
+  --muted-foreground: 215 20% 65%;
+
+  --border: 222 30% 25%;
+  --ring: 222 89% 55%;
+
+  --secondary: 222 30% 18%;
+  --secondary-foreground: 0 0% 100%;
+}
+
+html[data-palette='new'][data-theme='ocean'] {
+  --primary: 200 90% 45%;
+  --secondary: 200 35% 90%;
+  --secondary-foreground: 200 60% 20%;
+  --ring: 200 90% 45%;
+  --link: 200 90% 45%;
+  --destructive: 355 75% 55%;
+}
+
+html[data-palette='new'][data-theme='ocean'].dark {
+  --primary: 200 90% 55%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 200 30% 18%;
+  --secondary-foreground: 200 30% 96%;
+  --muted: 200 25% 16%;
+  --muted-foreground: 200 20% 65%;
+  --border: 200 30% 28%;
+  --ring: 200 90% 55%;
+  --link: 200 90% 65%;
+  --destructive: 355 75% 55%;
+  --destructive-foreground: 0 0% 100%;
+}
+
+html[data-palette='new'][data-theme='forest'] {
+  --primary: 140 60% 35%;
+  --secondary: 140 35% 90%;
+  --secondary-foreground: 140 40% 20%;
+  --ring: 140 60% 35%;
+  --link: 140 60% 35%;
+}
+
+html[data-palette='new'][data-theme='forest'].dark {
+  --secondary: 140 30% 18%;
+  --secondary-foreground: 140 30% 96%;
+}
+
+html[data-palette='new'][data-theme='royal'] {
+  --primary: 260 80% 60%;
+  --secondary: 260 40% 90%;
+  --secondary-foreground: 260 50% 20%;
+  --ring: 260 80% 60%;
+  --link: 260 80% 60%;
+}
+html[data-palette='new'][data-theme='royal'].dark {
+  --secondary: 260 30% 18%;
+  --secondary-foreground: 260 30% 96%;
+}
