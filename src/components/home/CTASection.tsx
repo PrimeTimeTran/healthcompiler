@@ -21,7 +21,6 @@ export const CTASection = () => {
             can help you achieve operational excellence.
           </p>
           <Button
-            variant='gradient'
             size='xl'
             asChild
           >

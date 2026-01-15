@@ -153,7 +153,6 @@ const Contact = () => {
                 </div>
                 <Button
                   type='submit'
-                  variant='gradient'
                   size='lg'
                   className='w-full'
                   disabled={isSubmitting}

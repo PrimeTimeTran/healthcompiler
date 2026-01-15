@@ -36,7 +36,6 @@ const Captives = () => {
               </p>
 
               <Button
-                variant='gradient'
                 size='lg'
                 asChild
               >
@@ -115,7 +114,6 @@ const Captives = () => {
           </p>
 
           <Button
-            variant='gradient'
             size='lg'
             asChild
           >

@@ -41,7 +41,6 @@ const TPAHealthPlans = () => {
                 <Button
                   asChild
                   size='lg'
-                  variant='gradient'
                 >
                   <Link to='/contact'>Book a Demo</Link>
                 </Button>

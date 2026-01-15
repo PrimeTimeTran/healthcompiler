@@ -84,7 +84,6 @@ const Infera = () => {
             </p>
             <div className='flex flex-col sm:flex-row items-center justify-center gap-4'>
               <Button
-                variant='gradient'
                 size='lg'
                 asChild
               >
@@ -202,7 +201,6 @@ const Infera = () => {
             organization.
           </p>
           <Button
-            variant='gradient'
             size='lg'
             asChild
           >

@@ -54,7 +54,6 @@ const Pediatrics = () => {
                 <Button
                   asChild
                   size='lg'
-                  variant='gradient'
                 >
                   <Link to='/contact'>Book a Demo</Link>
                 </Button>
@@ -147,7 +146,6 @@ const Pediatrics = () => {
           </p>
           <div className='flex flex-col sm:flex-row gap-4 justify-center'>
             <Button
-              variant='gradient'
               size='lg'
               asChild
             >

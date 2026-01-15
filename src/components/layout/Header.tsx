@@ -524,8 +524,7 @@ export const Header = () => {
               <span className='text-accent'>→</span>
             </a>
             <Button
-              variant='gradient'
-              size='default'
+              size='lg'
               className='rounded-full px-5'
               asChild
             >
@@ -734,8 +733,7 @@ export const Header = () => {
               </Link>
 
               <Button
-                variant='gradient'
-                size='default'
+                size='lg'
                 className='mt-4'
                 asChild
               >

@@ -75,7 +75,6 @@ const Integration = () => {
               <Button
                 size='lg'
                 type='submit'
-                variant='gradient'
                 className='w-full sm:w-auto h-14 px-16 text-base font-semibold rounded-lg bg-primary hover:bg-primary/90'
               >
                 Submit

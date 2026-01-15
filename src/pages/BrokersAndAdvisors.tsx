@@ -36,7 +36,6 @@ const BrokersAndAdvisors = () => {
                 </p>
 
                 <Button
-                  variant='gradient'
                   size='lg'
                   asChild
                 >
@@ -114,7 +113,6 @@ const BrokersAndAdvisors = () => {
           </p>
 
           <Button
-            variant='gradient'
             size='lg'
             asChild
           >
