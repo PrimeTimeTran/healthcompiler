@@ -1,0 +1,66 @@
+# Site: Health Compiler
+# Description: Empower your DPC practice with AI-driven analytics & tailored solutions. Enhance patient engagement & optimize care strategies today!
+# Language: en
+# Last-Updated: 2026-01-16
+
+## Public Pages
+/about - About
+/acos - Acos
+/aicall-triaging - Aicall Triaging
+/aireceptionist - Aireceptionist
+/apex - Apex
+/apex-profile - Apex Profile
+/articles - Articles
+/articles/akute-health-partnership - Akute Health Partnership
+/articles/analytics-expansion - Analytics Expansion
+/articles/dpcsummit2025 - Dpcsummit2025
+/articles/elation-partnership - Elation Partnership
+/articles/fmmamembership - Fmmamembership
+/articles/harnessing-data-free-market - Harnessing Data Free Market
+/articles/hint-partnership - Hint Partnership
+/articles/hint-summit2025 - Hint Summit2025
+/articles/rosetta-fest2024 - Rosetta Fest2024
+/blog-post - Blog Post
+/blogs - Blogs
+/book-ademo - Book Ademo
+/brokers-advisors - Brokers Advisors
+/brokers-and-advisors - Brokers And Advisors
+/capabilities - Capabilities
+/captives - Captives
+/careers - Careers
+/concierge-medicine - Concierge Medicine
+/contact - Contact
+/developer - Developer
+/direct-primary-care - Direct Primary Care
+/dpcnetworks - Dpcnetworks
+/employer-analytics - Employer Analytics
+/employers - Employers
+/employers-loop - Employers Loop
+/faqs - Faqs
+/fde - Fde
+/functional-medicine - Functional Medicine
+/get-featured - Get Featured
+/guide/direct-primary-care-guide - Direct Primary Care Guide
+/guide/direct-specialty-care-guide - Direct Specialty Care Guide
+/guide/self-funded-health-plans-guide - Self Funded Health Plans Guide
+/hccsuspecting - Hccsuspecting
+/health-outcomes - Health Outcomes
+/hedisquality - Hedisquality
+/infera - Infera
+/integration - Integration
+/managed-service-orgs - Managed Service Orgs
+/marketing - Marketing
+/marketing-automation - Marketing Automation
+/medical-weight-loss - Medical Weight Loss
+/news-events - News Events
+/not-found - Not Found
+/partners - Partners
+/pediatrics - Pediatrics
+/privacy - Privacy
+/solutions - Solutions
+/surveys - Surveys
+/terms - Terms
+/tpahealth-plans - Tpahealth Plans
+/urgent-care - Urgent Care
+/whitepaper - Whitepaper
+/who-we-serve - Who We Serve
