@@ -5,62 +5,181 @@
 
 ## Public Pages
 /about - About
+  About
+
 /acos - Acos
-/aicall-triaging - Aicall Triaging
+  Acos
+
+/aicall-triaging - AI Call Triaging
+  Aicall Triaging
+
 /aireceptionist - Aireceptionist
+  Aireceptionist
+
 /apex - Apex
+  Apex
+
 /apex-profile - Apex Profile
+  Apex Profile
+
 /articles - Articles
+  Articles
+
 /articles/akute-health-partnership - Akute Health Partnership
+  Akute Health Partnership
+
 /articles/analytics-expansion - Analytics Expansion
+  Analytics Expansion
+
 /articles/dpcsummit2025 - Dpcsummit2025
+  Dpcsummit2025
+
 /articles/elation-partnership - Elation Partnership
+  Elation Partnership
+
 /articles/fmmamembership - Fmmamembership
+  Fmmamembership
+
 /articles/harnessing-data-free-market - Harnessing Data Free Market
+  Harnessing Data Free Market
+
 /articles/hint-partnership - Hint Partnership
+  Hint Partnership
+
 /articles/hint-summit2025 - Hint Summit2025
+  Hint Summit2025
+
 /articles/rosetta-fest2024 - Rosetta Fest2024
+  Rosetta Fest2024
+
 /blog-post - Blog Post
+  Blog Post
+
 /blogs - Blogs
+  Blogs
+
 /book-ademo - Book Ademo
+  Book Ademo
+
 /brokers-advisors - Brokers Advisors
+  Brokers Advisors
+
 /brokers-and-advisors - Brokers And Advisors
+  Brokers And Advisors
+
 /capabilities - Capabilities
+  Capabilities
+
 /captives - Captives
+  Captives
+
 /careers - Careers
+  Careers
+
 /concierge-medicine - Concierge Medicine
+  Concierge Medicine
+
 /contact - Contact
+  Contact
+
 /developer - Developer
+  Developer
+
 /direct-primary-care - Direct Primary Care
+  Direct Primary Care
+
 /dpcnetworks - Dpcnetworks
+  Dpcnetworks
+
 /employer-analytics - Employer Analytics
+  Employer Analytics
+
 /employers - Employers
+  Employers
+
 /employers-loop - Employers Loop
+  Employers Loop
+
 /faqs - Faqs
+  Faqs
+
 /fde - Fde
+  Fde
+
 /functional-medicine - Functional Medicine
+  Functional Medicine
+
 /get-featured - Get Featured
+  Get Featured
+
 /guide/direct-primary-care-guide - Direct Primary Care Guide
+  Direct Primary Care Guide
+
 /guide/direct-specialty-care-guide - Direct Specialty Care Guide
+  Direct Specialty Care Guide
+
 /guide/self-funded-health-plans-guide - Self Funded Health Plans Guide
+  Self Funded Health Plans Guide
+
 /hccsuspecting - Hccsuspecting
+  Hccsuspecting
+
 /health-outcomes - Health Outcomes
+  Health Outcomes
+
 /hedisquality - Hedisquality
+  Hedisquality
+
 /infera - Infera
+  Infera
+
 /integration - Integration
+  Integration
+
 /managed-service-orgs - Managed Service Orgs
+  Managed Service Orgs
+
 /marketing - Marketing
+  Marketing
+
 /marketing-automation - Marketing Automation
+  Marketing Automation
+
 /medical-weight-loss - Medical Weight Loss
+  Medical Weight Loss
+
 /news-events - News Events
+  News Events
+
 /not-found - Not Found
+  Not Found
+
 /partners - Partners
+  Partners
+
 /pediatrics - Pediatrics
+  Pediatrics
+
 /privacy - Privacy
+  Privacy
+
 /solutions - Solutions
+  Solutions
+
 /surveys - Surveys
+  Surveys
+
 /terms - Terms
+  Terms
+
 /tpahealth-plans - Tpahealth Plans
+  Tpahealth Plans
+
 /urgent-care - Urgent Care
+  Urgent Care
+
 /whitepaper - Whitepaper
+  Whitepaper
+
 /who-we-serve - Who We Serve
+  Who We Serve

@@ -5,6 +5,53 @@ const PAGES_DIR = path.join(process.cwd(), 'src/pages')
 const OUTPUT = path.join(process.cwd(), 'public/llms.txt')
 const EXCLUDE = ['notfound', 'form', 'index', 'design-kit']
 
+function isLikelyDescription(text) {
+  if (!text) return false
+
+  // Too short
+  if (text.length < 40) return false
+
+  // Looks like a name (2–3 capitalized words)
+  if (/^[A-Z][a-z]+(\s[A-Z][a-z]+){1,2}$/.test(text)) {
+    return false
+  }
+
+  // No verbs (very rough heuristic)
+  if (
+    !/\b(is|are|provides|offers|helps|supports|enables|delivers)\b/i.test(text)
+  ) {
+    return false
+  }
+
+  return true
+}
+
+function extractDescriptionFallback(filePath) {
+  const content = fs.readFileSync(filePath, 'utf8')
+  const metaMatch = content.match(
+    /<meta\s+name=["']description["']\s+content=["'](.+?)["']/i
+  )
+  if (metaMatch) return metaMatch[1]
+  const h1Match = content.match(/<h1[^>]*>(.+?)<\/h1>/i)
+  if (h1Match) return stripTags(h1Match[1])
+  const pMatch = content.match(/<p[^>]*>(.+?)<\/p>/i)
+  if (pMatch) return stripTags(pMatch[1])
+
+  return null
+}
+
+function stripTags(text) {
+  return text
+    .replace(/<[^>]*>/g, '') // remove HTML
+    .replace(/\{[^}]*\}/g, '') // remove JSX expressions
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
+function descriptionFromRoute(route) {
+  return titleFromRoute(route)
+}
+
 function titleFromRoute(route) {
   return (
     route
@@ -25,6 +72,21 @@ function toRoute(filePath) {
       .replace(/_/g, '-')
       .toLowerCase()
   )
+}
+
+function resolvePageMeta(page) {
+  const title = page.title ?? titleFromRoute(page.route)
+
+  let description =
+    page.description ??
+    extractDescriptionFallback(page.filePath) ??
+    descriptionFromRoute(page.route)
+
+  if (!isLikelyDescription(description)) {
+    description = descriptionFromRoute(page.route)
+  }
+
+  return { title, description }
 }
 
 function extractMeta(filePath) {
@@ -57,6 +119,7 @@ function walk(dir, base = '') {
 
       pages.push({
         route,
+        filePath: fullPath,
         title: meta?.title ?? null,
         description: meta?.description ?? null,
       })
@@ -77,11 +140,11 @@ const content = `
 
 ## Public Pages
 ${pages
-  .map((p) => {
-    const title = p.title ?? titleFromRoute(p.route)
-    return `${p.route} - ${title}`
+  .map((page) => {
+    const { title, description } = resolvePageMeta(page)
+    return `${page.route} - ${title}\n  ${description}`
   })
-  .join('\n')}
+  .join('\n\n')}
 `.trim()
 
 fs.writeFileSync(OUTPUT, content)

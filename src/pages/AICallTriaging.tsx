@@ -1,9 +1,12 @@
 import { Layout } from '@/components/layout/Layout'
-import { Link } from 'react-router-dom'
-import { Button } from '@/components/ui/button'
 import CTAButton from '@/components/ui/CTAButton'
 import { ArrowRight, CheckCircle } from 'lucide-react'
 import { GridSection } from '@/components/ui'
+
+export const llms = {
+  title: 'AI Call Triaging',
+  description: 'Automated call triage for healthcare providers',
+}
 
 const AICallTriaging = () => {
   const benefits = [
