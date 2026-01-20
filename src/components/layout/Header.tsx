@@ -131,7 +131,7 @@ const whoWeServeCategories: SubMenuCategory[] = [
       },
       { label: 'ACOs & Registries', href: '/acos' },
       { label: 'CINs', href: '/cins' },
-      { label: 'Payors', href: '/payors' },
+      { label: 'Health Plans & Payers', href: '/payors' },
     ],
   },
 ]
