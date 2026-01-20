@@ -281,7 +281,7 @@ const About = () => {
             <p className="text-muted-foreground mb-8">
               Ready to enhance your practice's efficiency and growth? Connect with us today.
             </p>
-            <Button variant="gradient" size="lg" asChild>
+            <Button variant="primary" size="lg" asChild>
               <Link to="/contact" className="gap-2">
                 Schedule a demo
                 <ArrowRight className="w-4 h-4" />

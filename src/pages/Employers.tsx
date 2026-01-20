@@ -1,8 +1,7 @@
 import { Layout } from '@/components/layout/Layout'
-import { Button } from '@/components/ui/button'
-import { Link } from 'react-router-dom'
 import { CTAButton, GridSection } from '@/components/ui'
 import { MonitorCog, Brain, Gauge, CheckCircle } from 'lucide-react'
+import EmployersViz from '@/components/hero-visualizations/EmployersViz'
 
 const Employers = () => {
   const dataBenefits = [
@@ -44,11 +43,10 @@ const Employers = () => {
                 <CTAButton
                   link='/contact'
                   text='Book a Demo'
-                  // suffixIconDefault
                 />
               </div>
             </div>
-            <div className='relative h-[450px] flex items-center justify-center'></div>
+            <EmployersViz />
           </div>
         </div>
       </GridSection>

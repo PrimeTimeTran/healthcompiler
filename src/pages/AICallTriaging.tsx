@@ -2,6 +2,7 @@ import { Layout } from '@/components/layout/Layout'
 import CTAButton from '@/components/ui/CTAButton'
 import { ArrowRight, CheckCircle } from 'lucide-react'
 import { GridSection } from '@/components/ui'
+import AICallTriagingViz from '@/components/hero-visualizations/AICallTriagingViz'
 
 export const llms = {
   title: 'AI Call Triaging',
@@ -39,6 +40,7 @@ const AICallTriaging = () => {
                 }
               />
             </div>
+            <AICallTriagingViz />
           </div>
         </div>
       </GridSection>

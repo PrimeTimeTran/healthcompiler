@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { Layout } from '@/components/layout/Layout'
-import { CheckCircle } from 'lucide-react'
-import { ChartLine, Headset, BriefcaseBusiness } from 'lucide-react'
+import { CheckCircle, ChartLine, Headset, BriefcaseBusiness } from 'lucide-react'
 import { GridSection } from '@/components/ui'
+import PediatricsViz from '@/components/hero-visualizations/PediatricsViz'
 
 const Pediatrics = () => {
   const networkBenefits = [
@@ -59,7 +59,7 @@ const Pediatrics = () => {
                 </Button>
               </div>
             </div>
-            <div className='relative h-[450px] flex items-center justify-center'></div>
+            <PediatricsViz />
           </div>
         </div>
       </GridSection>

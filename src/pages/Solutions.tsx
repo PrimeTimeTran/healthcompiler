@@ -107,7 +107,7 @@ const Solutions = () => {
           <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
             We build custom solutions for unique healthcare data challenges. Let's explore what's possible.
           </p>
-          <Button variant="hero" size="xl" asChild>
+          <Button variant="primary" size="xl" asChild>
             <Link to="/contact" className="gap-2">
               Discuss Your Project
               <ArrowRight className="w-5 h-5" />

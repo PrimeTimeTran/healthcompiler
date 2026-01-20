@@ -48,9 +48,9 @@ export function ShowcaseButtons() {
 
               <Button
                 variant={variant}
-                loading
+                disabled
               >
-                Loading
+                Loading...
               </Button>
             </div>
           </div>

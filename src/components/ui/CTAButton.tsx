@@ -11,7 +11,7 @@ type CTAButtonProps = {
   iconSuffix?: React.ReactNode
   suffixIconDefault?: boolean
   prefixIconDefault?: boolean
-  variant?: 'primary' | 'gradient' | 'secondary' | 'outline'
+  variant?: 'primary' | 'secondary' | 'outline'
   size?: 'sm' | 'lg' | 'md'
   className?: string
   onClick?: () => void

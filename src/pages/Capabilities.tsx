@@ -556,7 +556,7 @@ const Capabilities = () => {
             healthcare data challenges.
           </p>
           <Button
-            variant='hero'
+            variant='primary'
             size='xl'
             asChild
           >
