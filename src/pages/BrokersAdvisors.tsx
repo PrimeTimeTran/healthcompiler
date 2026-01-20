@@ -1,13 +1,14 @@
 import { Layout } from '@/components/layout/Layout';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
-import { Users, TrendingUp, Target, Eye, Award, BarChart3 } from 'lucide-react';
 import accountabilityImg from '@/assets/employers-accountability.png';
 import quantifiableImg from '@/assets/employers-quantifiable.png';
 import targetedSolutionsImg from '@/assets/employers-targeted-solutions.png';
 import intuitivePlatformImg from '@/assets/employers-intuitive-platform.png';
 import teamExpertsImg from '@/assets/employers-team-experts.png';
 import planBenchmarkingImg from '@/assets/employers-plan-benchmarking.png';
+import BrokersAdvisorsViz from '@/components/hero-visualizations/BrokersAdvisorsViz';
+import { GridSection } from '@/components/ui';
 
 const BrokersAdvisors = () => {
   const dpcBenefits = [
@@ -63,29 +64,25 @@ const BrokersAdvisors = () => {
 
   return (
     <Layout>
-      {/* Breadcrumb */}
-      <div className="bg-muted/30 py-3 border-b">
-        <div className="container mx-auto px-4">
-          <span className="text-sm text-muted-foreground">Benefits Advisors</span>
-        </div>
-      </div>
-
       {/* Hero Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-background to-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Unlock the Power of Self Funded Plans & <span className="text-primary">Showcase it's value</span>
-            </h1>
-            <p className="text-lg text-muted-foreground mb-8">
-              As an Employee Benefits Advisor, your role in shaping healthcare strategies is pivotal. Understanding and showcasing innovative models like Direct Primary Care (DPC) can empower you to enhance existing employer relationships and open new opportunities. At HC Insights, we provide you with the tools to effectively illustrate the value of DPC plans, ensuring you stand out as a credible advisor in the evolving healthcare landscape.
-            </p>
-            <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
-              <Link to="/contact">Unlock Insights now</Link>
-            </Button>
+      <GridSection>
+        <div className="container mx-auto px-6 py-24 lg:py-32">
+          <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+            <div className="space-y-8">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-[1.1]">
+                Unlock the Power of Self Funded Plans & <span className="text-primary">Showcase its Value</span>
+              </h1>
+              <p className="text-lg text-muted-foreground">
+                As an Employee Benefits Advisor, your role in shaping healthcare strategies is pivotal. Understanding and showcasing innovative models like Direct Primary Care (DPC) can empower you to enhance existing employer relationships and open new opportunities.
+              </p>
+              <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
+                <Link to="/contact">Unlock Insights now</Link>
+              </Button>
+            </div>
+            <BrokersAdvisorsViz />
           </div>
         </div>
-      </section>
+      </GridSection>
 
       {/* Why Direct Primary Care Section */}
       <section className="py-16 bg-background">

@@ -4,6 +4,7 @@ import { Layout } from '@/components/layout/Layout'
 import { CheckCircle } from 'lucide-react'
 import CTAButton from '@/components/ui/CTAButton'
 import { GridSection } from '@/components/ui'
+import TPAHealthPlansViz from '@/components/hero-visualizations/TPAHealthPlansViz'
 
 const TPAHealthPlans = () => {
   const performanceBenefits = [
@@ -34,7 +35,7 @@ const TPAHealthPlans = () => {
                 </h1>
 
                 <p className='text-xl text-muted-foreground mb-8'>
-                  Understand what’s working, where risk is emerging, and how
+                  Understand what's working, where risk is emerging, and how
                   different care approaches perform over time.
                 </p>
 
@@ -46,6 +47,7 @@ const TPAHealthPlans = () => {
                 </Button>
               </div>
             </div>
+            <TPAHealthPlansViz />
           </div>
         </div>
       </GridSection>
@@ -79,7 +81,7 @@ const TPAHealthPlans = () => {
       </section>
 
       {/* Systems Integration */}
-      <section className='py-20 bg-slate-50'>
+      <section className='py-20 bg-muted/30'>
         <div className='container mx-auto px-4'>
           <div className='max-w-4xl'>
             <h2 className='text-3xl md:text-4xl font-bold text-foreground mb-6'>
