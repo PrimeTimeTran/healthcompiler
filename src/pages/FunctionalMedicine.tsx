@@ -1,12 +1,10 @@
 import { Layout } from '@/components/layout/Layout'
-import { Button } from '@/components/ui/button'
-import { Link } from 'react-router-dom'
 import { CheckCircle } from 'lucide-react'
-
 import automatedTrackingImg from '@/assets/fm-automated-tracking.png'
 import hipaaComplianceImg from '@/assets/fm-hipaa-compliance.png'
 import employerInsightsImg from '@/assets/fm-employer-insights.png'
 import { CTAButton, GridSection } from '@/components/ui'
+import FunctionalMedicineViz from '@/components/hero-visualizations/FunctionalMedicineViz'
 
 const FunctionalMedicine = () => {
   const dataNeeds = [
@@ -37,6 +35,7 @@ const FunctionalMedicine = () => {
                 suffixIconDefault
               />
             </div>
+            <FunctionalMedicineViz />
           </div>
         </div>
       </GridSection>

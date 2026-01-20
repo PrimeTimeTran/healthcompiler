@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button'
 import { Layout } from '@/components/layout/Layout'
 import { CheckCircle } from 'lucide-react'
 import { GridSection } from '@/components/ui'
+import CaptivesViz from '@/components/hero-visualizations/CaptivesViz'
 
 const Captives = () => {
   const governanceBenefits = [
@@ -42,6 +43,7 @@ const Captives = () => {
                 <Link to='/contact'>Book a Demo</Link>
               </Button>
             </div>
+            <CaptivesViz />
           </div>
         </div>
       </GridSection>

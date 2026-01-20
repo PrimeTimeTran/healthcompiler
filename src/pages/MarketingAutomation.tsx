@@ -1,15 +1,9 @@
 import { Layout } from '@/components/layout/Layout'
-import { Link } from 'react-router-dom'
-import { Button } from '@/components/ui/button'
-import {
-  Search,
-  Workflow,
-  ArrowRight,
-  CheckCircle,
-  MessageSquare,
-} from 'lucide-react'
+import { CheckCircle } from 'lucide-react'
 import CTAButton from '@/components/ui/CTAButton'
 import { GridSection } from '@/components/ui/GridSection'
+import MarketingAutomationViz from '@/components/hero-visualizations/MarketingAutomationViz'
+
 const MarketingAutomation = () => {
   const crmBenefits = [
     'Track leads from every source in one place',
@@ -46,23 +40,11 @@ const MarketingAutomation = () => {
                 <CTAButton
                   link='/contact'
                   text='Book a Demo'
-                  iconSuffix={
-                    <ArrowRight className='ml-2 transition-transform group-hover:translate-x-1' />
-                  }
+                  suffixIconDefault
                 />
               </div>
             </div>
-            {/* Right – visual placeholder */}
-            <div className='bg-muted/30 rounded-xl p-10 border border-border'>
-              <Workflow className='h-10 w-10 text-primary mb-4' />
-              <p className='text-foreground font-medium mb-2'>
-                One System for Growth
-              </p>
-              <p className='text-muted-foreground text-sm'>
-                Inquiries, follow-ups, outreach, and reminders—connected and
-                visible in one place.
-              </p>
-            </div>
+            <MarketingAutomationViz />
           </div>
         </div>
       </GridSection>
