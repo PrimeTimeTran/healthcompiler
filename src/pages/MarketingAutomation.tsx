@@ -1,5 +1,5 @@
 import { Layout } from '@/components/layout/Layout'
-import { CheckCircle } from 'lucide-react'
+import { CheckCircle, Search } from 'lucide-react'
 import CTAButton from '@/components/ui/CTAButton'
 import { GridSection } from '@/components/ui/GridSection'
 import MarketingAutomationViz from '@/components/hero-visualizations/MarketingAutomationViz'
