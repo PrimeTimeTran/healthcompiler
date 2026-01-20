@@ -125,10 +125,10 @@ const whoWeServeCategories: SubMenuCategory[] = [
   {
     category: 'Value Based Care',
     items: [
-      // {
-      //   label: 'Independent Primary Care',
-      //   href: '/solutions/independent-primary-care',
-      // },
+      {
+        label: 'Independent Primary Care',
+        href: '/who-we-serve/independent-primary-care',
+      },
       { label: 'ACOs', href: '/acos' },
       { label: 'CINs', href: '/cins' },
       { label: 'Payors', href: '/payors' },
