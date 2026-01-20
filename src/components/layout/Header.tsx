@@ -129,7 +129,7 @@ const whoWeServeCategories: SubMenuCategory[] = [
         label: 'Independent Primary Care',
         href: '/who-we-serve/independent-primary-care',
       },
-      { label: 'ACOs', href: '/acos' },
+      { label: 'ACOs & Registries', href: '/acos' },
       { label: 'CINs', href: '/cins' },
       { label: 'Payors', href: '/payors' },
     ],
