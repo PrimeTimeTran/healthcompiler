@@ -1,14 +1,10 @@
-import { useState, useEffect } from 'react'
 import { Layout } from '@/components/layout/Layout'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import {
   Bot,
-  Eye,
   Users,
-  Heart,
   Clock,
-  Activity,
   BarChart3,
   Megaphone,
   Workflow,
@@ -19,266 +15,15 @@ import {
   CheckCircle,
 } from 'lucide-react'
 import { CTAButton, GridSection } from '@/components/ui'
-
-// Weight Loss Progress Visualization
-const ProgressVisualization = () => {
-  const [activeStage, setActiveStage] = useState(0)
-
-  const stages = [
-    { label: 'Engagement', color: 'hsl(var(--primary))' },
-    { label: 'Adherence', color: 'hsl(217, 91%, 60%)' },
-    { label: 'Progress', color: 'hsl(142, 76%, 36%)' },
-    { label: 'Outcomes', color: 'hsl(262, 83%, 58%)' },
-  ]
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveStage((prev) => (prev + 1) % stages.length)
-    }, 2000)
-    return () => clearInterval(interval)
-  }, [])
-
-  return (
-    <div className='relative w-full h-[400px] flex items-center justify-center'>
-      <svg
-        viewBox='0 0 400 400'
-        className='w-full h-full max-w-md'
-      >
-        <defs>
-          <linearGradient
-            id='progressCoreGradient'
-            x1='0%'
-            y1='0%'
-            x2='100%'
-            y2='100%'
-          >
-            <stop
-              offset='0%'
-              stopColor='hsl(var(--primary))'
-            />
-            <stop
-              offset='100%'
-              stopColor='hsl(142, 76%, 36%)'
-            />
-          </linearGradient>
-          <filter id='progressGlow'>
-            <feGaussianBlur
-              stdDeviation='3'
-              result='blur'
-            />
-            <feMerge>
-              <feMergeNode in='blur' />
-              <feMergeNode in='SourceGraphic' />
-            </feMerge>
-          </filter>
-          <filter id='progressSoftGlow'>
-            <feGaussianBlur
-              stdDeviation='8'
-              result='blur'
-            />
-            <feMerge>
-              <feMergeNode in='blur' />
-              <feMergeNode in='SourceGraphic' />
-            </feMerge>
-          </filter>
-        </defs>
-
-        {/* Background rings */}
-        <circle
-          cx='200'
-          cy='200'
-          r='160'
-          fill='none'
-          stroke='hsl(var(--border))'
-          strokeWidth='1'
-          strokeDasharray='4 4'
-          opacity='0.3'
-        />
-        <circle
-          cx='200'
-          cy='200'
-          r='120'
-          fill='none'
-          stroke='hsl(var(--border))'
-          strokeWidth='1'
-          strokeDasharray='2 2'
-          opacity='0.2'
-        />
-
-        {/* Progress arc segments */}
-        {stages.map((stage, i) => {
-          const startAngle = (i * 90 - 90) * (Math.PI / 180)
-          const endAngle = ((i + 1) * 90 - 90) * (Math.PI / 180)
-          const innerRadius = 75
-          const outerRadius = 95
-          const isActive = i <= activeStage
-
-          const x1Inner = 200 + Math.cos(startAngle) * innerRadius
-          const y1Inner = 200 + Math.sin(startAngle) * innerRadius
-          const x1Outer = 200 + Math.cos(startAngle) * outerRadius
-          const y1Outer = 200 + Math.sin(startAngle) * outerRadius
-          const x2Inner = 200 + Math.cos(endAngle) * innerRadius
-          const y2Inner = 200 + Math.sin(endAngle) * innerRadius
-          const x2Outer = 200 + Math.cos(endAngle) * outerRadius
-          const y2Outer = 200 + Math.sin(endAngle) * outerRadius
-
-          const d = `M ${x1Inner} ${y1Inner} 
-                     L ${x1Outer} ${y1Outer} 
-                     A ${outerRadius} ${outerRadius} 0 0 1 ${x2Outer} ${y2Outer}
-                     L ${x2Inner} ${y2Inner}
-                     A ${innerRadius} ${innerRadius} 0 0 0 ${x1Inner} ${y1Inner}`
-
-          return (
-            <path
-              key={stage.label}
-              d={d}
-              fill={isActive ? stage.color : 'hsl(var(--muted))'}
-              opacity={isActive ? (i === activeStage ? 1 : 0.7) : 0.2}
-              filter={i === activeStage ? 'url(#progressGlow)' : ''}
-              className='transition-all duration-500'
-            />
-          )
-        })}
-
-        {/* Stage labels */}
-        {stages.map((stage, i) => {
-          const angle = (i * 90 + 45 - 90) * (Math.PI / 180)
-          const labelRadius = 135
-          const x = 200 + Math.cos(angle) * labelRadius
-          const y = 200 + Math.sin(angle) * labelRadius
-          const isActive = i === activeStage
-
-          return (
-            <g key={`label-${stage.label}`}>
-              <circle
-                cx={x}
-                cy={y}
-                r='28'
-                fill={isActive ? stage.color : 'hsl(var(--card))'}
-                stroke={isActive ? stage.color : 'hsl(var(--border))'}
-                strokeWidth={isActive ? '2' : '1'}
-                filter={isActive ? 'url(#progressGlow)' : ''}
-                className='transition-all duration-300'
-              />
-              <text
-                x={x}
-                y={y + 4}
-                textAnchor='middle'
-                className={`text-[8px] font-medium ${
-                  isActive ? 'fill-white' : 'fill-muted-foreground'
-                }`}
-              >
-                {stage.label}
-              </text>
-            </g>
-          )
-        })}
-
-        {/* Central core */}
-        <g>
-          <circle
-            cx='200'
-            cy='200'
-            r='55'
-            fill='url(#progressCoreGradient)'
-            opacity='0.15'
-            filter='url(#progressSoftGlow)'
-          >
-            <animate
-              attributeName='r'
-              values='55;60;55'
-              dur='3s'
-              repeatCount='indefinite'
-            />
-          </circle>
-
-          <circle
-            cx='200'
-            cy='200'
-            r='45'
-            fill='url(#progressCoreGradient)'
-            filter='url(#progressGlow)'
-          >
-            <animate
-              attributeName='r'
-              values='45;48;45'
-              dur='2s'
-              repeatCount='indefinite'
-            />
-          </circle>
-
-          <circle
-            cx='200'
-            cy='200'
-            r='35'
-            fill='hsl(var(--card))'
-            opacity='0.2'
-          />
-
-          <text
-            x='200'
-            y='195'
-            textAnchor='middle'
-            className='fill-white text-[11px] font-semibold'
-          >
-            Long-Term
-          </text>
-          <text
-            x='200'
-            y='210'
-            textAnchor='middle'
-            className='fill-white/80 text-[9px]'
-          >
-            Progress
-          </text>
-        </g>
-
-        {/* Pulse effect */}
-        <circle
-          cx='200'
-          cy='200'
-          r='50'
-          fill='none'
-          stroke='hsl(var(--primary))'
-          strokeWidth='1'
-          opacity='0'
-        >
-          <animate
-            attributeName='r'
-            values='50;90'
-            dur='2.5s'
-            repeatCount='indefinite'
-          />
-          <animate
-            attributeName='opacity'
-            values='0.5;0'
-            dur='2.5s'
-            repeatCount='indefinite'
-          />
-        </circle>
-
-        {/* Data particles */}
-        {[0, 1, 2].map((i) => (
-          <circle
-            key={`particle-${i}`}
-            r='4'
-            fill='hsl(var(--primary))'
-            opacity='0.8'
-          >
-            <animateMotion
-              dur={`${3 + i * 0.5}s`}
-              repeatCount='indefinite'
-              path='M0,160 Q80,80 0,0 Q-80,-80 0,-160 Q80,-80 0,0 Q-80,80 0,160'
-              begin={`${i * 1}s`}
-            />
-          </circle>
-        ))}
-      </svg>
-    </div>
-  )
-}
+import ArcHeroViz from '@/components/hero-visualizations/ArcHeroViz'
 
 const MedicalWeightLoss = () => {
+  const vizSegments = [
+    { label: 'Engagement' },
+    { label: 'Adherence' },
+    { label: 'Progress' },
+    { label: 'Outcomes' },
+  ]
   const journeyBenefits = [
     { icon: Users, text: 'Track patient engagement and follow-through' },
     { icon: TrendingUp, text: 'Monitor progress and outcomes over time' },
@@ -361,7 +106,12 @@ const MedicalWeightLoss = () => {
 
             {/* Right: Visualization */}
             <div className='lg:pl-8'>
-              <ProgressVisualization />
+              <ArcHeroViz
+                id='medical-weight-loss'
+                segments={vizSegments}
+                centerTitle='Long-Term'
+                centerSubtitle='Progress'
+              />
             </div>
           </div>
         </div>
@@ -498,7 +248,7 @@ const MedicalWeightLoss = () => {
           <div className='grid md:grid-cols-2 gap-12 items-center max-w-5xl mx-auto'>
             <div>
               <div className='inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4'>
-                <Activity className='h-4 w-4' />
+                <BarChart3 className='h-4 w-4' />
                 Accountability
               </div>
               <h2 className='text-3xl md:text-4xl font-bold text-foreground mb-6'>
@@ -517,8 +267,8 @@ const MedicalWeightLoss = () => {
               <div className='bg-gradient-to-br from-primary/5 to-primary/10 rounded-2xl p-8 border border-primary/20'>
                 <div className='grid grid-cols-2 gap-4'>
                   {[
-                    { icon: Heart, label: 'Engagement' },
-                    { icon: Eye, label: 'Visibility' },
+                    { icon: Users, label: 'Engagement' },
+                    { icon: Clock, label: 'Visibility' },
                     { icon: TrendingUp, label: 'Progress' },
                     { icon: CheckCircle, label: 'Outcomes' },
                   ].map((item, i) => (
