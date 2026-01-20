@@ -15,8 +15,8 @@ import {
   TrendingUp,
   ArrowRight,
 } from 'lucide-react'
-import acoHeroImg from '@/assets/aco-hero-image.png'
 import { CTAButton, GridSection } from '@/components/ui'
+import ACOsViz from '@/components/hero-visualizations/ACOsViz'
 
 const ACOs = () => {
   const helpCards = [
@@ -156,13 +156,7 @@ const ACOs = () => {
                 }
               />
             </div>
-            <div className='flex justify-center'>
-              <img
-                src={acoHeroImg}
-                alt='ACO Utilization'
-                className='max-w-full h-auto rounded-xl'
-              />
-            </div>
+            <ACOsViz />
           </div>
         </div>
       </GridSection>

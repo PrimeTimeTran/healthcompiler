@@ -3,6 +3,7 @@ import { CTAButton, GridSection } from '@/components/ui'
 import { Button } from '@/components/ui/button'
 import { Link } from 'react-router-dom'
 import { CheckCircle } from 'lucide-react'
+import CINsViz from '@/components/hero-visualizations/CINsViz'
 
 const CINs = () => {
   const section1 = [
@@ -48,7 +49,7 @@ const CINs = () => {
                 </Button>
               </div>
             </div>
-            <div className='relative h-[450px] flex items-center justify-center'></div>
+            <CINsViz />
           </div>
         </div>
       </GridSection>

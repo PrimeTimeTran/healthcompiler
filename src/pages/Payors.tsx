@@ -3,6 +3,7 @@ import { CTAButton, GridSection } from '@/components/ui'
 import { Button } from '@/components/ui/button'
 import { Link } from 'react-router-dom'
 import { CheckCircle } from 'lucide-react'
+import PayorsViz from '@/components/hero-visualizations/PayorsViz'
 
 const Payors = () => {
   const section1 = [
@@ -48,7 +49,7 @@ const Payors = () => {
                 </Button>
               </div>
             </div>
-            <div className='relative h-[450px] flex items-center justify-center'></div>
+            <PayorsViz />
           </div>
         </div>
       </GridSection>
