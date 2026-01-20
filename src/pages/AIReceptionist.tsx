@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Layout } from '@/components/layout/Layout'
+import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { CTAButton, GridSection } from '@/components/ui'
 import {
@@ -10,19 +11,24 @@ import {
   Mail,
   Users,
   AlertCircle,
-  PhoneCall,
+  Bot,
   Brain,
   Zap,
-  ArrowUpRight,
   UserPlus,
   Bell,
   Shield,
   HelpCircle,
   HeadphonesIcon,
-  CheckCircle,
   ArrowRight,
+  Megaphone,
+  Workflow,
 } from 'lucide-react'
 
+import elationLogo from '@/assets/elation-logo.png'
+import hintLogo from '@/assets/hint-logo.png'
+import akuteLogo from '@/assets/akute-health-logo.png'
+
+// AI Receptionist Flow Visualization
 const AIReceptionistFlow = () => {
   const [activeOutcome, setActiveOutcome] = useState(0)
 
@@ -86,7 +92,6 @@ const AIReceptionistFlow = () => {
           const y = 100 + i * 75
           return (
             <g key={input.label}>
-              {/* Connection line */}
               <path
                 d={`M80,${y} Q150,${y} 200,175`}
                 fill='none'
@@ -95,7 +100,6 @@ const AIReceptionistFlow = () => {
                 strokeDasharray='4 4'
                 opacity='0.5'
               />
-              {/* Animated particle */}
               <circle
                 r='4'
                 fill='hsl(var(--primary))'
@@ -107,7 +111,6 @@ const AIReceptionistFlow = () => {
                   path={`M80,${y} Q150,${y} 200,175`}
                 />
               </circle>
-              {/* Input node */}
               <circle
                 cx='60'
                 cy={y}
@@ -175,7 +178,6 @@ const AIReceptionistFlow = () => {
           const isActive = i === activeOutcome
           return (
             <g key={outcome.label}>
-              {/* Connection line */}
               <path
                 d={`M300,175 Q350,${y} 400,${y}`}
                 fill='none'
@@ -185,7 +187,6 @@ const AIReceptionistFlow = () => {
                 opacity={isActive ? 0.8 : 0.4}
                 className='transition-all duration-500'
               />
-              {/* Animated particle when active */}
               {isActive && (
                 <circle
                   r='4'
@@ -199,7 +200,6 @@ const AIReceptionistFlow = () => {
                   />
                 </circle>
               )}
-              {/* Outcome node */}
               <rect
                 x='400'
                 y={y - 18}
@@ -227,268 +227,69 @@ const AIReceptionistFlow = () => {
   )
 }
 
-// Step component for How It Works
-const ProcessStep = ({
-  step,
-  title,
-  description,
-  icon: Icon,
-  isActive,
-  isLast,
-}: {
-  step: number
-  title: string
-  description: string
-  icon: React.ElementType
-  isActive: boolean
-  isLast: boolean
-}) => (
-  <div
-    className={`relative flex flex-col items-center text-center transition-all duration-500 ${
-      isActive ? 'scale-105' : 'opacity-60'
-    }`}
-  >
-    <div
-      className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-4 transition-all duration-500 ${
-        isActive
-          ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/30'
-          : 'bg-slate-100 text-slate-500'
-      }`}
-    >
-      <Icon className='w-7 h-7' />
-    </div>
-    <span className='text-xs font-medium text-primary mb-2'>Step {step}</span>
-    <h3 className='font-semibold text-foreground mb-1'>{title}</h3>
-    <p className='text-sm text-muted-foreground max-w-[140px]'>{description}</p>
-    {!isLast && (
-      <ArrowRight
-        className={`absolute -right-4 top-7 w-5 h-5 transition-colors duration-500 ${
-          isActive ? 'text-primary' : 'text-slate-300'
-        } hidden lg:block`}
-      />
-    )}
-  </div>
-)
-
-// Capability tile component
-const CapabilityTile = ({
-  icon: Icon,
-  title,
-  description,
-}: {
-  icon: React.ElementType
-  title: string
-  description: string
-}) => {
-  const [isHovered, setIsHovered] = useState(false)
-
-  return (
-    <div
-      className='group relative bg-white rounded-xl p-6 border border-slate-200 hover:border-primary/30 hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden'
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      <div
-        className={`transition-all duration-300 ${
-          isHovered ? 'opacity-0 translate-y-[-10px]' : 'opacity-100'
-        }`}
-      >
-        <div className='w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4'>
-          <Icon className='w-6 h-6 text-primary' />
-        </div>
-        <h3 className='font-semibold text-foreground'>{title}</h3>
-      </div>
-      <div
-        className={`absolute inset-0 p-6 flex items-center transition-all duration-300 bg-primary/5 ${
-          isHovered ? 'opacity-100' : 'opacity-0 translate-y-[10px]'
-        }`}
-      >
-        <p className='text-sm text-foreground leading-relaxed'>{description}</p>
-      </div>
-    </div>
-  )
-}
-
-// Before/After card component
-const BeforeAfterCard = ({
-  before,
-  after,
-  index,
-}: {
-  before: string
-  after: string
-  index: number
-}) => {
-  const [showAfter, setShowAfter] = useState(false)
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setShowAfter((prev) => !prev)
-    }, 3000)
-    return () => clearInterval(interval)
-  }, [])
-
-  return (
-    <div
-      className='relative h-32 rounded-xl overflow-hidden cursor-pointer'
-      onMouseEnter={() => setShowAfter(true)}
-      onMouseLeave={() => setShowAfter(false)}
-    >
-      {/* Before state */}
-      <div
-        className={`absolute inset-0 bg-slate-100 p-6 flex items-center transition-all duration-500 ${
-          showAfter
-            ? 'opacity-0 -translate-x-full'
-            : 'opacity-100 translate-x-0'
-        }`}
-      >
-        <div className='flex items-center gap-4'>
-          <div className='w-10 h-10 rounded-full bg-red-100 flex items-center justify-center'>
-            <span className='text-red-500 text-lg'>✕</span>
-          </div>
-          <div>
-            <span className='text-xs font-medium text-red-500 uppercase tracking-wide'>
-              Before
-            </span>
-            <p className='text-foreground font-medium'>{before}</p>
-          </div>
-        </div>
-      </div>
-
-      {/* After state */}
-      <div
-        className={`absolute inset-0 bg-green-50 p-6 flex items-center transition-all duration-500 ${
-          showAfter ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full'
-        }`}
-      >
-        <div className='flex items-center gap-4'>
-          <div className='w-10 h-10 rounded-full bg-green-100 flex items-center justify-center'>
-            <CheckCircle className='w-5 h-5 text-green-600' />
-          </div>
-          <div>
-            <span className='text-xs font-medium text-green-600 uppercase tracking-wide'>
-              After
-            </span>
-            <p className='text-foreground font-medium'>{after}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
 const AIReceptionist = () => {
-  const [activeStep, setActiveStep] = useState(0)
-
-  // Animation #2: Auto-cycle through steps
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveStep((prev) => (prev + 1) % 4)
-    }, 2500)
-    return () => clearInterval(interval)
-  }, [])
-
-  const processSteps = [
-    {
-      title: 'Answer',
-      description: 'Phone, text, and web in real time',
-      icon: PhoneCall,
-    },
-    {
-      title: 'Understand',
-      description: 'Reason for call, intent, urgency',
-      icon: Brain,
-    },
-    {
-      title: 'Act',
-      description: 'Schedule, confirm, route, or respond',
-      icon: Zap,
-    },
-    {
-      title: 'Escalate',
-      description: 'Hand off to staff when needed',
-      icon: ArrowUpRight,
-    },
+  const receptionistBenefits = [
+    { icon: Phone, text: 'Answer every call, text, and web inquiry 24/7' },
+    { icon: Calendar, text: 'Automate appointment scheduling and confirmations' },
+    { icon: HeadphonesIcon, text: 'Route complex requests to the right staff' },
+    { icon: Zap, text: 'Reduce front desk overload and missed opportunities' },
+    { icon: Users, text: 'Improve patient experience with instant responses' },
   ]
 
-  const capabilities = [
+  const solutions = [
     {
-      icon: Calendar,
-      title: 'Appointment Scheduling',
+      icon: Brain,
+      title: 'AI-Powered Call Handling',
       description:
-        'Automatically books or reschedules appointments based on clinic rules and availability.',
+        'Intelligent call routing and response that understands context, urgency, and intent. Designed to handle the majority of routine inquiries automatically.',
     },
     {
-      icon: UserPlus,
-      title: 'New Patient Intake',
+      icon: Bot,
+      title: 'Multi-Channel Support',
       description:
-        'Captures new patient information and initiates onboarding workflows.',
+        'Unified AI support across phone, SMS, and web chat. Patients get consistent, helpful responses regardless of how they reach out.',
     },
     {
-      icon: Bell,
-      title: 'Reminders & Confirmations',
-      description:
-        'Sends automated appointment reminders and handles confirmations.',
-    },
-    {
-      icon: Shield,
-      title: 'Insurance & Eligibility',
-      description:
-        'Answers common insurance questions and routes complex inquiries.',
-    },
-    {
-      icon: HelpCircle,
-      title: 'General Inquiries',
-      description:
-        'Handles FAQs about hours, location, services, and policies.',
-    },
-    {
-      icon: HeadphonesIcon,
+      icon: Megaphone,
       title: 'Smart Escalation',
       description:
-        'Recognizes urgency and routes to the right staff member instantly.',
+        'Recognizes when human attention is needed and routes appropriately. Staff focus on complex cases while AI handles the routine.',
     },
   ]
 
-  const beforeAfterItems = [
-    { before: 'Missed calls', after: 'Every call answered' },
-    { before: 'Manual scheduling', after: 'Automated bookings' },
-    { before: 'Front desk overload', after: 'Staff focused on care' },
+  const integrationLogos = [
+    { name: 'Elation', src: elationLogo },
+    { name: 'Hint', src: hintLogo },
+    { name: 'Akute', src: akuteLogo },
   ]
 
   return (
     <Layout>
       <GridSection>
         <div className='container mx-auto px-6 py-24 lg:py-32'>
-          <div className='grid grid-cols-1 lg:grid-cols-2 gap-12 items-center'>
-            <div>
+          <div className='grid lg:grid-cols-2 gap-16 lg:gap-20 items-center'>
+            <div className='space-y-8'>
               <h1 className='text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-[1.1]'>
                 AI Receptionist for{' '}
                 <span className='text-primary'>Modern Healthcare</span>
               </h1>
-              <p className='text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed max-w-xl'>
-                Answer every call. Schedule every visit. Route every
-                request—automatically.
+
+              <p className='text-xl text-muted-foreground mb-8'>
+                Answer every call. Schedule every visit. Route every request—automatically.
               </p>
 
               <div className='flex flex-wrap gap-4 mb-6'>
                 <CTAButton
                   link='/contact'
-                  text='Book a demo'
+                  text='Book a Demo'
                   suffixIconDefault
                 />
-                <Button
-                  variant='outline'
-                  size='lg'
-                >
-                  See how it works
-                </Button>
               </div>
 
               <div className='flex items-center gap-6 text-sm text-muted-foreground'>
                 <span className='flex items-center gap-1.5'>
                   <span className='w-1.5 h-1.5 rounded-full bg-green-500' />
-                  24/7
+                  24/7 availability
                 </span>
                 <span className='flex items-center gap-1.5'>
                   <span className='w-1.5 h-1.5 rounded-full bg-green-500' />
@@ -500,167 +301,207 @@ const AIReceptionist = () => {
                 </span>
               </div>
             </div>
+
+            {/* Right: Visualization */}
             <div className='lg:pl-8'>
               <AIReceptionistFlow />
             </div>
           </div>
         </div>
       </GridSection>
-      {/* Why Section */}
-      <section className='py-20 md:py-28 bg-background'>
-        <div className='container mx-auto px-6'>
-          <h2 className='text-3xl md:text-4xl font-bold text-center text-foreground mb-12'>
-            Why an AI Receptionist
-          </h2>
 
-          <div className='grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto'>
-            {[
-              {
-                icon: PhoneCall,
-                title: 'Never Miss a Patient Interaction',
-                desc: 'Every call and message answered',
-              },
-              {
-                icon: Users,
-                title: 'Reduce Front Desk Load',
-                desc: 'Automate repetitive tasks',
-              },
-              {
-                icon: Zap,
-                title: 'Improve Patient Experience',
-                desc: 'Faster responses, fewer delays',
-              },
-            ].map((item) => (
-              <div
-                key={item.title}
-                className='text-center'
-              >
-                <div className='w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4'>
-                  <item.icon className='w-7 h-7 text-primary' />
-                </div>
-                <h3 className='font-semibold text-foreground mb-2'>
-                  {item.title}
-                </h3>
-                <p className='text-sm text-muted-foreground'>{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-      <section className='py-20 md:py-28 bg-muted/40'>
-        <div className='container mx-auto px-6 relative z-10'>
-          <div className='text-center mb-12'>
-            <h2 className='text-3xl md:text-4xl font-bold text-foreground mb-4'>
-              From Incoming Requests to Action
+      {/* Never Miss Another Call */}
+      <section className='py-20 bg-background'>
+        <div className='container mx-auto px-4'>
+          <div className='max-w-4xl mx-auto'>
+            <h2 className='text-3xl md:text-4xl font-bold text-foreground mb-6'>
+              Never Miss Another Call
             </h2>
-            <p className='text-muted-foreground'>
-              How the AI Receptionist handles every interaction
+            <p className='text-lg text-muted-foreground mb-8'>
+              AI Receptionist handles incoming communications so your team can focus on care. Here's what becomes easier:
             </p>
-          </div>
-
-          <div className='grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto'>
-            {processSteps.map((step, index) => (
-              <ProcessStep
-                key={step.title}
-                step={index + 1}
-                title={step.title}
-                description={step.description}
-                icon={step.icon}
-                isActive={index === activeStep}
-                isLast={index === processSteps.length - 1}
-              />
-            ))}
-          </div>
-
-          {/* Loop indicator */}
-          <div className='flex justify-center mt-8'>
-            <div className='flex items-center gap-2 text-sm text-muted-foreground'>
-              <span className='w-2 h-2 rounded-full bg-primary animate-pulse' />
-              Continuous coverage, 24/7
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Capabilities */}
-      <section className='py-20 md:py-28 bg-background'>
-        <div className='container mx-auto px-6'>
-          <div className='text-center mb-12'>
-            <h2 className='text-3xl md:text-4xl font-bold text-foreground mb-4'>
-              What the AI Receptionist Can Handle
-            </h2>
-          </div>
-
-          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto'>
-            {capabilities.map((cap) => (
-              <CapabilityTile
-                key={cap.title}
-                icon={cap.icon}
-                title={cap.title}
-                description={cap.description}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-      <section className='py-20 md:py-28 bg-muted/40'>
-        <div className='container mx-auto px-6 relative z-10'>
-          <div className='text-center mb-12'>
-            <h2 className='text-3xl md:text-4xl font-bold text-foreground mb-4'>
-              Before vs After AI Receptionist
-            </h2>
-            <p className='text-muted-foreground'>The difference in practice</p>
-          </div>
-
-          <div className='grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto'>
-            {beforeAfterItems.map((item, index) => (
-              <BeforeAfterCard
-                key={index}
-                before={item.before}
-                after={item.after}
-                index={index}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-      <section className='py-20 md:py-28 bg-background'>
-        <div className='container mx-auto px-6'>
-          <div className='max-w-3xl mx-auto'>
-            <h2 className='text-3xl md:text-4xl font-bold text-foreground mb-8 text-center'>
-              Built for Real Healthcare Operations
-            </h2>
-
-            <div className='space-y-4'>
-              {[
-                'Integrates with EHRs, scheduling systems, and messaging tools',
-                'Rule-based, auditable, and HIPAA-ready',
-                'Designed for clinics, DPC practices, networks, and value-based care',
-              ].map((item, index) => (
+            <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-6'>
+              {receptionistBenefits.map((benefit, index) => (
                 <div
                   key={index}
-                  className='flex items-start gap-3 p-4 rounded-xl bg-slate-50'
+                  className='flex items-start gap-4 p-6 bg-muted/30 rounded-xl border border-border/50'
                 >
-                  <CheckCircle className='w-5 h-5 text-primary mt-0.5 flex-shrink-0' />
-                  <p className='text-foreground'>{item}</p>
+                  <div className='w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0'>
+                    <benefit.icon className='h-6 w-6 text-primary' />
+                  </div>
+                  <p className='text-foreground font-medium pt-2'>
+                    {benefit.text}
+                  </p>
                 </div>
               ))}
             </div>
           </div>
         </div>
       </section>
-      <section className='py-20 md:py-28 bg-muted/40'>
-        <div className='container mx-auto px-6 relative z-10'>
-          <div className='max-w-3xl mx-auto text-center'>
-            <h2 className='text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6'>
-              Let Your AI Receptionist Handle the Front Desk
+
+      {/* How AI Receptionist Works */}
+      <section className='py-20 bg-muted/30'>
+        <div className='container mx-auto px-4'>
+          <h2 className='text-3xl md:text-4xl font-bold text-foreground mb-4 text-center'>
+            How AI Receptionist Works
+          </h2>
+          <p className='text-lg text-muted-foreground text-center mb-12 max-w-2xl mx-auto'>
+            Comprehensive AI support designed to transform your front desk
+          </p>
+          <div className='grid md:grid-cols-3 gap-8 max-w-6xl mx-auto'>
+            {solutions.map((solution, index) => (
+              <div
+                key={index}
+                className='bg-background rounded-2xl p-8 shadow-sm border border-border hover:border-primary/30 transition-colors group'
+              >
+                <div className='w-16 h-16 bg-gradient-to-br from-primary/20 to-primary/5 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform'>
+                  <solution.icon className='h-8 w-8 text-primary' />
+                </div>
+                <h3 className='text-xl font-bold text-foreground mb-4'>
+                  {solution.title}
+                </h3>
+                <p className='text-muted-foreground leading-relaxed'>
+                  {solution.description}
+                </p>
+              </div>
+            ))}
+          </div>
+          <div className='flex justify-center mt-12'>
+            <Button
+              asChild
+              variant='outline'
+              size='lg'
+              className='gap-2'
+            >
+              <Link to='/platform'>
+                Explore
+                <ArrowRight className='h-4 w-4' />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Fits Into Your Existing Workflow */}
+      <section className='py-20 bg-background'>
+        <div className='container mx-auto px-4'>
+          <div className='max-w-4xl mx-auto text-center'>
+            <div className='inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4'>
+              <Workflow className='h-4 w-4' />
+              Seamless Integration
+            </div>
+            <h2 className='text-3xl md:text-4xl font-bold text-foreground mb-6'>
+              Fits Into Your Existing Workflow
             </h2>
-            <p className='text-lg md:text-xl text-muted-foreground mb-8'>
-              So your team can focus on patients—not phones.
+            <p className='text-lg text-muted-foreground mb-4'>
+              AI Receptionist integrates with the tools your practice already uses.
+            </p>
+            <p className='text-xl font-semibold text-foreground mb-12'>
+              No system changes. No workflow disruption.
+            </p>
+
+            {/* Integration logos */}
+            <div className='flex flex-wrap justify-center items-center gap-8 md:gap-12 p-8 bg-muted/30 rounded-2xl border border-border/50'>
+              {integrationLogos.map((logo, index) => (
+                <div
+                  key={index}
+                  className='h-12 w-32 bg-background rounded-lg flex items-center justify-center p-2 shadow-sm'
+                >
+                  <img
+                    src={logo.src}
+                    alt={logo.name}
+                    className='max-h-full max-w-full object-contain opacity-70 hover:opacity-100 transition-opacity'
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none'
+                      e.currentTarget.nextElementSibling?.classList.remove(
+                        'hidden'
+                      )
+                    }}
+                  />
+                  <span className='hidden text-muted-foreground font-medium'>
+                    {logo.name}
+                  </span>
+                </div>
+              ))}
+              <div className='h-12 w-32 bg-background rounded-lg flex items-center justify-center p-2 shadow-sm'>
+                <span className='text-muted-foreground text-sm font-medium'>
+                  + More
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Built for Healthcare */}
+      <section className='py-20 bg-muted/30'>
+        <div className='container mx-auto px-4'>
+          <div className='grid md:grid-cols-2 gap-12 items-center max-w-5xl mx-auto'>
+            <div>
+              <div className='inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4'>
+                <Shield className='h-4 w-4' />
+                Healthcare Ready
+              </div>
+              <h2 className='text-3xl md:text-4xl font-bold text-foreground mb-6'>
+                Built for Healthcare
+              </h2>
+              <p className='text-lg text-muted-foreground mb-6'>
+                AI Receptionist understands healthcare workflows and patient communication needs.
+              </p>
+              <div className='space-y-3'>
+                <div className='flex items-center gap-3'>
+                  <Shield className='h-5 w-5 text-primary flex-shrink-0' />
+                  <span className='text-foreground'>HIPAA-compliant architecture</span>
+                </div>
+                <div className='flex items-center gap-3'>
+                  <Bell className='h-5 w-5 text-primary flex-shrink-0' />
+                  <span className='text-foreground'>Appointment reminders and confirmations</span>
+                </div>
+                <div className='flex items-center gap-3'>
+                  <UserPlus className='h-5 w-5 text-primary flex-shrink-0' />
+                  <span className='text-foreground'>New patient intake support</span>
+                </div>
+                <div className='flex items-center gap-3'>
+                  <HelpCircle className='h-5 w-5 text-primary flex-shrink-0' />
+                  <span className='text-foreground'>FAQ handling and general inquiries</span>
+                </div>
+              </div>
+            </div>
+            <div className='relative'>
+              <div className='bg-gradient-to-br from-primary/5 to-accent/10 rounded-2xl p-8 border border-primary/20'>
+                <div className='space-y-4'>
+                  <div className='flex items-center justify-between p-4 bg-background rounded-xl'>
+                    <span className='text-sm font-medium text-foreground'>Calls Handled</span>
+                    <span className='text-lg font-bold text-primary'>94%</span>
+                  </div>
+                  <div className='flex items-center justify-between p-4 bg-background rounded-xl'>
+                    <span className='text-sm font-medium text-foreground'>Avg. Response Time</span>
+                    <span className='text-lg font-bold text-green-600'>&lt;3s</span>
+                  </div>
+                  <div className='flex items-center justify-between p-4 bg-background rounded-xl'>
+                    <span className='text-sm font-medium text-foreground'>Patient Satisfaction</span>
+                    <span className='text-lg font-bold text-primary'>4.8/5</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className='py-20 bg-gradient-to-br from-primary/5 via-background to-primary/5'>
+        <div className='container mx-auto px-4'>
+          <div className='max-w-3xl mx-auto text-center'>
+            <h2 className='text-3xl md:text-4xl font-bold text-foreground mb-6'>
+              Ready to Transform Your Front Desk?
+            </h2>
+            <p className='text-lg text-muted-foreground mb-8'>
+              Get started with AI Receptionist for your practice.
             </p>
             <CTAButton
               link='/contact'
-              text='Book your Demo'
+              text='Request a Demo'
               suffixIconDefault
             />
           </div>

@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { Layout } from '@/components/layout/Layout'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
-import CTAButton from '@/components/ui/CTAButton'
 import {
   CheckCircle,
   Eye,
@@ -15,11 +14,19 @@ import {
   Heart,
   BarChart3,
   Network,
-  Sparkles,
+  ArrowRight,
+  Bot,
+  Brain,
+  Megaphone,
+  Workflow,
 } from 'lucide-react'
-import { GridSection } from '@/components/ui'
+import { CTAButton, GridSection } from '@/components/ui'
 
-// Network Clarity Visualization - shows multiple practices flowing into centralized view
+import elationLogo from '@/assets/elation-logo.png'
+import hintLogo from '@/assets/hint-logo.png'
+import akuteLogo from '@/assets/akute-health-logo.png'
+
+// Network Clarity Visualization
 const NetworkVisualization = () => {
   const [activeNode, setActiveNode] = useState(0)
 
@@ -115,7 +122,6 @@ const NetworkVisualization = () => {
 
           return (
             <g key={practice.label}>
-              {/* Connection line */}
               <line
                 x1={x}
                 y1={y}
@@ -128,7 +134,6 @@ const NetworkVisualization = () => {
                 className='transition-all duration-500'
               />
 
-              {/* Data particle flowing to center */}
               <circle
                 r={isActive ? '6' : '3'}
                 fill='hsl(var(--primary))'
@@ -142,7 +147,6 @@ const NetworkVisualization = () => {
                 />
               </circle>
 
-              {/* Practice node */}
               <g>
                 <circle
                   cx={x}
@@ -261,43 +265,38 @@ const NetworkVisualization = () => {
 
 const DPCNetworks = () => {
   const networkBenefits = [
-    'Spend less time chasing updates from individual practices',
-    'Spot problems early instead of reacting after issues grow',
-    'Support clinics using data, not guesswork',
-    'Show employers and partners clear proof of impact',
-    'Scale the network without adding operational overhead',
+    { icon: Eye, text: 'Spend less time chasing updates from individual practices' },
+    { icon: Target, text: 'Spot problems early instead of reacting after issues grow' },
+    { icon: Users, text: 'Support clinics using data, not guesswork' },
+    { icon: MessageSquare, text: 'Show employers and partners clear proof of impact' },
+    { icon: Network, text: 'Scale the network without adding operational overhead' },
   ]
 
-  const dayToDayBenefits = [
+  const solutions = [
     {
-      icon: Eye,
-      before: 'Instead of asking each practice how things are going',
-      after: 'you can see it.',
+      icon: Brain,
+      title: 'AI-Powered Network Analytics',
+      description:
+        'Unified visibility across all practices in your network. See engagement, utilization, and outcomes without chasing individual updates.',
     },
     {
-      icon: Target,
-      before: 'Instead of guessing where support is needed',
-      after: 'you can prioritize it.',
+      icon: Bot,
+      title: 'Centralized Support Tools',
+      description:
+        'AI-powered tools that work across your network, helping practices handle inquiries and triage while you maintain oversight.',
     },
     {
-      icon: MessageSquare,
-      before: 'Instead of struggling to explain the value of the network',
-      after: 'you can show it clearly.',
+      icon: Megaphone,
+      title: 'Network-Wide Insights',
+      description:
+        'Aggregate data that helps you identify trends, spot outliers, and support practices where they need it most.',
     },
   ]
 
-  const improvements = [
-    {
-      icon: Users,
-      text: 'Better visibility into patient engagement and utilization',
-    },
-    { icon: ShieldCheck, text: 'Fewer avoidable ER and urgent care visits' },
-    {
-      icon: Activity,
-      text: 'Earlier identification of care gaps and risk trends',
-    },
-    { icon: Heart, text: 'Stronger coordination around chronic care' },
-    { icon: BarChart3, text: 'More consistent outcomes across practices' },
+  const integrationLogos = [
+    { name: 'Elation', src: elationLogo },
+    { name: 'Hint', src: hintLogo },
+    { name: 'Akute', src: akuteLogo },
   ]
 
   return (
@@ -312,8 +311,7 @@ const DPCNetworks = () => {
               </h1>
 
               <p className='text-xl text-muted-foreground mb-8'>
-                Helping DPC networks save time, reduce guesswork, and prove
-                value across all their practices.
+                Helping DPC networks save time, reduce guesswork, and prove value across all their practices.
               </p>
 
               <div className='flex flex-wrap gap-4 mb-6'>
@@ -347,112 +345,168 @@ const DPCNetworks = () => {
           </div>
         </div>
       </GridSection>
+
+      {/* Managing Multiple Practices */}
+      <section className='py-20 bg-background'>
+        <div className='container mx-auto px-4'>
+          <div className='max-w-4xl mx-auto'>
+            <h2 className='text-3xl md:text-4xl font-bold text-foreground mb-6'>
+              Managing Multiple Practices Made Easier
+            </h2>
+            <p className='text-lg text-muted-foreground mb-8'>
+              Network leaders need visibility without micromanagement. Health Compiler brings together the data that helps you:
+            </p>
+            <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-6'>
+              {networkBenefits.map((benefit, index) => (
+                <div
+                  key={index}
+                  className='flex items-start gap-4 p-6 bg-muted/30 rounded-xl border border-border/50'
+                >
+                  <div className='w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0'>
+                    <benefit.icon className='h-6 w-6 text-primary' />
+                  </div>
+                  <p className='text-foreground font-medium pt-2'>
+                    {benefit.text}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* How We Support DPC Networks */}
       <section className='py-20 bg-muted/30'>
         <div className='container mx-auto px-4'>
-          <h2 className='text-3xl md:text-4xl font-bold text-foreground mb-12 text-center'>
-            How This Helps You Day to Day
+          <h2 className='text-3xl md:text-4xl font-bold text-foreground mb-4 text-center'>
+            How We Support DPC Networks
           </h2>
-          <div className='grid md:grid-cols-3 gap-8 max-w-5xl mx-auto'>
-            {dayToDayBenefits.map((item, index) => (
+          <p className='text-lg text-muted-foreground text-center mb-12 max-w-2xl mx-auto'>
+            Comprehensive tools designed to help your network thrive
+          </p>
+          <div className='grid md:grid-cols-3 gap-8 max-w-6xl mx-auto'>
+            {solutions.map((solution, index) => (
               <div
                 key={index}
-                className='bg-background rounded-xl p-8 shadow-sm border border-border text-center'
+                className='bg-background rounded-2xl p-8 shadow-sm border border-border hover:border-primary/30 transition-colors group'
               >
-                <div className='w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6 mx-auto'>
-                  <item.icon className='h-7 w-7 text-primary' />
+                <div className='w-16 h-16 bg-gradient-to-br from-primary/20 to-primary/5 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform'>
+                  <solution.icon className='h-8 w-8 text-primary' />
                 </div>
-                <p className='text-muted-foreground mb-2'>{item.before},</p>
-                <p className='text-xl font-semibold text-primary'>
-                  {item.after}
+                <h3 className='text-xl font-bold text-foreground mb-4'>
+                  {solution.title}
+                </h3>
+                <p className='text-muted-foreground leading-relaxed'>
+                  {solution.description}
                 </p>
               </div>
             ))}
           </div>
-          <div className='text-center mt-12'>
-            <p className='text-xl text-foreground font-medium max-w-3xl mx-auto'>
-              Health Compiler gives network leaders confidence in decisions and
-              clarity in conversations.
-            </p>
-          </div>
-          <div className='flex justify-center mt-8'>
+          <div className='flex justify-center mt-12'>
             <Button
               asChild
               variant='outline'
               size='lg'
+              className='gap-2'
             >
-              <Link to='/contact'>Get in Touch</Link>
+              <Link to='/platform'>
+                Explore
+                <ArrowRight className='h-4 w-4' />
+              </Link>
             </Button>
           </div>
         </div>
       </section>
 
-      {/* What Improves Across the Network */}
+      {/* Fits Into Your Existing Workflow */}
       <section className='py-20 bg-background'>
         <div className='container mx-auto px-4'>
-          <h2 className='text-3xl md:text-4xl font-bold text-foreground mb-12 text-center'>
-            What Improves Across the Network
-          </h2>
-          <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto'>
-            {improvements.map((item, index) => (
-              <div
-                key={index}
-                className='flex items-start gap-4 p-6 bg-muted/30 rounded-xl'
-              >
-                <div className='w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0'>
-                  <item.icon className='h-6 w-6 text-primary' />
-                </div>
-                <p className='text-foreground font-medium pt-2'>{item.text}</p>
-              </div>
-            ))}
-          </div>
-          <div className='text-center mt-12'>
-            <p className='text-lg text-muted-foreground'>
-              The result is a network that runs more smoothly and delivers more
-              consistent care.
+          <div className='max-w-4xl mx-auto text-center'>
+            <div className='inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4'>
+              <Workflow className='h-4 w-4' />
+              Seamless Integration
+            </div>
+            <h2 className='text-3xl md:text-4xl font-bold text-foreground mb-6'>
+              Fits Into Your Existing Workflow
+            </h2>
+            <p className='text-lg text-muted-foreground mb-4'>
+              Health Compiler integrates with the tools your practices already use.
             </p>
+            <p className='text-xl font-semibold text-foreground mb-12'>
+              Practices keep their independence. Your network gains clarity.
+            </p>
+
+            {/* Integration logos */}
+            <div className='flex flex-wrap justify-center items-center gap-8 md:gap-12 p-8 bg-muted/30 rounded-2xl border border-border/50'>
+              {integrationLogos.map((logo, index) => (
+                <div
+                  key={index}
+                  className='h-12 w-32 bg-background rounded-lg flex items-center justify-center p-2 shadow-sm'
+                >
+                  <img
+                    src={logo.src}
+                    alt={logo.name}
+                    className='max-h-full max-w-full object-contain opacity-70 hover:opacity-100 transition-opacity'
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none'
+                      e.currentTarget.nextElementSibling?.classList.remove(
+                        'hidden'
+                      )
+                    }}
+                  />
+                  <span className='hidden text-muted-foreground font-medium'>
+                    {logo.name}
+                  </span>
+                </div>
+              ))}
+              <div className='h-12 w-32 bg-background rounded-lg flex items-center justify-center p-2 shadow-sm'>
+                <span className='text-muted-foreground text-sm font-medium'>
+                  + More
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Designed for Networks That Want to Grow */}
+      {/* Designed for Networks */}
       <section className='py-20 bg-muted/30'>
         <div className='container mx-auto px-4'>
           <div className='grid md:grid-cols-2 gap-12 items-center max-w-5xl mx-auto'>
             <div>
               <div className='inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4'>
                 <Network className='h-4 w-4' />
-                Growth Ready
+                Network Ready
               </div>
               <h2 className='text-3xl md:text-4xl font-bold text-foreground mb-6'>
                 Designed for Networks That Want to Grow
               </h2>
-              <div className='space-y-4'>
+              <p className='text-lg text-muted-foreground mb-6'>
+                Health Compiler supports growth without forcing standardization or creating extra work for clinics.
+              </p>
+              <div className='space-y-3'>
                 <div className='flex items-center gap-3'>
                   <CheckCircle className='h-5 w-5 text-primary flex-shrink-0' />
-                  <p className='text-lg text-foreground'>
-                    Practices keep their independence.
-                  </p>
+                  <span className='text-foreground'>Practices keep their independence</span>
                 </div>
                 <div className='flex items-center gap-3'>
                   <CheckCircle className='h-5 w-5 text-primary flex-shrink-0' />
-                  <p className='text-lg text-foreground'>
-                    Your network gains clarity.
-                  </p>
+                  <span className='text-foreground'>Your network gains clarity</span>
+                </div>
+                <div className='flex items-center gap-3'>
+                  <CheckCircle className='h-5 w-5 text-primary flex-shrink-0' />
+                  <span className='text-foreground'>Employers see consistent value</span>
                 </div>
               </div>
-              <p className='text-lg text-muted-foreground mt-6'>
-                Health Compiler supports growth without forcing standardization
-                or creating extra work for clinics.
-              </p>
             </div>
             <div className='relative'>
-              <div className='bg-gradient-to-br from-primary/5 to-primary/10 rounded-2xl p-8 border border-primary/20'>
+              <div className='bg-gradient-to-br from-primary/5 to-accent/10 rounded-2xl p-8 border border-primary/20'>
                 <div className='grid grid-cols-2 gap-4'>
                   {[
-                    { icon: Sparkles, label: 'Independence' },
-                    { icon: Eye, label: 'Visibility' },
+                    { icon: Activity, label: 'Visibility' },
                     { icon: TrendingUp, label: 'Growth' },
-                    { icon: Users, label: 'Consistency' },
+                    { icon: ShieldCheck, label: 'Quality' },
+                    { icon: Heart, label: 'Consistency' },
                   ].map((item, i) => (
                     <div
                       key={i}
@@ -471,7 +525,7 @@ const DPCNetworks = () => {
         </div>
       </section>
 
-      {/* Final CTA Section */}
+      {/* CTA Section */}
       <section className='py-20 bg-gradient-to-br from-primary/5 via-background to-primary/5'>
         <div className='container mx-auto px-4'>
           <div className='max-w-3xl mx-auto text-center'>
@@ -479,8 +533,7 @@ const DPCNetworks = () => {
               Ready to Run Your Network With More Confidence?
             </h2>
             <p className='text-lg text-muted-foreground mb-8'>
-              If you want fewer blind spots and clearer insight across your DPC
-              network, let's talk.
+              If you want fewer blind spots and clearer insight across your DPC network, let's talk.
             </p>
             <CTAButton
               link='/contact'

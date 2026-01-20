@@ -10,13 +10,17 @@ import {
   Shield,
   TrendingUp,
   CheckCircle,
+  ArrowRight,
+  Megaphone,
+  Workflow,
+  Activity,
+  Clock,
 } from 'lucide-react'
+import { CTAButton, GridSection } from '@/components/ui'
 
-// Integration logos
 import elationLogo from '@/assets/elation-logo.png'
 import hintLogo from '@/assets/hint-logo.png'
 import akuteLogo from '@/assets/akute-health-logo.png'
-import { CTAButton, GridSection } from '@/components/ui'
 
 // Concierge Care Visualization
 const ConciergeCareVisualization = () => {
@@ -133,7 +137,6 @@ const ConciergeCareVisualization = () => {
 
           return (
             <g key={stream.label}>
-              {/* Connection path */}
               <path
                 d={`M${startX},${startY} Q${midX},${midY} 200,200`}
                 fill='none'
@@ -144,7 +147,6 @@ const ConciergeCareVisualization = () => {
                 className='transition-all duration-500'
               />
 
-              {/* Animated particle flowing inward */}
               <circle
                 r={isActive ? '5' : '3'}
                 fill={stream.color}
@@ -160,7 +162,6 @@ const ConciergeCareVisualization = () => {
                 />
               </circle>
 
-              {/* Data label node */}
               <g>
                 <rect
                   x={startX - 45}
@@ -188,7 +189,6 @@ const ConciergeCareVisualization = () => {
 
         {/* Central premium core */}
         <g>
-          {/* Outer glow ring */}
           <circle
             cx='200'
             cy='200'
@@ -205,7 +205,6 @@ const ConciergeCareVisualization = () => {
             />
           </circle>
 
-          {/* Main core circle */}
           <circle
             cx='200'
             cy='200'
@@ -221,7 +220,6 @@ const ConciergeCareVisualization = () => {
             />
           </circle>
 
-          {/* Inner highlight */}
           <circle
             cx='200'
             cy='200'
@@ -230,7 +228,6 @@ const ConciergeCareVisualization = () => {
             opacity='0.15'
           />
 
-          {/* Core text */}
           <text
             x='200'
             y='195'
@@ -272,91 +269,45 @@ const ConciergeCareVisualization = () => {
             repeatCount='indefinite'
           />
         </circle>
-        <circle
-          cx='200'
-          cy='200'
-          r='60'
-          fill='none'
-          stroke='hsl(var(--primary))'
-          strokeWidth='1'
-          opacity='0'
-        >
-          <animate
-            attributeName='r'
-            values='60;120'
-            dur='3s'
-            begin='1.5s'
-            repeatCount='indefinite'
-          />
-          <animate
-            attributeName='opacity'
-            values='0.4;0'
-            dur='3s'
-            begin='1.5s'
-            repeatCount='indefinite'
-          />
-        </circle>
       </svg>
     </div>
   )
 }
 
 const ConciergeMedicine = () => {
-  const practiceInsights = [
-    'Understand patient engagement and utilization',
-    'Track outcomes and care trends over time',
-    'Identify gaps before they affect continuity',
-    'Support thoughtful, sustainable growth',
-    'Clearly communicate value to patients and partners',
+  const conciergeBenefits = [
+    { icon: Users, text: 'Understand patient engagement and utilization' },
+    { icon: TrendingUp, text: 'Track outcomes and care trends over time' },
+    { icon: Activity, text: 'Identify gaps before they affect continuity' },
+    { icon: Clock, text: 'Support thoughtful, sustainable growth' },
+    { icon: Heart, text: 'Clearly communicate value to patients and partners' },
   ]
 
-  const supportFeatures = [
+  const solutions = [
     {
       icon: Brain,
       title: 'AI-Powered Analytics',
       description:
-        'Clear views into engagement, utilization, outcomes, and trends across your patient panel.',
-      subtext:
-        'Designed to support confident decisions and thoughtful care planning.',
+        'Clear views into engagement, utilization, outcomes, and trends across your patient panel. Designed to support confident decisions and thoughtful care planning.',
     },
     {
       icon: Bot,
       title: 'AI Agents for Patient Interaction',
-      description: 'Two AI agents built for concierge practice workflows:',
-      bullets: [
-        'An AI receptionist for new inquiries',
-        'A triage agent for existing patients',
-      ],
-      subtext:
-        'Built to support responsiveness without replacing the human touch.',
+      description:
+        'Two AI agents built for concierge practice workflows: An AI receptionist for new inquiries and a triage agent for existing patients. Built to support responsiveness without replacing the human touch.',
     },
     {
-      icon: TrendingUp,
+      icon: Megaphone,
       title: 'Marketing Automation',
       description:
         'Automation that helps practices stay visible and follow up consistently, without adding extra work.',
     },
   ]
 
-  const valueProps = [
-    {
-      icon: Heart,
-      title: 'Preserves Personal Care',
-      description:
-        'Technology that supports, never replaces, the high-touch relationship.',
-    },
-    {
-      icon: Shield,
-      title: 'Shows Impact Clearly',
-      description:
-        'Demonstrate value to patients and partners with clear, credible data.',
-    },
-    {
-      icon: Users,
-      title: 'Supports Growth',
-      description:
-        'Scale thoughtfully while maintaining the quality your patients expect.',
-    },
+  const integrationLogos = [
+    { name: 'Elation', src: elationLogo },
+    { name: 'Hint', src: hintLogo },
+    { name: 'Akute', src: akuteLogo },
   ]
 
   return (
@@ -370,9 +321,8 @@ const ConciergeMedicine = () => {
                 <span className='text-primary'>Concierge Care</span>
               </h1>
 
-              <p className='text-lg text-muted-foreground mb-8'>
-                See engagement, outcomes, and trends across your patient panel
-                without disrupting high-touch care.
+              <p className='text-xl text-muted-foreground mb-8'>
+                See engagement, outcomes, and trends across your patient panel without disrupting high-touch care.
               </p>
 
               <div className='flex flex-wrap gap-4 mb-6'>
@@ -406,29 +356,32 @@ const ConciergeMedicine = () => {
           </div>
         </div>
       </GridSection>
+
+      {/* One Place for Meaningful Insight */}
       <section className='py-20 bg-background'>
         <div className='container mx-auto px-4'>
-          <div className='max-w-4xl'>
+          <div className='max-w-4xl mx-auto'>
             <h2 className='text-3xl md:text-4xl font-bold text-foreground mb-6'>
               One Place for Meaningful Practice Insight
             </h2>
             <p className='text-lg text-muted-foreground mb-8'>
-              Health Compiler helps practices:
+              Concierge practices thrive on personal relationships. Health Compiler helps you maintain that high-touch care while gaining clarity on:
             </p>
-            <div className='space-y-4 mb-8'>
-              {practiceInsights.map((insight, index) => (
+            <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-6'>
+              {conciergeBenefits.map((benefit, index) => (
                 <div
                   key={index}
-                  className='flex items-start gap-3'
+                  className='flex items-start gap-4 p-6 bg-muted/30 rounded-xl border border-border/50'
                 >
-                  <CheckCircle className='h-6 w-6 text-primary flex-shrink-0 mt-0.5' />
-                  <p className='text-foreground'>{insight}</p>
+                  <div className='w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0'>
+                    <benefit.icon className='h-6 w-6 text-primary' />
+                  </div>
+                  <p className='text-foreground font-medium pt-2'>
+                    {benefit.text}
+                  </p>
                 </div>
               ))}
             </div>
-            <p className='text-lg text-muted-foreground'>
-              All while preserving the personal nature of concierge care.
-            </p>
           </div>
         </div>
       </section>
@@ -436,149 +389,164 @@ const ConciergeMedicine = () => {
       {/* How We Support Concierge Practices */}
       <section className='py-20 bg-muted/30'>
         <div className='container mx-auto px-4'>
-          <h2 className='text-3xl md:text-4xl font-bold text-foreground mb-12 text-center'>
+          <h2 className='text-3xl md:text-4xl font-bold text-foreground mb-4 text-center'>
             How We Support Concierge Practices
           </h2>
-          <div className='grid md:grid-cols-3 gap-8'>
-            {supportFeatures.map((feature, index) => (
+          <p className='text-lg text-muted-foreground text-center mb-12 max-w-2xl mx-auto'>
+            Comprehensive tools designed to support premium care
+          </p>
+          <div className='grid md:grid-cols-3 gap-8 max-w-6xl mx-auto'>
+            {solutions.map((solution, index) => (
               <div
                 key={index}
-                className='bg-background rounded-xl p-8 shadow-sm border border-border'
+                className='bg-background rounded-2xl p-8 shadow-sm border border-border hover:border-primary/30 transition-colors group'
               >
-                <div className='w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6'>
-                  <feature.icon className='h-6 w-6 text-primary' />
+                <div className='w-16 h-16 bg-gradient-to-br from-primary/20 to-primary/5 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform'>
+                  <solution.icon className='h-8 w-8 text-primary' />
                 </div>
                 <h3 className='text-xl font-bold text-foreground mb-4'>
-                  {feature.title}
+                  {solution.title}
                 </h3>
-                <p className='text-muted-foreground mb-4'>
-                  {feature.description}
+                <p className='text-muted-foreground leading-relaxed'>
+                  {solution.description}
                 </p>
-                {feature.bullets && (
-                  <ul className='space-y-2 mb-4'>
-                    {feature.bullets.map((bullet, bIndex) => (
-                      <li
-                        key={bIndex}
-                        className='flex items-start gap-2 text-muted-foreground'
-                      >
-                        <span className='text-primary mt-1'>•</span>
-                        {bullet}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-                {feature.subtext && (
-                  <p className='text-sm text-muted-foreground italic'>
-                    {feature.subtext}
-                  </p>
-                )}
               </div>
             ))}
           </div>
-          <div className='text-center mt-10'>
+          <div className='flex justify-center mt-12'>
             <Button
               asChild
               variant='outline'
               size='lg'
+              className='gap-2'
             >
-              <Link to='/capabilities'>Explore</Link>
+              <Link to='/platform'>
+                Explore
+                <ArrowRight className='h-4 w-4' />
+              </Link>
             </Button>
           </div>
         </div>
       </section>
 
-      {/* Fits Your Existing Workflow */}
+      {/* Fits Into Your Existing Workflow */}
       <section className='py-20 bg-background'>
         <div className='container mx-auto px-4'>
-          <div className='text-center max-w-3xl mx-auto mb-12'>
+          <div className='max-w-4xl mx-auto text-center'>
+            <div className='inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4'>
+              <Workflow className='h-4 w-4' />
+              Seamless Integration
+            </div>
             <h2 className='text-3xl md:text-4xl font-bold text-foreground mb-6'>
               Fits Your Existing Workflow
             </h2>
             <p className='text-lg text-muted-foreground mb-4'>
-              Health Compiler integrates seamlessly with the tools concierge
-              practices already use.
+              Health Compiler integrates seamlessly with the tools concierge practices already use.
             </p>
-            <p className='text-lg text-muted-foreground'>
-              No workflow disruption. No forced changes.
+            <p className='text-xl font-semibold text-foreground mb-12'>
+              No system changes. No workflow disruption.
             </p>
-          </div>
-          <div className='flex flex-wrap justify-center items-center gap-8 md:gap-12'>
-            <img
-              src={elationLogo}
-              alt='Elation Health'
-              className='h-10 md:h-12 object-contain opacity-80 hover:opacity-100 transition-opacity'
-            />
-            <img
-              src={hintLogo}
-              alt='Hint Health'
-              className='h-10 md:h-12 object-contain opacity-80 hover:opacity-100 transition-opacity'
-            />
-            <img
-              src={akuteLogo}
-              alt='Akute Health'
-              className='h-10 md:h-12 object-contain opacity-80 hover:opacity-100 transition-opacity'
-            />
+
+            {/* Integration logos */}
+            <div className='flex flex-wrap justify-center items-center gap-8 md:gap-12 p-8 bg-muted/30 rounded-2xl border border-border/50'>
+              {integrationLogos.map((logo, index) => (
+                <div
+                  key={index}
+                  className='h-12 w-32 bg-background rounded-lg flex items-center justify-center p-2 shadow-sm'
+                >
+                  <img
+                    src={logo.src}
+                    alt={logo.name}
+                    className='max-h-full max-w-full object-contain opacity-70 hover:opacity-100 transition-opacity'
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none'
+                      e.currentTarget.nextElementSibling?.classList.remove(
+                        'hidden'
+                      )
+                    }}
+                  />
+                  <span className='hidden text-muted-foreground font-medium'>
+                    {logo.name}
+                  </span>
+                </div>
+              ))}
+              <div className='h-12 w-32 bg-background rounded-lg flex items-center justify-center p-2 shadow-sm'>
+                <span className='text-muted-foreground text-sm font-medium'>
+                  + More
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Value Props Section */}
+      {/* Preserving Premium Care */}
       <section className='py-20 bg-muted/30'>
         <div className='container mx-auto px-4'>
-          <div className='text-center max-w-3xl mx-auto mb-12'>
-            <h2 className='text-3xl md:text-4xl font-bold text-foreground mb-6'>
-              A Support Layer for Personalized Care
-            </h2>
-            <p className='text-lg text-muted-foreground'>
-              Health Compiler works in the background, helping concierge
-              practices operate with clarity, show impact, and maintain the
-              level of care patients expect.
-            </p>
-          </div>
-          <div className='grid md:grid-cols-3 gap-8'>
-            {valueProps.map((prop, index) => (
-              <div
-                key={index}
-                className='text-center p-8 bg-background rounded-xl border border-border'
-              >
-                <div className='w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6'>
-                  <prop.icon className='h-7 w-7 text-primary' />
-                </div>
-                <h3 className='text-xl font-bold text-foreground mb-3'>
-                  {prop.title}
-                </h3>
-                <p className='text-muted-foreground'>{prop.description}</p>
+          <div className='grid md:grid-cols-2 gap-12 items-center max-w-5xl mx-auto'>
+            <div>
+              <div className='inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4'>
+                <Heart className='h-4 w-4' />
+                Premium Care Ready
               </div>
-            ))}
+              <h2 className='text-3xl md:text-4xl font-bold text-foreground mb-6'>
+                Preserving the Personal Touch
+              </h2>
+              <p className='text-lg text-muted-foreground mb-6'>
+                Technology that supports, never replaces, the high-touch relationship that defines concierge care.
+              </p>
+              <div className='space-y-3'>
+                <div className='flex items-center gap-3'>
+                  <CheckCircle className='h-5 w-5 text-primary flex-shrink-0' />
+                  <span className='text-foreground'>Preserves personal care relationships</span>
+                </div>
+                <div className='flex items-center gap-3'>
+                  <CheckCircle className='h-5 w-5 text-primary flex-shrink-0' />
+                  <span className='text-foreground'>Shows impact clearly to patients and partners</span>
+                </div>
+                <div className='flex items-center gap-3'>
+                  <CheckCircle className='h-5 w-5 text-primary flex-shrink-0' />
+                  <span className='text-foreground'>Supports thoughtful growth</span>
+                </div>
+              </div>
+            </div>
+            <div className='relative'>
+              <div className='bg-gradient-to-br from-primary/5 to-accent/10 rounded-2xl p-8 border border-primary/20'>
+                <div className='space-y-4'>
+                  <div className='flex items-center justify-between p-4 bg-background rounded-xl'>
+                    <span className='text-sm font-medium text-foreground'>Patient Satisfaction</span>
+                    <span className='text-lg font-bold text-primary'>98%</span>
+                  </div>
+                  <div className='flex items-center justify-between p-4 bg-background rounded-xl'>
+                    <span className='text-sm font-medium text-foreground'>Care Continuity</span>
+                    <span className='text-lg font-bold text-green-600'>96%</span>
+                  </div>
+                  <div className='flex items-center justify-between p-4 bg-background rounded-xl'>
+                    <span className='text-sm font-medium text-foreground'>Member Retention</span>
+                    <span className='text-lg font-bold text-primary'>97%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className='py-20 bg-gradient-to-br from-primary/5 via-primary/10 to-primary/5'>
+      <section className='py-20 bg-gradient-to-br from-primary/5 via-background to-primary/5'>
         <div className='container mx-auto px-4'>
           <div className='max-w-3xl mx-auto text-center'>
             <h2 className='text-3xl md:text-4xl font-bold text-foreground mb-6'>
-              Ready to See How This Fits Your Practice?
+              Ready for Clearer Insight?
             </h2>
             <p className='text-lg text-muted-foreground mb-8'>
-              Discover how Health Compiler can support your concierge practice
-              with clear insight and thoughtful automation.
+              Get started with clear insights for your concierge practice.
             </p>
-            <div className='flex flex-wrap justify-center gap-4'>
-              <CTAButton
-                link='/contact'
-                text='Book a Demo'
-                suffixIconDefault
-              />
-              <Button
-                asChild
-                variant='outline'
-                size='lg'
-              >
-                <Link to='/contact'>Talk to Our Team</Link>
-              </Button>
-            </div>
+            <CTAButton
+              link='/contact'
+              text='Request a Demo'
+              suffixIconDefault
+            />
           </div>
         </div>
       </section>

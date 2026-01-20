@@ -1,125 +1,139 @@
 import { useState, useEffect } from 'react'
-import { Users, Building2, TrendingUp, FileText, PieChart, Shield } from 'lucide-react'
 
 const BrokersAdvisorsViz = () => {
-  const [activeClient, setActiveClient] = useState(0)
-  
-  const clients = [
-    { label: 'Employer A', employees: '250+', savings: '18%' },
-    { label: 'Employer B', employees: '150+', savings: '22%' },
-    { label: 'Employer C', employees: '500+', savings: '15%' },
-  ]
-
-  const insights = [
-    { icon: TrendingUp, label: 'Cost Trends' },
-    { icon: PieChart, label: 'Utilization' },
-    { icon: Shield, label: 'Risk Profile' },
-    { icon: FileText, label: 'Reports' },
-  ]
+  const [metrics, setMetrics] = useState([
+    { name: 'Cost Analysis', status: 0 },
+    { name: 'Risk Profile', status: 0 },
+    { name: 'Utilization', status: 0 },
+    { name: 'Savings', status: 0 },
+    { name: 'Claims Data', status: 0 },
+    { name: 'Benchmarks', status: 0 },
+    { name: 'Outcomes', status: 0 },
+    { name: 'Compliance', status: 0 },
+    { name: 'ROI Tracking', status: 0 },
+  ])
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setActiveClient((prev) => (prev + 1) % clients.length)
-    }, 2500)
-    return () => clearInterval(interval)
+      setMetrics((prev) =>
+        prev.map((metric) => ({
+          ...metric,
+          status: Math.min(2, metric.status + (Math.random() > 0.6 ? 1 : 0)),
+        }))
+      )
+    }, 800)
+
+    const resetInterval = setInterval(() => {
+      setMetrics((prev) => prev.map((m) => ({ ...m, status: 0 })))
+    }, 8000)
+
+    return () => {
+      clearInterval(interval)
+      clearInterval(resetInterval)
+    }
   }, [])
+
+  const getStatusColor = (status: number) => {
+    if (status === 0)
+      return { bg: 'bg-red-100', border: 'border-red-300', dot: 'bg-red-500' }
+    if (status === 1)
+      return {
+        bg: 'bg-yellow-100',
+        border: 'border-yellow-300',
+        dot: 'bg-yellow-500',
+      }
+    return {
+      bg: 'bg-green-100',
+      border: 'border-green-300',
+      dot: 'bg-green-500',
+    }
+  }
 
   return (
     <div className='relative h-[450px] flex items-center justify-center'>
-      {/* Advisor Hub */}
-      <div className='relative'>
-        <div className='absolute inset-0 -m-6 rounded-2xl bg-gradient-to-r from-primary/15 to-accent/15 blur-2xl animate-pulse' />
-        
-        <div className='relative bg-white rounded-2xl border border-primary/20 shadow-2xl p-6 w-[200px]'>
-          <div className='absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/5 to-accent/5' />
-          
-          <div className='relative space-y-4'>
-            <div className='flex items-center gap-3'>
-              <div className='w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center'>
-                <Users className='w-6 h-6 text-white' />
-              </div>
-              <div>
-                <div className='text-sm font-semibold text-foreground'>Advisor Portal</div>
-                <div className='text-xs text-muted-foreground'>Client insights</div>
-              </div>
+      <div className='relative w-full max-w-sm'>
+        {/* Header */}
+        <div className='bg-white rounded-t-2xl border border-b-0 border-border p-4'>
+          <div className='flex items-center justify-between'>
+            <div>
+              <h3 className='font-semibold text-foreground'>
+                Advisor Dashboard
+              </h3>
+              <p className='text-xs text-muted-foreground'>
+                Real-time client insights
+              </p>
             </div>
-            
-            <div className='pt-3 border-t border-border/50 space-y-2'>
-              {insights.map((insight, i) => {
-                const Icon = insight.icon
-                return (
-                  <div key={insight.label} className='flex items-center gap-2 text-xs text-muted-foreground'>
-                    <Icon className='w-3 h-3 text-primary' />
-                    <span>{insight.label}</span>
+            <div className='flex items-center gap-2'>
+              <span className='text-xs text-muted-foreground'>Live</span>
+              <span className='w-2 h-2 rounded-full bg-green-500 animate-pulse' />
+            </div>
+          </div>
+        </div>
+
+        {/* Grid */}
+        <div className='bg-white rounded-b-2xl border border-border p-4 shadow-xl'>
+          <div className='grid grid-cols-3 gap-3'>
+            {metrics.map((metric, idx) => {
+              const colors = getStatusColor(metric.status)
+              return (
+                <div
+                  key={idx}
+                  className={`p-3 rounded-xl border-2 transition-all duration-500 ${colors.bg} ${colors.border}`}
+                  style={{
+                    animation:
+                      metric.status === 2
+                        ? 'pulse 2s ease-in-out infinite'
+                        : 'none',
+                  }}
+                >
+                  <div className='flex items-center gap-2 mb-2'>
+                    <div
+                      className={`w-2 h-2 rounded-full ${colors.dot}`}
+                    />
+                    <span className='text-[10px] font-medium text-foreground/70 truncate'>
+                      {metric.name}
+                    </span>
                   </div>
-                )
-              })}
+                  <div className='text-lg font-bold text-foreground'>
+                    {metric.status === 0
+                      ? '—'
+                      : metric.status === 1
+                      ? '~'
+                      : '✓'}
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+
+          {/* Summary bar */}
+          <div className='mt-4 pt-4 border-t border-border'>
+            <div className='flex items-center justify-between text-xs text-muted-foreground mb-2'>
+              <span>Client Portfolio Score</span>
+              <span className='font-semibold text-foreground'>
+                {Math.round(
+                  (metrics.filter((m) => m.status === 2).length /
+                    metrics.length) *
+                    100
+                )}
+                %
+              </span>
+            </div>
+            <div className='h-2 bg-slate-100 rounded-full overflow-hidden'>
+              <div
+                className='h-full bg-gradient-to-r from-primary to-accent transition-all duration-700 rounded-full'
+                style={{
+                  width: `${
+                    (metrics.filter((m) => m.status === 2).length /
+                      metrics.length) *
+                    100
+                  }%`,
+                }}
+              />
             </div>
           </div>
         </div>
       </div>
-
-      {/* Client Cards */}
-      {clients.map((client, idx) => {
-        const angle = (idx * 120 - 90) * (Math.PI / 180)
-        const radius = 160
-        const x = Math.cos(angle) * radius
-        const y = Math.sin(angle) * radius
-        const isActive = idx === activeClient
-
-        return (
-          <div
-            key={client.label}
-            className={`absolute transition-all duration-500 ${isActive ? 'scale-110 z-10' : 'scale-100'}`}
-            style={{
-              left: `calc(50% + ${x}px - 60px)`,
-              top: `calc(50% + ${y}px - 40px)`,
-            }}
-          >
-            <div
-              className={`w-[120px] px-4 py-3 rounded-xl border backdrop-blur-sm transition-all duration-500 ${
-                isActive ? 'bg-white shadow-lg border-primary/30' : 'bg-white/80 border-border/50'
-              }`}
-              style={{
-                boxShadow: isActive ? '0 0 30px rgba(233, 78, 135, 0.3)' : 'none',
-              }}
-            >
-              <div className='flex items-center gap-2 mb-2'>
-                <Building2 className={`w-4 h-4 ${isActive ? 'text-primary' : 'text-muted-foreground'}`} />
-                <span className='text-xs font-medium text-foreground'>{client.label}</span>
-              </div>
-              <div className='space-y-1'>
-                <div className='text-[10px] text-muted-foreground'>{client.employees} employees</div>
-                <div className='flex items-center gap-1'>
-                  <TrendingUp className='w-3 h-3 text-green-500' />
-                  <span className='text-xs font-semibold text-green-600'>{client.savings} savings</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        )
-      })}
-
-      {/* Connection Lines */}
-      <svg className='absolute inset-0 w-full h-full pointer-events-none'>
-        <defs>
-          <linearGradient id='brokerGrad' x1='0%' y1='0%' x2='100%' y2='0%'>
-            <stop offset='0%' stopColor='#E94E87' stopOpacity='0.2' />
-            <stop offset='50%' stopColor='#E94E87' stopOpacity='0.6' />
-            <stop offset='100%' stopColor='#E94E87' stopOpacity='0.2' />
-          </linearGradient>
-        </defs>
-        <circle
-          cx='50%'
-          cy='50%'
-          r='160'
-          fill='none'
-          stroke='url(#brokerGrad)'
-          strokeWidth='1'
-          strokeDasharray='8 6'
-          className='opacity-40'
-        />
-      </svg>
     </div>
   )
 }
