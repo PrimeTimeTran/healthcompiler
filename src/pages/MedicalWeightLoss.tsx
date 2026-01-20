@@ -15,15 +15,9 @@ import {
   CheckCircle,
 } from 'lucide-react'
 import { CTAButton, GridSection } from '@/components/ui'
-import ArcHeroViz from '@/components/hero-visualizations/ArcHeroViz'
+import MedicalWeightLossViz from '@/components/hero-visualizations/MedicalWeightLossViz'
 
 const MedicalWeightLoss = () => {
-  const vizSegments = [
-    { label: 'Engagement' },
-    { label: 'Adherence' },
-    { label: 'Progress' },
-    { label: 'Outcomes' },
-  ]
   const journeyBenefits = [
     { icon: Users, text: 'Track patient engagement and follow-through' },
     { icon: TrendingUp, text: 'Monitor progress and outcomes over time' },
@@ -106,12 +100,7 @@ const MedicalWeightLoss = () => {
 
             {/* Right: Visualization */}
             <div className='lg:pl-8'>
-              <ArcHeroViz
-                id='medical-weight-loss'
-                segments={vizSegments}
-                centerTitle='Long-Term'
-                centerSubtitle='Progress'
-              />
+              <MedicalWeightLossViz />
             </div>
           </div>
         </div>

@@ -10,18 +10,12 @@ import {
   CheckCircle,
 } from 'lucide-react'
 import { CTAButton, GridSection } from '@/components/ui'
-import ArcHeroViz from '@/components/hero-visualizations/ArcHeroViz'
+import UrgentCareViz from '@/components/hero-visualizations/UrgentCareViz'
 import elationLogo from '@/assets/elation-logo.png'
 import hintLogo from '@/assets/hint-logo.png'
 import akuteLogo from '@/assets/akute-health-logo.png'
 
 const UrgentCare = () => {
-  const vizSegments = [
-    { label: 'Throughput' },
-    { label: 'Utilization' },
-    { label: 'Performance' },
-    { label: 'Revenue' },
-  ]
   const journeyBenefits = [
     'Understand visit volumes and throughput patterns',
     'Track site-level performance benchmarks',
@@ -100,12 +94,7 @@ const UrgentCare = () => {
 
             {/* Right: Visualization */}
             <div className='lg:pl-8'>
-              <ArcHeroViz
-                id='urgent-care'
-                segments={vizSegments}
-                centerTitle='Multi-Site'
-                centerSubtitle='Intelligence'
-              />
+              <UrgentCareViz />
             </div>
           </div>
         </div>
