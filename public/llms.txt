@@ -11,7 +11,7 @@
   Acos
 
 /aicall-triaging - AI Call Triaging
-  Aicall Triaging
+  Automated call triage for healthcare providers
 
 /aireceptionist - Aireceptionist
   Aireceptionist
@@ -150,9 +150,6 @@
 
 /news-events - News Events
   News Events
-
-/not-found - Not Found
-  Not Found
 
 /partners - Partners
   Partners

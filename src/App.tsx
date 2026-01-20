@@ -67,6 +67,8 @@ import Captives from './pages/Captives'
 import EmployersLoop from './pages/EmployersLoop'
 import TPAHealthPlans from './pages/TPAHealthPlans'
 import DesignKit from './pages/DesignKit/DesignKit'
+import CINs from './pages/CINs'
+import Payors from './pages/Payors'
 
 const queryClient = new QueryClient()
 
@@ -89,6 +91,14 @@ const App = () => (
           <Route
             path='/brokers-advisors'
             element={<BrokersAndAdvisors />}
+          />
+          <Route
+            path='/cins'
+            element={<CINs />}
+          />
+          <Route
+            path='/payors'
+            element={<Payors />}
           />
           <Route
             path='/captives'
@@ -243,7 +253,7 @@ const App = () => (
             element={<Surveys />}
           />
           <Route
-            path='/solutions/acos'
+            path='/acos'
             element={<ACOs />}
           />
           <Route

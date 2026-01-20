@@ -3,7 +3,7 @@ import path from 'path'
 
 const PAGES_DIR = path.join(process.cwd(), 'src/pages')
 const OUTPUT = path.join(process.cwd(), 'public/llms.txt')
-const EXCLUDE = ['notfound', 'form', 'index', 'design-kit']
+const EXCLUDE = ['notfound', 'form', 'index', 'design-kit', 'not-found']
 
 function isLikelyDescription(text) {
   if (!text) return false
@@ -77,16 +77,17 @@ function toRoute(filePath) {
 function resolvePageMeta(page) {
   const title = page.title ?? titleFromRoute(page.route)
 
-  let description =
-    page.description ??
-    extractDescriptionFallback(page.filePath) ??
-    descriptionFromRoute(page.route)
-
-  if (!isLikelyDescription(description)) {
-    description = descriptionFromRoute(page.route)
+  if (page.description) {
+    return { title, description: page.description }
   }
-
-  return { title, description }
+  const extracted = extractDescriptionFallback(page.filePath)
+  if (isLikelyDescription(extracted)) {
+    return { title, description: extracted }
+  }
+  return {
+    title,
+    description: title,
+  }
 }
 
 function extractMeta(filePath) {
