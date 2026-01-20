@@ -1,139 +1,262 @@
 import { useState, useEffect } from 'react'
 
 const BrokersAdvisorsViz = () => {
-  const [metrics, setMetrics] = useState([
-    { name: 'Cost Analysis', status: 0 },
-    { name: 'Risk Profile', status: 0 },
-    { name: 'Utilization', status: 0 },
-    { name: 'Savings', status: 0 },
-    { name: 'Claims Data', status: 0 },
-    { name: 'Benchmarks', status: 0 },
-    { name: 'Outcomes', status: 0 },
-    { name: 'Compliance', status: 0 },
-    { name: 'ROI Tracking', status: 0 },
-  ])
+  const [activeSegment, setActiveSegment] = useState(0)
+
+  const segments = [
+    { label: 'Cost Analysis', color: 'hsl(var(--primary))' },
+    { label: 'Utilization', color: 'hsl(217, 91%, 60%)' },
+    { label: 'Risk Profile', color: 'hsl(142, 76%, 36%)' },
+    { label: 'ROI Tracking', color: 'hsl(262, 83%, 58%)' },
+  ]
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setMetrics((prev) =>
-        prev.map((metric) => ({
-          ...metric,
-          status: Math.min(2, metric.status + (Math.random() > 0.6 ? 1 : 0)),
-        }))
-      )
-    }, 800)
-
-    const resetInterval = setInterval(() => {
-      setMetrics((prev) => prev.map((m) => ({ ...m, status: 0 })))
-    }, 8000)
-
-    return () => {
-      clearInterval(interval)
-      clearInterval(resetInterval)
-    }
+      setActiveSegment((prev) => (prev + 1) % segments.length)
+    }, 2000)
+    return () => clearInterval(interval)
   }, [])
 
-  const getStatusColor = (status: number) => {
-    if (status === 0)
-      return { bg: 'bg-red-100', border: 'border-red-300', dot: 'bg-red-500' }
-    if (status === 1)
-      return {
-        bg: 'bg-yellow-100',
-        border: 'border-yellow-300',
-        dot: 'bg-yellow-500',
-      }
-    return {
-      bg: 'bg-green-100',
-      border: 'border-green-300',
-      dot: 'bg-green-500',
-    }
-  }
-
   return (
-    <div className='relative h-[450px] flex items-center justify-center'>
-      <div className='relative w-full max-w-sm'>
-        {/* Header */}
-        <div className='bg-white rounded-t-2xl border border-b-0 border-border p-4'>
-          <div className='flex items-center justify-between'>
-            <div>
-              <h3 className='font-semibold text-foreground'>
-                Advisor Dashboard
-              </h3>
-              <p className='text-xs text-muted-foreground'>
-                Real-time client insights
-              </p>
-            </div>
-            <div className='flex items-center gap-2'>
-              <span className='text-xs text-muted-foreground'>Live</span>
-              <span className='w-2 h-2 rounded-full bg-green-500 animate-pulse' />
-            </div>
-          </div>
-        </div>
+    <div className='relative w-full h-[400px] flex items-center justify-center'>
+      <svg
+        viewBox='0 0 400 400'
+        className='w-full h-full max-w-md'
+      >
+        <defs>
+          <linearGradient
+            id='advisorCoreGradient'
+            x1='0%'
+            y1='0%'
+            x2='100%'
+            y2='100%'
+          >
+            <stop
+              offset='0%'
+              stopColor='hsl(var(--primary))'
+            />
+            <stop
+              offset='100%'
+              stopColor='hsl(262, 83%, 58%)'
+            />
+          </linearGradient>
+          <filter id='advisorGlow'>
+            <feGaussianBlur
+              stdDeviation='3'
+              result='blur'
+            />
+            <feMerge>
+              <feMergeNode in='blur' />
+              <feMergeNode in='SourceGraphic' />
+            </feMerge>
+          </filter>
+          <filter id='advisorSoftGlow'>
+            <feGaussianBlur
+              stdDeviation='8'
+              result='blur'
+            />
+            <feMerge>
+              <feMergeNode in='blur' />
+              <feMergeNode in='SourceGraphic' />
+            </feMerge>
+          </filter>
+        </defs>
 
-        {/* Grid */}
-        <div className='bg-white rounded-b-2xl border border-border p-4 shadow-xl'>
-          <div className='grid grid-cols-3 gap-3'>
-            {metrics.map((metric, idx) => {
-              const colors = getStatusColor(metric.status)
-              return (
-                <div
-                  key={idx}
-                  className={`p-3 rounded-xl border-2 transition-all duration-500 ${colors.bg} ${colors.border}`}
-                  style={{
-                    animation:
-                      metric.status === 2
-                        ? 'pulse 2s ease-in-out infinite'
-                        : 'none',
-                  }}
-                >
-                  <div className='flex items-center gap-2 mb-2'>
-                    <div
-                      className={`w-2 h-2 rounded-full ${colors.dot}`}
-                    />
-                    <span className='text-[10px] font-medium text-foreground/70 truncate'>
-                      {metric.name}
-                    </span>
-                  </div>
-                  <div className='text-lg font-bold text-foreground'>
-                    {metric.status === 0
-                      ? '—'
-                      : metric.status === 1
-                      ? '~'
-                      : '✓'}
-                  </div>
-                </div>
-              )
-            })}
-          </div>
+        {/* Background rings */}
+        <circle
+          cx='200'
+          cy='200'
+          r='160'
+          fill='none'
+          stroke='hsl(var(--border))'
+          strokeWidth='1'
+          strokeDasharray='4 4'
+          opacity='0.3'
+        />
+        <circle
+          cx='200'
+          cy='200'
+          r='120'
+          fill='none'
+          stroke='hsl(var(--border))'
+          strokeWidth='1'
+          strokeDasharray='2 2'
+          opacity='0.2'
+        />
 
-          {/* Summary bar */}
-          <div className='mt-4 pt-4 border-t border-border'>
-            <div className='flex items-center justify-between text-xs text-muted-foreground mb-2'>
-              <span>Client Portfolio Score</span>
-              <span className='font-semibold text-foreground'>
-                {Math.round(
-                  (metrics.filter((m) => m.status === 2).length /
-                    metrics.length) *
-                    100
-                )}
-                %
-              </span>
-            </div>
-            <div className='h-2 bg-slate-100 rounded-full overflow-hidden'>
-              <div
-                className='h-full bg-gradient-to-r from-primary to-accent transition-all duration-700 rounded-full'
-                style={{
-                  width: `${
-                    (metrics.filter((m) => m.status === 2).length /
-                      metrics.length) *
-                    100
-                  }%`,
-                }}
+        {/* Data arc segments */}
+        {segments.map((segment, i) => {
+          const startAngle = (i * 90 - 90) * (Math.PI / 180)
+          const endAngle = ((i + 1) * 90 - 90) * (Math.PI / 180)
+          const innerRadius = 75
+          const outerRadius = 95
+          const isActive = i <= activeSegment
+
+          const x1Inner = 200 + Math.cos(startAngle) * innerRadius
+          const y1Inner = 200 + Math.sin(startAngle) * innerRadius
+          const x1Outer = 200 + Math.cos(startAngle) * outerRadius
+          const y1Outer = 200 + Math.sin(startAngle) * outerRadius
+          const x2Inner = 200 + Math.cos(endAngle) * innerRadius
+          const y2Inner = 200 + Math.sin(endAngle) * innerRadius
+          const x2Outer = 200 + Math.cos(endAngle) * outerRadius
+          const y2Outer = 200 + Math.sin(endAngle) * outerRadius
+
+          const d = `M ${x1Inner} ${y1Inner} 
+                     L ${x1Outer} ${y1Outer} 
+                     A ${outerRadius} ${outerRadius} 0 0 1 ${x2Outer} ${y2Outer}
+                     L ${x2Inner} ${y2Inner}
+                     A ${innerRadius} ${innerRadius} 0 0 0 ${x1Inner} ${y1Inner}`
+
+          return (
+            <path
+              key={segment.label}
+              d={d}
+              fill={isActive ? segment.color : 'hsl(var(--muted))'}
+              opacity={isActive ? (i === activeSegment ? 1 : 0.7) : 0.2}
+              filter={i === activeSegment ? 'url(#advisorGlow)' : ''}
+              className='transition-all duration-500'
+            />
+          )
+        })}
+
+        {/* Segment labels */}
+        {segments.map((segment, i) => {
+          const angle = (i * 90 + 45 - 90) * (Math.PI / 180)
+          const labelRadius = 135
+          const x = 200 + Math.cos(angle) * labelRadius
+          const y = 200 + Math.sin(angle) * labelRadius
+          const isActive = i === activeSegment
+
+          return (
+            <g key={`label-${segment.label}`}>
+              <circle
+                cx={x}
+                cy={y}
+                r='28'
+                fill={isActive ? segment.color : 'hsl(var(--card))'}
+                stroke={isActive ? segment.color : 'hsl(var(--border))'}
+                strokeWidth={isActive ? '2' : '1'}
+                filter={isActive ? 'url(#advisorGlow)' : ''}
+                className='transition-all duration-300'
               />
-            </div>
-          </div>
-        </div>
-      </div>
+              <text
+                x={x}
+                y={y + 4}
+                textAnchor='middle'
+                className={`text-[7px] font-medium ${
+                  isActive ? 'fill-white' : 'fill-muted-foreground'
+                }`}
+              >
+                {segment.label.split(' ').map((word, wi) => (
+                  <tspan key={wi} x={x} dy={wi === 0 ? '-0.3em' : '1.1em'}>
+                    {word}
+                  </tspan>
+                ))}
+              </text>
+            </g>
+          )
+        })}
+
+        {/* Central core */}
+        <g>
+          <circle
+            cx='200'
+            cy='200'
+            r='55'
+            fill='url(#advisorCoreGradient)'
+            opacity='0.15'
+            filter='url(#advisorSoftGlow)'
+          >
+            <animate
+              attributeName='r'
+              values='55;60;55'
+              dur='3s'
+              repeatCount='indefinite'
+            />
+          </circle>
+
+          <circle
+            cx='200'
+            cy='200'
+            r='45'
+            fill='url(#advisorCoreGradient)'
+            filter='url(#advisorGlow)'
+          >
+            <animate
+              attributeName='r'
+              values='45;48;45'
+              dur='2s'
+              repeatCount='indefinite'
+            />
+          </circle>
+
+          <circle
+            cx='200'
+            cy='200'
+            r='35'
+            fill='hsl(var(--card))'
+            opacity='0.2'
+          />
+
+          <text
+            x='200'
+            y='195'
+            textAnchor='middle'
+            className='fill-white text-[11px] font-semibold'
+          >
+            Client
+          </text>
+          <text
+            x='200'
+            y='210'
+            textAnchor='middle'
+            className='fill-white/80 text-[9px]'
+          >
+            Portfolio
+          </text>
+        </g>
+
+        {/* Pulse effect */}
+        <circle
+          cx='200'
+          cy='200'
+          r='50'
+          fill='none'
+          stroke='hsl(var(--primary))'
+          strokeWidth='1'
+          opacity='0'
+        >
+          <animate
+            attributeName='r'
+            values='50;90'
+            dur='2.5s'
+            repeatCount='indefinite'
+          />
+          <animate
+            attributeName='opacity'
+            values='0.5;0'
+            dur='2.5s'
+            repeatCount='indefinite'
+          />
+        </circle>
+
+        {/* Data particles */}
+        {[0, 1, 2].map((i) => (
+          <circle
+            key={`particle-${i}`}
+            r='4'
+            fill='hsl(var(--primary))'
+            opacity='0.8'
+          >
+            <animateMotion
+              dur={`${3 + i * 0.5}s`}
+              repeatCount='indefinite'
+              path='M0,160 Q80,80 0,0 Q-80,-80 0,-160 Q80,-80 0,0 Q-80,80 0,160'
+              begin={`${i * 1}s`}
+            />
+          </circle>
+        ))}
+      </svg>
     </div>
   )
 }
