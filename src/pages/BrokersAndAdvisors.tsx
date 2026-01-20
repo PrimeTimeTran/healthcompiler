@@ -11,7 +11,7 @@ import {
   FileText,
 } from 'lucide-react'
 import { CTAButton, GridSection } from '@/components/ui'
-import ArcHeroViz from '@/components/hero-visualizations/ArcHeroViz'
+import BrokersAdvisorsViz from '@/components/hero-visualizations/BrokersAdvisorsViz'
 
 import elationLogo from '@/assets/elation-logo.png'
 import hintLogo from '@/assets/hint-logo.png'
@@ -58,12 +58,6 @@ const BrokersAndAdvisors = () => {
     { name: 'Akute', src: akuteLogo },
   ]
 
-  const vizSegments = [
-    { label: 'RFP Support' },
-    { label: 'ROI Tracking' },
-    { label: 'Benchmarking' },
-    { label: 'Client Reports' },
-  ]
 
   return (
     <Layout>
@@ -107,12 +101,7 @@ const BrokersAndAdvisors = () => {
 
             {/* Right: Visualization */}
             <div className='lg:pl-8'>
-              <ArcHeroViz
-                id='brokers-advisors'
-                segments={vizSegments}
-                centerTitle='Advisor'
-                centerSubtitle='Insights'
-              />
+              <BrokersAdvisorsViz />
             </div>
           </div>
         </div>

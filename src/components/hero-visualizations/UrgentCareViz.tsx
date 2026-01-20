@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react'
-import { Users, TrendingUp, FileText, Shield, PieChart } from 'lucide-react'
+import { Activity, Clock, TrendingUp, DollarSign, Users, BarChart3 } from 'lucide-react'
 
-const BrokersAdvisorsViz = () => {
+const UrgentCareViz = () => {
   const [activeMetric, setActiveMetric] = useState(0)
 
   const metrics = [
-    { icon: FileText, label: 'RFP Data', trend: '+15%', color: '#8B5CF6' },
-    { icon: PieChart, label: 'ROI Analysis', trend: '+22%', color: '#E94E87' },
-    { icon: TrendingUp, label: 'Benchmarks', trend: '+18%', color: '#06B6D4' },
-    { icon: Shield, label: 'Retention', trend: '96%', color: '#10B981' },
+    { icon: Clock, label: 'Throughput', trend: '+15%', color: '#8B5CF6' },
+    { icon: Users, label: 'Utilization', trend: '+12%', color: '#E94E87' },
+    { icon: BarChart3, label: 'Performance', trend: '+20%', color: '#06B6D4' },
+    { icon: DollarSign, label: 'Revenue', trend: '+18%', color: '#10B981' },
   ]
 
   useEffect(() => {
@@ -30,18 +30,18 @@ const BrokersAdvisorsViz = () => {
           <div className='relative space-y-4'>
             <div className='flex items-center gap-3'>
               <div className='w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center'>
-                <Users className='w-6 h-6 text-white' />
+                <Activity className='w-6 h-6 text-white' />
               </div>
               <div>
-                <div className='text-sm font-semibold text-foreground'>Advisor</div>
-                <div className='text-xs text-muted-foreground'>Insights</div>
+                <div className='text-sm font-semibold text-foreground'>Multi-Site</div>
+                <div className='text-xs text-muted-foreground'>Intelligence</div>
               </div>
             </div>
 
             {/* Mini chart */}
             <div className='pt-3 border-t border-border/50'>
               <div className='flex items-end justify-between gap-1 h-12'>
-                {[45, 70, 55, 85, 65, 80, 92].map((h, i) => (
+                {[50, 75, 60, 85, 70, 90, 95].map((h, i) => (
                   <div
                     key={i}
                     className='flex-1 bg-primary/20 rounded-t transition-all duration-300 hover:bg-primary/40'
@@ -93,8 +93,8 @@ const BrokersAdvisorsViz = () => {
                 <span className='text-xs font-medium text-foreground'>{metric.label}</span>
               </div>
               <div className='flex items-center gap-1'>
-                <TrendingUp className={`w-3 h-3 ${metric.trend.startsWith('+') ? 'text-green-500' : 'text-primary'}`} />
-                <span className={`text-xs font-semibold ${metric.trend.startsWith('+') ? 'text-green-600' : 'text-primary'}`}>
+                <TrendingUp className='w-3 h-3 text-green-500' />
+                <span className='text-xs font-semibold text-green-600'>
                   {metric.trend}
                 </span>
               </div>
@@ -106,7 +106,7 @@ const BrokersAdvisorsViz = () => {
       {/* Connection Lines */}
       <svg className='absolute inset-0 w-full h-full pointer-events-none'>
         <defs>
-          <linearGradient id='brokersGrad' x1='0%' y1='0%' x2='100%' y2='0%'>
+          <linearGradient id='urgentCareGrad' x1='0%' y1='0%' x2='100%' y2='0%'>
             <stop offset='0%' stopColor='#E94E87' stopOpacity='0.2' />
             <stop offset='50%' stopColor='#E94E87' stopOpacity='0.5' />
             <stop offset='100%' stopColor='#E94E87' stopOpacity='0.2' />
@@ -119,7 +119,7 @@ const BrokersAdvisorsViz = () => {
             y1='50%'
             x2={`calc(50% + ${pos.x}px)`}
             y2={`calc(50% + ${pos.y}px)`}
-            stroke='url(#brokersGrad)'
+            stroke='url(#urgentCareGrad)'
             strokeWidth={idx === activeMetric ? '2' : '1'}
             strokeDasharray='6 4'
             className={`transition-opacity duration-500 ${idx === activeMetric ? 'opacity-80' : 'opacity-30'}`}
@@ -130,4 +130,4 @@ const BrokersAdvisorsViz = () => {
   )
 }
 
-export default BrokersAdvisorsViz
+export default UrgentCareViz
