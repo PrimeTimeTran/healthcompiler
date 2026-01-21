@@ -37,11 +37,11 @@ const HeroSection = () => {
             </h1>
 
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-xl">
-              Health Compiler helps independent primary care practices succeed in shared savings and risk-based contracts by turning clinical and claims data into actionable intelligence—without disrupting care delivery.
+              Health Compiler supports independent primary care practices by helping teams make better use of the data they already generate.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <CTAButton link="/contact" text="Request a Demo" suffixIconDefault />
+              <CTAButton link="/contact" text="Book a Demo" suffixIconDefault />
               <Button size="lg" variant="outline" asChild>
                 <Link to="#how-it-works">See How It Works</Link>
               </Button>
@@ -52,6 +52,173 @@ const HeroSection = () => {
         </div>
       </div>
     </GridSection>
+  )
+}
+
+// Lower Operational Cost Section
+const LowerCostSection = () => {
+  const benefits = [
+    'Reduce broad, manual chart reviews by focusing only where clinical signals indicate gaps',
+    'Cut down staff time spent pulling records and reconciling reports',
+    'Minimize rework caused by late or unclear requests',
+  ]
+
+  return (
+    <section className="py-24 bg-white">
+      <div className="container mx-auto px-6">
+        <div className="max-w-4xl">
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-6">
+            Lower operational cost
+          </h2>
+          <div className="space-y-4">
+            {benefits.map((benefit, idx) => (
+              <div key={idx} className="flex items-start gap-3">
+                <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-0.5" />
+                <p className="text-foreground">{benefit}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// Earlier Visibility Section
+const EarlierVisibilitySection = () => {
+  const benefits = [
+    'See care gaps and quality exposure earlier in the year',
+    'Surface risk-relevant conditions before reporting deadlines approach',
+    'Stay ahead of reviews instead of reacting to them',
+  ]
+
+  return (
+    <section className="py-24 bg-gradient-to-b from-slate-50 to-white">
+      <div className="container mx-auto px-6">
+        <div className="max-w-4xl">
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-6">
+            Earlier visibility into quality and risk
+          </h2>
+          <div className="space-y-4">
+            {benefits.map((benefit, idx) => (
+              <div key={idx} className="flex items-start gap-3">
+                <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-0.5" />
+                <p className="text-foreground">{benefit}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// Less Disruption Section
+const LessDisruptionSection = () => {
+  const benefits = [
+    'Fewer last-minute chart requests and documentation fire drills',
+    'Less back-and-forth with external partners',
+    'More staff time focused on patient care, not paperwork',
+  ]
+
+  return (
+    <section className="py-24 bg-white">
+      <div className="container mx-auto px-6">
+        <div className="max-w-4xl">
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-6">
+            Less disruption to day-to-day practice
+          </h2>
+          <div className="space-y-4 mb-8">
+            {benefits.map((benefit, idx) => (
+              <div key={idx} className="flex items-start gap-3">
+                <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-0.5" />
+                <p className="text-foreground">{benefit}</p>
+              </div>
+            ))}
+          </div>
+          <Button size="lg" variant="outline" asChild>
+            <Link to="/capabilities">Learn More</Link>
+          </Button>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// Collaboration Section
+const CollaborationSection = () => {
+  const benefits = [
+    'Work from a consistent clinical picture when engaging with payers, employers, or programs',
+    'Reduce misalignment and disputed results',
+    'Make performance conversations more straightforward',
+  ]
+
+  return (
+    <section className="py-24 bg-gradient-to-b from-slate-50 to-white">
+      <div className="container mx-auto px-6">
+        <div className="max-w-4xl">
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-6">
+            Stronger collaboration with external partners
+          </h2>
+          <div className="space-y-4">
+            {benefits.map((benefit, idx) => (
+              <div key={idx} className="flex items-start gap-3">
+                <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-0.5" />
+                <p className="text-foreground">{benefit}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// EHR Compatibility Section
+const EHRCompatibilitySection = () => {
+  const points = [
+    'Designed to complement the EHR for independent primary care practices',
+    'Does not replace your independent primary care EHR',
+    'Connects to the systems you already use',
+  ]
+
+  return (
+    <section className="py-24 bg-white">
+      <div className="container mx-auto px-6">
+        <div className="max-w-4xl">
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-6">
+            Works with your existing EHR
+          </h2>
+          <div className="space-y-4">
+            {points.map((point, idx) => (
+              <div key={idx} className="flex items-start gap-3">
+                <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-0.5" />
+                <p className="text-foreground">{point}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// Growth Support Section
+const GrowthSupportSection = () => {
+  return (
+    <section className="py-24 bg-gradient-to-b from-slate-50 to-white">
+      <div className="container mx-auto px-6">
+        <div className="max-w-4xl">
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-6">
+            Built to support independent practices as they grow
+          </h2>
+          <p className="text-lg text-muted-foreground mb-8">
+            Health Compiler helps practices stay focused on care while being better prepared for quality reviews, partner requests, and evolving expectations.
+          </p>
+          <CTAButton link="/contact" text="Request a Demo" suffixIconDefault />
+        </div>
+      </div>
+    </section>
   )
 }
 
@@ -440,6 +607,12 @@ const IndependentPrimaryCare = () => {
       </Helmet>
 
       <HeroSection />
+      <LowerCostSection />
+      <EarlierVisibilitySection />
+      <LessDisruptionSection />
+      <CollaborationSection />
+      <EHRCompatibilitySection />
+      <GrowthSupportSection />
       <RealitySection />
       <SolutionSection />
       <IntegrationSection />

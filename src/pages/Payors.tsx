@@ -100,11 +100,11 @@ const Payors = () => {
               </div>
               
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-[1.1]">
-                Intelligence Infrastructure for Health Plans & Payers
+                Healthcare Payer Analytics Solutions
               </h1>
 
               <p className="text-xl text-muted-foreground">
-                Health Compiler unifies claims, clinical, pharmacy, and quality data into a single intelligence layer—supporting risk management, quality performance, and value-based operations across commercial, Medicare Advantage, and Medicaid plans.
+                Health Compiler helps health plans move beyond claims-only views by adding timely clinical context. This payer analytics solution enables earlier visibility into risk, quality, and utilization, so payer teams can act before issues surface late in the cycle.
               </p>
 
               <div className="flex flex-wrap gap-4">
@@ -120,6 +120,111 @@ const Payors = () => {
           </div>
         </div>
       </GridSection>
+
+      {/* Go Beyond Claims Section */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+              Go beyond healthcare claims data analysis
+            </h2>
+            <p className="text-lg text-muted-foreground mb-8">
+              Healthcare claims data analysis is essential, but incomplete on its own. Health Compiler strengthens claims data analysis by helping payers:
+            </p>
+            <div className="space-y-4 mb-8">
+              {[
+                'Identify care gaps and quality exposure earlier',
+                'See risk-relevant conditions before claims mature',
+                'Understand utilization trends with clinical context',
+                'Reduce reliance on broad, retrospective chart reviews',
+              ].map((item, idx) => (
+                <div key={idx} className="flex items-start gap-3">
+                  <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-0.5" />
+                  <p className="text-foreground">{item}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Risk and HCC Section */}
+      <section className="py-20 bg-gradient-to-b from-slate-50 to-white">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+              Improve risk and HCC performance
+            </h2>
+            <p className="text-lg text-muted-foreground mb-8">
+              As part of a modern health plan data platform, Health Compiler supports payer-facing provider analytics solutions that improve accuracy and efficiency.
+            </p>
+            <div className="space-y-4 mb-8">
+              {[
+                'Aggregate longitudinal clinical activity across encounters and diagnoses',
+                'Surface population- and provider-level risk patterns',
+                'Highlight documentation gaps that affect risk scores',
+                'Focus outreach and review where it matters most',
+              ].map((item, idx) => (
+                <div key={idx} className="flex items-start gap-3">
+                  <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-0.5" />
+                  <p className="text-foreground">{item}</p>
+                </div>
+              ))}
+            </div>
+            <Button size="lg" variant="outline" asChild>
+              <Link to="/capabilities">Learn more</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* What This Delivers Section */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+              What this delivers for payer teams
+            </h2>
+            <div className="space-y-4 mb-8">
+              {[
+                'Lower operational cost from reduced manual reviews',
+                'Earlier visibility into HEDIS and quality gaps',
+                'Fewer late-cycle cleanups',
+                'Stronger oversight of value-based arrangements',
+              ].map((item, idx) => (
+                <div key={idx} className="flex items-start gap-3">
+                  <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-0.5" />
+                  <p className="text-foreground">{item}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Designed for Payer Environments Section */}
+      <section className="py-20 bg-gradient-to-b from-slate-50 to-white">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+              Designed for payer environments
+            </h2>
+            <div className="space-y-4 mb-8">
+              {[
+                'Integrates with existing payer systems',
+                'Complements claims and risk platforms',
+                'No workflow disruption',
+              ].map((item, idx) => (
+                <div key={idx} className="flex items-start gap-3">
+                  <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-0.5" />
+                  <p className="text-foreground">{item}</p>
+                </div>
+              ))}
+            </div>
+            <CTAButton link="/contact" text="Request a Demo" suffixIconDefault />
+          </div>
+        </div>
+      </section>
 
       {/* Section 1 - The Payer Operating Reality */}
       <section className="py-20 bg-background">

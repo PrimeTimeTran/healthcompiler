@@ -54,7 +54,120 @@ const HeroSection = () => {
   )
 }
 
-// ACO Section
+// ACO Analytics Section
+const ACOAnalyticsSection = () => {
+  const features = [
+    'Consolidate data across multiple EHRs and practice environments',
+    'Monitor quality measures, utilization, and care gaps continuously',
+    'Track attribution and population performance without reconciliation delays',
+    'Move from quarterly reporting to ongoing performance awareness',
+    'Support both clinical improvement and shared-savings outcomes',
+  ]
+
+  return (
+    <section className="py-24 bg-white">
+      <div className="container mx-auto px-6">
+        <div className="max-w-4xl">
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-6">
+            ACO Analytics Built for Value-Based Care
+          </h2>
+          <p className="text-lg text-muted-foreground mb-8">
+            Health Compiler provides ACO analytics designed to support ACO value-based care programs by bringing clinical and operational data together across the network.
+          </p>
+          <div className="space-y-4 mb-8">
+            {features.map((feature, idx) => (
+              <div key={idx} className="flex items-start gap-3">
+                <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-0.5" />
+                <p className="text-foreground">{feature}</p>
+              </div>
+            ))}
+          </div>
+          <p className="text-muted-foreground italic mb-8">
+            This is ACO data analytics built for how ACOs operate.
+          </p>
+          <CTAButton link="/contact" text="Book a Demo" suffixIconDefault />
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// Care Coordination Section
+const CareCoordinationSection = () => {
+  const benefits = [
+    'Leadership sees performance early enough to act',
+    'Care teams focus outreach where it has the most impact',
+    'Practices receive actionable feedback instead of static reports',
+    'Financial outcomes improve because care improvement happens sooner',
+  ]
+
+  return (
+    <section className="py-24 bg-gradient-to-b from-slate-50 to-white">
+      <div className="container mx-auto px-6">
+        <div className="max-w-4xl">
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-6">
+            How ACO Analytics Improve Care Coordination
+          </h2>
+          <p className="text-lg text-muted-foreground mb-4">
+            Effective care coordination depends on timely, accurate information.
+          </p>
+          <p className="text-lg text-muted-foreground mb-8">
+            Health Compiler helps answer a common question: how can ACO analytics improve care coordination in real-world settings?
+          </p>
+          <div className="space-y-4 mb-8">
+            {benefits.map((benefit, idx) => (
+              <div key={idx} className="flex items-start gap-3">
+                <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-0.5" />
+                <p className="text-foreground">{benefit}</p>
+              </div>
+            ))}
+          </div>
+          <p className="text-muted-foreground mb-8">
+            This approach strengthens population health management for ACOs by making performance visible across the network.
+          </p>
+          <Button size="lg" variant="outline" asChild>
+            <Link to="/capabilities">Learn more</Link>
+          </Button>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// ACO Complexity Section
+const ACOComplexitySection = () => {
+  const features = [
+    'Works across fragmented technology environments and multiple EHRs',
+    'Reduces manual data normalization and reconciliation effort',
+    'Supports reporting for CMS, partners, and internal stakeholders',
+  ]
+
+  return (
+    <section className="py-24 bg-white">
+      <div className="container mx-auto px-6">
+        <div className="max-w-4xl">
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-6">
+            Designed for ACO Complexity
+          </h2>
+          <div className="space-y-4 mb-8">
+            {features.map((feature, idx) => (
+              <div key={idx} className="flex items-start gap-3">
+                <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-0.5" />
+                <p className="text-foreground">{feature}</p>
+              </div>
+            ))}
+          </div>
+          <p className="text-muted-foreground mb-8">
+            Built to scale with growing ACO networks and evolving program requirements.
+          </p>
+          <CTAButton link="/contact" text="Request a Demo" suffixIconDefault />
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// ACO Section (existing)
 const ACOSection = () => {
   const capabilities = [
     {
@@ -80,7 +193,7 @@ const ACOSection = () => {
   ]
 
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24 bg-gradient-to-b from-slate-50 to-white">
       <div className="container mx-auto px-6">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-6">
@@ -424,6 +537,9 @@ const ACOs = () => {
       </Helmet>
 
       <HeroSection />
+      <ACOAnalyticsSection />
+      <CareCoordinationSection />
+      <ACOComplexitySection />
       <ACOSection />
       <RegistrySection />
       <SharedPlatformSection />
