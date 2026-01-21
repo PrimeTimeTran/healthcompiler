@@ -1,355 +1,552 @@
 import { Layout } from '@/components/layout/Layout'
 import { Button } from '@/components/ui/button'
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
 import {
-  DollarSign,
-  Users,
-  Activity,
-  FileText,
-  CheckCircle,
-  Heart,
-  Code,
-  Eye,
-  Leaf,
-  Building,
-  TrendingUp,
   ArrowRight,
+  Users,
+  Layers,
+  Target,
+  FileText,
+  Database,
+  Activity,
+  Brain,
+  TrendingUp,
+  Shield,
+  CheckCircle,
+  Plug,
+  BarChart3,
+  Heart,
+  AlertTriangle,
+  ClipboardList,
 } from 'lucide-react'
 import { CTAButton, GridSection } from '@/components/ui'
-import ACOsViz from '@/components/hero-visualizations/ACOsViz'
+import ACOsRegistriesViz from '@/components/hero-visualizations/ACOsRegistriesViz'
 
-const ACOs = () => {
-  const helpCards = [
+// Hero Section
+const HeroSection = () => {
+  return (
+    <GridSection>
+      <div className="container mx-auto px-6 py-24 lg:py-32">
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+          <div className="space-y-8">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-[1.1]">
+              Intelligence Infrastructure for{' '}
+              <span className="text-primary">ACOs & Registries</span>
+            </h1>
+
+            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-xl">
+              Health Compiler unifies clinical, claims, and quality data into a single intelligence layer—powering performance, reporting, and outcomes across accountable care organizations and registry programs.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4">
+              <CTAButton link="/contact" text="Request a Demo" suffixIconDefault />
+              <Button size="lg" variant="outline" asChild>
+                <Link to="/platform">See the Platform</Link>
+              </Button>
+            </div>
+          </div>
+
+          <ACOsRegistriesViz />
+        </div>
+      </div>
+    </GridSection>
+  )
+}
+
+// ACO Analytics Section
+const ACOAnalyticsSection = () => {
+  const features = [
+    'Consolidate data across multiple EHRs and practice environments',
+    'Monitor quality measures, utilization, and care gaps continuously',
+    'Track attribution and population performance without reconciliation delays',
+    'Move from quarterly reporting to ongoing performance awareness',
+    'Support both clinical improvement and shared-savings outcomes',
+  ]
+
+  return (
+    <section className="py-24 bg-white">
+      <div className="container mx-auto px-6">
+        <div className="max-w-4xl">
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-6">
+            ACO Analytics Built for Value-Based Care
+          </h2>
+          <p className="text-lg text-muted-foreground mb-8">
+            Health Compiler provides ACO analytics designed to support ACO value-based care programs by bringing clinical and operational data together across the network.
+          </p>
+          <div className="space-y-4 mb-8">
+            {features.map((feature, idx) => (
+              <div key={idx} className="flex items-start gap-3">
+                <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-0.5" />
+                <p className="text-foreground">{feature}</p>
+              </div>
+            ))}
+          </div>
+          <p className="text-muted-foreground italic mb-8">
+            This is ACO data analytics built for how ACOs operate.
+          </p>
+          <CTAButton link="/contact" text="Book a Demo" suffixIconDefault />
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// Care Coordination Section
+const CareCoordinationSection = () => {
+  const benefits = [
+    'Leadership sees performance early enough to act',
+    'Care teams focus outreach where it has the most impact',
+    'Practices receive actionable feedback instead of static reports',
+    'Financial outcomes improve because care improvement happens sooner',
+  ]
+
+  return (
+    <section className="py-24 bg-gradient-to-b from-slate-50 to-white">
+      <div className="container mx-auto px-6">
+        <div className="max-w-4xl">
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-6">
+            How ACO Analytics Improve Care Coordination
+          </h2>
+          <p className="text-lg text-muted-foreground mb-4">
+            Effective care coordination depends on timely, accurate information.
+          </p>
+          <p className="text-lg text-muted-foreground mb-8">
+            Health Compiler helps answer a common question: how can ACO analytics improve care coordination in real-world settings?
+          </p>
+          <div className="space-y-4 mb-8">
+            {benefits.map((benefit, idx) => (
+              <div key={idx} className="flex items-start gap-3">
+                <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-0.5" />
+                <p className="text-foreground">{benefit}</p>
+              </div>
+            ))}
+          </div>
+          <p className="text-muted-foreground mb-8">
+            This approach strengthens population health management for ACOs by making performance visible across the network.
+          </p>
+          <Button size="lg" variant="outline" asChild>
+            <Link to="/capabilities">Learn more</Link>
+          </Button>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// ACO Complexity Section
+const ACOComplexitySection = () => {
+  const features = [
+    'Works across fragmented technology environments and multiple EHRs',
+    'Reduces manual data normalization and reconciliation effort',
+    'Supports reporting for CMS, partners, and internal stakeholders',
+  ]
+
+  return (
+    <section className="py-24 bg-white">
+      <div className="container mx-auto px-6">
+        <div className="max-w-4xl">
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-6">
+            Designed for ACO Complexity
+          </h2>
+          <div className="space-y-4 mb-8">
+            {features.map((feature, idx) => (
+              <div key={idx} className="flex items-start gap-3">
+                <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-0.5" />
+                <p className="text-foreground">{feature}</p>
+              </div>
+            ))}
+          </div>
+          <p className="text-muted-foreground mb-8">
+            Built to scale with growing ACO networks and evolving program requirements.
+          </p>
+          <CTAButton link="/contact" text="Request a Demo" suffixIconDefault />
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// ACO Section (existing)
+const ACOSection = () => {
+  const capabilities = [
     {
-      icon: DollarSign,
-      title: 'Cost and Utilization',
-      description: 'Effective cost management and resource utilization.',
-    },
-    {
-      icon: Users,
-      title: 'Care Management',
-      description: 'Comprehensive care coordination and patient management.',
+      icon: Layers,
+      title: 'Longitudinal Records',
+      description: 'Longitudinal member and population records',
     },
     {
       icon: Activity,
-      title: 'Patient Risk attribution',
-      description:
-        'Accurate and timely patient risk assessment (CMS HCC and HSS HCC).',
+      title: 'Attribution Analytics',
+      description: 'Attribution, utilization, and cost analytics',
+    },
+    {
+      icon: Target,
+      title: 'Quality Measures',
+      description: 'Quality measures, HEDIS, MIPS, and care gaps',
     },
     {
       icon: FileText,
       title: 'ACO Reporting',
-      description: 'Detailed and compliant ACO performance reporting.',
-    },
-    {
-      icon: CheckCircle,
-      title: 'Quality and Evidence based reporting',
-      description:
-        'Reporting grounded in quality metrics and evidence-based practices.',
-    },
-    {
-      icon: Heart,
-      title: 'Membership and Critical care',
-      description:
-        'Management of membership data and critical care coordination.',
-    },
-    {
-      icon: Code,
-      title: 'HCC Coding',
-      description: 'Structured coding, better forecasting',
-    },
-    {
-      icon: Eye,
-      title: 'Patient 360',
-      description: 'Holistic view of patient data and insights.',
-    },
-    {
-      icon: Leaf,
-      title: 'Health Outcomes',
-      description: 'Healthy people, stronger communities',
+      description: 'ACO- and CMS-ready reporting',
     },
   ]
-
-  const features = [
-    {
-      number: '1',
-      title: 'Dynamic Dashboards',
-      description:
-        'Take full control with interactive dashboards, offering customized views through user-friendly filters tailored to each client population.',
-    },
-    {
-      number: '2',
-      title: 'Versatile Data Views',
-      description:
-        'Explore data from various perspectives with customizable reporting views. Filter data by time period, demographics, provider groups, regions, and more to extract meaningful insights.',
-    },
-    {
-      number: '3',
-      title: 'Comprehensive Summaries',
-      description:
-        "Get a high-level overview including population characteristics, risk scores, and annual per member costs for quick insights into your ACO's performance.",
-    },
-    {
-      number: '4',
-      title: 'Claims Utilization Analysis',
-      description:
-        'Assess service utilization against benchmarks to identify areas for cost reduction. Benchmarks are adjusted for risk or demographics to ensure accurate performance evaluation.',
-    },
-    {
-      number: '5',
-      title: 'Leakage Identification',
-      description:
-        'Identify high out-of-network utilization to address potential leakage issues. Drill down into specific service categories to understand patient-provider interactions better.',
-    },
-  ]
-
-  const apmInfo = {
-    whatAreApms: [
-      'Payment approaches link reimbursemend to a quality and cost',
-      'Types of APM: MS ACOs, bundled payments',
-      'ACO REACH: an advanced accountable care model',
-    ],
-    acoReach: [
-      'CMS total cost of care model starting in 2023',
-      'Full or partial risk—options',
-    ],
-    rightSide: [
-      'Full or partial risk',
-      'Standard ACOs Today',
-      'High needs ACOs',
-      'REACH-specific quality measures',
-    ],
-  }
 
   return (
+    <section className="py-24 bg-gradient-to-b from-slate-50 to-white">
+      <div className="container mx-auto px-6">
+        <div className="max-w-3xl mx-auto text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-6">
+            Built for accountable care performance
+          </h2>
+          <p className="text-lg text-muted-foreground">
+            ACOs operate at the intersection of quality, cost, and coordination. Health Compiler provides the data foundation and intelligence needed to track performance, surface risk, and deliver defensible results across MSSP, REACH, and commercial ACO models.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+          {capabilities.map((cap, idx) => {
+            const Icon = cap.icon
+            return (
+              <div
+                key={idx}
+                className="group p-6 rounded-2xl border border-border/50 bg-slate-50/50 hover:bg-white hover:shadow-xl hover:border-primary/20 transition-all duration-300"
+              >
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <Icon className="w-6 h-6 text-primary" />
+                </div>
+                <h3 className="font-semibold text-foreground mb-2">{cap.title}</h3>
+                <p className="text-sm text-muted-foreground">{cap.description}</p>
+              </div>
+            )
+          })}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// Registry Section
+const RegistrySection = () => {
+  const capabilities = [
+    {
+      icon: Database,
+      title: 'Multi-Source Ingestion',
+      description: 'Multi-source data ingestion (EHRs, labs, claims)',
+    },
+    {
+      icon: Users,
+      title: 'Cohort Tracking',
+      description: 'Condition and cohort-level tracking',
+    },
+    {
+      icon: TrendingUp,
+      title: 'Outcome Measurement',
+      description: 'Longitudinal outcome measurement',
+    },
+    {
+      icon: ClipboardList,
+      title: 'Clean Exports',
+      description: 'Clean exports and reporting for partners and agencies',
+    },
+  ]
+
+  return (
+    <section className="py-24 bg-gradient-to-b from-slate-50 to-white">
+      <div className="container mx-auto px-6">
+        <div className="max-w-3xl mx-auto text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-6">
+            Powering registry-driven insight and reporting
+          </h2>
+          <p className="text-lg text-muted-foreground">
+            Registries play a critical role in measuring outcomes, tracking disease burden, and supporting value-based programs. Health Compiler enables registries to aggregate, normalize, and analyze data across sources—without building custom infrastructure.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+          {capabilities.map((cap, idx) => {
+            const Icon = cap.icon
+            return (
+              <div
+                key={idx}
+                className="group p-6 rounded-2xl border border-border/50 bg-white hover:shadow-xl hover:border-accent/20 transition-all duration-300"
+              >
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-accent/10 to-primary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <Icon className="w-6 h-6 text-accent" />
+                </div>
+                <h3 className="font-semibold text-foreground mb-2">{cap.title}</h3>
+                <p className="text-sm text-muted-foreground">{cap.description}</p>
+              </div>
+            )
+          })}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// Shared Platform Section
+const SharedPlatformSection = () => {
+  return (
+    <section className="py-24 bg-white">
+      <div className="container mx-auto px-6">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-6">
+              A shared intelligence layer
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Whether supporting accountable care performance or population-level registries, Health Compiler acts as the neutral data activation layer—connecting fragmented systems into decision-grade intelligence.
+            </p>
+          </div>
+
+          {/* Split Visual */}
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* ACO Side */}
+            <div className="bg-gradient-to-br from-primary/5 to-primary/10 rounded-2xl border border-primary/20 p-8">
+              <h3 className="font-semibold text-foreground mb-6 flex items-center gap-2">
+                <Target className="w-5 h-5 text-primary" />
+                ACO Performance
+              </h3>
+              <div className="space-y-4">
+                <div className="bg-white rounded-xl p-4 border border-border/50">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm text-muted-foreground">Quality Score</span>
+                    <span className="text-sm font-bold text-foreground">94%</span>
+                  </div>
+                  <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
+                    <div className="h-full w-[94%] bg-gradient-to-r from-primary to-accent rounded-full" />
+                  </div>
+                </div>
+                <div className="bg-white rounded-xl p-4 border border-border/50">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm text-muted-foreground">Cost Savings</span>
+                    <span className="text-sm font-bold text-green-600">+$2.1M</span>
+                  </div>
+                  <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
+                    <div className="h-full w-[78%] bg-green-500 rounded-full" />
+                  </div>
+                </div>
+                <div className="bg-white rounded-xl p-4 border border-border/50">
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-muted-foreground">Care Gaps Closed</span>
+                    <span className="text-sm font-bold text-foreground">847</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Registry Side */}
+            <div className="bg-gradient-to-br from-accent/5 to-accent/10 rounded-2xl border border-accent/20 p-8">
+              <h3 className="font-semibold text-foreground mb-6 flex items-center gap-2">
+                <ClipboardList className="w-5 h-5 text-accent" />
+                Registry Outcomes
+              </h3>
+              <div className="space-y-4">
+                <div className="bg-white rounded-xl p-4 border border-border/50">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm text-muted-foreground">Active Cohorts</span>
+                    <span className="text-sm font-bold text-foreground">12</span>
+                  </div>
+                  <div className="flex gap-1">
+                    {[...Array(12)].map((_, i) => (
+                      <div key={i} className="h-2 flex-1 bg-accent/60 rounded-full" />
+                    ))}
+                  </div>
+                </div>
+                <div className="bg-white rounded-xl p-4 border border-border/50">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm text-muted-foreground">Patients Tracked</span>
+                    <span className="text-sm font-bold text-foreground">8,421</span>
+                  </div>
+                  <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
+                    <div className="h-full w-[84%] bg-accent rounded-full" />
+                  </div>
+                </div>
+                <div className="bg-white rounded-xl p-4 border border-border/50">
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-muted-foreground">Outcome Reports</span>
+                    <span className="text-sm font-bold text-foreground">156</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Shared Foundation */}
+          <div className="mt-8 bg-slate-50 rounded-2xl border border-border p-6 text-center">
+            <div className="flex items-center justify-center gap-3 mb-2">
+              <Database className="w-5 h-5 text-primary" />
+              <span className="font-semibold text-foreground">Unified Data Foundation</span>
+            </div>
+            <p className="text-sm text-muted-foreground">
+              Clinical, claims, and quality data normalized and connected
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// AI Section
+const AISection = () => {
+  const examples = [
+    { icon: AlertTriangle, label: 'Emerging risk clusters', color: 'text-amber-500' },
+    { icon: Target, label: 'Quality measure changes', color: 'text-primary' },
+    { icon: Activity, label: 'Utilization shifts', color: 'text-blue-500' },
+    { icon: TrendingUp, label: 'Registry trend deviations', color: 'text-accent' },
+  ]
+
+  return (
+    <section className="py-24 bg-gradient-to-b from-slate-50 to-white">
+      <div className="container mx-auto px-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-6">
+              AI that surfaces what matters
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Health Compiler applies AI to summarize population trends, highlight meaningful changes, and surface risks and gaps—helping both ACO operators and registry teams focus on action, not data wrangling.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {examples.map((example, idx) => {
+              const Icon = example.icon
+              return (
+                <div
+                  key={idx}
+                  className="group p-5 rounded-xl border border-border/50 bg-white hover:shadow-lg hover:border-primary/20 transition-all duration-300 text-center"
+                >
+                  <div className="w-12 h-12 mx-auto rounded-xl bg-slate-50 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                    <Icon className={`w-6 h-6 ${example.color}`} />
+                  </div>
+                  <p className="text-sm font-medium text-foreground">{example.label}</p>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// Reporting Section
+const ReportingSection = () => {
+  const reportTypes = [
+    { icon: FileText, title: 'CMS & ACO performance reports' },
+    { icon: BarChart3, title: 'Quality and outcome summaries' },
+    { icon: ClipboardList, title: 'Registry exports and submissions' },
+  ]
+
+  return (
+    <section className="py-24 bg-white">
+      <div className="container mx-auto px-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-6">
+              Reporting that stands up to scrutiny
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Generate clean, defensible reports aligned to CMS, payer, and public health requirements—built to support audits, reviews, and stakeholder communication.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {reportTypes.map((report, idx) => {
+              const Icon = report.icon
+              return (
+                <div
+                  key={idx}
+                  className="group p-8 rounded-2xl border border-border/50 bg-slate-50/50 hover:bg-white hover:shadow-xl hover:border-primary/20 transition-all duration-300 text-center"
+                >
+                  <div className="w-14 h-14 mx-auto rounded-xl bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                    <Icon className="w-7 h-7 text-primary" />
+                  </div>
+                  <p className="font-medium text-foreground">{report.title}</p>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// Trust Strip
+const TrustStrip = () => {
+  return (
+    <section className="py-12 bg-slate-50 border-y border-border/50">
+      <div className="container mx-auto px-6">
+        <div className="flex flex-wrap justify-center items-center gap-8 text-sm text-muted-foreground">
+          <div className="flex items-center gap-2">
+            <Shield className="w-5 h-5 text-primary" />
+            <span>HIPAA-ready</span>
+          </div>
+          <span className="hidden md:inline text-border">•</span>
+          <div className="flex items-center gap-2">
+            <CheckCircle className="w-5 h-5 text-primary" />
+            <span>Secure data handling</span>
+          </div>
+          <span className="hidden md:inline text-border">•</span>
+          <div className="flex items-center gap-2">
+            <Plug className="w-5 h-5 text-primary" />
+            <span>Interoperable by design</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// CTA Section
+const CTASection = () => {
+  return (
+    <section className="py-24 bg-primary text-primary-foreground">
+      <div className="container mx-auto px-6 text-center">
+        <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">
+          Power accountable care and registry insight from one platform
+        </h2>
+        <p className="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
+          Unify clinical, claims, and quality data into decision-grade intelligence for ACOs and registries.
+        </p>
+        <CTAButton
+          link="/contact"
+          text="Talk to Health Compiler"
+          variant="secondary"
+          iconSuffix={<ArrowRight className="ml-2 transition-transform group-hover:translate-x-1" />}
+        />
+      </div>
+    </section>
+  )
+}
+
+// Main Page
+const ACOs = () => {
+  return (
     <Layout>
-      <GridSection>
-        <div className='container mx-auto px-6 py-24 lg:py-32'>
-          <div className='grid lg:grid-cols-2 gap-16 lg:gap-20 items-center'>
-            <div className='space-y-8'>
-              <h1 className='text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-[1.1]'>
-                <span className='text-primary'>ACO Utilization</span> & Cost
-                Evaluation
-              </h1>
-              <h2 className='text-primary text-2xl font-bold mb-4'>Overview</h2>
-              <h3 className='text-2xl font-bold mb-6'>
-                Unlock Deeper Insights from Your Data
-              </h3>
-              <p className='text-muted-foreground'>
-                <strong>HealthCompiler Insight for ACO</strong> offers a
-                sophisticated reporting interface for analyzing claims data,
-                purpose-built to support Medicare, Medicaid, and commercial ACO
-                populations. Designed with both primary care and specialty care
-                in mind, this platform helps organizations manage costs and
-                improve care quality across the continuum. Users can track
-                utilization patterns, explore detailed patient cohort analyses,
-                and uncover potential cost-saving opportunities. The web-based
-                tool features predefined data views and benchmarks, delivering
-                convenient access to personalized, comprehensive reports
-                tailored to the unique needs of value-based care organizations.
-              </p>
-              <CTAButton
-                link='/contact'
-                text='See Your Intelligence Layer'
-                iconSuffix={
-                  <ArrowRight className='ml-2 transition-transform group-hover:translate-x-1' />
-                }
-              />
-            </div>
-            <ACOsViz />
-          </div>
-        </div>
-      </GridSection>
-      {/* Overview Section */}
-      <section className='py-16 bg-background'>
-        <div className='container mx-auto px-4'>
-          <div className='grid lg:grid-cols-2 gap-12'>
-            <div>
-              <h2 className='text-primary text-2xl font-bold mb-4'>Overview</h2>
-              <h3 className='text-2xl font-bold mb-6'>
-                Unlock Deeper Insights from Your Data
-              </h3>
-              <p className='text-muted-foreground'>
-                <strong>HealthCompiler Insight for ACO</strong> offers a
-                sophisticated reporting interface for analyzing claims data,
-                purpose-built to support Medicare, Medicaid, and commercial ACO
-                populations. Designed with both primary care and specialty care
-                in mind, this platform helps organizations manage costs and
-                improve care quality across the continuum. Users can track
-                utilization patterns, explore detailed patient cohort analyses,
-                and uncover potential cost-saving opportunities. The web-based
-                tool features predefined data views and benchmarks, delivering
-                convenient access to personalized, comprehensive reports
-                tailored to the unique needs of value-based care organizations.
-              </p>
-            </div>
+      <Helmet>
+        <title>ACOs & Registries Intelligence Platform | Health Compiler</title>
+        <meta
+          name="description"
+          content="Health Compiler unifies clinical, claims, and quality data into a single intelligence layer—powering performance, reporting, and outcomes for ACOs and registry programs."
+        />
+      </Helmet>
 
-            <div className='bg-muted/30 rounded-xl p-8'>
-              <h3 className='text-2xl font-bold mb-6 text-center'>
-                ACO REACH and Alternative Payment Models
-              </h3>
-
-              <div className='grid md:grid-cols-2 gap-6'>
-                <div>
-                  <h4 className='font-semibold mb-3'>What Are APMs</h4>
-                  <ul className='space-y-2 text-sm text-muted-foreground'>
-                    {apmInfo.whatAreApms.map((item, i) => (
-                      <li
-                        key={i}
-                        className='flex items-start gap-2'
-                      >
-                        <span className='text-primary mt-1'>•</span>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div>
-                  <ul className='space-y-2 text-sm text-muted-foreground'>
-                    {apmInfo.rightSide.map((item, i) => (
-                      <li
-                        key={i}
-                        className='flex items-start gap-2'
-                      >
-                        <span className='text-primary mt-1'>•</span>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-
-              <div className='mt-6 bg-primary text-primary-foreground rounded-lg p-4'>
-                <h4 className='font-bold text-lg mb-2'>ACO REACH</h4>
-                <p className='text-sm'>
-                  Realizing Equity, Access, and Community Health
-                </p>
-                <ul className='mt-3 space-y-1 text-sm'>
-                  {apmInfo.acoReach.map((item, i) => (
-                    <li
-                      key={i}
-                      className='flex items-start gap-2'
-                    >
-                      <span>•</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className='mt-6'>
-                <h4 className='font-semibold mb-4'>How ACO REACH Works</h4>
-                <div className='flex items-center justify-between text-sm'>
-                  <div className='text-center'>
-                    <Building className='w-8 h-8 mx-auto mb-2 text-primary' />
-                    <span>ACO</span>
-                  </div>
-                  <ArrowRight className='w-4 h-4 text-muted-foreground' />
-                  <div className='text-center'>
-                    <TrendingUp className='w-8 h-8 mx-auto mb-2 text-primary' />
-                    <span className='block'>BENCHMARK</span>
-                    <span className='text-xs text-muted-foreground'>
-                      COST MODE
-                    </span>
-                  </div>
-                  <ArrowRight className='w-4 h-4 text-muted-foreground' />
-                  <div className='text-center'>
-                    <DollarSign className='w-8 h-8 mx-auto mb-2 text-primary' />
-                    <span className='block'>ACTUAL</span>
-                    <span className='text-xs text-muted-foreground'>
-                      SPENDING
-                    </span>
-                  </div>
-                  <ArrowRight className='w-4 h-4 text-muted-foreground' />
-                  <div className='text-center text-xs'>
-                    <span className='block'>SAVE → OWE</span>
-                    <span className='block mt-1'>OWE →</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* How We Help ACOs Section */}
-      <section className='py-16 bg-muted/30'>
-        <div className='container mx-auto px-4'>
-          <h2 className='text-3xl font-bold mb-12 text-center'>
-            How do we help <span className='text-primary'>ACO's</span>
-          </h2>
-
-          <div className='grid md:grid-cols-3 gap-6'>
-            {helpCards.map((card, index) => (
-              <div
-                key={index}
-                className='bg-card rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow border'
-              >
-                <card.icon className='w-10 h-10 text-primary mb-4' />
-                <h3 className='text-lg font-semibold mb-2'>{card.title}</h3>
-                <p className='text-sm text-muted-foreground'>
-                  {card.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Key Solution Features Section */}
-      <section className='py-16 bg-background'>
-        <div className='container mx-auto px-4'>
-          <p className='text-sm text-muted-foreground mb-2'>
-            HealthCompiler Insights for ACO's
-          </p>
-          <h2 className='text-3xl font-bold mb-12'>Key Solution Features</h2>
-
-          <div className='space-y-6'>
-            {features.map((feature, index) => (
-              <div
-                key={index}
-                className='flex gap-6 items-start p-6 bg-muted/30 rounded-xl'
-              >
-                <span className='text-4xl font-bold text-primary'>
-                  {feature.number}.
-                </span>
-                <div>
-                  <h3 className='text-xl font-semibold mb-2'>
-                    {feature.title}:
-                  </h3>
-                  <p className='text-muted-foreground'>{feature.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className='py-16 bg-primary text-primary-foreground'>
-        <div className='container mx-auto px-4 text-center'>
-          <h2 className='text-2xl font-bold mb-4'>
-            Let Health Compiler do the heavy lifting, so you can focus on what
-            you do best — providing exceptional Direct Care
-          </h2>
-          <p className='text-lg mb-4 opacity-90'>
-            Unveil the value of your services and free yourself from the manual
-            effort of reporting
-          </p>
-          <p className='text-lg mb-8 opacity-90'>
-            Ready to enhance your practice's efficiency and growth? Connect with
-            us today.
-          </p>
-          <CTAButton
-            link='/contact'
-            text='Schedule a Demo'
-            iconSuffix={
-              <ArrowRight className='ml-2 transition-transform group-hover:translate-x-1' />
-            }
-          />
-        </div>
-      </section>
+      <HeroSection />
+      <ACOAnalyticsSection />
+      <CareCoordinationSection />
+      <ACOComplexitySection />
+      <ACOSection />
+      <RegistrySection />
+      <SharedPlatformSection />
+      <AISection />
+      <ReportingSection />
+      <TrustStrip />
+      <CTASection />
     </Layout>
   )
 }

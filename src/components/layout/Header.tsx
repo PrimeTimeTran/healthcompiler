@@ -119,19 +119,19 @@ const whoWeServeCategories: SubMenuCategory[] = [
       { label: "TPA's & Health Plans", href: '/tpa-health-plans' },
       { label: 'Brokers & Advisors', href: '/brokers-advisors' },
       { label: 'Employers', href: '/solutions/employers' },
-      { label: 'Captives', href: '/captives' },
+      { label: 'Captives & Union', href: '/captives' },
     ],
   },
   {
     category: 'Value Based Care',
     items: [
-      // {
-      //   label: 'Independent Primary Care',
-      //   href: '/solutions/independent-primary-care',
-      // },
-      { label: 'ACOs', href: '/acos' },
+      {
+        label: 'Independent Primary Care',
+        href: '/who-we-serve/independent-primary-care',
+      },
+      { label: 'ACOs & Registries', href: '/acos' },
       { label: 'CINs', href: '/cins' },
-      { label: 'Payors', href: '/payors' },
+      { label: 'Health Plans & Payers', href: '/payors' },
     ],
   },
 ]

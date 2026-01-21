@@ -69,6 +69,7 @@ import TPAHealthPlans from './pages/TPAHealthPlans'
 import DesignKit from './pages/DesignKit/DesignKit'
 import CINs from './pages/CINs'
 import Payors from './pages/Payors'
+import IndependentPrimaryCare from './pages/IndependentPrimaryCare'
 
 const queryClient = new QueryClient()
 
@@ -255,6 +256,10 @@ const App = () => (
           <Route
             path='/acos'
             element={<ACOs />}
+          />
+          <Route
+            path='/who-we-serve/independent-primary-care'
+            element={<IndependentPrimaryCare />}
           />
           <Route
             path='/solutions/urgent-care'
