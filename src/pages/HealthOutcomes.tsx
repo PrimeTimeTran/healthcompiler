@@ -1,6 +1,7 @@
 import { Layout } from '@/components/layout/Layout';
 import { HealthOutcomesHero } from '@/components/health-outcomes/HealthOutcomesHero';
 import { MissedBetweenVisits } from '@/components/health-outcomes/MissedBetweenVisits';
+import { IoTWearablesSection } from '@/components/health-outcomes/IoTWearablesSection';
 import { HowWeImprove } from '@/components/health-outcomes/HowWeImprove';
 import { PopulationHealthFeatures } from '@/components/health-outcomes/PopulationHealthFeatures';
 import { WhyProactiveCare } from '@/components/health-outcomes/WhyProactiveCare';
@@ -12,14 +13,14 @@ const HealthOutcomes = () => {
   return (
     <Layout>
       <Helmet>
-        <title>Health Outcomes - Proactive Population Health Management | Health Compiler</title>
+        <title>Health Outcomes Analytics | Wearables + IoT + Claims | Health Compiler</title>
         <meta 
           name="description" 
-          content="Monitor patient health between visits, surface population health risk early, and take action before outcomes decline. Enable proactive care with Health Compiler." 
+          content="Unify wearable, RPM, and clinical data to track outcomes continuously—member to cohort to employer dashboards with actionable insights." 
         />
         <meta 
           name="keywords" 
-          content="population health, health outcomes, proactive care, preventive care gaps, chronic condition monitoring, medication adherence, population health management, early intervention" 
+          content="wearable health data analytics, remote patient monitoring analytics, IoT healthcare outcomes, outcomes reporting for employers, population health outcomes dashboards, health outcomes, proactive care, chronic condition monitoring" 
         />
         <link rel="canonical" href="https://www.healthcompiler.com/solutions/health-outcomes" />
       </Helmet>
@@ -29,6 +30,9 @@ const HealthOutcomes = () => {
 
       {/* Section 2 - What Gets Missed */}
       <MissedBetweenVisits />
+
+      {/* Section 3 - IoT + Wearables Integration */}
+      <IoTWearablesSection />
 
       {/* Section 3 - How We Improve */}
       <HowWeImprove />
