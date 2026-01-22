@@ -1,5 +1,6 @@
 import { Layout } from '@/components/layout/Layout'
 import { DAPFlowSection } from '@/components/platform/DAPFlowSection'
+import { InferaPlatformCapabilities } from '@/components/platform/InferaPlatformCapabilities'
 import { Button } from '@/components/ui/button'
 import { Link } from 'react-router-dom'
 import {
@@ -100,6 +101,7 @@ const Infera = () => {
           </div>
         </div>
       </GridSection>
+      <InferaPlatformCapabilities />
       <DAPFlowSection />
       <section className='relative py-20 md:py-28 bg-gradient-to-b from-slate-50 to-white overflow-hidden'>
         <div
