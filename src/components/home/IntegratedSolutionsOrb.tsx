@@ -3,24 +3,24 @@ import {
   Search, Activity, Building2, Users, Phone, MessageSquare, 
   Globe, Mic, ClipboardList, FileCheck, TrendingUp, Heart, Calculator,
   Pill, FlaskConical, Watch, MonitorSmartphone, Radio, CreditCard, 
-  PhoneCall, Database, Network
+  PhoneCall, Database, Network, Sparkles, Shield, Zap, BarChart3
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 const solutions = [
   { label: 'SEO / GEO / AEO', icon: Search },
-  { label: 'Patient Outcomes Analytics', icon: Activity },
-  { label: 'Employer Health Analytics', icon: Building2 },
+  { label: 'Patient Outcomes', icon: Activity },
+  { label: 'Employer Analytics', icon: Building2 },
   { label: 'CRM', icon: Users },
   { label: 'AI Voice Agents', icon: Phone },
-  { label: 'Membership Conversations', icon: MessageSquare },
-  { label: 'Website Development', icon: Globe },
-  { label: 'Voice-Based Triaging', icon: Mic },
-  { label: 'Surveys & Feedback', icon: ClipboardList },
-  { label: 'HEDIS Reporting', icon: FileCheck },
-  { label: 'MIPS Performance', icon: TrendingUp },
+  { label: 'Membership', icon: MessageSquare },
+  { label: 'Website Mgmt', icon: Globe },
+  { label: 'Voice Triaging', icon: Mic },
+  { label: 'Surveys', icon: ClipboardList },
+  { label: 'HEDIS', icon: FileCheck },
+  { label: 'MIPS', icon: TrendingUp },
   { label: 'HCC Suspecting', icon: Heart },
-  { label: 'Capitation Management', icon: Calculator },
+  { label: 'Capitation', icon: Calculator },
 ]
 
 const integrations = [
@@ -28,57 +28,62 @@ const integrations = [
   { label: 'Labs', icon: FlaskConical },
   { label: 'Wearables', icon: Watch },
   { label: 'EHRs', icon: MonitorSmartphone },
-  { label: 'Websites', icon: Globe },
   { label: 'Communication', icon: Radio },
   { label: 'Billing', icon: CreditCard },
-  { label: 'VoIP Systems', icon: PhoneCall },
+  { label: 'VoIP', icon: PhoneCall },
   { label: 'Registries', icon: Database },
   { label: 'HIEs', icon: Network },
 ]
 
-const coreFeatures = [
-  'Data Unification',
-  'AI Intelligence Layer',
-  'Real-time Analytics',
-  'Secure Infrastructure',
-]
-
 export const IntegratedSolutionsOrb = () => {
   const [hoveredSolution, setHoveredSolution] = useState<number | null>(null)
+  const [isOrbHovered, setIsOrbHovered] = useState(false)
 
   return (
-    <section className="py-24 lg:py-32 bg-background relative overflow-hidden">
-      {/* Subtle gradient halo behind orb */}
+    <section className="py-16 lg:py-20 bg-background relative overflow-hidden">
+      {/* Subtle gradient halo */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="w-[600px] h-[600px] rounded-full bg-gradient-to-br from-primary/10 via-accent/5 to-transparent blur-3xl" />
+        <div className="w-[500px] h-[500px] rounded-full bg-gradient-to-br from-primary/8 via-accent/5 to-transparent blur-3xl" />
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <span className="inline-block text-xs font-semibold uppercase tracking-widest text-accent mb-4">
+        {/* Section Header - More compact */}
+        <div className="text-center mb-8">
+          <span className="inline-block text-xs font-semibold uppercase tracking-widest text-accent mb-2">
             Integrated Platform
           </span>
-          <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-foreground leading-tight max-w-3xl mx-auto">
+          <h2 className="text-2xl lg:text-3xl font-bold text-foreground">
             One Platform. Every Workflow. Fully Connected.
           </h2>
         </div>
 
-        {/* Orb Schematic */}
-        <div className="relative max-w-5xl mx-auto">
+        {/* Compact Orb Schematic */}
+        <div className="relative max-w-4xl mx-auto">
           {/* SVG Connection Lines */}
           <svg 
             className="absolute inset-0 w-full h-full pointer-events-none"
-            viewBox="0 0 800 800"
+            viewBox="0 0 600 600"
             preserveAspectRatio="xMidYMid meet"
           >
             <defs>
-              <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.3" />
-                <stop offset="100%" stopColor="hsl(var(--accent))" stopOpacity="0.3" />
+              <linearGradient id="orbLineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.4" />
+                <stop offset="100%" stopColor="hsl(var(--accent))" stopOpacity="0.4" />
               </linearGradient>
-              <filter id="glow">
-                <feGaussianBlur stdDeviation="2" result="blur" />
+              <linearGradient id="orbCoreGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="hsl(var(--primary))" />
+                <stop offset="50%" stopColor="hsl(var(--primary) / 0.9)" />
+                <stop offset="100%" stopColor="hsl(var(--accent))" />
+              </linearGradient>
+              <filter id="orbGlow">
+                <feGaussianBlur stdDeviation="4" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+              <filter id="softGlow">
+                <feGaussianBlur stdDeviation="8" result="blur" />
                 <feMerge>
                   <feMergeNode in="blur" />
                   <feMergeNode in="SourceGraphic" />
@@ -86,111 +91,196 @@ export const IntegratedSolutionsOrb = () => {
               </filter>
             </defs>
             
+            {/* Animated orbit ring */}
+            <circle
+              cx="300"
+              cy="300"
+              r="250"
+              fill="none"
+              stroke="url(#orbLineGradient)"
+              strokeWidth="1"
+              strokeDasharray="4 8"
+              opacity="0.3"
+              className="animate-spin-slow"
+              style={{ transformOrigin: '300px 300px' }}
+            />
+
+            {/* Inner decorative ring */}
+            <circle
+              cx="300"
+              cy="300"
+              r="160"
+              fill="none"
+              stroke="hsl(var(--border))"
+              strokeWidth="1"
+              strokeDasharray="2 6"
+              opacity="0.2"
+              className="animate-spin-reverse"
+              style={{ transformOrigin: '300px 300px' }}
+            />
+            
             {/* Connection lines from solutions to center */}
             {solutions.map((_, index) => {
               const angle = (index * (360 / solutions.length) - 90) * (Math.PI / 180)
-              const outerRadius = 340
-              const innerRadius = 120
-              const x1 = 400 + Math.cos(angle) * outerRadius
-              const y1 = 400 + Math.sin(angle) * outerRadius
-              const x2 = 400 + Math.cos(angle) * innerRadius
-              const y2 = 400 + Math.sin(angle) * innerRadius
+              const outerRadius = 250
+              const innerRadius = 85
+              const x1 = 300 + Math.cos(angle) * outerRadius
+              const y1 = 300 + Math.sin(angle) * outerRadius
+              const x2 = 300 + Math.cos(angle) * innerRadius
+              const y2 = 300 + Math.sin(angle) * innerRadius
+              
+              const isActive = hoveredSolution === index
               
               return (
-                <line
-                  key={`line-${index}`}
-                  x1={x1}
-                  y1={y1}
-                  x2={x2}
-                  y2={y2}
-                  stroke="url(#lineGradient)"
-                  strokeWidth={hoveredSolution === index ? 2 : 1}
-                  strokeDasharray="4 4"
-                  className="transition-all duration-300"
-                  opacity={hoveredSolution === index ? 1 : 0.5}
-                  filter={hoveredSolution === index ? 'url(#glow)' : ''}
-                >
-                  <animate
-                    attributeName="stroke-dashoffset"
-                    values="8;0"
-                    dur="1s"
-                    repeatCount="indefinite"
-                  />
-                </line>
+                <g key={`line-${index}`}>
+                  <line
+                    x1={x1}
+                    y1={y1}
+                    x2={x2}
+                    y2={y2}
+                    stroke="url(#orbLineGradient)"
+                    strokeWidth={isActive ? 2 : 1}
+                    strokeDasharray="3 3"
+                    className="transition-all duration-300"
+                    opacity={isActive ? 1 : 0.3}
+                    filter={isActive ? 'url(#orbGlow)' : ''}
+                  >
+                    {isActive && (
+                      <animate
+                        attributeName="stroke-dashoffset"
+                        values="6;0"
+                        dur="0.5s"
+                        repeatCount="indefinite"
+                      />
+                    )}
+                  </line>
+                  {/* Data flow particle */}
+                  {isActive && (
+                    <circle r="3" fill="hsl(var(--accent))">
+                      <animateMotion
+                        dur="0.8s"
+                        repeatCount="indefinite"
+                        path={`M${x1},${y1} L${x2},${y2}`}
+                      />
+                    </circle>
+                  )}
+                </g>
               )
             })}
 
-            {/* Outer orbit ring */}
+            {/* Central orb layers */}
+            {/* Outer glow */}
             <circle
-              cx="400"
-              cy="400"
-              r="340"
+              cx="300"
+              cy="300"
+              r={isOrbHovered ? 95 : 90}
+              fill="url(#orbCoreGradient)"
+              opacity="0.15"
+              filter="url(#softGlow)"
+              className="transition-all duration-500"
+            >
+              <animate attributeName="r" values="90;95;90" dur="3s" repeatCount="indefinite" />
+            </circle>
+
+            {/* Middle ring */}
+            <circle
+              cx="300"
+              cy="300"
+              r="80"
               fill="none"
-              stroke="hsl(var(--border))"
-              strokeWidth="1"
-              strokeDasharray="2 4"
-              opacity="0.3"
+              stroke="url(#orbCoreGradient)"
+              strokeWidth="2"
+              opacity="0.4"
+              filter="url(#orbGlow)"
+            >
+              <animate attributeName="r" values="80;85;80" dur="2.5s" repeatCount="indefinite" />
+            </circle>
+
+            {/* Core orb */}
+            <circle
+              cx="300"
+              cy="300"
+              r="70"
+              fill="url(#orbCoreGradient)"
+              filter="url(#orbGlow)"
+              className="transition-all duration-300"
             />
 
-            {/* Inner orbit ring */}
+            {/* Inner highlight */}
             <circle
-              cx="400"
-              cy="400"
-              r="200"
-              fill="none"
-              stroke="hsl(var(--border))"
-              strokeWidth="1"
-              strokeDasharray="2 4"
-              opacity="0.2"
+              cx="285"
+              cy="285"
+              r="25"
+              fill="hsl(var(--primary-foreground))"
+              opacity="0.1"
             />
+
+            {/* Pulse rings */}
+            <circle
+              cx="300"
+              cy="300"
+              r="70"
+              fill="none"
+              stroke="hsl(var(--primary))"
+              strokeWidth="1"
+              opacity="0"
+            >
+              <animate attributeName="r" values="70;120" dur="2s" repeatCount="indefinite" />
+              <animate attributeName="opacity" values="0.4;0" dur="2s" repeatCount="indefinite" />
+            </circle>
+            <circle
+              cx="300"
+              cy="300"
+              r="70"
+              fill="none"
+              stroke="hsl(var(--accent))"
+              strokeWidth="1"
+              opacity="0"
+            >
+              <animate attributeName="r" values="70;120" dur="2s" begin="1s" repeatCount="indefinite" />
+              <animate attributeName="opacity" values="0.3;0" dur="2s" begin="1s" repeatCount="indefinite" />
+            </circle>
           </svg>
 
-          {/* Central Orb */}
-          <div className="relative w-full aspect-square max-w-[800px] mx-auto">
-            {/* Orb Container - centered */}
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
-              {/* Ambient pulse rings */}
-              <div className="absolute inset-0 -m-8">
-                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 animate-ping-slow" />
-              </div>
-              <div className="absolute inset-0 -m-4">
-                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/10 to-accent/10 animate-pulse-slow" />
-              </div>
-
-              {/* Main orb */}
-              <div className="relative w-56 h-56 lg:w-64 lg:h-64 rounded-full bg-gradient-to-br from-primary via-primary/90 to-accent shadow-elevated flex flex-col items-center justify-center text-center p-6">
-                <h3 className="text-sm lg:text-base font-bold text-primary-foreground mb-2">
-                  Health Compiler Platform
-                </h3>
-                <p className="text-[10px] lg:text-xs text-primary-foreground/80 mb-3">
-                  Unified Data • AI • Automation
-                </p>
-                
-                {/* Core features */}
-                <div className="space-y-1">
-                  {coreFeatures.map((feature) => (
-                    <p key={feature} className="text-[9px] lg:text-[10px] text-primary-foreground/70">
-                      {feature}
-                    </p>
-                  ))}
-                </div>
-
-                {/* HIPAA badge */}
-                <div className="absolute -bottom-2 left-1/2 -translate-x-1/2">
-                  <span className="text-[8px] bg-card text-muted-foreground px-2 py-0.5 rounded-full border border-border">
-                    HIPAA-ready
+          {/* Central Orb Content */}
+          <div className="relative w-full aspect-square max-w-[600px] mx-auto">
+            {/* Orb text content - centered */}
+            <div 
+              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 text-center cursor-pointer"
+              onMouseEnter={() => setIsOrbHovered(true)}
+              onMouseLeave={() => setIsOrbHovered(false)}
+            >
+              <div className={`transition-transform duration-300 ${isOrbHovered ? 'scale-105' : ''}`}>
+                <div className="flex items-center justify-center gap-1.5 mb-1">
+                  <Sparkles className="w-3 h-3 text-primary-foreground" />
+                  <span className="text-[10px] text-primary-foreground/80 uppercase tracking-wider font-medium">
+                    Powered by
                   </span>
+                </div>
+                <h3 className="text-sm lg:text-base font-bold text-primary-foreground">
+                  Health Compiler
+                </h3>
+                <div className="flex items-center justify-center gap-1 mt-1.5 text-[9px] text-primary-foreground/70">
+                  <Zap className="w-2.5 h-2.5" />
+                  <span>Data</span>
+                  <span className="opacity-50">•</span>
+                  <BarChart3 className="w-2.5 h-2.5" />
+                  <span>AI</span>
+                  <span className="opacity-50">•</span>
+                  <Shield className="w-2.5 h-2.5" />
+                  <span>HIPAA</span>
                 </div>
               </div>
             </div>
 
-            {/* Solution Nodes - positioned in orbit */}
+            {/* Solution Nodes */}
             {solutions.map((solution, index) => {
               const angle = (index * (360 / solutions.length) - 90) * (Math.PI / 180)
-              const radius = 42.5 // percentage from center
+              const radius = 41.5
               const x = 50 + Math.cos(angle) * radius
               const y = 50 + Math.sin(angle) * radius
               const Icon = solution.icon
+              const isActive = hoveredSolution === index
 
               return (
                 <div
@@ -202,23 +292,33 @@ export const IntegratedSolutionsOrb = () => {
                 >
                   <div 
                     className={`
-                      group flex flex-col items-center gap-1.5 p-2 lg:p-3 rounded-xl 
-                      bg-card border border-border shadow-soft cursor-pointer
-                      transition-all duration-300 hover:shadow-elevated hover:-translate-y-1
-                      ${hoveredSolution === index ? 'border-primary/50 shadow-elevated' : ''}
+                      group flex flex-col items-center gap-1 p-1.5 lg:p-2 rounded-lg 
+                      bg-card/90 backdrop-blur-sm border shadow-soft cursor-pointer
+                      transition-all duration-300
+                      ${isActive 
+                        ? 'border-primary shadow-elevated scale-110 bg-card' 
+                        : 'border-border/50 hover:border-primary/30 hover:shadow-card hover:scale-105'
+                      }
                     `}
                   >
                     <div className={`
-                      w-8 h-8 lg:w-10 lg:h-10 rounded-lg flex items-center justify-center
-                      transition-colors duration-300
-                      ${hoveredSolution === index ? 'bg-primary/20' : 'bg-muted'}
+                      w-7 h-7 lg:w-8 lg:h-8 rounded-md flex items-center justify-center
+                      transition-all duration-300
+                      ${isActive 
+                        ? 'bg-gradient-to-br from-primary to-accent' 
+                        : 'bg-muted group-hover:bg-primary/10'
+                      }
                     `}>
                       <Icon className={`
-                        w-4 h-4 lg:w-5 lg:h-5 transition-colors duration-300
-                        ${hoveredSolution === index ? 'text-primary' : 'text-muted-foreground'}
+                        w-3.5 h-3.5 lg:w-4 lg:h-4 transition-colors duration-300
+                        ${isActive ? 'text-primary-foreground' : 'text-muted-foreground group-hover:text-primary'}
                       `} />
                     </div>
-                    <span className="text-[9px] lg:text-[10px] font-medium text-foreground text-center max-w-[70px] lg:max-w-[80px] leading-tight">
+                    <span className={`
+                      text-[8px] lg:text-[9px] font-medium text-center max-w-[55px] lg:max-w-[65px] leading-tight
+                      transition-colors duration-300
+                      ${isActive ? 'text-foreground' : 'text-muted-foreground group-hover:text-foreground'}
+                    `}>
                       {solution.label}
                     </span>
                   </div>
@@ -228,49 +328,36 @@ export const IntegratedSolutionsOrb = () => {
           </div>
         </div>
 
-        {/* Integration Band */}
-        <div className="mt-20 lg:mt-24">
-          <div className="text-center mb-8">
-            <p className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">
-              Fully Integrated Across the Healthcare Stack
-            </p>
-          </div>
-
-          {/* Integration icons with connection lines */}
-          <div className="relative">
-            {/* Connection line to orb */}
-            <div className="absolute left-1/2 -top-8 w-px h-8 bg-gradient-to-b from-transparent via-border to-border" />
-            
-            <div className="flex flex-wrap justify-center gap-3 lg:gap-4 max-w-4xl mx-auto">
-              {integrations.map((integration) => {
-                const Icon = integration.icon
-                return (
-                  <div
-                    key={integration.label}
-                    className="flex items-center gap-2 px-3 py-2 rounded-full bg-card border border-border hover:border-primary/30 transition-colors duration-300"
-                  >
-                    <Icon className="w-4 h-4 text-muted-foreground" />
-                    <span className="text-xs text-foreground font-medium">{integration.label}</span>
-                  </div>
-                )
-              })}
-            </div>
+        {/* Compact Integration Band */}
+        <div className="mt-8 lg:mt-10">
+          <p className="text-center text-xs font-medium text-muted-foreground uppercase tracking-wider mb-4">
+            Integrated Across the Healthcare Stack
+          </p>
+          
+          <div className="flex flex-wrap justify-center gap-2 max-w-3xl mx-auto">
+            {integrations.map((integration) => {
+              const Icon = integration.icon
+              return (
+                <div
+                  key={integration.label}
+                  className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-card/80 border border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-soft group"
+                >
+                  <Icon className="w-3 h-3 text-muted-foreground group-hover:text-primary transition-colors" />
+                  <span className="text-[10px] text-foreground font-medium">{integration.label}</span>
+                </div>
+              )
+            })}
           </div>
         </div>
 
-        {/* Micro-copy */}
-        <p className="text-center text-sm text-muted-foreground mt-12">
-          One platform. Every workflow. Fully connected.
-        </p>
-
         {/* CTA */}
-        <div className="text-center mt-8">
+        <div className="text-center mt-6">
           <Link 
             to="/platform/infera" 
-            className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-accent transition-colors duration-300"
+            className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-accent transition-colors duration-300 group"
           >
             See the Platform in Action
-            <span className="text-lg">→</span>
+            <span className="text-lg group-hover:translate-x-1 transition-transform">→</span>
           </Link>
         </div>
       </div>
