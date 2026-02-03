@@ -2,6 +2,7 @@ import { Suspense } from 'react'
 import { Layout } from '@/components/layout/Layout'
 import { HeroSectionAlt } from '@/components/home/HeroSectionAlt'
 import { UnifiedRecordSection } from '@/components/home/UnifiedRecordSection'
+import { IntegratedSolutionsOrb } from '@/components/home/IntegratedSolutionsOrb'
 import { AIInsightsSection } from '@/components/home/AIInsightsSection'
 import { SmartSignalsSection } from '@/components/home/SmartSignalsSection'
 import { ActionableReportingSection } from '@/components/home/ActionableReportingSection'
@@ -21,6 +22,7 @@ const Index = () => {
         <HeroSectionAlt />
         {/* New platform sections */}
         <UnifiedRecordSection />
+        <IntegratedSolutionsOrb />
         <AIInsightsSection />
         <SmartSignalsSection />
         <ActionableReportingSection />
