@@ -12,80 +12,229 @@ import {
   HelpCircle,
   Stethoscope,
   Building2,
-  Clipboard,
   Users,
   Briefcase,
   HeartPulse,
+  LineChart,
+  Landmark,
+  Hospital,
 } from 'lucide-react'
+import { Helmet } from 'react-helmet'
 
 const faqCategories = [
   { title: 'Direct Primary Care', anchor: 'FAQ-DPC', icon: Stethoscope },
-  { title: 'Direct Specialty Care', anchor: 'FAQ-DSC', icon: HeartPulse },
-  { title: 'Choosing the Right EHR', anchor: 'FAQ-EHR', icon: Clipboard },
-  { title: 'Human Capital Insights', anchor: 'FAQ-HCI', icon: Users },
-  { title: 'Self Funded Plans', anchor: 'FAQ-SFP', icon: Building2 },
-  { title: 'Benefit Advisors Insights', anchor: 'FAQ-BAI', icon: Briefcase },
+  { title: 'Self-Funded Employers', anchor: 'FAQ-SFE', icon: Building2 },
+  { title: 'ACOs', anchor: 'FAQ-ACO', icon: HeartPulse },
+  { title: 'Health Plans & TPAs', anchor: 'FAQ-HPT', icon: Landmark },
+  { title: 'Health Systems & MSOs', anchor: 'FAQ-HSM', icon: Hospital },
+  { title: 'Investors & Strategic Partners', anchor: 'FAQ-ISP', icon: LineChart },
 ]
 
 const dpcFaqs = [
   {
-    question: 'What is direct care?',
+    question: 'What is Health Compiler for Direct Primary Care practices?',
     answer:
-      'Direct care is a healthcare delivery model where patients pay a monthly or annual membership fee directly to a provider for basic primary care services. This eliminates the middleman of insurance companies and allows for more personalized care.',
+      'Health Compiler is a healthcare analytics and reporting infrastructure platform designed specifically for Direct Primary Care (DPC) practices. It helps DPC clinics measure utilization, demonstrate employer value, and improve operational efficiency without relying on insurance billing data.\n\nUnlike traditional EHRs, Health Compiler sits on top of your existing systems and transforms clinical and membership data into employer-ready reports, dashboards, and AI-powered insights. It enables DPC practices to quantify value, strengthen employer relationships, and scale sustainably.',
   },
   {
-    question: 'Is direct care right for me?',
+    question: 'How does Health Compiler help DPC practices prove ROI to employers?',
     answer:
-      'Direct care may be right for you if you want longer appointments, upfront pricing, and easy access to your doctor without the hassle of insurance. It works especially well for people looking for personalized, preventive care and more control over their healthcare experience.',
+      'Health Compiler calculates and visualizes DPC ROI using utilization trends, emergency department diversion, care engagement metrics, and cost avoidance modeling.\n\nThe platform:\n• Tracks visit frequency and preventive engagement\n• Measures urgent care and ER diversion\n• Creates employer-specific summary reports\n• Provides utilization comparisons against traditional primary care\n\nThis enables DPC practices to communicate financial and clinical value clearly to self-funded employers.',
   },
   {
-    question: 'What are the benefits of direct care?',
-    answer: `Cost-effective: Direct care typically has lower monthly fees than traditional health insurance premiums.
+    question: 'Does Health Compiler replace my EHR?',
+    answer:
+      'No. Health Compiler does not replace your EHR. It integrates with your existing EHR or DPC platform and acts as an analytics and intelligence layer.\n\nYour clinical workflow remains unchanged. Health Compiler extracts structured data securely and converts it into dashboards, employer reporting tools, and operational insights.',
+  },
+  {
+    question: 'Can Health Compiler integrate with Hint or other DPC platforms?',
+    answer:
+      'Yes. Health Compiler integrates with leading DPC platforms including Hint and other practice management systems using secure APIs and structured data feeds.\n\nThis allows seamless reporting without disrupting clinical workflows.',
+  },
+  {
+    question: 'Is Health Compiler HIPAA compliant?',
+    answer:
+      'Health Compiler is built with HIPAA-aligned security principles. It uses secure infrastructure, encrypted data pipelines, and strict access controls to protect Protected Health Information (PHI).\n\nCompliance and data protection are foundational design principles.',
+  },
+  {
+    question: 'How does Health Compiler improve patient retention in DPC?',
+    answer:
+      'Health Compiler identifies engagement gaps and utilization trends that may indicate disengagement.\n\nIt helps practices:\n• Track visit frequency\n• Monitor chronic condition engagement\n• Identify inactive members\n• Generate retention-focused insights\n\nThis supports proactive outreach and better patient continuity.',
+  },
+]
 
-Easier access to doctors: You can usually schedule same-day or next-day appointments with your direct care provider.
+const selfFundedFaqs = [
+  {
+    question: 'What is Health Compiler for self-funded employers?',
+    answer:
+      'Health Compiler is a healthcare analytics platform that provides self-funded employers with visibility into healthcare utilization, cost trends, and Direct Primary Care performance.\n\nIt transforms fragmented healthcare data into structured dashboards that support cost control and informed benefits strategy decisions.',
+  },
+  {
+    question: 'How does Health Compiler reduce employer healthcare costs?',
+    answer:
+      'Health Compiler reduces costs by identifying utilization patterns and avoidable high-cost events.\n\nThe platform highlights:\n• Emergency department usage trends\n• Preventable admissions\n• Chronic condition management gaps\n• Engagement patterns\n• DPC impact modeling\n\nThis enables proactive cost containment strategies.',
+  },
+  {
+    question: 'Can Health Compiler measure Direct Primary Care ROI?',
+    answer:
+      'Yes. Health Compiler measures DPC ROI by combining utilization analytics, cost modeling, and engagement metrics.\n\nIt provides:\n• Avoided claims estimations\n• Utilization trend comparisons\n• Cost transparency dashboards\n• Employer-specific value reporting\n\nThis supports data-driven DPC adoption decisions.',
+  },
+  {
+    question: 'Does Health Compiler replace a TPA?',
+    answer:
+      'No. Health Compiler works alongside TPAs. It enhances claims and eligibility data with advanced analytics and employer-facing dashboards.\n\nIt is an intelligence layer, not a replacement.',
+  },
+  {
+    question: 'How does Health Compiler improve healthcare cost transparency?',
+    answer:
+      'Health Compiler consolidates data across DPC, claims, and utilization feeds into structured dashboards.\n\nThis gives employers:\n• Clear cost visibility\n• Population-level insights\n• Predictive trend analysis\n• Benchmark comparisons',
+  },
+]
 
-More time with your doctor: Direct care providers typically spend more time with each patient during appointments.
+const acoFaqs = [
+  {
+    question: 'What is Health Compiler for ACOs?',
+    answer:
+      'Health Compiler is an analytics infrastructure platform for Accountable Care Organizations participating in value-based care programs.\n\nIt supports population health analytics, risk adjustment visibility, and performance reporting aligned with CMS and other value-based contracts.',
+  },
+  {
+    question: 'Does Health Compiler support CMS reporting?',
+    answer:
+      'Health Compiler supports structured data aggregation, quality tracking, and performance visibility aligned with CMS value-based programs.\n\nIt helps ACOs prepare for reporting by consolidating data across care settings.',
+  },
+  {
+    question: 'Can Health Compiler assist with risk adjustment analytics?',
+    answer:
+      'Yes. Health Compiler provides HCC tracking, risk score visibility, and coding performance insights.\n\nThis helps ACOs monitor risk capture and improve documentation alignment.',
+  },
+  {
+    question: 'How is Health Compiler different from traditional population health tools?',
+    answer:
+      'Health Compiler is modular, AI-enabled, and interoperability-focused.\n\nUnlike legacy systems, it:\n• Integrates multiple data sources\n• Provides employer-facing reporting layers\n• Supports DPC + ACO hybrid models\n• Emphasizes structured analytics over static dashboards',
+  },
+]
 
-Improved preventive care: Direct care providers can focus on preventive care to help you stay healthy.`,
+const healthPlanFaqs = [
+  {
+    question: 'How does Health Compiler integrate with TPAs?',
+    answer:
+      'Health Compiler integrates using structured claims feeds, eligibility files, and secure APIs.\n\nIt normalizes claims data and transforms it into advanced analytics dashboards.',
   },
   {
-    question: 'How much does direct care cost?',
+    question: 'Can Health Compiler unify DPC and claims data?',
     answer:
-      'Direct care costs vary depending on the provider and location, but typically range from $40 to $150 per month.',
+      'Yes. Health Compiler can combine DPC membership data with traditional claims feeds.\n\nThis creates a unified view of:\n• Total cost of care\n• Utilization trends\n• Care engagement\n• Cost drivers',
   },
   {
-    question: 'Is Health Compiler compliant with HIPAA regulations?',
+    question: 'Does Health Compiler replace existing analytics systems?',
     answer:
-      'Yes, Health Compiler is fully compliant with HIPAA regulations. We take data security and patient privacy extremely seriously and have implemented comprehensive measures to ensure all health information is protected.',
+      'No. It enhances existing systems by adding AI-powered insights, employer dashboards, and cross-model analytics.',
   },
   {
-    question:
-      "How does Health Compiler's DPC Insights & Reporting Platform utilize real-time health data?",
+    question: 'How does Health Compiler support value-based plan design?',
     answer:
-      "Health Compiler's DPC Insights & Reporting Platform integrates with wearables and other data sources to collect real-time health data. This data is then analyzed to provide actionable insights for DPC practices, helping them monitor patient health trends, identify at-risk patients, and personalize care.",
+      'Health Compiler provides cost and utilization modeling tools that support innovative plan structures, including DPC-integrated models.',
+  },
+]
+
+const healthSystemFaqs = [
+  {
+    question: 'How can Health Systems use Health Compiler?',
+    answer:
+      'Health Systems can use Health Compiler to unify data across employed providers, DPC models, and value-based programs.\n\nIt enables system-wide visibility into performance, cost trends, and population health outcomes.',
   },
   {
-    question: 'What services are typically not included in a DPC membership?',
+    question: 'Can MSOs use Health Compiler across multiple practices?',
     answer:
-      'Services like specialist consultations, advanced imaging, and hospitalization are generally excluded and billed separately.',
+      'Yes. Health Compiler supports multi-entity aggregation, allowing MSOs to view performance across multiple affiliated clinics.\n\nIt standardizes reporting across diverse data systems.',
   },
   {
-    question:
-      'How can a DPC practice improve its online presence and attract new patients?',
+    question: 'Does Health Compiler support hybrid care models?',
     answer:
-      'Health Compiler offers Website and SEO services specifically for DPC practices. These services help practices create professional, engaging websites and optimize their online content to rank higher in search engine results, making it easier for potential patients to find them.',
+      'Yes. It supports fee-for-service, DPC, and value-based care analytics within a single infrastructure framework.',
   },
   {
-    question: 'Can children and families join a DPC practice?',
+    question: 'How does Health Compiler improve strategic decision-making?',
     answer:
-      'Our DPC engagement & utilization management software is built to streamline patient interactions. It helps track patient engagement, identify trends in service utilization, and optimize strategies to keep patients actively involved in their health. For employer partnerships, it provides clear, actionable metrics on how their employees are utilizing your DPC services, demonstrating tangible value.',
+      'Health Compiler provides leadership dashboards that highlight:\n• Cost drivers\n• Utilization anomalies\n• Population risk trends\n• Growth opportunities',
+  },
+]
+
+const investorFaqs = [
+  {
+    question: 'What problem does Health Compiler solve?',
+    answer:
+      'Health Compiler solves healthcare data fragmentation across DPC, employers, ACOs, and health plans.\n\nIt creates a unified analytics infrastructure layer that supports cost transparency and value-based transformation.',
   },
   {
-    question:
-      'How can Health Compiler help me attract and retain patients for my DPC practice?',
+    question: 'What makes Health Compiler defensible?',
     answer:
-      'Health Compiler offers comprehensive solutions for patient acquisition and retention, including HC Growth AI Agents and a DPC Marketing Automation Platform. These tools assist with targeted email campaigns, website development and management, local SEO, content planning, social media marketing, and lead management. By automating outreach and optimizing your online presence, we help you reach potential patients and build lasting relationships.',
+      'Health Compiler\'s defensibility comes from:\n• Infrastructure-first architecture\n• Multi-sided integration (DPC + Employer + VBC)\n• AI-enabled analytics\n• Compliance-first design\n• Data network effects',
   },
+  {
+    question: 'Is Health Compiler a SaaS company or infrastructure platform?',
+    answer:
+      'Health Compiler is an infrastructure-grade SaaS platform. It provides analytics, reporting, and AI enablement layers that integrate across healthcare ecosystems.',
+  },
+  {
+    question: 'Who benefits most from Health Compiler?',
+    answer:
+      'The primary beneficiaries are:\n• Direct Primary Care practices\n• Self-funded employers\n• Accountable Care Organizations\n• Health plans\n• Value-based networks',
+  },
+]
+
+interface FAQSectionProps {
+  id: string
+  title: string
+  icon: React.ElementType
+  faqs: { question: string; answer: string }[]
+  bgClass?: string
+}
+
+const FAQSection = ({ id, title, icon: IconComponent, faqs, bgClass = 'bg-muted/30' }: FAQSectionProps) => (
+  <section id={id} className={`py-20 ${bgClass}`}>
+    <div className='container mx-auto px-4'>
+      <div className='max-w-4xl mx-auto'>
+        <div className='flex items-center gap-3 mb-8'>
+          <div className='w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center'>
+            <IconComponent className='w-6 h-6 text-primary' />
+          </div>
+          <h2 className='text-3xl font-bold text-foreground'>{title}</h2>
+        </div>
+
+        <div className='bg-card border border-border rounded-2xl overflow-hidden'>
+          <Accordion type='single' collapsible className='w-full'>
+            {faqs.map((faq, index) => (
+              <AccordionItem
+                key={index}
+                value={`item-${index}`}
+                className='border-b border-border last:border-b-0'
+              >
+                <AccordionTrigger className='text-left text-base md:text-lg font-medium text-foreground hover:text-primary hover:no-underline px-6 py-5'>
+                  <span className='flex items-start gap-3'>
+                    <HelpCircle className='w-5 h-5 text-primary mt-0.5 flex-shrink-0' />
+                    {faq.question}
+                  </span>
+                </AccordionTrigger>
+                <AccordionContent className='text-muted-foreground px-6 pb-5 pl-14 whitespace-pre-line leading-relaxed'>
+                  {faq.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
+      </div>
+    </div>
+  </section>
+)
+
+const faqSections = [
+  { id: 'FAQ-DPC', title: 'Direct Primary Care', icon: Stethoscope, faqs: dpcFaqs },
+  { id: 'FAQ-SFE', title: 'Self-Funded Employers', icon: Building2, faqs: selfFundedFaqs },
+  { id: 'FAQ-ACO', title: 'ACOs', icon: HeartPulse, faqs: acoFaqs },
+  { id: 'FAQ-HPT', title: 'Health Plans & TPAs', icon: Landmark, faqs: healthPlanFaqs },
+  { id: 'FAQ-HSM', title: 'Health Systems & MSOs', icon: Hospital, faqs: healthSystemFaqs },
+  { id: 'FAQ-ISP', title: 'Investors & Strategic Partners', icon: LineChart, faqs: investorFaqs },
 ]
 
 const solutions = [
@@ -112,6 +261,14 @@ const solutions = [
 const FAQs = () => {
   return (
     <Layout>
+      <Helmet>
+        <title>FAQs | Health Compiler — Healthcare Analytics Platform</title>
+        <meta
+          name='description'
+          content="Find answers to common questions about Health Compiler's healthcare analytics platform for DPC practices, self-funded employers, ACOs, health plans, health systems, and investors."
+        />
+      </Helmet>
+
       {/* Hero Section */}
       <section className='py-20 md:py-28 bg-background'>
         <div className='container mx-auto px-4'>
@@ -136,9 +293,7 @@ const FAQs = () => {
                   href={`#${category.anchor}`}
                   className='group bg-card border border-border rounded-2xl overflow-hidden hover:shadow-elevated transition-all duration-300 hover:-translate-y-1 flex flex-col'
                 >
-                  {/* Icon Area */}
                   <div className='bg-muted/30 p-8 md:p-10 flex items-center justify-center min-h-[140px] relative'>
-                    {/* Corner brackets */}
                     <div className='absolute top-4 left-4 w-6 h-6 border-l-2 border-t-2 border-border/50'></div>
                     <div className='absolute top-4 right-4 w-6 h-6 border-r-2 border-t-2 border-border/50'></div>
                     <div className='absolute bottom-4 left-4 w-6 h-6 border-l-2 border-b-2 border-border/50'></div>
@@ -149,7 +304,6 @@ const FAQs = () => {
                     </div>
                   </div>
 
-                  {/* Content */}
                   <div className='p-6 flex flex-col flex-1'>
                     <h3 className='text-xl font-bold text-foreground mb-3'>
                       {category.title}
@@ -171,53 +325,17 @@ const FAQs = () => {
         </div>
       </section>
 
-      {/* Direct Primary Care FAQs */}
-      <section
-        id='FAQ-DPC'
-        className='py-20 bg-muted/30'
-      >
-        <div className='container mx-auto px-4'>
-          <div className='max-w-4xl mx-auto'>
-            <div className='flex items-center gap-3 mb-8'>
-              <div className='w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center'>
-                <Stethoscope className='w-6 h-6 text-primary' />
-              </div>
-              <h2 className='text-3xl font-bold text-foreground'>
-                Direct Primary Care
-              </h2>
-            </div>
-
-            <div className='bg-card border border-border rounded-2xl overflow-hidden'>
-              <Accordion
-                type='single'
-                collapsible
-                className='w-full'
-              >
-                {dpcFaqs.map((faq, index) => (
-                  <AccordionItem
-                    key={index}
-                    value={`item-${index}`}
-                    className='border-b border-border last:border-b-0'
-                  >
-                    <AccordionTrigger className='text-left text-base md:text-lg font-medium text-foreground hover:text-primary hover:no-underline px-6 py-5'>
-                      <span className='flex items-start gap-3'>
-                        <HelpCircle className='w-5 h-5 text-primary mt-0.5 flex-shrink-0' />
-                        {faq.question}
-                      </span>
-                    </AccordionTrigger>
-                    <AccordionContent className='text-muted-foreground px-6 pb-5 pl-14 whitespace-pre-line leading-relaxed'>
-                      {faq.answer}
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* FAQ Sections */}
+      {faqSections.map((section, index) => (
+        <FAQSection
+          key={section.id}
+          {...section}
+          bgClass={index % 2 === 0 ? 'bg-muted/30' : 'bg-background'}
+        />
+      ))}
 
       {/* Contact CTA Section */}
-      <section className='py-20 bg-background'>
+      <section className='py-20 bg-muted/30'>
         <div className='container mx-auto px-4'>
           <div className='max-w-3xl mx-auto text-center'>
             <h2 className='text-3xl md:text-4xl font-bold text-foreground mb-4'>
@@ -228,10 +346,7 @@ const FAQs = () => {
               to talk.
             </p>
             <Link to='/contact'>
-              <Button
-                size='lg'
-                className='px-10'
-              >
+              <Button size='lg' className='px-10'>
                 Contact Us
                 <ArrowRight className='w-4 h-4 ml-2' />
               </Button>
@@ -241,7 +356,7 @@ const FAQs = () => {
       </section>
 
       {/* Our Solutions Section */}
-      <section className='py-20 bg-muted/30'>
+      <section className='py-20 bg-background'>
         <div className='container mx-auto px-4'>
           <div className='text-center mb-12'>
             <h2 className='text-3xl md:text-4xl font-bold text-foreground mb-4'>
@@ -258,9 +373,7 @@ const FAQs = () => {
                 key={index}
                 className='group bg-card border border-border rounded-2xl overflow-hidden hover:shadow-elevated transition-all duration-300 hover:-translate-y-1 flex flex-col'
               >
-                {/* Header Area */}
                 <div className='bg-muted/30 p-6 relative'>
-                  {/* Corner brackets */}
                   <div className='absolute top-4 left-4 w-5 h-5 border-l-2 border-t-2 border-border/50'></div>
                   <div className='absolute top-4 right-4 w-5 h-5 border-r-2 border-t-2 border-border/50'></div>
 
@@ -269,7 +382,6 @@ const FAQs = () => {
                   </h3>
                 </div>
 
-                {/* Content */}
                 <div className='p-6 flex flex-col flex-1'>
                   <p className='text-muted-foreground text-sm leading-relaxed flex-1'>
                     {solution.description}
