@@ -1,0 +1,69 @@
+export const selfFundedEmployersIntro = `Health Compiler is a healthcare analytics platform that gives self-funded employers unified visibility into healthcare utilization, cost trends, benefits performance, and Direct Primary Care outcomes. The platform consolidates data from TPAs, PBMs, stop-loss carriers, HRIS systems, DPC providers, and wearable platforms into a single analytics layer — replacing fragmented vendor reports with structured, real-time intelligence. Whether you are managing a single self-funded plan or overseeing benefits across multiple entities, Health Compiler provides the cost transparency, risk forecasting, and fiduciary-grade oversight that self-funded employers need to make evidence-based benefits decisions within a HIPAA compliant infrastructure.`
+
+export const selfFundedEmployersFaqs = [
+  {
+    question: 'What is Health Compiler for self-funded employers?',
+    answer:
+      'Health Compiler is a self-funded health plan analytics platform that provides employers with unified visibility into healthcare utilization, cost trends, benefits performance, and workforce health.\n\nThe platform consolidates data from TPAs, PBMs, stop-loss carriers, HRIS systems, DPC providers, and wearable platforms into a single analytics layer. This replaces fragmented vendor reports with structured, real-time intelligence that supports cost control and informed benefits strategy decisions.\n\nKey capabilities include:\n\n• PMPM trend analysis across medical, pharmacy, and specialty spend\n• High-cost claimant identification and early intervention signaling\n• Plan design performance comparisons\n• Vendor ROI measurement and accountability\n• Employer healthcare cost transparency dashboards\n\nHealth Compiler is an intelligence layer — not a TPA or benefits administrator. It enhances your existing ecosystem by making every data source visible and actionable in one platform.',
+  },
+  {
+    question: 'How does Health Compiler reduce employer healthcare costs?',
+    answer:
+      'Health Compiler reduces employer healthcare costs by identifying utilization patterns, cost drivers, and avoidable high-cost events before they become budget emergencies.\n\nThe platform provides:\n\n• Emergency department usage trend analysis\n• Preventable admission identification\n• Chronic condition management gap detection\n• High-cost claimant early warning signals\n• DPC impact modeling and cost avoidance calculations\n• Pharmacy spend optimization insights\n\nInstead of waiting for end-of-year claims reports, employers see cost drivers as they emerge. This enables proactive cost containment strategies — such as targeted care management programs, plan design adjustments, or vendor changes — based on real data rather than actuarial estimates.\n\nHealth Compiler also supports scenario modeling, allowing employers to test the financial impact of benefits changes before committing. This shifts benefits strategy from reactive to proactive.',
+  },
+  {
+    question: 'Can Health Compiler measure Direct Primary Care ROI for employers?',
+    answer:
+      'Yes. Health Compiler measures DPC ROI by combining utilization analytics, cost modeling, and engagement metrics into structured employer-facing reports.\n\nThe platform provides:\n\n• Avoided claims estimations based on ER diversion and specialist avoidance\n• Utilization trend comparisons between DPC-enrolled and non-enrolled populations\n• Cost transparency dashboards showing DPC investment vs. total cost of care\n• Engagement metrics including visit frequency, preventive screening rates, and chronic care management participation\n• Employer-specific DPC ROI reporting for contract renewals\n\nThis supports data-driven DPC adoption decisions and helps employers justify their direct care investment to CFOs, boards, and plan participants.\n\nHealth Compiler uses actual employer claims and utilization data — not industry benchmarks — to build ROI models specific to each employer population.',
+  },
+  {
+    question: 'Does Health Compiler replace a TPA?',
+    answer:
+      'No. Health Compiler does not replace a TPA. It works alongside your existing TPA, PBM, stop-loss carrier, and other vendors as an analytics intelligence layer.\n\nTPAs handle claims adjudication, eligibility management, and plan administration. Health Compiler enhances TPA data by:\n\n• Normalizing claims feeds into structured analytics dashboards\n• Combining claims data with clinical, pharmacy, HRIS, and wearable data\n• Providing real-time cost and utilization visibility that TPA reports cannot deliver\n• Generating employer-facing dashboards and fiduciary-grade reports\n• Enabling vendor performance measurement across your entire benefits ecosystem\n\nHealth Compiler integrates with your TPA through structured claims feeds and secure APIs. You keep your existing vendors — you just finally get comprehensive visibility into whether they are performing.',
+  },
+  {
+    question: 'How does Health Compiler improve healthcare cost transparency for employers?',
+    answer:
+      'Health Compiler improves employer healthcare cost transparency by consolidating data across DPC, claims, pharmacy, clinical, and utilization feeds into structured dashboards that provide a complete view of plan performance.\n\nThis gives employers:\n\n• Clear cost visibility by category, provider network, and member cohort\n• Population-level insights into chronic disease burden and care utilization\n• Predictive trend analysis for PMPM cost trajectories\n• Benchmark comparisons against peer organizations and industry standards\n• Vendor-level spend analysis with ROI measurement\n\nMost self-funded employers receive fragmented reports from multiple vendors on different timelines using different methodologies. Health Compiler eliminates this problem by creating a single source of truth for benefits analytics.\n\nThe platform updates in real time, so employers are making decisions based on current data — not reports that are weeks or months old.',
+  },
+  {
+    question: 'What financial risk and forecasting tools does Health Compiler provide?',
+    answer:
+      'Health Compiler provides financial risk and forecasting tools that give self-funded employers rolling cost projections based on actual claims trajectory — not generic industry benchmarks.\n\nThe platform offers:\n\n• 6-month and 12-month cost projections by plan and population segment\n• Stop-loss attachment point analysis and exposure modeling\n• High-cost claimant probability scoring\n• Plan design scenario modeling with projected PMPM impact\n• Renewal preparation analytics with trend documentation\n\nScenario modeling is a core capability. Employers can adjust variables — such as plan design changes, network modifications, or wellness program investments — and see the projected impact across cost, engagement, and risk dimensions before committing.\n\nThis transforms the renewal conversation from a reactive exercise into a strategic planning process grounded in evidence.',
+  },
+  {
+    question: 'How does Health Compiler support fiduciary oversight for self-funded employers?',
+    answer:
+      'Health Compiler provides fiduciary-grade oversight tools designed for self-funded employers who take their ERISA responsibilities seriously.\n\nAs a self-funded employer, you are a fiduciary with a legal obligation to manage health plan assets prudently. Health Compiler supports this obligation through:\n\n• Vendor accountability tracking against contractual SLAs and outcomes\n• Spend justification documentation with supporting analytics\n• Audit-ready reporting that demonstrates prudent oversight\n• Benchmarking and market context for benefits decisions\n• Continuous monitoring — not just annual review\n\nERISA does not require perfection — it requires a reasonable, documented process. Health Compiler makes that process visible and defensible.\n\nFor employers working with brokers and consultants, the platform supports role-based access so all stakeholders view the same data with appropriate permissions.',
+  },
+  {
+    question: 'Can my broker or benefits consultant access Health Compiler?',
+    answer:
+      'Yes. Health Compiler supports role-based access that allows brokers, benefits consultants, and internal leadership teams to access the same analytics platform with appropriate permissions.\n\nThis creates a shared language for benefits strategy conversations. Instead of each stakeholder working from different vendor reports with different methodologies, everyone operates from a single source of truth.\n\nBroker and consultant access includes:\n\n• Full dashboard visibility with configurable views\n• Renewal preparation and benchmarking tools\n• Vendor performance scorecards\n• Cost trend analysis and forecasting\n• Client-ready reporting and export capabilities\n\nHealth Compiler works alongside your broker and consultant — not against them. The platform enhances the advisory relationship by giving all parties access to better data and more actionable insights.',
+  },
+  {
+    question: 'How long does Health Compiler implementation take for employers?',
+    answer:
+      'Most employers are fully onboarded and seeing live data within Health Compiler in two weeks.\n\nThe implementation process includes:\n\n• Data source identification and integration setup (TPA, PBM, HRIS, DPC, wearables)\n• Claims feed normalization and member record unification\n• Dashboard configuration and user access provisioning\n• Data validation and quality assurance\n• Training for leadership, HR, and broker teams\n\nHealth Compiler handles the data integration, normalization, and validation. Your team does not need to build anything or manage any technical infrastructure.\n\nThe platform uses secure APIs and structured data feeds to connect with your existing vendors. No vendor replacement is required, and clinical or administrative workflows remain unchanged.',
+  },
+  {
+    question: 'Does Health Compiler support workforce health analytics?',
+    answer:
+      'Yes. Health Compiler provides workforce health analytics that map your employee population against clinical risk factors, engagement patterns, and care utilization data.\n\nKey workforce health insights include:\n\n• Chronic disease burden tracking across diabetes, cardiovascular disease, musculoskeletal conditions, and behavioral health\n• Preventable spend quantification for avoidable ER visits and low-value care\n• Access and utilization pattern analysis to identify engagement gaps\n• Care engagement measurement for wellness programs, preventive screenings, and virtual care\n• Absenteeism and presenteeism correlation with health data\n\nWorkforce health analytics connect clinical data to the human capital metrics that CHROs and CFOs care about — including productivity, retention, and total cost of workforce health.\n\nThis allows employers to see not just who is costing the most right now, but who is heading in that direction.',
+  },
+  {
+    question: 'Can Health Compiler connect DPC data with traditional claims data?',
+    answer:
+      'Yes. Health Compiler unifies DPC membership and utilization data with traditional claims feeds from TPAs and PBMs into a single analytics layer.\n\nThis creates a comprehensive view of:\n\n• Total cost of care across DPC and insurance-based services\n• Utilization comparisons between DPC-enrolled and non-enrolled populations\n• Care engagement and preventive screening rates\n• Cost driver identification across all care channels\n• Population health trends spanning both delivery models\n\nFor employers offering DPC as part of their benefits strategy, this unified view is critical. It eliminates the data silos that typically prevent employers from seeing the full picture of their healthcare investment.\n\nHealth Compiler normalizes data from different sources into a common structure, so comparisons are accurate and actionable.',
+  },
+  {
+    question: 'Is Health Compiler HIPAA compliant?',
+    answer:
+      'Yes. Health Compiler is HIPAA compliant and uses enterprise-grade encryption, access controls, and audit logging to protect Protected Health Information (PHI).\n\nThe platform implements:\n\n• End-to-end encryption for data in transit and at rest\n• Role-based access controls with configurable permissions\n• Comprehensive audit logging for all data access and modifications\n• Secure API connections with vendor data sources\n• Regular security assessments and compliance reviews\n\nCompliance and data protection are foundational design principles — not afterthoughts. Health Compiler is built for organizations that handle sensitive health information and require the highest standards of data security.\n\nAll data processing, storage, and analytics operations are designed to meet HIPAA requirements for covered entities and business associates.',
+  },
+  {
+    question: 'How does Health Compiler handle data from multiple vendors?',
+    answer:
+      'Health Compiler ingests data from multiple vendors — including TPAs, PBMs, stop-loss carriers, HRIS systems, DPC platforms, and wearable devices — and normalizes everything into a unified member record.\n\nThe data integration process:\n\n• Accepts standard file feeds and API connections from each vendor\n• Deduplicates member records across data sources\n• Normalizes coding standards and data formats\n• Maps all data points to a single unified member profile\n• Updates in real time as new data arrives\n\nThis solves the fundamental problem with employer healthcare analytics: when six different vendors each define a "member" differently and report on different timelines, the analytics built on top are unreliable.\n\nHealth Compiler creates one version of the truth. When you see a number in the platform, you can trust it — and when you share it with your CFO, broker, or board, they can trust it too.',
+  },
+]
