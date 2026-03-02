@@ -8,6 +8,7 @@ import { Search, ArrowRight, Zap, ExternalLink } from 'lucide-react'
 const categories = [
   'All',
   'EHR / EMR',
+  'Claims',
   'Wearables & Devices',
   'Billing & Payments',
   'Analytics',
@@ -60,6 +61,8 @@ const integrations: IntegrationItem[] = [
   { name: 'GoHighLevel', category: ['Marketing'], description: 'Marketing automation, CRM, and pipeline management via GoHighLevel' },
   { name: 'HubSpot', category: ['Marketing'], description: 'CRM, marketing, and sales hub integration through HubSpot' },
   { name: 'Lemlist', category: ['Marketing'], description: 'Outreach and email automation powered by Lemlist' },
+  { name: 'Yuzu', category: ['Claims'], description: 'Ingest medical, pharmacy, and eligibility claims from Yuzu into Health Compiler\'s AI engine for automated normalization, cost driver detection, and employer ROI modeling across self-funded plan populations', connected: true },
+  { name: 'JP Farley', category: ['Claims'], description: 'Connect JP Farley TPA claims, eligibility, and reporting feeds for AI-powered risk segmentation, utilization trend analysis, and employer healthcare cost transparency dashboards' },
   { name: 'Hint', category: ['Other'], description: 'DPC membership and billing data from Hint Health', connected: true },
   { name: 'Specter', category: ['Other'], description: 'Market intelligence and data enrichment via Specter' },
 ]
@@ -71,6 +74,7 @@ const getCategoryColor = (cat: Category): string => {
     'Billing & Payments': 'bg-secondary text-secondary-foreground',
     'Analytics': 'bg-muted text-muted-foreground',
     'Fitness': 'bg-accent/10 text-accent-foreground',
+    'Claims': 'bg-primary/20 text-primary-foreground',
     'Marketing': 'bg-primary/12 text-primary-foreground',
     'Lab & Diagnostics': 'bg-primary/10 text-primary-foreground',
     'Other': 'bg-muted text-muted-foreground',
